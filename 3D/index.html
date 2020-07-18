@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            font-family: "Oswald", sans-serif;
+            background: #000;
+        }
+
+        .element {
+            width: 100%;
+            max-width: 1400px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .element__section {
+            width: 100%;
+        }
+
+        .element__header {
+            width: 100%;
+            background: #000;
+            padding: 30px 30px 120px 30px;
+        }
+
+        .element-header__link {
+            color: #fff;
+            position: relative;
+            padding-left: 100px;
+            color: #b9b9b9;
+            text-transform: lowercase;
+            letter-spacing: 1px;
+            font-size: 17px;
+            transition: color 300ms ease-in-out;
+        }
+
+        .element-header__link:hover {
+            color: yellow;
+        }
+
+        .element-header__link::before {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 3px;
+            background: #b9b9b9;
+            content: "";
+            transition: background 300ms ease-in-out;
+        }
+
+        .element-header__link:hover::before {
+            background: yellow;
+        }
+
+        .element-header__title {
+            margin-top: 120px;
+            font-size: 50px;
+            position: relative;
+            padding-left: 100px;
+            color: #fff;
+            max-width: 780px;
+            z-index: 10;
+        }
+
+        .element-header__title::before {
+            position: absolute;
+            left: 0;
+            top: 15%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 3px;
+            background: white;
+            content: "";
+        }
+
+        .element__information {
+            width: 100%;
+            height: 80px;
+            background: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .element-information__section {
+            position: relative;
+            width: 45%;
+        }
+
+        .element-information__section:last-child {
+            width: 55%;
+        }
+
+        .element-information__meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+
+        .element-information-meta__slot:not(:last-child) {
+            margin-right: 20px;
+        }
+
+        .element-information__poster {
+            width: 100%;
+            height: 500px;
+            position: absolute;
+            left: -20px;
+            bottom: 0px;
+            overflow: hidden;
+        }
+
+        .element-information-poster__image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card {
+            margin-top: 50px;
+            height: 515px;
+            display: flex;
+            align-items: flex-end;
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        .card.inverted {
+            flex-direction: row-reverse;
+        }
+
+        .card.inverted .card__information {
+            margin-right: -100px;
+            margin-left: 0;
+        }
+
+        .card__bg {
+            height: 515px;
+            position: relative;
+            flex: 2;
+        }
+
+        .card__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+
+        }
+
+        .card__information {
+            flex: 1;
+            display: inline-flex;
+            flex-direction: column;
+            margin-left: -100px;
+            position: relative;
+            z-index: 99;
+            margin-bottom: 80px;
+        }
+
+        .card-information__text {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            color: #FFFFFF;
+
+        }
+
+        .card-information__link {
+            font-family: sans-serif;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            color: #C09669;
+            margin-top: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            height: 700px;
+        }
+
+        .header__title {
+            flex: 1;
+            margin-top: 120px;
+
+        }
+
+        .header-title__text {
+            font-size: 60px;
+            position: relative;
+            padding-left: 100px;
+            margin-left: 30px;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .header-title__text::before {
+            position: absolute;
+            left: 0;
+            top: 15%;
+            transform: translateY(-50%);
+            width: 80px;
+            height: 3px;
+            background: white;
+            content: "";
+        }
+
+        .header__bg {
+            flex: 1;
+            background-image: url(image%2022.png);
+            background-position: center left;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+    </style>
+
+
+    <!-- <div class="element">
+        <div class="element__section">
+            <div class="element__header">
+                <a class="element-header__link" href="#">Назад на в блог</a>
+                <h1 class="element-header__title">Такой модный Lifestyle <br> Management. Что это на самом <br> деле?</h1>
+            </div>
+        </div>
+        <div class="element__section">
+            <div class="element__information">
+                <div class="element-information__section">
+                    <div class="element-information__meta">
+                        <span class="element-information-meta__slot">10 Мая 2020</span>
+                        <span class="element-information-meta__slot">Lifestyle</span>
+                        <span class="element-information-meta__slot">321</span>
+                        <span class="element-information-meta__slot">456</span>
+                    </div>
+                </div>
+                <div class="element-information__section">
+                    <figure class="element-information__poster">
+                        <img class="element-information-poster__image" src="image%2023.png" alt="">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card__bg">
+            <img src="./image%2023.png" alt="">
+        </div>
+        <div class="card__information">
+            <div class="card-information__text">Такой модный Lifestyle <br> Management. Что это на <br> самом деле?</div>
+            <div class="card-information__link">Прочитать статью</div>
+        </div>
+    </div>
+    <div class="card inverted">
+        <div class="card__bg">
+            <img src="./image%2023.png" alt="">
+        </div>
+        <div class="card__information">
+            <div class="card-information__text">Почему свой консьерж – это удобно и современно?</div>
+            <div class="card-information__link">Прочитать статью</div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card__bg">
+            <img src="./image%2023.png" alt="">
+        </div>
+        <div class="card__information">
+            <div class="card-information__text">Такой модный Lifestyle <br> Management. Что это на <br> самом деле?</div>
+            <div class="card-information__link">Прочитать статью</div>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header__title">
+            <div class="header-title__text">Виллы, апартаменты, особняки, замки</div>
+        </div>
+        <div class="header__bg"></div>
+    </div> -->
+  
+    <script>
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 1, 1000);
+camera.position.set(0, 0, 10);
+var renderer = new THREE.WebGLRenderer({
+  antialias: true
+});
+renderer.setSize(innerWidth, innerHeight);
+document.body.appendChild(renderer.domElement);
+
+var controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+var tex = new THREE.TextureLoader().load(
+  "https://threejs.org/examples/textures/uv_grid_opengl.jpg"
+);
+
+var sphereGeom = new THREE.SphereBufferGeometry(1, 32, 32, 5);
+
+// сфера
+
+var innerSphere = new THREE.Mesh(
+  sphereGeom,
+  new THREE.MeshBasicMaterial({
+    map: tex
+  })
+);
+innerSphere.scale.setScalar(3);
+scene.add(innerSphere);
+window.addEventListener("mousemove", rotating, false);
+var clock = new THREE.Clock();
+// крутить сферу
+
+let rotationFactorY = 0;
+let rotationFactorX = 0;
+const maxRotationSpeed = 0.1;
+
+function rotating(e) {
+  rotationFactorY = 2 * (e.clientX - window.innerWidth / 2) / window.innerWidth;
+  rotationFactorX = 2 * (e.clientY - window.innerHeight / 2) / window.innerHeight;
+}
+
+renderer.setAnimationLoop(() => {
+  innerSphere.rotation.y += maxRotationSpeed * rotationFactorY;
+  // innerSphere.rotation.x += maxRotationSpeed * rotationFactorX;
+  renderer.render(scene, camera);
+});
+
+    </script>
+</body>
+
+
+</html>
