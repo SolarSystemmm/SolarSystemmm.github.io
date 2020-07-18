@@ -376,47 +376,59 @@ window.addEventListener("mousemove", rotating, false); -->
     <script>
    window.onload = () => {
     var scene = new THREE.Scene();
+// Камера (изменю значения позже)
 var camera = new THREE.PerspectiveCamera(60, innerWidth / innerHeight, 1, 1000);
 camera.position.set(0, 0, 10);
 var renderer = new THREE.WebGLRenderer({
   antialias: true
 });
-renderer.setSize(innerWidth, innerHeight);
+// Размер канваса, если менять то сразу 2 значения, и делить на одинаковые числа! Пример: innerWidth/2 , innerHeight/2
+renderer.setSize(innerWidth , innerHeight);
 document.body.appendChild(renderer.domElement);
 
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
-
+//Возможно заменить url на свой (загрузить текстуру на свой сервер перед этим!)
 var tex = new THREE.TextureLoader().load(
   "https://solarsystemmm.github.io/3D/final-moon.jpg"
 );
-
+// Инициализация сферы
 var sphereGeom = new THREE.SphereBufferGeometry(0.7, 32, 32);
 
-// сфера
+// Создание сферы
 var innerSphere = new THREE.Mesh(
   sphereGeom,
   new THREE.MeshLambertMaterial({
     map: tex,
   })
 );
+// Дал сфере форму овала
 innerSphere.scale.set(4, 4.5, 4);
 scene.add(innerSphere);
 window.addEventListener("mousemove", rotating, false);
-var clock = new THREE.Clock();
-// крутить сферу
 
+// Скорость вращения по дефолту
 let rotationFactorY = 0.1;
 let rotationFactorX = 0.1;
+// Не менять значение ниже
 const maxRotationSpeed = 0.1;
 
 function rotating(e) {
+  // 0.25 - текущая скорость вращения, 2ку - не менять
   rotationFactorY = 0.25* (e.clientX - window.innerWidth / 2) / window.innerWidth;
   rotationFactorX = 0.25 * (e.clientY - window.innerHeight / 2) / window.innerHeight;
 }
+
+// Начало
+// ИСТОЧНИК СВЕТА 
+// 1.5 - яркость света
 var light = new THREE.DirectionalLight(0xffffff, 1.5);
+      // Координата Y (я потом сам поменяю)
       light.position.y =  window.innerHeight / 2;
+        // Координата Z (я потом сам поменяю)
       light.position.z =   window.innerHeight / 1.4;
       scene.add(light);
+// Конец 
+
 renderer.setAnimationLoop(() => {
   innerSphere.rotation.y += maxRotationSpeed * rotationFactorY;
   renderer.render(scene, camera);
