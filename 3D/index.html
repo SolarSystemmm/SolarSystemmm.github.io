@@ -311,20 +311,19 @@ document.body.appendChild(renderer.domElement);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 
 var tex = new THREE.TextureLoader().load(
-  "https://solarsystemmm.github.io/3D/moon.jpg"
+  "https://solarsystemmm.github.io/3D/moon3.jpg"
 );
 
-var sphereGeom = new THREE.SphereBufferGeometry(1, 32, 32, 5);
+var sphereGeom = new THREE.SphereBufferGeometry(0.7, 32, 32);
 
 // сфера
-
 var innerSphere = new THREE.Mesh(
   sphereGeom,
   new THREE.MeshBasicMaterial({
-    map: tex
+    map: tex,
   })
 );
-innerSphere.scale.setScalar(3);
+innerSphere.scale.set(4, 4.5, 4);
 scene.add(innerSphere);
 window.addEventListener("mousemove", rotating, false);
 var clock = new THREE.Clock();
@@ -335,8 +334,8 @@ let rotationFactorX = 0.1;
 const maxRotationSpeed = 0.1;
 
 function rotating(e) {
-  rotationFactorY = 1.2* (e.clientX - window.innerWidth / 2) / window.innerWidth;
-  rotationFactorX = 1.2 * (e.clientY - window.innerHeight / 2) / window.innerHeight;
+  rotationFactorY = 0.25* (e.clientX - window.innerWidth / 2) / window.innerWidth;
+  rotationFactorX = 0.25 * (e.clientY - window.innerHeight / 2) / window.innerHeight;
 }
 
 renderer.setAnimationLoop(() => {
