@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="body"> </div>
+    <style>
+        body {
+            font-family: "Oswald", sans-serif;
+            background: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {}
+
+        .bg-placeholder {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .bg-placeholder .bg {
+            height: 600px;
+            object-fit: contain;
+        }
+
+        .pic-container {
+            position: absolute;
+            bottom: 50%;
+            left: 50%;
+            transform: translate(-50%, 50%);
+        }
+
+    </style>
+    <div class="container">
+        <div class="bg-placeholder">
+            <img src="https://previews.123rf.com/images/kantver/kantver1602/kantver160200240/52905526-young-woman-walking-in-modern-gallery-and-looking-at-the-blank-canvas-.jpg" alt="" class="bg">
+            <p class="pic-container">
+
+                <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043351000-055OH8HN4GD7JMPEE0KR/ke17ZwdGBToddI8pDm48kIJRx_zBJV9A6AlmKYps_bkUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2uLRQ9emC_2J-aadhWRQLGKHv5uQsRFxjU43pdFijgUgKMshLAGzx4R3EDFOm1kBS/VikMuni.png?format=500w" alt="" class="pic">
+            </p>
+        </div>
+    </div>
+    <script>
+        class Galery {
+            constructor(height = 152.4, width = 121.9 , woman_height = 170, woman_width = 35) {
+                this.height = height;
+                this.width = width;
+                this.woman_height = 170;
+                this.woman_width = 35
+            }
+            render() {
+                const h_res = this.height / this.woman_height
+                const w_res = this.width / this.woman_height
+                const pic = document.getElementsByClassName('pic')[0]
+                const bg = document.getElementsByClassName('bg')[0].clientHeight;
+                pic.style.height = bg / 2.03 * h_res + 'px'
+                pic.style.width = bg / 2.03 * w_res + 'px'
+
+            }
+        }
+        new Galery().render()
+
+    </script>
+</body>
+
+
+</html>
