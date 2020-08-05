@@ -95,6 +95,7 @@ html{
 .icon-list a:last-child{
     margin-right: 0;
 }
+
 .contact-us-title{
     position: relative;
     background: url("https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1552488647127-PWLIGRGWEUHMHF1DK2WU/ke17ZwdGBToddI8pDm48kASsyPkPGp6DU6dOtgwOxLt7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0psyQQR5KrxgIm8QcotvsYuaF0SP6zXocnnlYX4nv88IcbhLNHk5ykuNYxKGCstscA/max163.jpg" );
@@ -119,6 +120,19 @@ html{
 }
 .width-95{
     width: 95% !important;
+}
+@media (max-width:992px) {
+    .navbar{
+        display: none;
+    }
+    .contact-block{
+        top: 50px !important;
+    }
+}
+@media (max-width:576px) {
+    .width-sm-100{
+        width: 100% !important;
+    }
 }
 .link-wrapper{
     display: flex;
@@ -1297,6 +1311,11 @@ i-circled {
 }
 
 @media (max-width:991px) {
+    /* .hero-split-content{
+        height: auto !important;
+        padding: 100px 0;
+
+    } */
     .header .logo {
         -webkit-box-shadow: none!important;
         -moz-box-shadow: none!important;
@@ -1718,7 +1737,7 @@ i-circled {
 
 @media (max-width:991px) {
     #home {
-        padding-top: 55px!important
+        /* padding-top: 55px!important */
     }
 }
 
