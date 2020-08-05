@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en"> 
+
+<head>
+    <meta charset="utf-8">
+    <title>Visioner Art</title>
+    <meta name="description" content="Betiso - One Page Personal Themplate"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js"></script>
+    <!-- Vue library -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- vue-awesome-swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/vue-awesome-swiper"></script>
+    <!-- Loading Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://assets.squarespace.com/universal/default-favicon.ico"> 
+    
+    <!-- Loading Font Icons -->
+    <link href="assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Include all css plugins (below), or include individual files as needed -->
+    
+    <!-- Main CSS -->
+    <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css">
+    
+    <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 8]>
+    <script src="assets/plugins/modernizr/modernizr.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top ">
+    <div id="vueapp">
+    <!-- BACKGROUND GRID START -->
+    <div class="background-grid height-100 position-fixed">
+        <span class="column height-100"></span>
+        <span class="column height-100"></span>
+        <span class="column height-100"></span>
+        <span class="column height-100 hidden-xs"></span>
+        <span class="column height-100 hidden-xs hidden-sm"></span>
+        <span class="column height-100 hidden-xs hidden-sm"></span>
+    </div>
+    <!-- //BACKGROUND GRID END -->
+    
+    <!-- HEADER START -->
+    <header class="header">
+        <div class="logo text-center">
+            <div class="display-table height-100 width-100">
+                <a href="index.html" class="display-table-cell vertical-align-middle pointer-all">
+                    <img src="./assets/images/VisionerLogoV2.png" alt="">
+                </a>
+                <!-- //.display-table-cell -->
+            </div>
+            <!-- //.display-table -->
+        </div>
+        <!-- //.logo -->
+        
+        <div class="nav-trigger nav-trigger-open" v-on:click="isActive = !isActive">
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- //.nav-toggle -->
+        </div>
+        <!-- //.nav-trigger -->
+    </header>
+    <!-- //HEADER END -->
+    
+    
+    
+    <!-- NAVIGATION START -->
+    <div id="navigation" v-if="isActive" v-bind:class="{'navbar': true, 'navbar-display-block' : true, 'pointer-none' : !isActive}">
+        <div class="container-fluid display-table height-100 width-100">
+            <div class="nav-wraper display-table-cell width-100">
+                <div class="nav-trigger nav-trigger-close" v-on:click="isActive = !isActive">
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- //.nav-trigger -->
+                <ul class="nav navbar-nav text-center text-small text-uppercase">
+                    <li class=" pointer-all"><a class="position-relative" href="index.html">HOME</a></li>
+                    <li class="active pointer-all"><a href="artists.html">Artists</a></li>
+                    <li class="pointer-all"><a href="contact-us.html">CONTACT US</a></li>
+                </ul>
+
+            </div>
+            <!-- //.display-table-cell -->
+        </div>
+        <!-- //.container-fluid -->
+    </div>
+    <!-- WRAPPER START -->
+    <div class="wrapper">
+         <div class="container-fluid">
+             <div class="row">
+                <div class="col">
+                    <div class="" v-for="(item, index) in firstHalf" :key="item.name">
+                        <a v-on:mouseover="changeWork(item.id)"  class=" artist-link mb-0 mt-2">{{item.name}}</a> 
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="" v-for="(item, index) in secondHalf" :key="item.name">
+                        <a v-on:mouseover="changeWork(item.id)"  class=" artist-link mb-0 mt-2">{{item.name}}</a> 
+                    </div> 
+                </div>
+                <div class="col-md-7">
+                    <img class="position-sticky artist-work-img" :src="currentWork" alt="">
+                </div>
+             </div>
+         </div>
+    <!-- FOOTER START -->
+    <footer class="footer position-relative dark">
+        <div class="section-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <h6 class="footer-v2-heading">About Me</h6>
+                        <p class="white paragraph-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, impedit laudantium. Facere voluptatem dicta ratione delectus, architecto nesciunt quas libero suscipit. Sapiente cumque, voluptates doloremque, quos numquam perferendis officia saepe!</p>
+                        <img src="assets/images/signature-w.png" alt="" class="footer-signature">
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <h6 class="footer-v2-heading mt-sm-30">navigation</h6>
+                        <ul class="footer-link list-unstyled">
+                            <li><a href="#" class="white">Intro</a></li>
+                            <li><a href="#" class="white">Portfolio</a></li>
+                            <li><a href="#" class="white">Career</a></li>
+                            <li><a href="#" class="white">Resume</a></li>
+                            <li><a href="#" class="white">Profile</a></li>
+                            <li><a href="#" class="white">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h6 class="footer-v2-heading mt-md-30">contact me</h6>
+                        <div class="list-wrap">
+                            <div class="side-feature-list-item">
+                                <img src="assets/images/icons/footer-contact-icon-1.svg" width="20" class="check-mark-icon" alt="">
+                                <div class="foot-c-info">I’m based in London</div>
+                            </div>
+                            <div class="side-feature-list-item">
+                                <img src="assets/images/icons/footer-contact-icon-2.svg" width="20" class="check-mark-icon" alt="">
+                                <div class="foot-c-info">support@domain.com</div>
+                            </div>
+                            <div class="side-feature-list-item">
+                                <img src="assets/images/icons/footer-contact-icon-3.svg" width="20" class="check-mark-icon" alt="">
+                                <div class="foot-c-info">(875) 63487 7438</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <h6 class="footer-v2-heading mt-md-30">follow us</h6>
+                        <p class="white paragraph-small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In dolorem maiores unde aut, nulla accusantium minus! Natus molestias.</p>
+                        <div class="social-icons home-v2-icons">
+                            <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                <i class="fa fa-facebook hero-social-icon"></i>
+                                <div class="color-hover down"></div>
+                            </a>
+                            <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                <i class="fa fa-behance hero-social-icon"></i>
+                                <div class="color-hover down"></div>
+                            </a>
+                            <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                <i class="fa fa-instagram hero-social-icon"></i>
+                                <div class="color-hover down"></div>
+                            </a>
+                            <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                <i class="fa fa-twitter hero-social-icon"></i>
+                                <div class="color-hover down"></div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- //.row -->
+            </div>
+            <!-- //.container -->
+        </div>
+    </footer>
+    <!-- //FOOTER END -->
+    </div>
+    <!-- //WRAPPER END -->
+
+    </div>
+    <script>
+
+        new Vue({
+          el: '#vueapp',
+          data: {
+            isActive: false,
+             currentWork:null,
+             artists: [
+                 {name: 'Pasha1', id: 'pasha'},
+                 {name: 'Pasha2', id: 'pasha1'},
+             ],
+             firstHalf: [],
+             secondHalf: [],
+             works: [
+                 {id: 'pasha', src: './assets/images/art1.png'},
+                 {id: 'pasha1', src: './assets/images/art2.png'}
+             ]
+          },
+          methods: {
+            changeWork(id){
+               for( let i = 0; i < this.works.length; i++){
+                   this.works[i].id === id ? this.currentWork = this.works[i].src : null
+               }
+            },
+            sliceArtistsArray(){
+               const length = Math.ceil(this.artists.length /2)
+               for(let i = 0; i < length; i++){
+                this.firstHalf[i] = this.artists[i]
+               }
+               for(let j = 0; j < this.artists.length; j++){
+                if(typeof this.firstHalf[j] === 'undefined' || this.firstHalf[j].name !== this.artists[j].name){
+                    this.secondHalf[j - length] = this.artists[j]
+                }
+               }
+            }
+          },
+          computed:{
+          },
+          mounted(){
+              this.currentWork = this.works[0].src
+              this.sliceArtistsArray()
+          }
+        })
+            </script>
+    <!-- Loading jQuery -->
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    
+    <!-- Loading Bootstrap JS -->
+    <!-- <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script> -->
+    
+    <!-- Include all js plugins (below) -->
+    <!-- <script src="assets/plugins/jpreloader/js/jpreloader.min.js"></script> -->
+    <!-- <script src="assets/plugins/debouncer/debouncer.js"></script>
+    <script src="assets/plugins/easing/jquery.easing.min.js"></script>
+    <script src="assets/plugins/magnific-popup/jquery.magnific-popup.min.js"></script> -->
+    
+    <!-- Loading Theme JS -->
+    <script src="assets/js/main.js"></script>
+ 
+</body>
+
+</html>
