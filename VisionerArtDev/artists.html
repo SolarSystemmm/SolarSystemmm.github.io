@@ -57,8 +57,10 @@
                     <a class="position-relative" href="artists.html">Artists</a></li>
                 <li class="pointer-all  d-inline-flex align-items-center">
                     <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
+                <li class="pointer-all  d-inline-flex align-items-center">
+                    <a class="position-relative" href="selected-publications.html">selected press</a></li>
                     <li class="pointer-all  d-inline-flex align-items-center">
-                        <a class="position-relative" href="selected-publications.html">selected press</a></li>
+                        <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
 
             </ul>
         </header>
@@ -108,7 +110,8 @@
                                     class="position-relative" href="artists.html">Artists</a></li>
                             <li class="pointer-all  d-inline-flex align-items-center"><a class="position-relative"
                                     href="contact-us.html">CONTACT US</a></li>
-                                    <li class="pointer-all"><a href="selected-publications.html">selected press</a></li>
+                            <li class="pointer-all"><a href="selected-publications.html">selected press</a></li>
+                            <li class="pointer-all"><a href="works-for-sale.html">selected press</a></li>
                         </ul>
 
                     </div>
@@ -128,6 +131,20 @@
                         </div>
                     </transition>
                     <div class="col-md-6">
+                        <section class="section-static-title p0 mt-5 mb-5">
+                            <div class="container-fluid section-static-title">
+                                <div class="row custom-row">
+                                    <div class="col-6 section-press-img ">
+                                        <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1592429294593-SAE3SKPL6OBOKAH5TURK/ke17ZwdGBToddI8pDm48kKR3o0ZQl9Wi-qrr1zoKio17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UffTifcrMApUA0DUPK9-SdRHTKX59FPT-MLq0y_8I1Su4YiLRmUQnYOnT8aFnZ-MYA/Secundino+HernandezHR2.jpg?format=500w"
+                                            alt="">
+                                        <h1>Our Artists</h1>
+                                    </div>
+                                    <div class="col-6 section-press-text">
+                                        <p>Unique collection of blue-chip masters and emerging talent</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                         <div class="row">
                             <div class="col">
                                 <div class="" v-for="(item, index) in firstHalf" :key="item.name">
@@ -151,15 +168,28 @@
             <!-- //.container -->
         </section>
         <section class="mobile-module pt-6-5 d-block d-lg-none">
-            <h2 class="text-center text-uppercase mt-4 mb-4">Artists</h2>
+            <section class="section-static-title mb-5">
+                <div class="container-fluid ">
+                    <div class="row custom-row">
+                        <div class="col-6 section-press-img ">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1592429294593-SAE3SKPL6OBOKAH5TURK/ke17ZwdGBToddI8pDm48kKR3o0ZQl9Wi-qrr1zoKio17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UffTifcrMApUA0DUPK9-SdRHTKX59FPT-MLq0y_8I1Su4YiLRmUQnYOnT8aFnZ-MYA/Secundino+HernandezHR2.jpg?format=500w"
+                                alt="">
+                            <h1>Our Artists</h1>
+                        </div>
+                        <div class="col-6 section-press-text">
+                            <p>Unique collection of blue-chip masters and emerging talent</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <div class="container">
                 <div class="row">
                     <div class="col-12 col-sm-6 text-center mb-5" v-for="(item) in works" :key="item.id">
-                       <div class="artist-img-wrapper">
-                        <img :src="item.src" alt="#">
-                       </div>
-                       <h4 class="mt-4 mb-4">{{item.id}}</h4>
-                       <a href="#" class="check-profile-btn text-uppercase text-bold">learn more</a>
+                        <div class="artist-img-wrapper">
+                            <img :src="item.src" alt="#">
+                        </div>
+                        <h4 class="mt-4 mb-4">{{item.id}}</h4>
+                        <a href="#" class="check-profile-btn text-uppercase text-bold">learn more</a>
                     </div>
                 </div>
             </div>
@@ -266,6 +296,79 @@
                         name: 'artist_4',
                         id: 'artist_4'
                     },
+                    {
+                        name: 'artist_5',
+                        id: 'artist_5'
+                    },
+
+                    {
+                        name: 'artist_6',
+                        id: 'artist_6'
+                    },
+                    {
+                        name: 'artist_7',
+                        id: 'artist_7'
+                    },
+                    {
+                        name: 'artist_8',
+                        id: 'artist_8'
+                    },
+                    {
+                        name: 'artist_9',
+                        id: 'artist_9'
+                    },
+                    {
+                        name: 'artist_10',
+                        id: 'artist_10'
+                    },
+                    {
+                        name: 'artist_11',
+                        id: 'artist_11'
+                    },
+                    {
+                        name: 'artist_12',
+                        id: 'artist_12'
+                    },
+                    {
+                        name: 'artist_13',
+                        id: 'artist_13'
+                    },
+                    {
+                        name: 'artist_14',
+                        id: 'artist_14'
+                    },
+                    {
+                        name: 'artist_15',
+                        id: 'artist_15'
+                    },
+                    {
+                        name: 'artist_16',
+                        id: 'artist_16'
+                    },
+                    {
+                        name: 'artist_17',
+                        id: 'artist_17'
+                    },
+                    {
+                        name: 'artist_18',
+                        id: 'artist_18'
+                    },
+                    {
+                        name: 'artist_19',
+                        id: 'artist_19'
+                    },
+                    {
+                        name: 'artist_20',
+                        id: 'artist_20'
+                    },
+                    {
+                        name: 'artist_21',
+                        id: 'artist_21'
+                    },
+                    {
+                        name: 'artist_22',
+                        id: 'artist_22'
+                    },
                 ],
                 firstHalf: [],
                 secondHalf: [],
@@ -287,13 +390,13 @@
                 async changeWork(id) {
                     that = this
                     this.isFade = true
-                     setTimeout(() => {
+                    setTimeout(() => {
                         for (let i = 0; i < this.works.length; i++) {
                             this.works[i].id === id ? this.currentWork = this.works[i].src : null
                         }
                     }, 500)
                     setTimeout(() => {
-                        that.isFade = false 
+                        that.isFade = false
                     }, 1000)
                 },
                 sliceArtistsArray() {
