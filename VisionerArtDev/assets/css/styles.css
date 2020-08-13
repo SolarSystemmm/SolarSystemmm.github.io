@@ -1670,7 +1670,8 @@ i-circled {
 .hrz-header .nav>li {
     backface-visibility: hidden;
     display: inline-block;
-    width: 100px;
+    min-width: 100px;
+    padding: 0 10px;
 }
 
 .hrz-header .nav>li>a {
@@ -1837,7 +1838,8 @@ i-circled {
         -moz-transform: rotate(-90deg) translate3d(0, 0, 0);
         -ms-transform: rotate(-90deg) translate3d(0, 0, 0);
         -o-transform: rotate(-90deg) translate3d(0, 0, 0);
-        width: 100px
+        min-width: 100px;
+        white-space: nowrap;
     }
 
     .navbar .nav>li.active>a:before {
