@@ -125,31 +125,6 @@ html {
     margin-right: 0;
 }
 
-.contact-us-title {
-    position: relative;
-    background: url("https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1552488647127-PWLIGRGWEUHMHF1DK2WU/ke17ZwdGBToddI8pDm48kASsyPkPGp6DU6dOtgwOxLt7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0psyQQR5KrxgIm8QcotvsYuaF0SP6zXocnnlYX4nv88IcbhLNHk5ykuNYxKGCstscA/max163.jpg");
-    background-position: center center;
-    background-size: cover;
-}
-
-.contact-us-title .bg-overlay {
-    background-color: rgba(0, 0, 0, .3);
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.contact-us-title .text {
-    position: relative;
-    text-align: center;
-    padding: 100px 0;
-    color: #fff;
-    z-index: 9;
-}
-
 .width-95 {
     width: 95% !important;
 }
@@ -168,6 +143,23 @@ html {
 
 .pt-6-5 {
     padding-top: 65px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+a,
+p {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
 }
 
 @media (max-width:992px) {
@@ -237,9 +229,11 @@ html {
     -ms-flex-align: center;
     align-items: center;
 }
-.pr-20{
+
+.pr-20 {
     padding-right: 20px;
 }
+
 .artist-img-wrapper {
     position: relative;
     overflow: hidden;
@@ -285,12 +279,149 @@ html {
     }
 }
 
-.section-press-title {
+.section-static-title {
     margin-top: 96px;
     padding: 0 32px !important;
     max-width: 1020px;
     margin: 96px auto 0 auto;
 }
+
+.service-v2-info {
+    position: relative;
+    padding-right: 11px;
+}
+
+.section-static-title .section-press-img {
+    position: relative;
+    padding: 0 !important;
+}
+
+.section-static-title .section-press-text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.section-static-title .section-press-img h1 {
+    position: absolute;
+    white-space: nowrap;
+    top: 40%;
+    right: 0;
+    transform: translate(50%, -50%);
+    background: #fff;
+    padding: 0 13px;
+    line-height: 1.5;
+}
+
+.section-static-title .section-press-text {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-right: 0 !important;
+}
+
+.section-static-title .section-press-text p {
+    margin-top: 30px;
+    transform: translateY(100%);
+}
+
+@media screen and (max-width: 640px) {
+    .section-static-title {
+        padding: 0 20px !important;
+    }
+
+    .section-static-title .section-press-text p {
+        margin-top: 15px;
+        font-size: 11px !important;
+    }
+}
+
+.p0 {
+    padding: 0 !important;
+}
+
+.mb-0{
+    margin-bottom: 0 !important;
+}
+
+input .full-width{
+    flex: 80%;
+    margin-right: 30px;
+}
+
+.contact-v1-form{
+    max-width: 812px;
+}
+
+.works-inventory{
+    text-align: center;
+    margin: 70px auto;
+}
+
+.works-inventory .title-container{
+    padding-top: 34px !important;
+    padding-bottom: 34px !important;
+}
+.works-for-sale-list .work-item{
+    padding: 15px 0;
+    margin-bottom: 0px;
+}
+.works-for-sale-list .work-item-text > *{
+    margin-bottom: 10px;
+}
+.works-for-sale-list .work-item-space{
+    padding: 10%;
+}
+@media (max-width: 473px) {
+    .section-static-title .custom-row {
+        flex-direction: column !important;
+    }
+
+    .section-static-title {
+        margin-top: 40px;
+        padding: 0 17px !important;
+    }
+
+    .section-static-title .col-6 {
+        flex: 1 !important;
+        width: 100% !important;
+    }
+
+    .section-static-title .section-press-img h1 {
+        margin-bottom: 0;
+        position: absolute;
+        top: initial;
+        right: initial;
+        left: 4%;
+        bottom: 0;
+        transform: initial;
+        background: #fff;
+        padding: 0 13px;
+        line-height: 1.5;
+    }
+
+    .section-static-title .section-press-img h1 {
+        font-size: 30px !important;
+    }
+
+    .adpt-fs .section-press-img h1 {
+        font-size: 4.5vw !important;
+        width: 100%;
+    }
+
+    .section-static-title .section-press-text {
+        padding-left: 4% !important;
+    }
+
+    .section-static-title .section-press-text p {
+        margin-top: 12.5px;
+        margin-bottom: 0;
+        font-size: 15px !important;
+        transform: initial;
+    }
+}
+
 
 .selected-press-list {
     padding-left: 32px !important;
@@ -300,7 +431,7 @@ html {
 }
 
 .selected-press-list [class*="col"] {
-      padding-left: 0 !important;
+    padding-left: 0 !important;
 }
 
 
@@ -308,7 +439,12 @@ html {
     .selected-press-list [class*="col"]:nth-child(even) {
         padding-right: 0 !important;
     }
+
+    .adpt-fs .section-press-img h1 {
+        font-size: 4.3vw;
+    }
 }
+
 @media (max-width: 576px) {
     .selected-press-list .col-12 {
         flex: 0 0 auto;
@@ -369,98 +505,6 @@ html {
 .selected-press-list .press-list-item .service-v1-description {
     margin-bottom: 0
 }
-
-.service-v2-info {
-    position: relative;
-    padding-right:11px;
-}
-
-.section-press-title .section-press-img {
-    position: relative;
-    padding: 0 !important;
-}
-
-.section-press-title .section-press-text {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.section-press-title .section-press-img h1 {
-    position: absolute;
-    top: 40%;
-    right: 0;
-    transform: translate(49%, -50%);
-    background: #fff;
-    padding: 0 13px;
-    line-height: 1.5;
-}
-
-.section-press-title .section-press-text {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding-right: 0 !important;
-}
-
-.section-press-title .section-press-text p {
-    margin-top: 30px;
-    transform: translateY(100%);
-}
-
-@media screen and (max-width: 640px) {
-    .section-press-title {
-        padding: 0 20px !important;
-    }
-
-    .section-press-title .section-press-text p {
-        margin-top: 15px;
-        font-size: 11px !important;
-    }
-}
-
-@media (max-width: 473px) {
-    .section-press-title .custom-row {
-        flex-direction: column !important;
-    }
-
-    .section-press-title {
-        margin-top: 40px;
-        padding: 0 17px !important;
-    }
-
-    .section-press-title .col-6 {
-        flex: 1 !important;
-        width: 100% !important;
-    }
-
-    .section-press-title .section-press-img h1 {
-        margin-bottom: 0;
-        position: absolute;
-        top: initial;
-        right: initial;
-        left: 4%;
-        bottom: 0;
-        transform: initial;
-        background: #fff;
-        padding: 0 13px;
-        line-height: 1.5;
-    }
-
-    .section-press-title .section-press-text {
-        padding-left: 4% !important;
-    }
-
-    .section-press-title .section-press-text p {
-        margin-top: 12.5px;
-        margin-bottom: 0;
-        font-size: 15px !important;
-        transform: initial;
-    }
-}
-
-
 
 /* end */
 a,
