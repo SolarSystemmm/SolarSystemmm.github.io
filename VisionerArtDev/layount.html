@@ -717,3 +717,493 @@
 
 </div>
 <!-- .D-NONE END-->
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Visioner Art</title>
+    <meta name="description" content="Betiso - One Page Personal Themplate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@5.3.6/js/swiper.min.js"></script> -->
+    <!-- Vue library -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+    <!-- Loading Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://assets.squarespace.com/universal/default-favicon.ico">
+
+    <!-- Loading Font Icons -->
+    <link href="assets/plugins/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Include all css plugins (below), or include individual files as needed -->
+
+    <!-- Main CSS -->
+    <link href="assets/css/styles.css" rel="stylesheet" type="text/css">
+
+    <!-- Modernizr JS for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 8]>
+    <script src="assets/plugins/modernizr/modernizr.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top ">
+    <div id="vueapp">
+        <!-- BACKGROUND GRID START -->
+        <div class="background-grid height-100 position-fixed pointer-none">
+            <span class="column height-100"></span>
+            <span class="column height-100"></span>
+            <span class="column height-100"></span>
+            <span class="column height-100 hidden-xs"></span>
+            <span class="column height-100 hidden-xs hidden-sm"></span>
+            <span class="column height-100 hidden-xs hidden-sm"></span>
+        </div>
+        <!-- //BACKGROUND GRID END -->
+        <header class="hrz-header">
+            <div class="logo"> <a href="index.html" class="pointer-all">
+                    <img src="./assets/images/VisionerLogoV2.png" alt="">
+                </a>
+            </div>
+            <ul class="nav text-uppercase d-flex flex-row align-items-center justify-content-end pr-20">
+                <li class=" pointer-all  d-inline-flex align-items-center">
+                    <a class="position-relative" href="index.html">HOME</a></li>
+                <li class="pointer-all   d-inline-flex align-items-center">
+                    <a class="position-relative" href="artists.html">Artists</a></li>
+                <li class="pointer-all   d-inline-flex align-items-center">
+                    <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
+                <li class="pointer-all d-inline-flex align-items-center">
+                    <a class="position-relative" href="selected-publications.html">SELECTED PRESS</a></li>
+                <li class="pointer-all active d-inline-flex align-items-center">
+                    <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
+            </ul>
+        </header>
+        <!-- HEADER START -->
+        <div class="mobile-menu">
+            <header class="header">
+                <div class="logo text-center">
+                    <div class="d-flex align-items-center  height-100 width-100">
+                        <a href="index.html" class="pointer-all">
+                            <img src="./assets/images/VisionerLogoV2.png" alt="">
+                        </a>
+                        <!-- //.display-table-cell -->
+                    </div>
+                    <!-- //.display-table -->
+                </div>
+                <!-- //.logo -->
+
+                <div class="nav-trigger nav-trigger-open" v-on:click="isActive = !isActive">
+                    <div class="nav-toggle">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <!-- //.nav-toggle -->
+                </div>
+                <!-- //.nav-trigger -->
+            </header>
+            <!-- //HEADER END -->
+
+
+
+            <!-- NAVIGATION START -->
+            <div id="navigation" v-bind:class="{'navbar': true, 'pointer-none' : !isActive, 'd-block': isActive}">
+                <div class="container-fluid height-100 width-100">
+                    <div class="nav-wraper d-flex  align-self-lg-end align-self-center flex-column width-100">
+                        <div class="nav-trigger nav-trigger-close" v-on:click="isActive = !isActive">
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <!-- //.nav-trigger -->
+                        <ul class="nav navbar-nav text-center text-small text-uppercase ">
+                            <li class=" pointer-all"><a class="position-relative" href="index.html">HOME</a></li>
+                            <li class="pointer-all "><a class="position-relative" href="artists.html">Artists</a></li>
+                            <li class="pointer-all "><a class="position-relative" href="contact-us.html">CONTACT
+                                    US</a></li>
+                            <li class="pointer-all"><a href="selected-publications.html">selected press</a></li>
+                            <li class="pointer-all active"><a href="works-for-sale.html">works for sale</a></li>
+                        </ul>
+
+                    </div>
+                    <!-- //.display-table-cell -->
+                </div>
+                <!-- //.container-fluid -->
+            </div>
+        </div>
+        <div class=" pt-6-5">
+            <section class="section-static-title adpt-fs">
+                <div class="container-fluid ">
+                    <div class="row custom-row">
+                        <div class="col-6 section-press-img ">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559060336361-UZ01J67ZUFBE8NCTVBGU/ke17ZwdGBToddI8pDm48kEi4ogxkYJOrul7ccuyo07h7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UUEbWw1Y4itTKmjBZVrqL4m35Sd_9fxz1TK2H9FqEaruovhpNwWSokwNae6Hn1hGIw/image-asset.jpeg?format=750w"
+                                alt="">
+                            <h1>
+                                WORKS FOR SALE</h1>
+                        </div>
+                        <div class="col-6 section-press-text">
+
+                            <p>Our rich curatorial vision informs our diverse artist roster. We support emerging talent
+                                working in an array of mediums, from that of large-format photography to mixed-media
+                                collage. Pushing the boundaries of creativity, we work with our artists directly,
+                                nurturing their artistic practice and support their unique market demand. <br><br>
+
+                                We also source artwork by blue-chip masters. We offer iconic collectables from the 1960s
+                                to the present, and engage a full spectrum of global artistic narratives. Our works
+                                spans from the edgy works of Russian Nonconformists to the electric color-blocks of
+                                American Pop Art.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="works-inventory section-static-title">
+                <div class="container-fluid">
+                    <div class="row">
+                        <hr>
+                        <div class="title-container">
+                            <h1>Inventory Inquiries </h1>
+                            <p class="mb-0">Please fill out <a href="inventory-inquiry.html"
+                                    class="font-weight-bold">this form.</a> Thank you.</p>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </section>
+            <section class="works-for-sale-list section-static-title">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox( 0)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">0</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(0)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(1)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">1</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(1)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(2)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">2</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(2)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(3)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">3</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(3)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(4)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">4</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(4)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(5)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">5</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(5)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- FOOTER START -->
+            <footer class="footer position-relative dark">
+
+                <div class="section-content">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6">
+                                <h6 class="footer-v2-heading">About Me</h6>
+                                <p class="white paragraph-small">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit. Cum, impedit laudantium. Facere voluptatem dicta ratione delectus, architecto
+                                    nesciunt quas libero suscipit. Sapiente cumque, voluptates doloremque, quos numquam
+                                    perferendis officia saepe!</p>
+                                <img src="assets/images/signature-w.png" alt="" class="footer-signature">
+                            </div>
+                            <div class="col-md-2 col-sm-6">
+                                <h6 class="footer-v2-heading mt-sm-30">navigation</h6>
+                                <ul class="footer-link list-unstyled">
+                                    <li><a href="#" class="white">Intro</a></li>
+                                    <li><a href="#" class="white">Portfolio</a></li>
+                                    <li><a href="#" class="white">Career</a></li>
+                                    <li><a href="#" class="white">Resume</a></li>
+                                    <li><a href="#" class="white">Profile</a></li>
+                                    <li><a href="#" class="white">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <h6 class="footer-v2-heading mt-md-30">contact me</h6>
+                                <div class="list-wrap">
+                                    <div class="side-feature-list-item">
+                                        <img src="assets/images/icons/footer-contact-icon-1.svg" width="20"
+                                            class="check-mark-icon" alt="">
+                                        <div class="foot-c-info">I’m based in London</div>
+                                    </div>
+                                    <div class="side-feature-list-item">
+                                        <img src="assets/images/icons/footer-contact-icon-2.svg" width="20"
+                                            class="check-mark-icon" alt="">
+                                        <div class="foot-c-info">support@domain.com</div>
+                                    </div>
+                                    <div class="side-feature-list-item">
+                                        <img src="assets/images/icons/footer-contact-icon-3.svg" width="20"
+                                            class="check-mark-icon" alt="">
+                                        <div class="foot-c-info">(875) 63487 7438</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <h6 class="footer-v2-heading mt-md-30">follow us</h6>
+                                <p class="white paragraph-small">Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit. In dolorem maiores unde aut, nulla accusantium minus! Natus molestias.</p>
+                                <div class="social-icons home-v2-icons">
+                                    <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                        <i class="fa fa-facebook hero-social-icon"></i>
+                                        <div class="color-hover down"></div>
+                                    </a>
+                                    <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                        <i class="fa fa-behance hero-social-icon"></i>
+                                        <div class="color-hover down"></div>
+                                    </a>
+                                    <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                        <i class="fa fa-instagram hero-social-icon"></i>
+                                        <div class="color-hover down"></div>
+                                    </a>
+                                    <a href="#" target="_blank" class="social-link dark-bg w-inline-block">
+                                        <i class="fa fa-twitter hero-social-icon"></i>
+                                        <div class="color-hover down"></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //.row -->
+                    </div>
+                    <!-- //.container -->
+                </div>
+            </footer>
+            <!-- //FOOTER END -->
+            <div v-if="isReady">
+                <fs-lightbox :toggler="POTWtoggler" :slide="slide_number" :sources="img_arr" />
+            </div>
+            <div v-if="isReady">
+                <fs-lightbox :toggler="toggler" :slide="slide_number" :sources="img_arr" />
+            </div>
+        </div>
+
+        <!-- //WRAPPER END -->
+
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="./assets/js/fslightbox.umd.js"></script>
+    <script>
+        new Vue({
+            el: '#vueapp',
+            data: {
+                isActive: false,
+                toggler: false,
+                POTWtoggler: false,
+                isReady: false,
+                data_img: [{
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png',
+                        w: 90,
+                        h: 70,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559044010540-FL7ZN7L0L4897NPL43XM/ke17ZwdGBToddI8pDm48kKu1u9wnDIs1heHVPqAvhesUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2OGFaqY7ICsn9ad4V0J3hw3fxUXI_Vv8Va_HaD2DZOyoKMshLAGzx4R3EDFOm1kBS/GregoryCrewdon.png',
+                        w: 150,
+                        h: 80,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040931027-K79SUAEVP2JN37KWRWT1/ke17ZwdGBToddI8pDm48kMvztgCwb2VlcqAnh_1Bmmx7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ud6SsBlll5XbRy4pcGVx_a4e4FKTiQo3ImfUhZny1u8ApC969RuPXvt2ZwyzUXQf7Q/KawsStatue.png',
+                        w: 100,
+                        h: 100,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040533496-Q403GXHYLL96Z5MVYGGF/ke17ZwdGBToddI8pDm48kGetOrCRGweJ9pintsUPiZRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI8ACAQOmrevigNrc8obtmD04DiCrbgxAxV6Wta2AMU74/image-asset.png',
+                        w: 190,
+                        h: 70,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040129233-7C6744XHLSPSB5WSIZNC/ke17ZwdGBToddI8pDm48kJkvsOpR9z0p8c3E9wMCG1dZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI5P7oWjxZHhWMvcRB5AlHwCgZwf2xL76c2qKVda1vtEY/PeterBeardDraw.png',
+                        w: 1150,
+                        h: 80,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040212898-LXA2XH83S7CFS12R1P2W/ke17ZwdGBToddI8pDm48kMOxnmZvfOHG2g3Fc02VRPhZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIwAdxAmzk85q0S6PvEoqMoKSVIVoJsM-KJrpd88r80XY/RADiningTable.png',
+                        w: 130,
+                        h: 100,
+                    },
+                ],
+                img_arr: Array,
+                slide_number: 0,
+                bg_img: 'https://previews.123rf.com/images/kantver/kantver1602/kantver160200240/52905526-young-woman-walking-in-modern-gallery-and-looking-at-the-blank-canvas-.jpg',
+                sizes: {
+                    woman_height: 170,
+                    woman_width: 35
+                },
+                POTWslide_number: 0
+            },
+            methods: {
+
+                openLightbox(index) {
+                    this.toggler = !this.toggler
+                    this.slide_number = index + 1
+                },
+                POTWInit(index) {
+                    this.POTWtoggler = !this.POTWtoggler
+                    this.slide_number = index + 1
+                    let bg = document.createElement('div')
+                    let img = document.createElement('img')
+                    img.classList.add('pic_item')
+                    img.src = this.bg_img
+                    bg.style.height = 100 + '%'
+                    img.style.height = 100 + '%'
+                    img.style.width = 100 + '%'
+                    img.style.objectFit = 'contain'
+
+                    bg.appendChild(img)
+
+                    const that = this
+
+                    setTimeout(() => {
+                        const container = document.getElementsByClassName('fslightbox-container')[0]
+                            .appendChild(bg)
+                        document.getElementsByClassName('fslightbox-container')[0].addEventListener(
+                            'click',
+                            function () {
+                                typeof container !== 'undefined' ? that.POTWClose() : null
+                            })
+                        that.POTWCount(index)
+                    }, []);
+                },
+                POTWCount(index) {
+                    for (let i = 0; i < this.data_img.length; i++) {
+                        const h_res = this.data_img[i].h / this.sizes.woman_height
+                        const w_res = this.data_img[i].w / this.sizes.woman_height
+                        const bg = document.getElementsByClassName('pic_item')[0].clientHeight;
+                        let style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.innerHTML =
+                            `.cssClass${i} { height: ${bg / 2.03 * h_res + 'px' + ' !important'}; width: ${width = bg / 2.03 * w_res + 'px' + ' !important'} }`;
+                        document.getElementsByClassName('fslightbox-container')[0].appendChild(style)
+                        document.getElementsByClassName('fslightbox-source')[i].classList.add('cssClass' + i)
+                    }
+                    const about_pic_item = document.getElementsByClassName('work-item-text')
+                    for (let j = 0; j < this.data_img.length; j++) {
+                        about_pic_item[j].classList.add('about_pic_item_POTW')
+                        document.getElementsByClassName('fslightbox-source-outer')[j].appendChild(
+                            about_pic_item[j].cloneNode(true))
+                    }
+                },
+                POTWClose() {
+                    for (let i = 0; i < this.data_img.length; i++) {
+                        document.getElementsByClassName('work-item-text')[i].classList.remove(
+                            'about_pic_item_POTW')
+                    }
+                }
+            },
+            created() {
+                for (let i = 0; i < this.data_img.length; i++) {
+                    const array = this.data_img.map(item => item.src);
+                    this.img_arr = array
+                }
+                this.isReady = true
+            },
+
+        })
+    </script>
+</body>
+
+</html>

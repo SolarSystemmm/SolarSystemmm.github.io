@@ -60,8 +60,8 @@
                     <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
                 <li class="pointer-all d-inline-flex align-items-center">
                     <a class="position-relative" href="selected-publications.html">SELECTED PRESS</a></li>
-                    <li class="pointer-all active d-inline-flex align-items-center">
-                        <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
+                <li class="pointer-all active d-inline-flex align-items-center">
+                    <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
             </ul>
         </header>
         <!-- HEADER START -->
@@ -117,7 +117,7 @@
             </div>
         </div>
         <div class=" pt-6-5">
-            <section class="section-static-title adpt-fs">
+            <section class="section-static-title WFS-title">
                 <div class="container-fluid ">
                     <div class="row custom-row">
                         <div class="col-6 section-press-img ">
@@ -158,76 +158,125 @@
             <section class="works-for-sale-list section-static-title">
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-4 mb-5">
-                        <!-- block -->
                         <div class="work-item">
                             <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
                                 v-on:click="openLightbox( 0)" alt="">
-                            <!-- index -->
                         </div>
                         <div class="work-item work-item-text">
                             <h5 class="">SECUNDINO HERNÁNDEZ</h5>
-                            <p><em class="font-weight-bold">Cutout Drawing for Face #2 (1967)</em></p>
+                            <p><em class="font-weight-bold">0</em></p>
                             <p>Graphite on shaped board mounted on board</p>
                             <p>9 x 13 inches (22.8 x 33 cm.) </p>
                             <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
                         </div>
                         <div class="work-item work-item-btn text-center">
                             <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
-                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3" v-on:click="POTWInit(0)">pic_on_the_wall</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(0)">pic_on_the_wall</a>
                         </div>
                         <div class="work-item work-item-space">
                         </div>
-                        <!-- block end -->
-
                     </div>
-                    <!-- col-4 end -->
                     <div class="col-12 col-sm-6 col-md-4 mb-5">
-                        <!-- block -->
                         <div class="work-item">
-                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559009672815-JYK0DXT31X5W2COZLAHY/ke17ZwdGBToddI8pDm48kDCL4iUf8ubVb_Xq9Qe72RpZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIpMFSzfOuGzy9QzYz1fEDZb24gREDbYLY469n3Hs36ow/Ester2.png"
-                                v-on:click="openLightbox(1, {w: 150, h: 100})" alt="">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(1)" alt="">
                         </div>
                         <div class="work-item work-item-text">
                             <h5 class="">SECUNDINO HERNÁNDEZ</h5>
-                            <p><em class="font-weight-bold">Cutout Drawing for Face #2 (1967)</em></p>
+                            <p><em class="font-weight-bold">1</em></p>
                             <p>Graphite on shaped board mounted on board</p>
                             <p>9 x 13 inches (22.8 x 33 cm.) </p>
                             <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
                         </div>
                         <div class="work-item work-item-btn text-center">
                             <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
-                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3" v-on:click="POTWInit(0)">pic_on_the_wall</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(1)">pic_on_the_wall</a>
                         </div>
                         <div class="work-item work-item-space">
                         </div>
-                        <!-- block end -->
-
                     </div>
-                    <!-- col-4 end -->
                     <div class="col-12 col-sm-6 col-md-4 mb-5">
-                        <!-- block -->
-                        <div class="work-item" v-on:click="openLightbox(2)">
-                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043846177-84OQIVA1Z7RG3U9F2B85/ke17ZwdGBToddI8pDm48kIJTJmmHHZcUYcV0vDT2lXUUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dnU-9r3XQ2c3z1jFlqJB7xF7E7XL5l8V85zQhR0PvriOCjLISwBs8eEdxAxTptZAUg/WalterNiedermayer.png"
-                                alt="">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(2)" alt="">
                         </div>
                         <div class="work-item work-item-text">
                             <h5 class="">SECUNDINO HERNÁNDEZ</h5>
-                            <p><em class="font-weight-bold">Cutout Drawing for Face #2 (1967)</em></p>
+                            <p><em class="font-weight-bold">2</em></p>
                             <p>Graphite on shaped board mounted on board</p>
                             <p>9 x 13 inches (22.8 x 33 cm.) </p>
                             <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
                         </div>
                         <div class="work-item work-item-btn text-center">
                             <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
-                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3" v-on:click="POTWInit(0)">pic_on_the_wall</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(2)">pic_on_the_wall</a>
                         </div>
                         <div class="work-item work-item-space">
                         </div>
-                        <!-- block end -->
-
                     </div>
-                    <!-- col-4 end -->
-
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(3)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">3</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(3)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(4)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">4</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(4)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-5">
+                        <div class="work-item">
+                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png"
+                                v-on:click="openLightbox(5)" alt="">
+                        </div>
+                        <div class="work-item work-item-text">
+                            <h5 class="">SECUNDINO HERNÁNDEZ</h5>
+                            <p><em class="font-weight-bold">5</em></p>
+                            <p>Graphite on shaped board mounted on board</p>
+                            <p>9 x 13 inches (22.8 x 33 cm.) </p>
+                            <p>Signed and dated <em>'Wesselmann '67'</em> (lower left)</p>
+                        </div>
+                        <div class="work-item work-item-btn text-center">
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block">inquire</a>
+                            <a href="#" class="check-profile-btn text-uppercase text-bold d-block mt-3"
+                                v-on:click="POTWInit(5)">pic_on_the_wall</a>
+                        </div>
+                        <div class="work-item work-item-space">
+                        </div>
+                    </div>
                 </div>
             </section>
             <!-- FOOTER START -->
@@ -306,8 +355,10 @@
             </footer>
             <!-- //FOOTER END -->
             <div v-if="isReady">
+                <fs-lightbox :toggler="POTWtoggler" :slide="slide_number" :sources="img_arr" :on-slide-change="action" />
+            </div>
+            <div v-if="isReady">
                 <fs-lightbox :toggler="toggler" :slide="slide_number" :sources="img_arr" />
-              
             </div>
         </div>
 
@@ -319,86 +370,119 @@
     <script src="./assets/js/fslightbox.umd.js"></script>
     <script>
         new Vue({
-                    el: '#vueapp',
-                    data: {
-                        isActive: false,
-                        toggler: false,
-                        isReady: false,
-                        data_img: [
-                            {
-                                src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png',
-                                w:90,
-                                h:70,
-                            },
-                            {
-                                src:'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559009672815-JYK0DXT31X5W2COZLAHY/ke17ZwdGBToddI8pDm48kDCL4iUf8ubVb_Xq9Qe72RpZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIpMFSzfOuGzy9QzYz1fEDZb24gREDbYLY469n3Hs36ow/Ester2.png' ,
-                                w:150,
-                                h:100,
-                            },
-                            {
-                                src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040533496-Q403GXHYLL96Z5MVYGGF/ke17ZwdGBToddI8pDm48kGetOrCRGweJ9pintsUPiZRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI8ACAQOmrevigNrc8obtmD04DiCrbgxAxV6Wta2AMU74/image-asset.png',
-                                w:202,
-                                h: 140,
-                            },
-                        ],
-                        img_arr: Array,
-                        slide_number: 0,
-                        bg_img: 'https://previews.123rf.com/images/kantver/kantver1602/kantver160200240/52905526-young-woman-walking-in-modern-gallery-and-looking-at-the-blank-canvas-.jpg',
-                        sizes: {
-                            woman_height: 170,
-                            woman_width: 35
-                        },
-                        POTWslide_number: 0
+            el: '#vueapp',
+            data() { return {
+                isActive: false,
+                toggler: false,
+                POTWtoggler: false,
+                isReady: false,
+                data_img: [{
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png',
+                        w: 90,
+                        h: 70,
                     },
-                    methods: {
-
-                        openLightbox(index) {
-                            this.toggler = !this.toggler
-                            this.slide_number = index + 1
-                        },
-                        POTWInit(index) {
-                            this.toggler = !this.toggler
-                            this.slide_number = index + 1
-                            let bg = document.createElement('div')
-                            let img = document.createElement('img')
-                            img.classList.add('pic_item')
-                            img.src = this.bg_img
-                            bg.style.height = 100 + '%'
-                            img.style.height = 100 + '%'
-                            img.style.width = 100 + '%'
-                            img.style.objectFit = 'contain'
-
-                            bg.appendChild(img)
-
-                            const that = this
-
-                            setTimeout(() => {
-                                document.getElementsByClassName('fslightbox-container')[0].appendChild(bg)
-                                that.POTWCount(index)
-                            }, []);
-                        },
-                        POTWCount(index) {
-                            for (let i = 0; i < this.data_img.length; i++) {
-                                const h_res = this.data_img[i].h / this.sizes.woman_height
-                                const w_res = this.data_img[i].w / this.sizes.woman_height
-                                const img = document.getElementsByClassName('fslightbox-source')[i]
-                                const bg = document.getElementsByClassName('pic_item')[0].clientHeight;
-                                let style = document.createElement('style');
-                                style.type = 'text/css';
-                                style.innerHTML = `.cssClass${i} { height: ${bg / 2.03 * h_res + 'px' + ' !important'}; width: ${width = bg / 2.03 * w_res + 'px' + ' !important'} }`;
-                                document.getElementsByClassName('fslightbox-container')[0].appendChild(style)
-                                document.getElementsByClassName('fslightbox-source')[i].classList.add('cssClass' + i )
-                            }
-                        }
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559044010540-FL7ZN7L0L4897NPL43XM/ke17ZwdGBToddI8pDm48kKu1u9wnDIs1heHVPqAvhesUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2OGFaqY7ICsn9ad4V0J3hw3fxUXI_Vv8Va_HaD2DZOyoKMshLAGzx4R3EDFOm1kBS/GregoryCrewdon.png',
+                        w: 150,
+                        h: 80,
                     },
-                    mounted(){
-                        for (let i = 0; i < this.data_img.length; i++) {
-                             const array = this.data_img.map(item => item.src);
-                             this.img_arr = array
-                        }
-                        this.isReady = true
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040931027-K79SUAEVP2JN37KWRWT1/ke17ZwdGBToddI8pDm48kMvztgCwb2VlcqAnh_1Bmmx7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ud6SsBlll5XbRy4pcGVx_a4e4FKTiQo3ImfUhZny1u8ApC969RuPXvt2ZwyzUXQf7Q/KawsStatue.png',
+                        w: 100,
+                        h: 100,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040533496-Q403GXHYLL96Z5MVYGGF/ke17ZwdGBToddI8pDm48kGetOrCRGweJ9pintsUPiZRZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI8ACAQOmrevigNrc8obtmD04DiCrbgxAxV6Wta2AMU74/image-asset.png',
+                        w: 190,
+                        h: 70,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040129233-7C6744XHLSPSB5WSIZNC/ke17ZwdGBToddI8pDm48kJkvsOpR9z0p8c3E9wMCG1dZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PI5P7oWjxZHhWMvcRB5AlHwCgZwf2xL76c2qKVda1vtEY/PeterBeardDraw.png',
+                        w: 1150,
+                        h: 80,
+                    },
+                    {
+                        src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040212898-LXA2XH83S7CFS12R1P2W/ke17ZwdGBToddI8pDm48kMOxnmZvfOHG2g3Fc02VRPhZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIwAdxAmzk85q0S6PvEoqMoKSVIVoJsM-KJrpd88r80XY/RADiningTable.png',
+                        w: 130,
+                        h: 100,
+                    },
+                ],
+                img_arr: Array,
+                slide_number: 0,
+                bg_img: 'https://previews.123rf.com/images/kantver/kantver1602/kantver160200240/52905526-young-woman-walking-in-modern-gallery-and-looking-at-the-blank-canvas-.jpg',
+                sizes: {
+                    woman_height: 170,
+                    woman_width: 35
+                },
+                POTWslide_number: 0
+            }
+        },
+            methods: {
+
+                openLightbox(index) {
+                    this.toggler = !this.toggler
+                    this.slide_number = index + 1
+                },
+                POTWInit(index) {
+                    this.POTWtoggler = !this.POTWtoggler
+                    this.slide_number = index + 1
+                    let bg = document.createElement('div')
+                    let img = document.createElement('img')
+                    img.classList.add('pic_item')
+                    img.src = this.bg_img
+                    bg.style.height = 100 + '%'
+                    img.style.height = 100 + '%'
+                    img.style.width = 100 + '%'
+                    img.style.objectFit = 'contain'
+
+                    bg.appendChild(img)
+
+                    const that = this
+
+                    setTimeout(() => {
+                        const container = document.getElementsByClassName('fslightbox-container')[0].appendChild(bg)
+                        document.getElementsByClassName('fslightbox-container')[0].addEventListener('click', function () {
+                                         typeof container !== 'undefined' ? that.POTWClose() : null
+                            })
+                        that.POTWCount(index)
+                    }, []);
+                },
+                POTWCount(index) {
+                    // for (let i = 0; i < this.data_img.length; i++) {
+                        const h_res = this.data_img[i].h / this.sizes.woman_height
+                        const w_res = this.data_img[i].w / this.sizes.woman_height
+                        const bg = document.getElementsByClassName('pic_item')[0].clientHeight;
+                        let style = document.createElement('style');
+                        style.type = 'text/css';
+                        style.innerHTML =`.cssClass${i} { height: ${bg / 2.03 * h_res + 'px' + ' !important'}; width: ${width = bg / 2.03 * w_res + 'px' + ' !important'} }`;
+                        document.getElementsByClassName('fslightbox-container')[0].appendChild(style)
+                        // document.getElementsByClassName('fslightbox-source')[i].classList.add('cssClass' + i)
+                    // }
+                    const about_pic_item = document.getElementsByClassName('work-item-text')
+                    for (let j = 0; j < this.data_img.length; j++) {
+                        about_pic_item[j].classList.add('about_pic_item_POTW')
+                        document.getElementsByClassName('fslightbox-source-outer')[j].appendChild(  about_pic_item[j].cloneNode(true))
                     }
-                })
+                },
+                POTWClose() {
+                    for (let i = 0; i < this.data_img.length; i++) {
+                        document.getElementsByClassName('work-item-text')[i].classList.remove(
+                            'about_pic_item_POTW')
+                    }
+                },
+                action(instance) {
+                      console.log(instance);
+                }
+            },
+            created() {
+                for (let i = 0; i < this.data_img.length; i++) {
+                    const array = this.data_img.map(item => item.src);
+                    this.img_arr = array
+                }
+                this.isReady = true
+            },
+
+        })
     </script>
 </body>
 
