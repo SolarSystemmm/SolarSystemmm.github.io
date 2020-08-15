@@ -154,12 +154,12 @@ h6,
 img,
 a,
 p {
-    user-drag: none;
+    /* user-drag: none;
     user-select: none;
     -moz-user-select: none;
     -webkit-user-drag: none;
     -webkit-user-select: none;
-    -ms-user-select: none;
+    -ms-user-select: none; */
 }
 
 @media (max-width:992px) {
@@ -237,7 +237,7 @@ p {
 .artist-img-wrapper {
     position: relative;
     overflow: hidden;
-    padding-bottom: 74%;
+    padding-bottom: 78%;
 }
 
 .artist-img-wrapper img {
@@ -295,6 +295,16 @@ p {
     position: relative;
     padding: 0 !important;
 }
+.section-static-title .section-press-img img {
+    max-height: 320px;
+    min-height: 320px;
+}
+.section-static-title .section-press-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 .section-static-title .section-press-text {
     display: flex;
@@ -326,7 +336,7 @@ p {
     transform: translateY(100%);
 }
 
-@media screen and (max-width: 640px) {
+@media (max-width: 640px) {
     .section-static-title {
         padding: 0 20px !important;
     }
@@ -334,6 +344,10 @@ p {
     .section-static-title .section-press-text p {
         margin-top: 15px;
         font-size: 11px !important;
+    }
+    .section-static-title .section-press-img img{
+        max-height: 220px;
+        min-height: 220px;
     }
 }
 
@@ -386,6 +400,7 @@ input .full-width{
     .section-static-title .col-6 {
         flex: 1 !important;
         width: 100% !important;
+        overflow: hidden;
     }
 
     .section-static-title .section-press-img h1 {
@@ -419,6 +434,10 @@ input .full-width{
         margin-bottom: 0;
         font-size: 15px !important;
         transform: initial;
+    }
+    .section-static-title .section-press-img img{
+        max-height: 270px;
+        min-height: 270px;
     }
 }
 
@@ -3259,7 +3278,7 @@ input.w-button {
     margin-right: 15px;
     margin-bottom: 30px;
     margin-left: 15px;
-    padding: 10px 1%;
+    padding: 10px 5%;
     -webkit-box-align: start;
     -webkit-align-items: flex-start;
     -ms-flex-align: start;
@@ -3273,11 +3292,13 @@ input.w-button {
     flex-basis: 30%;
     border-style: solid;
     border-width: 1px;
-    border-color: hsla(0, 0%, 100%, .15);
+    border-color: #b1adad;
     color: #fff;
 }
-
-.blog-v1 .service-v2-info {
+.color-black-i * {
+    color: #000 !important;
+}
+ .blog-v1 .service-v2-info {
     position: relative;
     padding-right: 8px;
     padding-left: 16px;
@@ -3744,7 +3765,7 @@ input.w-button {
 }
 
 .pricing-table {
-    padding: 40px;
+    padding: 30px 20px;
     border: 1px solid #b1adad;
     margin-bottom: 30px
 }
