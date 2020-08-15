@@ -59,8 +59,8 @@
                     <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
                 <li class="pointer-all  d-inline-flex align-items-center">
                     <a class="position-relative" href="selected-publications.html">selected press</a></li>
-                    <li class="pointer-all  d-inline-flex align-items-center">
-                        <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
+                <li class="pointer-all  d-inline-flex align-items-center">
+                    <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
 
             </ul>
         </header>
@@ -167,7 +167,7 @@
             </div>
             <!-- //.container -->
         </section>
-        <section class="mobile-module pt-6-5 d-block d-lg-none">
+        <section class="mobile-module pt-6-5 d-block d-lg-none blog-v1">
             <section class="section-static-title mb-5">
                 <div class="container-fluid ">
                     <div class="row custom-row">
@@ -182,14 +182,23 @@
                     </div>
                 </div>
             </section>
-            <div class="container">
+            <div class="container-fluid section-static-title">
                 <div class="row">
                     <div class="col-12 col-sm-6 text-center mb-5" v-for="(item) in works" :key="item.id">
+                        <div class="service-item d-inline-block position-relative color-black-i width-100 ml-0 mr-0">
+                       
                         <div class="artist-img-wrapper">
                             <img :src="item.src" alt="#">
                         </div>
-                        <h4 class="mt-4 mb-4">{{item.id}}</h4>
-                        <a href="#" class="check-profile-btn text-uppercase text-bold">learn more</a>
+                         <div class="service-v2-info">
+                                <a href="#">
+                                    <h4 class="service-v2-heading color-black">
+                                        {{item.id}}
+                                    </h4>
+                                </a>
+                                <a href="#" class="link-v2">LEARN MORE</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -287,98 +296,13 @@
                     {
                         name: 'artist_2',
                         id: 'artist_2'
-                    },
-                    {
-                        name: 'artist_3',
-                        id: 'artist_3'
-                    },
-                    {
-                        name: 'artist_4',
-                        id: 'artist_4'
-                    },
-                    {
-                        name: 'artist_5',
-                        id: 'artist_5'
-                    },
-
-                    {
-                        name: 'artist_6',
-                        id: 'artist_6'
-                    },
-                    {
-                        name: 'artist_7',
-                        id: 'artist_7'
-                    },
-                    {
-                        name: 'artist_8',
-                        id: 'artist_8'
-                    },
-                    {
-                        name: 'artist_9',
-                        id: 'artist_9'
-                    },
-                    {
-                        name: 'artist_10',
-                        id: 'artist_10'
-                    },
-                    {
-                        name: 'artist_11',
-                        id: 'artist_11'
-                    },
-                    {
-                        name: 'artist_12',
-                        id: 'artist_12'
-                    },
-                    {
-                        name: 'artist_13',
-                        id: 'artist_13'
-                    },
-                    {
-                        name: 'artist_14',
-                        id: 'artist_14'
-                    },
-                    {
-                        name: 'artist_15',
-                        id: 'artist_15'
-                    },
-                    {
-                        name: 'artist_16',
-                        id: 'artist_16'
-                    },
-                    {
-                        name: 'artist_17',
-                        id: 'artist_17'
-                    },
-                    {
-                        name: 'artist_18',
-                        id: 'artist_18'
-                    },
-                    {
-                        name: 'artist_19',
-                        id: 'artist_19'
-                    },
-                    {
-                        name: 'artist_20',
-                        id: 'artist_20'
-                    },
-                    {
-                        name: 'artist_21',
-                        id: 'artist_21'
-                    },
-                    {
-                        name: 'artist_22',
-                        id: 'artist_22'
-                    },
+                    }
                 ],
                 firstHalf: [],
                 secondHalf: [],
                 works: [{
                         id: 'artist_1',
                         src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1592429294593-SAE3SKPL6OBOKAH5TURK/ke17ZwdGBToddI8pDm48kKR3o0ZQl9Wi-qrr1zoKio17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UffTifcrMApUA0DUPK9-SdRHTKX59FPT-MLq0y_8I1Su4YiLRmUQnYOnT8aFnZ-MYA/Secundino+HernandezHR2.jpg?format=500w'
-                    },
-                    {
-                        id: 'artist_2',
-                        src: './assets/images/art2.png'
                     },
                     {
                         id: 'artist_2',
@@ -405,8 +329,7 @@
                         this.firstHalf[i] = this.artists[i]
                     }
                     for (let j = 0; j < this.artists.length; j++) {
-                        if (typeof this.firstHalf[j] === 'undefined' || this.firstHalf[j].name !== this.artists[
-                                j].name) {
+                        if (typeof this.firstHalf[j] === 'undefined' || this.firstHalf[j].name !== this.artists[j].name) {
                             this.secondHalf[j - length] = this.artists[j]
                         }
                     }
