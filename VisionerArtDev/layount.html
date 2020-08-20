@@ -1206,4 +1206,105 @@
     </script>
 </body>
 
-</html>
+</html> <script>
+    new Vue({
+        el: '#vueapp',
+        data: {
+            isActive: false,
+            toggler: false,
+            POTWtoggler: false,
+            isReady: false,
+            data_img: [{
+                    src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559043428006-IZ0NBVH0REFMBB1EZLN9/ke17ZwdGBToddI8pDm48kKR1fj0N6x3nsG69wSpfRq5Zw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIhw_ivaWIRvB9HxbP1pmDD--GYNqZ6HsplvHDZ8s_Ye4/TillmansWolfgang.png',
+                    w: 90,
+                    h: 70,
+                },
+                {
+                    src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559044010540-FL7ZN7L0L4897NPL43XM/ke17ZwdGBToddI8pDm48kKu1u9wnDIs1heHVPqAvhesUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8PaoYXhp6HxIwZIk7-Mi3Tsic-L2IOPH3Dwrhl-Ne3Z2OGFaqY7ICsn9ad4V0J3hw3fxUXI_Vv8Va_HaD2DZOyoKMshLAGzx4R3EDFOm1kBS/GregoryCrewdon.png',
+                    w: 150,
+                    h: 80,
+                },
+                {
+                    src: 'https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559040931027-K79SUAEVP2JN37KWRWT1/ke17ZwdGBToddI8pDm48kMvztgCwb2VlcqAnh_1Bmmx7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ud6SsBlll5XbRy4pcGVx_a4e4FKTiQo3ImfUhZny1u8ApC969RuPXvt2ZwyzUXQf7Q/KawsStatue.png',
+                    w: 100,
+                    h: 100,
+                },
+              
+            ],
+            img_arr: Array,
+            slide_number: 0,
+            bg_img: 'https://previews.123rf.com/images/kantver/kantver1602/kantver160200240/52905526-young-woman-walking-in-modern-gallery-and-looking-at-the-blank-canvas-.jpg',
+            sizes: {
+                woman_height: 170,
+                woman_width: 35
+            },
+            POTWslide_number: 0
+        },
+        methods: {
+
+            openLightbox(index) {
+                this.toggler = !this.toggler
+                this.slide_number = index + 1
+            },
+            POTWInit(index) {
+                this.POTWtoggler = !this.POTWtoggler
+                this.slide_number = index + 1
+                let bg = document.createElement('div')
+                let img = document.createElement('img')
+                img.classList.add('pic_item')
+                img.src = this.bg_img
+                bg.style.height = 100 + '%'
+                img.style.height = 100 + '%'
+                img.style.width = 100 + '%'
+                img.style.objectFit = 'contain'
+
+                bg.appendChild(img)
+
+                const that = this
+
+                setTimeout(() => {
+                    const container = document.getElementsByClassName('fslightbox-container')[0]
+                        .appendChild(bg)
+                    document.getElementsByClassName('fslightbox-container')[0].addEventListener(
+                        'click',
+                        function () {
+                            typeof container !== 'undefined' ? that.POTWClose() : null
+                        })
+                    that.POTWCount(index)
+                }, []);
+            },
+            POTWCount(index) {
+                for (let i = 0; i < this.data_img.length; i++) {
+                    const h_res = this.data_img[i].h / this.sizes.woman_height
+                    const w_res = this.data_img[i].w / this.sizes.woman_height
+                    const bg = document.getElementsByClassName('pic_item')[0].clientHeight;
+                    let style = document.createElement('style');
+                    style.type = 'text/css';
+                    style.innerHTML =
+                        `.cssClass${i} { height: ${bg / 2.03 * h_res + 'px' + ' !important'}; width: ${width = bg / 2.03 * w_res + 'px' + ' !important'} }`;
+                    document.getElementsByClassName('fslightbox-container')[0].appendChild(style)
+                    document.getElementsByClassName('fslightbox-source')[i].classList.add('cssClass' + i)
+                }
+                // const about_pic_item = document.getElementsByClassName('work-item-text')
+                // for (let j = 0; j < this.data_img.length; j++) {
+                //     about_pic_item[j].classList.add('about_pic_item_POTW')
+                //     document.getElementsByClassName('fslightbox-source-outer')[j].appendChild(
+                //         about_pic_item[j].cloneNode(true))
+                // }
+            },
+            POTWClose() {
+                for (let i = 0; i < this.data_img.length; i++) {
+                    // document.getElementsByClassName('work-item-text')[i].classList.remove(                 'about_pic_item_POTW')
+                }
+            }
+        },
+        created() {
+            for (let i = 0; i < this.data_img.length; i++) {
+                const array = this.data_img.map(item => item.src);
+                this.img_arr = array
+            }
+            this.isReady = true
+        },
+
+    })
+</script>

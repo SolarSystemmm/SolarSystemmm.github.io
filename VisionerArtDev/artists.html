@@ -67,17 +67,15 @@
         <!-- MAIN MENU END -->
         <!-- HEADER START -->
         <div class="mobile-menu">
-            <header class="header">
+            <header class="header d-flex">
                 <div class="logo text-center">
                     <div class="d-flex align-items-center  height-100 width-100">
                         <a href="index.html" class="pointer-all">
                             <img src="./assets/images/VisionerLogoV2.png" alt="">
                         </a>
-                        <!-- //.display-table-cell -->
                     </div>
-                    <!-- //.display-table -->
                 </div>
-                <!-- //.logo -->
+                <div class="logo-text text-uppercase d-flex align-items-center ml-3">Visioner Art</div>
 
                 <div class="nav-trigger nav-trigger-open" v-on:click="isActive = !isActive">
                     <div class="nav-toggle">
@@ -85,9 +83,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <!-- //.nav-toggle -->
                 </div>
-                <!-- //.nav-trigger -->
             </header>
             <!-- //HEADER END -->
 
@@ -148,13 +144,13 @@
                         <div class="row">
                             <div class="col">
                                 <div class="" v-for="(item, index) in firstHalf" :key="item.name">
-                                    <a v-on:mouseenter="changeWork(item.id)"
+                                    <a  href="artist-page.html" v-on:mouseenter="changeWork(item.id)"
                                         class=" artist-link mb-0 mt-2">{{item.name}}</a>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="" v-for="(item, index) in secondHalf" :key="item.name">
-                                    <a v-on:mouseover="changeWork(item.id)"
+                                    <a href="artist-page.html" v-on:mouseover="changeWork(item.id)"
                                         class=" artist-link mb-0 mt-2">{{item.name}}</a>
                                 </div>
                             </div>

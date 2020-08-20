@@ -47,26 +47,20 @@
         </div>
         <!-- //BACKGROUND GRID END -->
         <header class="hrz-header">
-            <div class="logo">
-                <a href="index.html" class="pointer-all">
+            <div class="logo"> <a href="index.html" class="pointer-all">
                     <img src="./assets/images/VisionerLogoV2.png" alt="">
                 </a>
             </div>
-            <div class="logo-text">
-                <a href="index.html" class="pointer-all">
-                    VISIONER ART
-                </a>
-            </div>
             <ul class="nav text-uppercase d-flex flex-row align-items-center justify-content-end pr-20">
-                <li class=" pointer-all  d-inline-flex align-items-center">
+                <li class=" pointer-all  d-inline-flex align-items-center justify-content-center">
                     <a class="position-relative" href="index.html">HOME</a></li>
-                <li class="pointer-all   d-inline-flex align-items-center">
+                <li class="pointer-all   d-inline-flex align-items-center justify-content-center">
                     <a class="position-relative" href="artists.html">Artists</a></li>
-                <li class="pointer-all   d-inline-flex align-items-center">
-                    <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
                 <li class="pointer-all d-inline-flex align-items-center">
+                    <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
+                <li class="pointer-all  d-inline-flex align-items-center justify-content-center">
                     <a class="position-relative" href="selected-publications.html">SELECTED PRESS</a></li>
-                <li class="pointer-all active d-inline-flex align-items-center">
+                <li class="pointer-all  d-inline-flex align-items-center justify-content-center">
                     <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
             </ul>
         </header>
@@ -78,11 +72,11 @@
                         <a href="index.html" class="pointer-all">
                             <img src="./assets/images/VisionerLogoV2.png" alt="">
                         </a>
+                        <!-- //.display-table-cell -->
                     </div>
-
+                    <!-- //.display-table -->
                 </div>
                 <div class="logo-text text-uppercase d-flex align-items-center ml-3">Visioner Art</div>
-                <!-- //.logo -->
 
                 <div class="nav-trigger nav-trigger-open" v-on:click="isActive = !isActive">
                     <div class="nav-toggle">
@@ -110,10 +104,12 @@
                         <ul class="nav navbar-nav text-center text-small text-uppercase ">
                             <li class=" pointer-all"><a class="position-relative" href="index.html">HOME</a></li>
                             <li class="pointer-all "><a class="position-relative" href="artists.html">Artists</a></li>
-                            <li class="pointer-all "><a class="position-relative" href="contact-us.html">CONTACT
-                                    US</a></li>
-                            <li class="pointer-all"><a href="selected-publications.html">selected press</a></li>
-                            <li class="pointer-all active"><a href="works-for-sale.html">works for sale</a></li>
+                            <li class="pointer-all "><a class="position-relative" href="contact-us.html">CONTACT US</a>
+                            </li>
+                            <li class="pointer-all "><a href="selected-publications.html">selected press</a></li>
+                            <li class="pointer-all"><a href="works-for-sale.html">works for sale</a></li>
+
+
                         </ul>
 
                     </div>
@@ -122,40 +118,123 @@
                 <!-- //.container-fluid -->
             </div>
         </div>
-        <div class=" pt-6-5">
-            <section class="section-static-title ">
-                <div class="container-fluid ">
-                    <div class="row custom-row">
-                        <div class="col-6 section-press-img ">
-                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559060336361-UZ01J67ZUFBE8NCTVBGU/ke17ZwdGBToddI8pDm48kEi4ogxkYJOrul7ccuyo07h7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UUEbWw1Y4itTKmjBZVrqL4m35Sd_9fxz1TK2H9FqEaruovhpNwWSokwNae6Hn1hGIw/image-asset.jpeg?format=750w"
-                                alt="">
-                            <h1>
-                                WORKS FOR SALE</h1>
-                        </div>
-                        <div class="col-6 section-press-text">
-
-                            <p>Large variety of works by emerging artists and blue-chip masters, available for sale</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="pt-6-5">
+            <section class="section-static-title artist-title">
+                <h1>Richard Artscwager</h1>
+                <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559745709170-3YZ6CD20RAUDVLPDLKF3/ke17ZwdGBToddI8pDm48kFFXBXerXLN6fTN8dQYEqChZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZamWLI2zvYWH8K3-s_4yszcp2ryTI0HqTOaaUohrI8PIvVSuqH9yXhmHq8ng-lTxfyL4RBtPnS-9Bho6wWD29ZoKMshLAGzx4R3EDFOm1kBS/Element_23%2522x19%2522_1300_unique+.jpg?format=2500w"
+                    alt="">
             </section>
+            <section id="work-experiences" class="section no-padding-bottom section-static-title">
+                <div class="section-content">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12 pl-md-0 pr-md-0">
+                                <!-- <div class="section-title center text-center">
+                                    <h2 class="has-sideline letter-spacing-1 text-uppercase">my story</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit voluptas
+                                        atque pariatur labore, accusantium hic neque rerum ipsum illum.</p>
+                                </div> -->
+                                <!-- //.section-title -->
 
-            <section class="works-inventory section-static-title">
-                <div class="container-fluid">
-                    <div class="row">
-                        <hr>
-                        <div class="title-container">
-                            <h1>Inventory Inquiries </h1>
-                            <p class="mb-0">Please fill out <a href="inventory-inquiry.html"
-                                    class="font-weight-bold">this form.</a> Thank you.</p>
+                                <div id="panel-group-work" class="panel-group panel-resume">
+                                    <div class="row">
+                                        <div class="col-md-4 order-md-0 order-1">
+                                            <div class="profile-detail position-relative width-100">
+                                                <div class="content-wrapper">
+                                                    <h4 class="text-uppercase">BIOGRAPHY</h4>
+                                                    <h4 class="d-block d-md-block ">&nbsp;</h4>
+                                                    <div class="col-md-4 order-md-2 order-0 mb-5 d-block d-md-none">
+                                                        <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559745786546-KT5I7A1BMQ5I61WV5YTL/ke17ZwdGBToddI8pDm48kMQ36V1L8azCx0lJDQhf1klZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVFru9BWN-QOF3qoIGqntIVmOxhAkcHAoLVymnp4pDpfxmbSd6kfRtgWHgNMDgGnmDY/richard_artschwagerportrait.png"
+                                                            class="mt-md-30 img-responsive center-block" alt="">
+                                                        <p class="mt-3">Photo by Timothy Greenfield-Sanders.</p>
+                                                    </div>
+                                                    <p>Richard Artschwager (b. 1923, Washington, D.C.) studied under
+                                                        Amédée Ozenfant, one of the pioneers of abstraction. In the
+                                                        early 1950s Artschwager became involved in cabinetmaking,
+                                                        producing simple pieces of furniture. After a ruinous workshop
+                                                        fire at the end of the decade, he began making sculpture using
+                                                        leftover industrial materials, then expanded into painting,
+                                                        drawing, site-specific installation, and photo-based work.
+                                                        Artschwager’s first exhibition took place at the Art Directions
+                                                        Gallery, New York, in 1959, and was followed by the first of
+                                                        many solo exhibitions with Leo Castelli in 1965. Solo
+                                                        exhibitions include Up and Across, Neues Museum, Nuremberg,
+                                                        Germany (2001, traveled to Serpentine Gallery, London); Museum
+                                                        für angewandte Kunst (MAK), Vienna (2002); Kunstmuseum
+                                                        Winterthur, Switzerland (2003, traveled to Kaiser Wilhelm
+                                                        Museum, Krefeld, Germany, and Staatliche Graphische Sammlung,
+                                                        Munich); Painting Then and Now, Museum of Contemporary Art,
+                                                        Miami (2003); Up and Down/Back and Forth, Deutsche Guggenheim
+                                                        Berlin (2003); Hair, Contemporary Art Museum, Saint Louis
+                                                        (2010); Richard Artschwager!, Whitney Museum of American Art,
+                                                        New York (2012, traveled to Hammer Museum, Los Angeles, Haus der
+                                                        Kunst, Munich, and Nouveau Musée National de Monaco); and
+                                                        Punctuating Space: The Prints and Multiples of Richard
+                                                        Artschwager, Frances Lehman Loeb Art Center, Vassar College,
+                                                        Poughkeepsie, New York (2015).</p>
+                                                </div>
+                                                <!-- //.inner-content -->
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 order-md-1 order-2">
+                                            <div class="portfolio-links">
+                                                <h4>RECENT SHOWS AND EXHIBITIONS</h4>
+                                                <h4>2013-2019</h4>
+                                                <p> <em> Richard Artschwager: Primary Sources, Gagosian, New York, NY.
+                                                        <br> <br>
+                                                        <em>Richard Artschwager: </em>Self-Portraits and the American
+                                                        Southwest, David Nolan, New York, NY.
+                                                        <br> <br>
+                                                        Richard Artschwager,</em> San Francisco Museum of Modern Art,
+                                                    San Francisco, CA.
+                                                    <br> <br>
+                                                    Richard Artschwager, Peder Lund, Oslo, Norway
+                                                    <br> <br>
+                                                    Punctuating Space: The Prints and Multiples of Richard
+                                                    Artschwager,The Frances Lehman Loeb Art Center at Vassar College,
+                                                    Poughkeepsie, NY.
+                                                    <br> <br>
+                                                    Richard Artschwager: No More Running Man, Gagosian Gallery, New
+                                                    York, NY.
+                                                    <br> <br>
+                                                    Richard Artschwager, Arch, Drum, Self-portrait, National Exemplar,
+                                                    New York, NY.
+                                                </p>
+                                                <a href="#works" class="button link-button w-inline-block mt-24">
+                                                    <div class="line-button-text">Check the artist's works</div>
+                                                    <div class="color-hover left"></div>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-4 order-md-2 order-0 mb-5 d-none d-md-block">
+                                            <img src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1559745786546-KT5I7A1BMQ5I61WV5YTL/ke17ZwdGBToddI8pDm48kMQ36V1L8azCx0lJDQhf1klZw-zPPgdn4jUwVcJE1ZvWEtT5uBSRWt4vQZAgTJucoTqqXjS3CfNDSuuf31e0tVFru9BWN-QOF3qoIGqntIVmOxhAkcHAoLVymnp4pDpfxmbSd6kfRtgWHgNMDgGnmDY/richard_artschwagerportrait.png"
+                                                class="mt-md-30 img-responsive center-block" alt="">
+                                            <p class="mt-3">Photo by Timothy Greenfield-Sanders.</p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- //.panel-group -->
+                            </div>
+                            <!-- //.col-md-12 -->
                         </div>
-                        <hr>
+                        <!-- //.row -->
                     </div>
+                    <!-- //.container -->
                 </div>
+                <!-- //.section-content -->
             </section>
-            <section class="works-for-sale-list section-static-title blog-v1">
+            <section class="works-for-sale-list section-static-title blog-v1" id="works">
                 <div class="row">
-
+                    <div class="col-12 mb-5 d-flex flex-column justify-content-center">
+                        <h4 class="text-center">pREVIEW OUR WORKS FOR SALE</h4>
+                        <a href="inventory-inquiry.html" class="button d-inline-block mt-24 m-0-auto">
+                            <div class="line-button-text">INQUIRE HERE</div>
+                            <div class="color-hover left"></div>
+                        </a>
+                    </div>
                     <div class="col-12 col-sm-6 col-md-4 mb-5">
 
                         <div class="pricing-table position-relative width-100">
@@ -370,20 +449,17 @@
                     </div>
                     <!-- //.container -->
                 </div>
-
             </footer>
             <!-- //FOOTER END -->
-            <div v-if="isReady">
-                <fs-lightbox :toggler="POTWtoggler" :slide="slide_number" :sources="img_arr" :on-close="POTWClose"
-                    :captions="arr" />
-            </div>
-            <div v-if="isReady">
-                <fs-lightbox :toggler="toggler" :slide="slide_number" :sources="img_arr" />
-            </div>
         </div>
-
         <!-- //WRAPPER END -->
-
+        <div v-if="isReady">
+            <fs-lightbox :toggler="POTWtoggler" :slide="slide_number" :sources="img_arr" :on-close="POTWClose"
+                :captions="arr" />
+        </div>
+        <div v-if="isReady">
+            <fs-lightbox :toggler="toggler" :slide="slide_number" :sources="img_arr" />
+        </div>
     </div>
 
     <script src="assets/js/main.js"></script>
@@ -405,7 +481,7 @@
                             h: 70,
                             artist_title: 'SECUNDINO HERNÁNDEZ1',
                             text: [
-                                'Beautifully Designed', 
+                                'Beautifully Designed',
                                 '100% Responsive',
                                 'Smooth Interactions',
                                 'Contact Forms',
@@ -418,7 +494,7 @@
                             h: 80,
                             artist_title: 'SECUNDINO HERNÁNDEZ1',
                             text: [
-                                'Beautifully Designed', 
+                                'Beautifully Designed',
                                 '100% Responsive',
                                 'Smooth Interactions',
                                 'Contact Forms',
@@ -431,7 +507,7 @@
                             h: 100,
                             artist_title: 'SECUNDINO HERNÁNDEZ1',
                             text: [
-                                'Beautifully Designed', 
+                                'Beautifully Designed',
                                 '100% Responsive',
                                 'Smooth Interactions',
                                 'Contact Forms',
@@ -444,7 +520,7 @@
                             h: 70,
                             artist_title: 'SECUNDINO HERNÁNDEZ1',
                             text: [
-                                'Beautifully Designed', 
+                                'Beautifully Designed',
                                 '100% Responsive',
                                 'Smooth Interactions',
                                 'Contact Forms',
@@ -481,7 +557,19 @@
                     bg.appendChild(img)
                     const that = this
                     setTimeout(() => {
-                        const container = document.getElementsByClassName('fslightbox-container')[0].appendChild(bg)
+                        if (that.POTWtoggler === true) {
+                            for (let i = 0; i < this.data_img.length; i++) {
+                                let style = document.createElement('style');
+                                style.type = 'text/css';
+                                style.innerHTML = `.cssClass${i} { top: 8% !important}`;
+                                document.getElementsByClassName('fslightbox-container')[0].appendChild(
+                                    style)
+                                document.getElementsByClassName('fslightbox-source-outer')[i].classList
+                                    .add('cssClass' + i)
+                            }
+                        }
+                        const container = document.getElementsByClassName('fslightbox-container')[0]
+                            .appendChild(bg)
                         for (let i = 0; i < that.data_img.length; i++) {
                             const h_res = that.data_img[i].h / that.sizes.woman_height
                             const w_res = that.data_img[i].w / that.sizes.woman_height
@@ -494,14 +582,12 @@
                                 style)
                             document.getElementsByClassName('fslightbox-source-outer')[i].classList.add(
                                 'cssClass' + i)
-                                // document.getElementsByClassName('fslightbox-source-outer')[i].style.transform = 'translateY(0px) scale(1)'
                         }
                     }, []);
                 },
-                POTWClose() {
-                    // for (let i = 0; i < this.data_img.length; i++) {
-                    //     document.getElementsByClassName('list-wrap')[i].classList.remove('about_pic_item_POTW')
-                    // }
+                POTWClose(i) {
+                    console.log(i)
+                    //    this.POTWtoggler = false
                 },
             },
             created() {
@@ -512,13 +598,13 @@
                 this.isReady = true;
                 for (let i = 0; i < this.data_img.length; i++) {
                     let text = '<div>'
-                     for (let j = 0; j < this.data_img[i].text.length; j++) {
+                    for (let j = 0; j < this.data_img[i].text.length; j++) {
                         text += `<p class="mb-0"> ${this.data_img[i].text[j]} </p> `
-                     }
-                     text+= '</div>'
-                     Vue.component('caption-item' + i, {
-                            template: text
-                        })
+                    }
+                    text += '</div>'
+                    Vue.component('caption-item' + i, {
+                        template: text
+                    })
                     this.arr[i] = 'caption-item' + i
                 }
             },
@@ -527,5 +613,3 @@
 </body>
 
 </html>
-
-<!-- new -->
