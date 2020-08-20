@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Karla:400,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
 
 /*** 
 
@@ -486,7 +488,14 @@ input .full-width{
         transform: initial;
         font-size: 11px;;
     }
+    #work-experiences .col-md-4{
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
 
+}
+.m-0-auto{
+    margin: 0 auto !important;
 }
 @media (max-width: 625px) {
     .WFS-title .col-6{
@@ -576,9 +585,16 @@ input .full-width{
     background-color: rgba(0, 0, 0, 0.8);
     padding: 10px;
     z-index: 999;
+    transition: transform .3s;
+    animation: fslightbox-fade-in .3s cubic-bezier(0,0,.7,1);
 }
-.about_pic_item_POTW > *{
-    color: #fff;
+@keyframes fslightbox-fade-in{from{opacity:.65}to{opacity:1}}
+.about_pic_item_POTW h3{
+    font-size: 20px;
+    margin: 5px 0;
+}
+.about_pic_item_POTW *{
+    color: #fff !important;
 }
 /* end */
 a,
@@ -1329,11 +1345,15 @@ i-circled {
     -webkit-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out
 }
+.section-static-title#works{
+    padding-top: 96px !important;
+    margin-top: 0 !important;
+}
 
 .button {
     position: relative;
     overflow: hidden;
-    height: 48px;
+    /* height: 48px; */
     padding: 11px 24px;
     border-radius: 0px;
     background-color: #faaf52;
@@ -1625,6 +1645,7 @@ i-circled {
     .background-grid>.column {
         width: 25%
     }
+    
 }
 
 @media (min-width:992px) {
@@ -1724,12 +1745,18 @@ i-circled {
         vertical-align: middle
     }
 }
-
+/* .fslightbox-absoluted{
+    top: 7% !important;
+} */
 .header .logo {
     width: 55px;
     margin-left: 15px;
     height: 100%;
     z-index: 5
+}
+.header .logo-text{
+    font-family: 'Russo One', sans-serif;
+    font-size: large;
 }
 
 .hrz-header .logo {
@@ -1740,7 +1767,13 @@ i-circled {
     height: 100%;
     z-index: 5
 }
-
+.hrz-header .logo-text{
+    font-family: 'Russo One', sans-serif;
+    font-size: 21.2px;
+    flex: 1;
+    text-align: left;
+    margin-left: 55px;
+}
 .hrz-header .nav>li {
     backface-visibility: hidden;
     display: inline-block;
@@ -1841,7 +1874,28 @@ i-circled {
 ====================================================================
 
 ***/
+.artist-title{
+    overflow: hidden;
+    position: relative;
+}
+.artist-title img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    min-height: 500px;
+    max-height: 500px;
+}
 
+.artist-title h1{
+    white-space: nowrap;
+    z-index: 9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+}
 .navbar {
     border: none;
     margin: 0;
@@ -1938,6 +1992,10 @@ i-circled {
 @media (max-width:543px) {
     .navbar .nav>li>a {
         padding-bottom: 5px
+    }
+    .artist-title img{
+        min-height: 400px;
+        max-height: 400px;
     }
 }
 
@@ -3676,10 +3734,12 @@ input.w-button {
 .projects>.inner-content .project-about .project-detail:hover {
     opacity: 1
 }
-
+.fslightbox-caption * p {
+    color: #fff;
+}
 @media(max-width: 992px) {
     #work-experiences {
-        border-top: 1px solid #ddd;
+        /* border-toнp: 1px solid #ddd; */
     }
 
     .mt-md-30 {
