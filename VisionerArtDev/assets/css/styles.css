@@ -2017,7 +2017,9 @@ i-circled {
         opacity: 1
     }
 }
-
+img{
+    max-height: 100vh;
+}
 .navbar .nav>li>a {
     display: inline-block;
     font-weight: 400;
