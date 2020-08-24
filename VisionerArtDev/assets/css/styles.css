@@ -462,7 +462,9 @@ input .full-width{
 .WFS-title .section-press-img h1{
     top: 20% !important;
 }
-
+.input{
+    margin-right: 30px;
+}
 @media (max-width: 992px) {
     .selected-press-list [class*="col"]:nth-child(even) {
         padding-right: 0 !important;
@@ -2002,13 +2004,13 @@ i-circled {
         white-space: nowrap;
         margin-top: 10px;
     }
-    .navbar .nav>li>a:last-child {
+    .navbar .nav>li>a:first-child {
         margin-top: 0px;
     }
-    .navbar .nav>li:nth-child(1) {
+    .navbar .nav>li:nth-child(4) {
         margin-bottom: -10px;
     }
-    .navbar .nav>li:nth-child(2)>a {
+    .navbar .nav>li:nth-child(3)>a {
         padding: 10px 0;
     }
     .navbar .nav>li.active>a:before {
