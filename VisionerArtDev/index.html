@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Visioner Art</title>
     <meta name="description" content="Betiso - One Page Personal Themplate" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no user-scale=none">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scale=none">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/swiper@5.3.6/css/swiper.min.css" rel="stylesheet">
@@ -85,7 +85,7 @@
                         <span></span>
                     </div>
                     <!-- //.nav-trigger -->
-                    <ul class="nav navbar-nav text-center text-small text-uppercase ">
+                    <ul class="nav navbar-nav text-center text-small text-uppercase d-flex flex-column flex-lg-column-reverse">
                         <li class="pointer-all d-lg-flex align-lg-items-lg-center justify-content-lg-center"><a
                                 href="artists.html">Artists</a></li>
                                 <li class="pointer-all d-lg-flex align-items-lg-center justify-content-lg-center"><a
@@ -114,7 +114,7 @@
                     <div class="row">
 
                         <div class="col-md-6 no-padding-left no-padding-right pt-0 pt-md-6-5">
-                            <swiper ref="mySwiper" :options="swiperOptions" @click-slide="onSwiperClickSlide">
+                            <swiper ref="mySwiper" :options="swiperOptions" @click-slide="onSwiperClickSlide" @slide-change="clideChanged">
                                 <swiper-slide><img class="cursor-pointer"
                                         src="https://images.squarespace-cdn.com/content/v1/5c70678577b903aa58ef8754/1592429294593-SAE3SKPL6OBOKAH5TURK/ke17ZwdGBToddI8pDm48kKR3o0ZQl9Wi-qrr1zoKio17gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1UffTifcrMApUA0DUPK9-SdRHTKX59FPT-MLq0y_8I1Su4YiLRmUQnYOnT8aFnZ-MYA/Secundino+HernandezHR2.jpg?format=500w"
                                         ></swiper-slide>
@@ -129,7 +129,7 @@
                             <div class="hero-split-content">
                                 <div class="hero-split-intro justify-content-space-between">
                                     <div class="info-wrapper height-100">
-                                        <div class="contact-block home-v2 position-initial d-none d-lg-block">
+                                        <div class="contact-block home-v2 position-initial d-none d-md-block">
                                             <a href="https://artsy.net" class="link-v1 text-large" target="_blank">Visit us
                                                 on Artsy</a>
                                         </div>
@@ -164,7 +164,7 @@
                                             <div class="color-hover left"></div>
                                         </a>
                                     </div>
-                                    <div class="contact-block home-v2 position-initial d-block d-lg-none">
+                                    <div class="contact-block home-v2 position-initial d-block d-md-none">
                                         <a href="https://artsy.net" class="link-v1 text-large ml-0" target="_blank">Visit us
                                             on Artsy</a>
                                     </div>
@@ -383,6 +383,9 @@
             methods: {
                 onSwiperClickSlide() {
                     window.location = 'works-for-sale.html'
+                },
+                clideChanged(){
+                    this.swiper.autoplay.run()
                 }
             },
             computed: {
@@ -391,7 +394,7 @@
                 }
             },
             mounted() {
-                this.swiper.autoplay.start()
+                this.swiper.autoplay.run()
                 this.swiper.autoplay.timeout = 3.5
            }
         })

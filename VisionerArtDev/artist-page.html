@@ -51,17 +51,22 @@
                     <img src="./assets/images/VisionerLogoV2.png" alt="">
                 </a>
             </div>
+            <div class="logo-text">
+                <a href="index.html" class="pointer-all">
+                    VISIONER ART
+                </a>
+            </div>
             <ul class="nav text-uppercase d-flex flex-row align-items-center justify-content-end pr-20">
                 <li class=" pointer-all  d-inline-flex align-items-center justify-content-center">
                     <a class="position-relative" href="index.html">HOME</a></li>
                 <li class="pointer-all   d-inline-flex align-items-center justify-content-center">
                     <a class="position-relative" href="artists.html">Artists</a></li>
+                    <li class="pointer-all  d-inline-flex align-items-center justify-content-center">
+                        <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
+                    <li class="pointer-all  d-inline-flex align-items-center justify-content-center">
+                        <a class="position-relative" href="selected-publications.html">SELECTED PRESS</a></li>
                 <li class="pointer-all d-inline-flex align-items-center">
                     <a class="position-relative" href="contact-us.html">CONTACT US</a></li>
-                <li class="pointer-all  d-inline-flex align-items-center justify-content-center">
-                    <a class="position-relative" href="selected-publications.html">SELECTED PRESS</a></li>
-                <li class="pointer-all  d-inline-flex align-items-center justify-content-center">
-                    <a class="position-relative" href="works-for-sale.html">works for sale</a></li>
             </ul>
         </header>
         <!-- HEADER START -->
@@ -104,12 +109,10 @@
                         <ul class="nav navbar-nav text-center text-small text-uppercase ">
                             <li class=" pointer-all"><a class="position-relative" href="index.html">HOME</a></li>
                             <li class="pointer-all "><a class="position-relative" href="artists.html">Artists</a></li>
+                            <li class="pointer-all"><a href="works-for-sale.html">works for sale</a></li>
+                            <li class="pointer-all "><a href="selected-publications.html">selected press</a></li>
                             <li class="pointer-all "><a class="position-relative" href="contact-us.html">CONTACT US</a>
                             </li>
-                            <li class="pointer-all "><a href="selected-publications.html">selected press</a></li>
-                            <li class="pointer-all"><a href="works-for-sale.html">works for sale</a></li>
-
-
                         </ul>
 
                     </div>
@@ -557,17 +560,17 @@
                     bg.appendChild(img)
                     const that = this
                     setTimeout(() => {
-                        if (that.POTWtoggler === true) {
-                            for (let i = 0; i < this.data_img.length; i++) {
-                                let style = document.createElement('style');
-                                style.type = 'text/css';
-                                style.innerHTML = `.cssClass${i} { top: 8% !important}`;
-                                document.getElementsByClassName('fslightbox-container')[0].appendChild(
-                                    style)
-                                document.getElementsByClassName('fslightbox-source-outer')[i].classList
-                                    .add('cssClass' + i)
-                            }
-                        }
+                        // if (that.POTWtoggler === true) {
+                        //     for (let i = 0; i < this.data_img.length; i++) {
+                        //         let style = document.createElement('style');
+                        //         style.type = 'text/css';
+                        //         style.innerHTML = `.cssClass${i} { top: 8% !important}`;
+                        //         document.getElementsByClassName('fslightbox-container')[0].appendChild(
+                        //             style)
+                        //         document.getElementsByClassName('fslightbox-source-outer')[i].classList
+                        //             .add('cssClass' + i)
+                        //     }
+                        // }
                         const container = document.getElementsByClassName('fslightbox-container')[0]
                             .appendChild(bg)
                         for (let i = 0; i < that.data_img.length; i++) {
