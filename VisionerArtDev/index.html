@@ -106,7 +106,7 @@
         </div>
         <!-- //NAVIGATION END -->
         <!-- WRAPPER START -->
-        <div class="wrapper">
+        <div class="wrapper overflow-hidden">
 
             <!-- SECTION - HOME START -->
             <section id="home" class="no-padding-tb width-100 no-padding-top">
@@ -385,6 +385,7 @@
                     window.location = 'works-for-sale.html'
                 },
                 clideChanged(){
+                    console.log(this.swiper)
                     this.swiper.autoplay.run()
                 }
             },
@@ -396,6 +397,7 @@
             mounted() {
                 this.swiper.autoplay.run()
                 this.swiper.autoplay.timeout = 3.5
+
            }
         })
     </script>
