@@ -154,7 +154,7 @@
             controls.enableDamping = true
             controls.minDistance = 250.0;
             controls.maxDistance = 250.0;
-            controls.rotateSpeed = 1.5
+            controls.rotateSpeed = 1.75
             controls.update();
 
             scene.add(new THREE.AmbientLight(0xffffff, 0.2));
@@ -166,10 +166,12 @@
             // document.body.appendChild( stats.dom );
             const b = document.getElementsByClassName('p')[0]
             window.addEventListener('resize', onWindowResize, false);
-            renderer.domElement.addEventListener('mouseup', rotating, false);
+            // renderer.domElement.addEventListener('mouseup', rotating, false);
             var tex = new THREE.TextureLoader().load(
-                "https://solarsystemmm.github.io/3D/final-moon.jpg"
+                "https://solarsystemmm.github.io/3D/texture-moon.png"
             );
+            tex.minFilter = THREE.LinearFilter;
+
             // Инициализация сферы
             var sphereGeom = new THREE.SphereBufferGeometry(15, 32, 32);
 
@@ -182,21 +184,19 @@
             innerSphere.scale.set(4, 4.5, 4);
             scene.add(innerSphere);
 
-            // innerSphere.on('mousedown', function(ev) {console.log(1)});
-            renderer.domElement.addEventListener('click', rotating)
-     
-        }
-        
-
-        async function rotating(e) {
-            console.log(e)
-            rotationFactorY = 0.2 * (e.clientX - window.innerWidth / 2) / window.innerWidth
-            // await setTimeout(() => {
-            //     rotationFactorY = 0.1 * (e.clientX - window.innerWidth / 2) / window.innerWidth
-            // },[])
-            console.log(rotationFactorY)
 
         }
+
+
+        // async function rotating(e) {
+        //     console.log(e)
+        //     rotationFactorY = 0.2 * (e.clientX - window.innerWidth / 2) / window.innerWidth
+        //     // await setTimeout(() => {
+        //     //     rotationFactorY = 0.1 * (e.clientX - window.innerWidth / 2) / window.innerWidth
+        //     // },[])
+        //     console.log(rotationFactorY)
+
+        // }
 
         function onMouseMove(event) {
 
@@ -204,9 +204,9 @@
         }
 
         function onWindowResize() {
-
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
+
             renderer.setSize(window.innerWidth, window.innerHeight);
 
         }
@@ -215,15 +215,15 @@
         function animate() {
             innerSphere.rotation.y += maxRotationSpeed * rotationFactorY;
 
-            setTimeout( function() {
+            setTimeout(function () {
 
-requestAnimationFrame( animate );
+                requestAnimationFrame(animate);
 
-}, 1000 / 800 );
+            }, 1000 / 800);
             controls.update();
 
             renderer.render(scene, camera);
-            
+
 
         }
     </script>
