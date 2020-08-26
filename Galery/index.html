@@ -154,7 +154,7 @@
             controls.enableDamping = true
             controls.minDistance = 250.0;
             controls.maxDistance = 250.0;
-            controls.rotateSpeed = 3.0
+            controls.rotateSpeed = 1.5
             controls.update();
 
             scene.add(new THREE.AmbientLight(0xffffff, 0.2));
@@ -166,7 +166,7 @@
             // document.body.appendChild( stats.dom );
             const b = document.getElementsByClassName('p')[0]
             window.addEventListener('resize', onWindowResize, false);
-            b.addEventListener('mouseup', rotating, false);
+            renderer.domElement.addEventListener('mouseup', rotating, false);
             var tex = new THREE.TextureLoader().load(
                 "https://solarsystemmm.github.io/3D/final-moon.jpg"
             );
@@ -183,14 +183,17 @@
             scene.add(innerSphere);
 
             // innerSphere.on('mousedown', function(ev) {console.log(1)});
-        
+            renderer.domElement.addEventListener('click', rotating)
      
         }
         
 
-        function rotating(e) {
+        async function rotating(e) {
             console.log(e)
-            rotationFactorY = 0.2 * (e.pageX - window.innerWidth / 2) / window.innerWidth
+            rotationFactorY = 0.2 * (e.clientX - window.innerWidth / 2) / window.innerWidth
+            // await setTimeout(() => {
+            //     rotationFactorY = 0.1 * (e.clientX - window.innerWidth / 2) / window.innerWidth
+            // },[])
             console.log(rotationFactorY)
             requestAnimationFrame(animate);
 
