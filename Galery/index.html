@@ -52,6 +52,7 @@
 
         #egg {
             position: relative;
+            transition: all 1s ease-in;
         }
 
         .deadstar {
@@ -78,6 +79,10 @@
         body {
 
             font-family: 'Roboto';
+        }
+
+        canvas {
+            /* transition: all 1s ease-in; */
         }
 
         .loading {
@@ -136,9 +141,9 @@
             });
             renderer.setPixelRatio(window.devicePixelRatio);
             renderer.setSize(window.innerWidth, window.innerHeight);
-            renderer.domElement.className = 'p';
-            const a = document.getElementById('egg')
-            document.body.appendChild(renderer.domElement);
+            renderer.domElement.className = 'deadstar';
+            const deadstar_contain = document.getElementById('egg')
+            deadstar_contain.appendChild(renderer.domElement);
 
             scene = new THREE.Scene();
 
@@ -147,7 +152,6 @@
             scene.add(camera);
 
             controls = new THREE.OrbitControls(camera, renderer.domElement);
-            //  controls.addEventListener('end', rotating)
             controls.minPolarAngle = 1.5
             controls.maxPolarAngle = 1.5
             controls.enableDamping = true
@@ -156,26 +160,19 @@
             controls.rotateSpeed = 1.5
             controls.update();
 
-            // scene.add(new THREE.AmbientLight(0xffffff, 0.2));
-
-         
 
             let light1 = new THREE.DirectionalLight(0xffffff, 1.5);
             light1.position.y = window.innerHeight / 2;
             light1.position.z = window.innerHeight / 3;
             camera.add(light1);
 
-            // stats = new Stats();
-            // document.body.appendChild( stats.dom );
-            window.addEventListener('resize', onWindowResize, false);
             renderer.domElement.addEventListener('mouseup', rotating, false);
             var tex = new THREE.TextureLoader().load(
                 "https://solarsystemmm.github.io/3D/texture-moon.png"
             );
             tex.minFilter = THREE.LinearFilter;
 
-            // Инициализация сферы
-            var sphereGeom = new THREE.SphereBufferGeometry(15, 32, 32);
+            var sphereGeom = new THREE.SphereBufferGeometry(0.7, 32, 32);
 
             innerSphere = new THREE.Mesh(
                 sphereGeom,
@@ -186,32 +183,21 @@
             innerSphere.scale.set(4, 4.5, 4);
             scene.add(innerSphere);
 
-            // innerSphere.on('mousedown', function(ev) {console.log(1)});
-            renderer.domElement.addEventListener('click', rotating)
+            // renderer.domElement.addEventListener('click', rotating)
+            window.addEventListener('resize', function (event) {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
 
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
         }
 
 
         async function rotating(e) {
             console.log(e)
             rotationFactorY = 0.2 * (e.clientX - window.innerWidth / 2) / window.innerWidth
-            // await setTimeout(() => {
-            //     rotationFactorY = 0.1 * (e.clientX - window.innerWidth / 2) / window.innerWidth
-            // },[])
+            
             console.log(rotationFactorY)
-
-        }
-
-        function onMouseMove(event) {
-
-
-        }
-
-        function onWindowResize() {
-
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
 
         }
 
@@ -227,7 +213,6 @@
             controls.update();
 
             renderer.render(scene, camera);
-
 
         }
     </script>
