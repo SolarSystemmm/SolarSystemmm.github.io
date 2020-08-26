@@ -215,7 +215,11 @@
         function animate() {
             innerSphere.rotation.y += maxRotationSpeed * rotationFactorY;
 
-            requestAnimationFrame(animate);
+            setTimeout( function() {
+
+requestAnimationFrame( animate );
+
+}, 1000 / 800 );
             controls.update();
 
             renderer.render(scene, camera);
