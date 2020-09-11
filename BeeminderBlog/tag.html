@@ -1,0 +1,1753 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+
+<head profile="http://gmpg.org/xfn/11">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="robots" content="noindex,follow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> akrasia | Beeminder Blog</title>
+
+    <link rel="stylesheet" href="https://blog.beeminder.com/wp-content/themes/beemtheeme/style.css" type="text/css" media="screen" />
+    <link rel="alternate" type="application/rss+xml" title="Beeminder Blog RSS Feed" href="https://blog.beeminder.com/feed/" />
+    <link rel="pingback" href="https://blog.beeminder.com/xmlrpc.php" />
+    <!--[if IE]>
+<link rel="stylesheet" type="text/css" href="https://blog.beeminder.com/wp-content/themes/beemtheeme/iestyles.css" />
+<![endif]-->
+    <!--[if lte IE 6]>
+<script defer type="text/javascript" src="https://blog.beeminder.com/wp-content/themes/beemtheeme/images/pngfix.js"></script>
+<![endif]-->
+
+    <!-- Place this tag in the <head> of your document-->
+    <link href="https://plus.google.com/118275811754025086770" rel="publisher" />
+
+
+    <script type='text/x-mathjax-config'>
+        MathJax.Hub.Config({tex2jax: {
+inlineMath: [['\\(','\\)']],
+processEscapes: true
+}});</script>
+    <link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <link rel="alternate" type="application/rss+xml" title="Beeminder Blog &raquo; akrasia Tag Feed" href="https://blog.beeminder.com/tag/akrasia/feed/" />
+    <script type="text/javascript">
+        window._wpemojiSettings = {
+            "baseUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/",
+            "ext": ".png",
+            "svgUrl": "https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/",
+            "svgExt": ".svg",
+            "source": {
+                "concatemoji": "https:\/\/blog.beeminder.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.4.2"
+            }
+        };
+        /*! This file is auto-generated */
+        ! function(e, a, t) {
+            var r, n, o, i, p = a.createElement("canvas"),
+                s = p.getContext && p.getContext("2d");
+
+            function c(e, t) {
+                var a = String.fromCharCode;
+                s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, e), 0, 0);
+                var r = p.toDataURL();
+                return s.clearRect(0, 0, p.width, p.height), s.fillText(a.apply(this, t), 0, 0), r === p.toDataURL()
+            }
+
+            function l(e) {
+                if (!s || !s.fillText) return !1;
+                switch (s.textBaseline = "top", s.font = "600 32px Arial", e) {
+                    case "flag":
+                        return !c([127987, 65039, 8205, 9895, 65039], [127987, 65039, 8203, 9895, 65039]) && (!c([55356, 56826, 55356, 56819], [55356, 56826, 8203, 55356, 56819]) && !c([55356, 57332, 56128, 56423, 56128, 56418, 56128, 56421, 56128, 56430, 56128, 56423, 56128, 56447], [55356, 57332, 8203, 56128, 56423, 8203, 56128, 56418, 8203, 56128, 56421, 8203, 56128, 56430, 8203, 56128, 56423, 8203, 56128, 56447]));
+                    case "emoji":
+                        return !c([55357, 56424, 55356, 57342, 8205, 55358, 56605, 8205, 55357, 56424, 55356, 57340], [55357, 56424, 55356, 57342, 8203, 55358, 56605, 8203, 55357, 56424, 55356, 57340])
+                }
+                return !1
+            }
+
+            function d(e) {
+                var t = a.createElement("script");
+                t.src = e, t.defer = t.type = "text/javascript", a.getElementsByTagName("head")[0].appendChild(t)
+            }
+            for (i = Array("flag", "emoji"), t.supports = {
+                    everything: !0,
+                    everythingExceptFlag: !0
+                }, o = 0; o < i.length; o++) t.supports[i[o]] = l(i[o]), t.supports.everything = t.supports.everything && t.supports[i[o]], "flag" !== i[o] && (t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && t.supports[i[o]]);
+            t.supports.everythingExceptFlag = t.supports.everythingExceptFlag && !t.supports.flag, t.DOMReady = !1, t.readyCallback = function() {
+                t.DOMReady = !0
+            }, t.supports.everything || (n = function() {
+                t.readyCallback()
+            }, a.addEventListener ? (a.addEventListener("DOMContentLoaded", n, !1), e.addEventListener("load", n, !1)) : (e.attachEvent("onload", n), a.attachEvent("onreadystatechange", function() {
+                "complete" === a.readyState && t.readyCallback()
+            })), (r = t.source || {}).concatemoji ? d(r.concatemoji) : r.wpemoji && r.twemoji && (d(r.twemoji), d(r.wpemoji)))
+        }(window, document, window._wpemojiSettings);
+
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+
+    </style>
+    <link rel='stylesheet' id='wp-block-library-css' href='https://blog.beeminder.com/wp-includes/css/dist/block-library/style.min.css?ver=5.4.2' type='text/css' media='all' />
+    <script type='text/javascript' src='https://blog.beeminder.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+    <script type='text/javascript' src='https://blog.beeminder.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <link rel='https://api.w.org/' href='https://blog.beeminder.com/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://blog.beeminder.com/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://blog.beeminder.com/wp-includes/wlwmanifest.xml" />
+    <style type='text/css'>
+        #widget-collapsarch-4-top span.collapsing.archives {
+            border: 0;
+            padding: 0;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        #widget-collapsarch-4-top li.widget_collapspage h2 span.sym {
+            float: right;
+            padding: 0 .5em
+        }
+
+        #widget-collapsarch-4-top li.collapsing.archives a.self {
+            font-weight: bold
+        }
+
+        #widget-collapsarch-4-top:before {
+            content: '';
+        }
+
+        #widget-collapsarch-4-top li.collapsing.archives:before {
+            content: '';
+        }
+
+        #widget-collapsarch-4-top li.collapsing.archives {
+            list-style-type: none
+        }
+
+        #widget-collapsarch-4-top li.collapsing.archives {
+            padding: 0 0 0 1em;
+            text-indent: -1em;
+        }
+
+        #widget-collapsarch-4-top li.collapsing.archives.item:before {
+            content: '\00BB \00A0' !important;
+        }
+
+        #widget-collapsarch-4-top li.collapsing.archives .sym {
+            cursor: pointer;
+            font-size: 1.2em;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-right: 5px;
+        }
+
+    </style>
+    <!-- <meta name="NextGEN" version="2.1.15" /> -->
+    <style type='text/css'>
+        body {
+            width: 800px;
+        }
+
+        #sidebar {
+            width: 180px;
+        }
+
+        #sidebar .side-widget {
+            width: 160px;
+        }
+
+        #secondsidebar {
+            width: 180px;
+        }
+
+        #secondsidebar .side-widget {
+            width: 160px;
+        }
+
+        #leftcontent,
+        #twocol,
+        #threecol,
+        #threecol2,
+        .commentlist {
+            width: 573px;
+        }
+
+        #leftcontent img {
+            max-width: 573px;
+        }
+
+        #title {
+            float: left;
+        }
+
+        #description {
+            clear: left;
+            float: left;
+        }
+
+        #headerad {
+            float: right;
+            margin: 18px 5px 0 0;
+        }
+
+    </style>
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="https://blog.beeminder.com/wp-content/themes/beemtheeme/bmndr-style.css" type="text/css" media="screen" />
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-27844688-1']);
+        _gaq.push(['_setDomainName', 'beeminder.com']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+    <style>
+        @media(max-width: 768px) {
+
+            h1 a,
+            h2 a,
+            h3 a,
+            h4 a,
+            h5 a {
+                word-break: break-all;
+            }
+
+            html {
+                font-size: 14px;
+            }
+
+            body {
+                width: 100%;
+                max-width: 100%;
+                font-size: 1.4rem;
+            }
+
+            #header {}
+
+            #navmenu {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            #mainwrapper {}
+
+            #sidebar {
+                width: 100%;
+                clear: both;
+                display: flex;
+                flex-wrap: wrap;
+                padding: 0;
+                margin: 0;
+            }
+
+            #sidebar .side-widget {
+                padding: 0 2.5%;
+                width: 28%;
+            }
+
+            #sidebar .side-widget h2 {
+                font-size: 1.4rem;
+            }
+
+            #sidebar .side-widget ul li {
+                font-size: 1.3rem;
+            }
+
+            #sidebar .side-widget .textwidget {
+                text-align: center;
+                word-break: break-word;
+            }
+
+            #sidebar .side-widget ul li {
+                font-size: 1.3rem;
+            }
+
+
+
+            #leftcontent {
+                width: 100%;
+                margin: 0;
+            }
+
+
+            #title {
+                font-size: 4.8rem;
+                line-height: 3.4rem;
+                padding: 0 1.5rem;
+            }
+
+            #navmenu ul a {
+                display: inline-flex !important;
+                align-items: center;
+                font-size: 1.2rem;
+                line-height: 2.8rem;
+                height: auto !important;
+            }
+
+            .catheader {
+                font-size: 2.4rem !important;
+                padding: 0 1rem !important;
+            }
+
+            .posts h2 {
+                font-size: 3.15rem;
+            }
+
+            .posts>* {
+                padding: 0 1.5rem;
+            }
+
+            #footer {
+                font-size: 1.1rem;
+            }
+   .menu-header {
+                margin: 0 auto 0 0;
+            }
+
+            #nav-links {
+                margin: 0 0 0 auto;
+                margin-top: 1rem;
+
+            }
+
+            #navmenu {
+                display: flex;
+                flex-direction: column;
+            }
+
+            #navmenu ul {
+                display: flex;
+            }
+
+            #navmenu ul li a {
+                white-space: pre;
+            }
+            #sidebar .side-widget table {
+                width: 100%;
+            }
+
+            #sidebar .side-widget table input {
+                width: 100%;
+            }
+
+            #tagcloud {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: auto !important;
+                padding: 1rem;
+            }
+
+            #tagcloud a {
+                margin: .1rem .5rem;
+            }
+
+            #tagcloud a:nth-child(even) {
+                font-size: 1.4rem !important;
+            }
+
+            #tagcloud a:nth-child(odd) {
+                font-size: 1.8rem !important;
+
+            }
+
+            .tagcloud {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                width: auto !important;
+            }
+
+            .tagcloud a {
+                margin: .1rem .5rem;
+            }
+
+            .tagcloud a:nth-child(even) {
+                font-size: 1.4rem !important;
+            }
+
+            .tagcloud a:nth-child(odd) {
+                font-size: 1.8rem !important;
+
+            }
+        }
+
+        @media(max-width: 600px) {
+
+
+
+            #leftcontent {
+                width: 100%;
+            }
+
+            #sidebar .side-widget {
+                padding: 0 2%;
+                width: 45.5%;
+            }
+
+
+        }
+
+        @media(max-width: 550px) {
+            div#navmenu div#nav-links {
+                height: auto !important;
+            }
+        }
+
+        @media(max-width: 500px) {
+            html {
+                font-size: 15px;
+            }
+
+            #sidebar .side-widget {
+                padding: 0 2%;
+                width: 95.5%;
+            }
+
+            .storycontent a {
+                max-width: 100%;
+            }
+
+            .storycontent a img {
+                width: 100%;
+            }
+
+            #title {
+                font-size: 3.8rem;
+            }
+        }
+
+        @media(max-width: 400px) {
+            html {
+                font-size: 14px;
+            }
+
+            #title {
+                font-size: 3rem;
+            }
+              #navmenu ul li a {
+                font-size: 1rem;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <!-- begin header -->
+    <div id="header">
+
+        <div id="title">
+            <a href="https://blog.beeminder.com">Beeminder Blog</a>
+        </div>
+        <div id="description">
+            <a href="http://beeminder.com"></a>
+        </div>
+
+    </div>
+
+    <div id="navmenu">
+
+        <div class="menu-header">
+            <ul id="menu-navigation" class="menu">
+                <li id='' class='menu-item'><a title='beeminder.com' href='http://beeminder.com'><img alt='bmndr' src='https://blog.beeminder.com/wp-content/uploads/2013/03/favicon.png' height='28px' /> Beeminder Home</a></li>
+                <li id="menu-item-306" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-306"><a title="beebeebee" href="http://blog.beeminder.com">Blog Home</a></li>
+            </ul>
+        </div>
+        <div id="nav-links">
+            <a title="Email Notifications" href="http://feedburner.google.com/fb/a/mailverify?uri=bmndr&amp;loc=en_US" onclick="window.open('http://feedburner.google.com/fb/a/mailverify?uri=bmndr', 'popupwindow', 'scrollbars=yes,width=550,height=520'); return false">
+                <img alt='email' src='https://blog.beeminder.com/wp-content/themes/beemtheeme/images/email.png' height="25" />
+            </a>
+            <a href="http://feeds.feedburner.com/bmndr" title="Subscribe by RSS" rel="alternate" type="application/rss+xml"><img src='https://blog.beeminder.com/wp-content/themes/beemtheeme/images/rss.png' alt='rss' height="25" /></a>
+            <a href="http://twitter.com/bmndr" title="Follow us on Twitter">
+                <img src='https://blog.beeminder.com/wp-content/themes/beemtheeme/images/twitter.png' alt='twitter' height="25" />
+            </a>
+            <a title='Follow us on Facebook' href='http://beeminder.com/facebook'>
+                <img src='/wp-content/uploads/facebook.png' alt='rss' height='25' />
+            </a>
+            <!-- Place this tag where you want the badge to render-->
+            <a href="https://plus.google.com/118275811754025086770?prsrc=3&rel=author" style="text-decoration:none;"><img src="https://ssl.gstatic.com/images/icons/gplus-32.png" alt="" style="border:0;width:25px;height:25px;" /></a>
+        </div>
+    </div><!-- #navigation -->
+    <!-- end header -->
+
+
+    <div id="mainwrapper">
+        <div id="leftcontent">
+            <h1 class="catheader">Tag Archive</h1>
+
+            <div id="tagcloud"><a href="https://blog.beeminder.com/tag/akrasia/" class="tag-cloud-link tag-link-9 tag-link-position-1" style="font-size: 14.7368421053pt;" aria-label="akrasia (136 items)">akrasia</a>
+                <a href="https://blog.beeminder.com/tag/akrasia-horizon/" class="tag-cloud-link tag-link-43 tag-link-position-2" style="font-size: 9.77777777778pt;" aria-label="akrasia horizon (11 items)">akrasia horizon</a>
+                <a href="https://blog.beeminder.com/tag/api/" class="tag-cloud-link tag-link-115 tag-link-position-3" style="font-size: 10.2456140351pt;" aria-label="api (14 items)">api</a>
+                <a href="https://blog.beeminder.com/tag/bee-all/" class="tag-cloud-link tag-link-150 tag-link-position-4" style="font-size: 16pt;" aria-label="bee-all (259 items)">bee-all</a>
+                <a href="https://blog.beeminder.com/tag/best-of/" class="tag-cloud-link tag-link-183 tag-link-position-5" style="font-size: 13.5204678363pt;" aria-label="best-of (75 items)">best-of</a>
+                <a href="https://blog.beeminder.com/tag/bugs/" class="tag-cloud-link tag-link-139 tag-link-position-6" style="font-size: 8.93567251462pt;" aria-label="bugs (7 items)">bugs</a>
+                <a href="https://blog.beeminder.com/tag/buzz/" class="tag-cloud-link tag-link-137 tag-link-position-7" style="font-size: 10.8070175439pt;" aria-label="buzz (19 items)">buzz</a>
+                <a href="https://blog.beeminder.com/tag/case-studies/" class="tag-cloud-link tag-link-24 tag-link-position-8" style="font-size: 13.8479532164pt;" aria-label="case studies (88 items)">case studies</a>
+                <a href="https://blog.beeminder.com/tag/commitment-contracts/" class="tag-cloud-link tag-link-37 tag-link-position-9" style="font-size: 10.3391812865pt;" aria-label="commitment contracts (15 items)">commitment contracts</a>
+                <a href="https://blog.beeminder.com/tag/commitment-devices/" class="tag-cloud-link tag-link-36 tag-link-position-10" style="font-size: 10.8070175439pt;" aria-label="commitment devices (19 items)">commitment devices</a>
+                <a href="https://blog.beeminder.com/tag/competition/" class="tag-cloud-link tag-link-29 tag-link-position-11" style="font-size: 10.1052631579pt;" aria-label="competition (13 items)">competition</a>
+                <a href="https://blog.beeminder.com/tag/dog-food/" class="tag-cloud-link tag-link-17 tag-link-position-12" style="font-size: 12.4444444444pt;" aria-label="dog food (44 items)">dog food</a>
+                <a href="https://blog.beeminder.com/tag/economics/" class="tag-cloud-link tag-link-27 tag-link-position-13" style="font-size: 10.4795321637pt;" aria-label="economics (16 items)">economics</a>
+                <a href="https://blog.beeminder.com/tag/faq/" class="tag-cloud-link tag-link-55 tag-link-position-14" style="font-size: 13.0994152047pt;" aria-label="FAQ (60 items)">FAQ</a>
+                <a href="https://blog.beeminder.com/tag/fitness/" class="tag-cloud-link tag-link-20 tag-link-position-15" style="font-size: 10.4795321637pt;" aria-label="fitness (16 items)">fitness</a>
+                <a href="https://blog.beeminder.com/tag/food/" class="tag-cloud-link tag-link-14 tag-link-position-16" style="font-size: 9.16959064327pt;" aria-label="food (8 items)">food</a>
+                <a href="https://blog.beeminder.com/tag/force-majeure/" class="tag-cloud-link tag-link-35 tag-link-position-17" style="font-size: 8.37426900585pt;" aria-label="force majeure (5 items)">force majeure</a>
+                <a href="https://blog.beeminder.com/tag/get-everything-done/" class="tag-cloud-link tag-link-73 tag-link-position-18" style="font-size: 9.59064327485pt;" aria-label="get everything done (10 items)">get everything done</a>
+                <a href="https://blog.beeminder.com/tag/guest-posts/" class="tag-cloud-link tag-link-19 tag-link-position-19" style="font-size: 12.7251461988pt;" aria-label="guest posts (50 items)">guest posts</a>
+                <a href="https://blog.beeminder.com/tag/integrations/" class="tag-cloud-link tag-link-130 tag-link-position-20" style="font-size: 12.4444444444pt;" aria-label="integrations (44 items)">integrations</a>
+                <a href="https://blog.beeminder.com/tag/lifehacks/" class="tag-cloud-link tag-link-22 tag-link-position-21" style="font-size: 11.1812865497pt;" aria-label="lifehacks (23 items)">lifehacks</a>
+                <a href="https://blog.beeminder.com/tag/mark-forster/" class="tag-cloud-link tag-link-75 tag-link-position-22" style="font-size: 8.70175438596pt;" aria-label="mark forster (6 items)">mark forster</a>
+                <a href="https://blog.beeminder.com/tag/meta/" class="tag-cloud-link tag-link-16 tag-link-position-23" style="font-size: 13.0058479532pt;" aria-label="meta (58 items)">meta</a>
+                <a href="https://blog.beeminder.com/tag/money/" class="tag-cloud-link tag-link-95 tag-link-position-24" style="font-size: 10.9005847953pt;" aria-label="money (20 items)">money</a>
+                <a href="https://blog.beeminder.com/tag/navel-gazing/" class="tag-cloud-link tag-link-44 tag-link-position-25" style="font-size: 13.7543859649pt;" aria-label="navel-gazing (85 items)">navel-gazing</a>
+                <a href="https://blog.beeminder.com/tag/nerdery/" class="tag-cloud-link tag-link-120 tag-link-position-26" style="font-size: 12.4444444444pt;" aria-label="nerdery (44 items)">nerdery</a>
+                <a href="https://blog.beeminder.com/tag/new-features/" class="tag-cloud-link tag-link-50 tag-link-position-27" style="font-size: 13.3801169591pt;" aria-label="new features (69 items)">new features</a>
+                <a href="https://blog.beeminder.com/tag/press/" class="tag-cloud-link tag-link-104 tag-link-position-28" style="font-size: 9.59064327485pt;" aria-label="press (10 items)">press</a>
+                <a href="https://blog.beeminder.com/tag/productivity-porn/" class="tag-cloud-link tag-link-21 tag-link-position-29" style="font-size: 12.7251461988pt;" aria-label="productivity porn (50 items)">productivity porn</a>
+                <a href="https://blog.beeminder.com/tag/psa/" class="tag-cloud-link tag-link-32 tag-link-position-30" style="font-size: 10.9005847953pt;" aria-label="PSA (20 items)">PSA</a>
+                <a href="https://blog.beeminder.com/tag/psychology/" class="tag-cloud-link tag-link-11 tag-link-position-31" style="font-size: 11.649122807pt;" aria-label="psychology (29 items)">psychology</a>
+                <a href="https://blog.beeminder.com/tag/quantified-self/" class="tag-cloud-link tag-link-64 tag-link-position-32" style="font-size: 12.2573099415pt;" aria-label="quantified self (40 items)">quantified self</a>
+                <a href="https://blog.beeminder.com/tag/rationality/" class="tag-cloud-link tag-link-131 tag-link-position-33" style="font-size: 14.5497076023pt;" aria-label="rationality (126 items)">rationality</a>
+                <a href="https://blog.beeminder.com/tag/resolutions/" class="tag-cloud-link tag-link-136 tag-link-position-34" style="font-size: 8.93567251462pt;" aria-label="resolutions (7 items)">resolutions</a>
+                <a href="https://blog.beeminder.com/tag/road-dial/" class="tag-cloud-link tag-link-42 tag-link-position-35" style="font-size: 9.59064327485pt;" aria-label="road dial (10 items)">road dial</a>
+                <a href="https://blog.beeminder.com/tag/science/" class="tag-cloud-link tag-link-151 tag-link-position-36" style="font-size: 12.7719298246pt;" aria-label="science (51 items)">science</a>
+                <a href="https://blog.beeminder.com/tag/self-binding/" class="tag-cloud-link tag-link-10 tag-link-position-37" style="font-size: 12.1169590643pt;" aria-label="self-binding (37 items)">self-binding</a>
+                <a href="https://blog.beeminder.com/tag/soup-nazi/" class="tag-cloud-link tag-link-28 tag-link-position-38" style="font-size: 8pt;" aria-label="soup nazi (4 items)">soup nazi</a>
+                <a href="https://blog.beeminder.com/tag/startups/" class="tag-cloud-link tag-link-58 tag-link-position-39" style="font-size: 12.3976608187pt;" aria-label="startups (43 items)">startups</a>
+                <a href="https://blog.beeminder.com/tag/stickk/" class="tag-cloud-link tag-link-31 tag-link-position-40" style="font-size: 9.59064327485pt;" aria-label="stickk (10 items)">stickk</a>
+                <a href="https://blog.beeminder.com/tag/tagtime/" class="tag-cloud-link tag-link-30 tag-link-position-41" style="font-size: 8.93567251462pt;" aria-label="tagtime (7 items)">tagtime</a>
+                <a href="https://blog.beeminder.com/tag/tips/" class="tag-cloud-link tag-link-13 tag-link-position-42" style="font-size: 13.3801169591pt;" aria-label="tips (69 items)">tips</a>
+                <a href="https://blog.beeminder.com/tag/trello/" class="tag-cloud-link tag-link-147 tag-link-position-43" style="font-size: 8.37426900585pt;" aria-label="trello (5 items)">trello</a>
+                <a href="https://blog.beeminder.com/tag/weight-loss/" class="tag-cloud-link tag-link-12 tag-link-position-44" style="font-size: 11.1812865497pt;" aria-label="weight loss (23 items)">weight loss</a>
+                <a href="https://blog.beeminder.com/tag/yellow-brick-road/" class="tag-cloud-link tag-link-38 tag-link-position-45" style="font-size: 12.4444444444pt;" aria-label="yellow brick road (44 items)">yellow brick road</a></div>
+
+            <div class="posts">
+                <h2 id="post-1721"><a href="https://blog.beeminder.com/baas/" rel="bookmark" title="Permanent Link to Beeminder &hearts; Boss as a Service">Beeminder &hearts; Boss as a Service</a></h2>
+                <div class="date">Sunday, August 9th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/baas/' title='Beeminder &hearts; Boss as a Service'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/08/faire-youre-hired-baas.png&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Beeminder &hearts; Boss as a Service" /></a>
+
+                    <p>
+
+
+                        We&#8217;re so excited to announce Beeminder&#8217;s Even More Official partnership with
+                        <a href="https://bossasaservice.life" title="Boss as a Service! But use the link at the end for an invitation to join!">Boss as a Service</a>,
+                        of which we are big fans!
+                        Some of us on the Beeminder team use it every day, in fact.
+                        In the past, Beeminder actually attempted to...<a href="https://blog.beeminder.com/baas/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1694"><a href="https://blog.beeminder.com/taskratchet/" rel="bookmark" title="Permanent Link to Announcing TaskRatchet: Like Beeminder for Your Todo List">Announcing TaskRatchet: Like Beeminder for Your Todo List</a></h2>
+                <div class="date">Monday, June 22nd, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/taskratchet/' title='Announcing TaskRatchet: Like Beeminder for Your Todo List'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/06/faire-taskratchet.png&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Announcing TaskRatchet: Like Beeminder for Your Todo List" /></a>
+
+                    <p>
+
+
+                        Nathan Arthur (narthur) has been beeminding for over two years now, brilliantly and prolifically.
+                        He&#8217;s also no small part of what makes the Beeminder forum the wonderful place that it is.
+                        And now he&#8217;s built an app of his own that complements Beeminder beautifully, which he&#8217;s about to tell you about...<a href="https://blog.beeminder.com/taskratchet/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1684"><a href="https://blog.beeminder.com/ybhp/" rel="bookmark" title="Permanent Link to Announcement: The Yellow Brick Half-Plane Has Arrived">Announcement: The Yellow Brick Half-Plane Has Arrived</a></h2>
+                <div class="date">Tuesday, June 9th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/ybhp/' title='Announcement: The Yellow Brick Half-Plane Has Arrived'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/06/faire-ybhp.jpeg&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Announcement: The Yellow Brick Half-Plane Has Arrived" /></a>
+
+                    <p>
+
+                        Until today Beeminder had a fundamental design flaw that was baked in from literally day one.
+                        The first line of code for what would
+                        <a href="https://blog.beeminder.com/beenamer/" title="Blog post about naming Beeminder Beeminder and what it started out as">become Beeminder</a> was to draw a line on a graph in Mathematica from a target weight to a goal...<a href="https://blog.beeminder.com/ybhp/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1679"><a href="https://blog.beeminder.com/magic/" rel="bookmark" title="Permanent Link to The Anti-Magic Principle">The Anti-Magic Principle</a></h2>
+                <div class="date">Wednesday, May 27th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/magic/' title='The Anti-Magic Principle'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/05/faire-bee-wizard-hat-final.jpg&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="The Anti-Magic Principle" /></a>
+
+                    <p>
+
+
+                        Being a fan of overly provocative titles, I was tempted to title this
+                        &#8220;If-Statements Considered Harmful&#8221;.
+                        Meaning that it&#8217;s so tempting to add little bits of intelligence to your app to make it do the sensible thing in different circumstances.
+                        And that&#8217;s usually perfectly correct but the Anti-Magic Principle...<a href="https://blog.beeminder.com/magic/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1673"><a href="https://blog.beeminder.com/isolines/" rel="bookmark" title="Permanent Link to X-Treme Nerd Interlude: Computing and Visualizing Level Curves of the Days-To-Derailment Function for the Upcoming Yellow Brick Half-Plane New World Order">X-Treme Nerd Interlude: Computing and Visualizing Level Curves of the Days-To-Derailment Function for the Upcoming Yellow Brick Half-Plane New World Order</a></h2>
+                <div class="date">Thursday, May 14th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/isolines/' title='X-Treme Nerd Interlude: Computing and Visualizing Level Curves of the Days-To-Derailment Function for the Upcoming Yellow Brick Half-Plane New World Order'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/05/faire-teacher-bee.jpg&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="X-Treme Nerd Interlude: Computing and Visualizing Level Curves of the Days-To-Derailment Function for the Upcoming Yellow Brick Half-Plane New World Order" /></a>
+
+                    <p>
+
+
+                        For background on the Yellow Brick Half-Plane that a normal human could conceivably care about, see our previous post on how we&#8217;re
+                        <a href="https://blog.beeminder.com/lanes" title="Feature Unannouncement: Death To Custom Lane Widths">killing the custom lane widths feature</a>.
+                        This post is strictly for abnormal humans, and/or, more realistically, for ourselves, because math...<a href="https://blog.beeminder.com/isolines/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1668"><a href="https://blog.beeminder.com/lanes/" rel="bookmark" title="Permanent Link to Feature Unannouncement: Death To Custom Lane Widths">Feature Unannouncement: Death To Custom Lane Widths</a></h2>
+                <div class="date">Friday, May 1st, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/lanes/' title='Feature Unannouncement: Death To Custom Lane Widths'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/05/faire-vice-grip-signed.jpg&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Feature Unannouncement: Death To Custom Lane Widths" /></a>
+
+                    <p>
+
+                        This is the next phase in our elaborate evil plan codenamed Yellow Brick Half-Plane.
+                        Benevolent plan, I meant to say.
+                        The previous phase was
+                        <a href="https://blog.beeminder.com/autowide/" title="Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual">killing off auto-widening yellow brick roads</a>.
+
+                        Background: Yellow Brick Whatnow?
+
+                        To start at the very beginning&#8230;
+                        The Yellow Brick Road is the path on your...<a href="https://blog.beeminder.com/lanes/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1661"><a href="https://blog.beeminder.com/megabreak/" rel="bookmark" title="Permanent Link to Schedule Breaks On All The Things!">Schedule Breaks On All The Things!</a></h2>
+                <div class="date">Monday, April 20th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/megabreak/' title='Schedule Breaks On All The Things!'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/04/helpbreak_03.png&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Schedule Breaks On All The Things!" /></a>
+
+                    <p>
+
+                        There&#8217;s a huge irony in us shipping this feature during the coronavirus lockdown.
+                        Namely, none of us need it for the foreseeable future!
+                        Our calendars are like an infinite Euclidean half-plane covered in fresh snow.
+
+                        (Ok, fine, I floated that claim among some hardcore Beeminder users and they vehemently disagreed.
+                        Examples of why this is great during a pandemic...<a href="https://blog.beeminder.com/megabreak/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1655"><a href="https://blog.beeminder.com/isonikki/" rel="bookmark" title="Permanent Link to Self-Isolation Strategies: Nikki’s Operation Safety Bubble">Self-Isolation Strategies: Nikki’s Operation Safety Bubble</a></h2>
+                <div class="date">Monday, March 30th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/isonikki/' title='Self-Isolation Strategies: Nikki’s Operation Safety Bubble'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/03/bun-in-box.jpeg&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Self-Isolation Strategies: Nikki’s Operation Safety Bubble" /></a>
+
+                    <p>
+
+
+                        Your beloved
+                        <a href="https://blog.beeminder.com/shanaqui/" title="Beeminder blog post introducing Nikki">Support Czar Nikki</a> (AKA shanaqui)
+                        is next in our trapped-in-our-apartments blog series
+                        (previously:
+                        <a href="https://blog.beeminder.com/isomary/" title="Self-Isolation Strategies: Mary On Creating Challenges To Make Time Pass">Mary on creating challenges</a>) and gives some inspiring examples of how they&#8217;re beeminding...<a href="https://blog.beeminder.com/isonikki/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1642"><a href="https://blog.beeminder.com/manwide/" rel="bookmark" title="Permanent Link to Death to Auto-Widening Yellow Brick Roads, Part 2">Death to Auto-Widening Yellow Brick Roads, Part 2</a></h2>
+                <div class="date">Monday, February 17th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/manwide/' title='Death to Auto-Widening Yellow Brick Roads, Part 2'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2020/02/pretty-road.jpg&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Death to Auto-Widening Yellow Brick Roads, Part 2" /></a>
+
+                    <p>
+
+
+
+                        If you&#8217;re just tuning in, and if you care about this for pragmatic rather than philosophical reasons, you&#8217;ll want to start with (or stick with) our
+                        <a href="https://blog.beeminder.com/autowide/" title="Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual">announcement that we have fully killed off auto-widening yellow brick roads</a>.
+
+                        This is the part where we philosophize about why...<a href="https://blog.beeminder.com/manwide/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="posts">
+                <h2 id="post-1639"><a href="https://blog.beeminder.com/autowide/" rel="bookmark" title="Permanent Link to Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual">Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual</a></h2>
+                <div class="date">Tuesday, January 28th, 2020</div>
+
+                <div class="entry">
+                    <a href='https://blog.beeminder.com/autowide/' title='Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual'><img src="https://blog.beeminder.com/wp-content/themes/beemtheeme/thumb.php?src=/wp-content/uploads/2018/01/wideloadfarmequipment.png&amp;h=80&amp;w=80&amp;zc=1&amp;q=80" class="alignleft" alt="Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual" /></a>
+
+                    <p>
+
+
+                        In which we explain how a big feature of early Beeminder,
+                        <a href="http://blog.beeminder.com/roadwidth" title="Old blog post that this one makes moot">auto-widening yellow brick roads</a>, was wrong-headed and what we&#8217;re doing now instead.
+                        This is Part 1 with Just The Facts and the probably-very-safe-assumption that you don&#8217;t care about the convoluted...<a href="https://blog.beeminder.com/autowide/" class="readmore"> &raquo;</a></p>
+                </div>
+
+
+            </div>
+
+            <div class="navigation">
+                <div class="alignleft"><a href="https://blog.beeminder.com/tag/akrasia/page/2/">&laquo; Older Entries</a></div>
+                <div class="alignright"></div>
+            </div>
+
+        </div>
+        <!-- begin sidebar -->
+        <div id="sidebar">
+            <div class="side-widget">
+                <h2>About</h2>
+                <div class="textwidget"><a href="http://beeminder.com">Beeminder</a> is goal-tracking with teeth. We plot your progress on a <a href="http://blog.beeminder.com/flexbind">yellow brick road</a> to your goal and if you go off track we take your money.
+                    <p />
+                    The <a href="http://beeminder.com" title="We sure like linking to Beeminder">Beeminder</a> blog is a hodgepodge of productivity nerdery and behavioral economics written by the founders and various friends.
+                    <!--
+<p>
+<a href="https://subscribing.rocks/subscriptions/new?public_token=UeGkiUSPRsdEUxJRjFxkVmC6"><input type="image" style="max-width: 160px" src="https://subscribing.rocks/assets/add_to_slack-02f48d76bf4e08fcca688e65c5c18e77235b308e2f73fc5b187255e3e8f8d228.png" /></a>
+</p>
+-->
+                </div>
+            </div>
+            <div class="side-widget">
+                <h2>Search</h2>
+                <form target='_blank' role='search' method='get' class='duckduckgo-search_widget' id='duckduckgo-search-1' action='https://blog.beeminder.com/'>
+                    <table>
+                        <tr>
+                            <td><input type='text' placeholder='Enter your search' name='s' id='duckduckgo-s-1' /></td>
+                        </tr>
+                    </table>
+                    <input type='hidden' name='ddg-s' value='no-ssl' />
+
+                </form>
+            </div>
+            <div class="side-widget">
+                <h2>Archives</h2>
+                <ul id='widget-collapsarch-5-top' class='collapsing archives list'>
+                    <li class='collapsing archives collapse'><span title='click to collapse' class='collapsing archives collapse'><span class='sym'>&#x25BC;</span></span><a href='https://blog.beeminder.com/2020/'>2020 <span class="yearCount">(19)</span>
+                        </a>
+                        <div id='collapsArch-2020:5'>
+                            <ul>
+                                <li class='collapsing archives collapse'><span title='click to collapse' class='collapsing archives collapse'><span class='sym'>&#x25BC;</span></span><a href='https://blog.beeminder.com/2020/09/' title='September'>September <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div id='collapsArch-2020-9:5'>
+                                        <ul>
+                                            <li class='collapsing archives item'><a href='https://blog.beeminder.com/speclist/' title='How To Write Functional Specs II: The Spec-List'>How To Write Functional Specs II: The Spec-List</a></li>
+
+                                        </ul>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/08/' title='August'>August <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/07/' title='July'>July <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/06/' title='June'>June <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/05/' title='May'>May <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/04/' title='April'>April <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/03/' title='March'>March <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/02/' title='February'>February <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2020/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2020-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/'>2019 <span class="yearCount">(20)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2019:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/12/' title='December'>December <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/11/' title='November'>November <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/10/' title='October'>October <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/09/' title='September'>September <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/08/' title='August'>August <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/07/' title='July'>July <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/06/' title='June'>June <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/05/' title='May'>May <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/04/' title='April'>April <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/03/' title='March'>March <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/02/' title='February'>February <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2019/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2019-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/'>2018 <span class="yearCount">(21)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2018:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/12/' title='December'>December <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/11/' title='November'>November <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/10/' title='October'>October <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/09/' title='September'>September <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/08/' title='August'>August <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/07/' title='July'>July <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/06/' title='June'>June <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/05/' title='May'>May <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/04/' title='April'>April <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/03/' title='March'>March <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/02/' title='February'>February <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2018/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2018-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/'>2017 <span class="yearCount">(21)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2017:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/12/' title='December'>December <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/11/' title='November'>November <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/10/' title='October'>October <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/09/' title='September'>September <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/08/' title='August'>August <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/07/' title='July'>July <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/06/' title='June'>June <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/05/' title='May'>May <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/04/' title='April'>April <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/03/' title='March'>March <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/02/' title='February'>February <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2017/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2017-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/'>2016 <span class="yearCount">(27)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2016:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/12/' title='December'>December <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/11/' title='November'>November <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/10/' title='October'>October <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/09/' title='September'>September <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/08/' title='August'>August <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/07/' title='July'>July <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/06/' title='June'>June <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/05/' title='May'>May <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/04/' title='April'>April <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/03/' title='March'>March <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/02/' title='February'>February <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2016/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2016-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/'>2015 <span class="yearCount">(33)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2015:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/12/' title='December'>December <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/11/' title='November'>November <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/10/' title='October'>October <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/09/' title='September'>September <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/08/' title='August'>August <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/07/' title='July'>July <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/06/' title='June'>June <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/05/' title='May'>May <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/04/' title='April'>April <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/03/' title='March'>March <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/02/' title='February'>February <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2015/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2015-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/'>2014 <span class="yearCount">(36)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2014:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/12/' title='December'>December <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/11/' title='November'>November <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/10/' title='October'>October <span class="monthCount">(5)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/09/' title='September'>September <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/08/' title='August'>August <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/07/' title='July'>July <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/06/' title='June'>June <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/05/' title='May'>May <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/04/' title='April'>April <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/03/' title='March'>March <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/02/' title='February'>February <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2014/01/' title='January'>January <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2014-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/'>2013 <span class="yearCount">(35)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2013:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/12/' title='December'>December <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/11/' title='November'>November <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/10/' title='October'>October <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/09/' title='September'>September <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/08/' title='August'>August <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/07/' title='July'>July <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/06/' title='June'>June <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/05/' title='May'>May <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/04/' title='April'>April <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/03/' title='March'>March <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/02/' title='February'>February <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2013/01/' title='January'>January <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2013-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/'>2012 <span class="yearCount">(37)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2012:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/12/' title='December'>December <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/11/' title='November'>November <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/10/' title='October'>October <span class="monthCount">(5)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/09/' title='September'>September <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/08/' title='August'>August <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/07/' title='July'>July <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/06/' title='June'>June <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/05/' title='May'>May <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/04/' title='April'>April <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/03/' title='March'>March <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/02/' title='February'>February <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2012/01/' title='January'>January <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2012-1:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end year -->
+                    <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/'>2011 <span class="yearCount">(29)</span>
+                        </a>
+                        <div style='display:none' id='collapsArch-2011:5'>
+                            <ul>
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/12/' title='December'>December <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-12:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/11/' title='November'>November <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-11:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/10/' title='October'>October <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-10:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/09/' title='September'>September <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-9:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/08/' title='August'>August <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-8:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/07/' title='July'>July <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-7:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/06/' title='June'>June <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-6:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/05/' title='May'>May <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-5:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/04/' title='April'>April <span class="monthCount">(3)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-4:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/03/' title='March'>March <span class="monthCount">(4)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-3:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/02/' title='February'>February <span class="monthCount">(2)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-2:5'>
+                                    </div>
+                                </li> <!-- close expanded month -->
+                                <li class='collapsing archives expand'><span title='click to expand' class='collapsing archives expand'><span class='sym'>&#x25BA;</span></span><a href='https://blog.beeminder.com/2011/01/' title='January'>January <span class="monthCount">(1)</span>
+                                    </a>
+                                    <div style='display:none' id='collapsArch-2011-1:5'>
+                                    </div>
+                                </li> <!-- close month -->
+                            </ul>
+                        </div>
+                    </li> <!-- end of collapsing archives -->
+                    <li style='display:none'>
+                        <script type="text/javascript">
+                            // <![CDATA[
+                            /* These variables are part of the Collapsing Archives Plugin
+                             * version: 2.0.5
+                             * revision: $Id: collapsArch.php 1715352 2017-08-18 14:30:00Z robfelty $
+                             * Copyright 2008 Robert Felty (robfelty.com)
+                             */
+                            try {
+                                collapsItems['catTest'] = 'test';
+                            } catch (err) {
+                                collapsItems = new Object();
+                            }
+                            collapsItems['collapsArch-2020-9:5'] = '';
+                            collapsItems['collapsArch-2020-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/docdriven/\' title=\'Blog-Post-Driven Development\'>Blog-Post-Driven Development</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/baas/\' title=\'Beeminder &hearts; Boss as a Service\'>Beeminder &hearts; Boss as a Service</a></li></ul>';
+                            collapsItems['collapsArch-2020-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/choices/\' title=\'Choices are Bad: The Anti-Settings Principle\'>Choices are Bad: The Anti-Settings Principle</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/postel/\' title=\'The Anti-Robustness Principle\'>The Anti-Robustness Principle</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buns/\' title=\'Beeminding the Fuzzy Friends\'>Beeminding the Fuzzy Friends</a></li></ul>';
+                            collapsItems['collapsArch-2020-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/taskratchet/\' title=\'Announcing TaskRatchet: Like Beeminder for Your Todo List\'>Announcing TaskRatchet: Like Beeminder for Your Todo List</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/ybhp/\' title=\'Announcement: The Yellow Brick Half-Plane Has Arrived\'>Announcement: The Yellow Brick Half-Plane Has Arrived</a></li></ul>';
+                            collapsItems['collapsArch-2020-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/magic/\' title=\'The Anti-Magic Principle\'>The Anti-Magic Principle</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/isolines/\' title=\'X-Treme Nerd Interlude: Computing and Visualizing Level Curves of the Days-To-Derailment Function for the Upcoming Yellow Brick Half-Plane New World Order\'>X-Treme Nerd Interlude: Computing and Visualizing Level Curves of the Days-To-Derailment Function for the Upcoming Yellow Brick Half-Plane New World Order</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/lanes/\' title=\'Feature Unannouncement: Death To Custom Lane Widths\'>Feature Unannouncement: Death To Custom Lane Widths</a></li></ul>';
+                            collapsItems['collapsArch-2020-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/megabreak/\' title=\'Schedule Breaks On All The Things!\'>Schedule Breaks On All The Things!</a></li></ul>';
+                            collapsItems['collapsArch-2020-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/isonikki/\' title=\'Self-Isolation Strategies: Nikki’s Operation Safety Bubble\'>Self-Isolation Strategies: Nikki’s Operation Safety Bubble</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/isomary/\' title=\'Self-Isolation Strategies: Mary On Creating Challenges To Make Time Pass\'>Self-Isolation Strategies: Mary On Creating Challenges To Make Time Pass</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/specs/\' title=\'How To Write Functional Specs\'>How To Write Functional Specs</a></li></ul>';
+                            collapsItems['collapsArch-2020-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/eggbasket/\' title=\'The Startup Egg-Basket Principle\'>The Startup Egg-Basket Principle</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/manwide/\' title=\'Death to Auto-Widening Yellow Brick Roads, Part 2\'>Death to Auto-Widening Yellow Brick Roads, Part 2</a></li></ul>';
+                            collapsItems['collapsArch-2020-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/autowide/\' title=\'Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual\'>Feature Unannouncement: Auto-Widening Yellow Brick Roads Have Gone Manual</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz2019/\' title=\'Beeminder Buzz Press Roundup 2019\'>Beeminder Buzz Press Roundup 2019</a></li></ul>';
+                            collapsItems['collapsArch-2019-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gmailzerolabels/\' title=\'Meet The New Gmail Zero, Same As The Old Gmail Zero\'>Meet The New Gmail Zero, Same As The Old Gmail Zero</a></li></ul>';
+                            collapsItems['collapsArch-2019-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/integers/\' title=\'Integery Goals, Timey-Wimey Goals, and Conservarounding\'>Integery Goals, Timey-Wimey Goals, and Conservarounding</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/zipit/\' title=\'Social Reality And The Canard About Keeping Your Goals To Yourself\'>Social Reality And The Canard About Keeping Your Goals To Yourself</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/projecteuler/\' title=\'Beeminder &hearts; Project Euler\'>Beeminder &hearts; Project Euler</a></li></ul>';
+                            collapsItems['collapsArch-2019-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/redqueen/\' title=\'Redqueening, Inbox Zero, Backlogs, and Fluid Dynamics\'>Redqueening, Inbox Zero, Backlogs, and Fluid Dynamics</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/dogfood/\' title=\'Dogfood Binge\'>Dogfood Binge</a></li></ul>';
+                            collapsItems['collapsArch-2019-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/vegdays/\' title=\'How To Technically Count As A Vegetarian While Eating Animals\'>How To Technically Count As A Vegetarian While Eating Animals</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/motivationtypes/\' title=\'Motivational Archetypes\'>Motivational Archetypes</a></li></ul>';
+                            collapsItems['collapsArch-2019-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/lockmyphone/\' title=\'Add Datapoints From the Notifications Bar (Even While Your Phone Is Locked!)\'>Add Datapoints From the Notifications Bar (Even While Your Phone Is Locked!)</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/paretocaps/\' title=\'Pareto Dominating The Pledge Cap UI For Goal Creation\'>Pareto Dominating The Pledge Cap UI For Goal Creation</a></li></ul>';
+                            collapsItems['collapsArch-2019-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/pdp/\' title=\'The Pareto Dominance Principle for Apps and Websites\'>The Pareto Dominance Principle for Apps and Websites</a></li></ul>';
+                            collapsItems['collapsArch-2019-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/pareto/\' title=\'Pareto Dominance\'>Pareto Dominance</a></li></ul>';
+                            collapsItems['collapsArch-2019-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/dogeatdog/\' title=\'Startups Not Eating Each Other Like Cannibalistic Dogs\'>Startups Not Eating Each Other Like Cannibalistic Dogs</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/bugreports/\' title=\'How You Talk Yourself Out Of Reporting A Bug\'>How You Talk Yourself Out Of Reporting A Bug</a></li></ul>';
+                            collapsItems['collapsArch-2019-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/commitstew/\' title=\'Quantified Self Talk: Tracking My Personal Reliability\'>Quantified Self Talk: Tracking My Personal Reliability</a></li></ul>';
+                            collapsItems['collapsArch-2019-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/textbooks/\' title=\'Beeminder, With The Power Of Reading!\'>Beeminder, With The Power Of Reading!</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/defail/\' title=\'Derailing Is Not Failing; or, Beeminder Revenue Proportional To User Awesomeness\'>Derailing Is Not Failing; or, Beeminder Revenue Proportional To User Awesomeness</a></li></ul>';
+                            collapsItems['collapsArch-2019-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/commitwall/\' title=\'Commitwall: No More Beeminding Without A Way To Be Charged Money\'>Commitwall: No More Beeminding Without A Way To Be Charged Money</a></li></ul>';
+                            collapsItems['collapsArch-2019-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz13/\' title=\'13th Beeminder Buzz Press Roundup\'>13th Beeminder Buzz Press Roundup</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/accountability/\' title=\'Accountability Partners and Soft Accountability\'>Accountability Partners and Soft Accountability</a></li></ul>';
+                            collapsItems['collapsArch-2018-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/survivor/\' title=\'Beeminder\'s New Year\'s Resolution Survivor\'>Beeminder\'s New Year\'s Resolution Survivor</a></li></ul>';
+                            collapsItems['collapsArch-2018-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/clozemaster/\' title=\'Beeminder &#x2665; Clozemaster\'>Beeminder &#x2665; Clozemaster</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/flic/\' title=\'Beeminding With A Physical Button\'>Beeminding With A Physical Button</a></li></ul>';
+                            collapsItems['collapsArch-2018-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/shanaqui/\' title=\'Introducing Shanaqui: Beeminder Support Czar\'>Introducing Shanaqui: Beeminder Support Czar</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/strava/\' title=\'Beeminder &#x2665; Strava\'>Beeminder &#x2665; Strava</a></li></ul>';
+                            collapsItems['collapsArch-2018-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/swifts/\' title=\'Portland Beeminder Meetup: The Birds and The Bees Meet Again\'>Portland Beeminder Meetup: The Birds and The Bees Meet Again</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/toggl/\' title=\'Beeminder &#x2665; Toggl\'>Beeminder &#x2665; Toggl</a></li></ul>';
+                            collapsItems['collapsArch-2018-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mercy/\' title=\'Feature Announcement: General Mercy\'>Feature Announcement: General Mercy</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/scholar/\' title=\'Beeminder Scholarships to Attend Quantified Self 2018 in Portland\'>Beeminder Scholarships to Attend Quantified Self 2018 in Portland</a></li></ul>';
+                            collapsItems['collapsArch-2018-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/slytherin404/\' title=\'Slytherin 404 Errors\'>Slytherin 404 Errors</a></li></ul>';
+                            collapsItems['collapsArch-2018-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/meditation/\' title=\'A Monastery is a Commitment Device\'>A Monastery is a Commitment Device</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/wsj2/\' title=\'Beeminder in the Wall Street Journal Every Five Years\'>Beeminder in the Wall Street Journal Every Five Years</a></li></ul>';
+                            collapsItems['collapsArch-2018-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/fifty/\' title=\'The Fifty Goals of Brent Yorgey\'>The Fifty Goals of Brent Yorgey</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mbork/\' title=\'How To Use Beeminder Without Ever (Hardly Ever) Leaving Emacs\'>How To Use Beeminder Without Ever (Hardly Ever) Leaving Emacs</a></li></ul>';
+                            collapsItems['collapsArch-2018-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/kim/\' title=\'Beeminding And All That Jazz\'>Beeminding And All That Jazz</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/practice/\' title=\'Does Practice Make Perfect?\'>Does Practice Make Perfect?</a></li></ul>';
+                            collapsItems['collapsArch-2018-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/barfingcats/\' title=\'Barfing Cats and Other Stories from Talking to Weasels in Support\'>Barfing Cats and Other Stories from Talking to Weasels in Support</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/allthethings/\' title=\'Beeminding All The Things\'>Beeminding All The Things</a></li></ul>';
+                            collapsItems['collapsArch-2018-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/waisted/\' title=\'The Dirty Plate Club\'>The Dirty Plate Club</a></li></ul>';
+                            collapsItems['collapsArch-2018-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/deathtoexp/\' title=\'Feature Unannouncement: Exponential Roads Going Piecewise Linear\'>Feature Unannouncement: Exponential Roads Going Piecewise Linear</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/punishment/\' title=\'Negative Reinforcement ≠ Punishment\'>Negative Reinforcement ≠ Punishment</a></li></ul>';
+                            collapsItems['collapsArch-2017-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/schelling/\' title=\'Schelling Fences on Slippery Slopes\'>Schelling Fences on Slippery Slopes</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/kara/\' title=\'500 Words A Day\'>500 Words A Day</a></li></ul>';
+                            collapsItems['collapsArch-2017-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/psych/\' title=\'Psychoanalyzing Beeminder\'>Psychoanalyzing Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/bites/\' title=\'Beemind Bites\'>Beemind Bites</a></li></ul>';
+                            collapsItems['collapsArch-2017-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/six/\' title=\'Beeminder Is Sixy!\'>Beeminder Is Sixy!</a></li></ul>';
+                            collapsItems['collapsArch-2017-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tao2/\' title=\'The Sting of Work: How I Use Beeminder, Part Two\'>The Sting of Work: How I Use Beeminder, Part Two</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tao/\' title=\'The Tao of Bees: How I use Beeminder\'>The Tao of Bees: How I use Beeminder</a></li></ul>';
+                            collapsItems['collapsArch-2017-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz11/\' title=\'Press Roundup: 99 More Things The Internet Has Said About Beeminder\'>Press Roundup: 99 More Things The Internet Has Said About Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/will/\' title=\'The \"I Will\" System\'>The \"I Will\" System</a></li></ul>';
+                            collapsItems['collapsArch-2017-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/pact/\' title=\'Beeminder: Like Pact Except All We Do Is Take Your Money\'>Beeminder: Like Pact Except All We Do Is Take Your Money</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/paypal/\' title=\'Announcement: Beeminder Adds PayPal as a Payment Option\'>Announcement: Beeminder Adds PayPal as a Payment Option</a></li></ul>';
+                            collapsItems['collapsArch-2017-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/amsterdam/\' title=\'The Bee Team Goes To Amsterdam\'>The Bee Team Goes To Amsterdam</a></li></ul>';
+                            collapsItems['collapsArch-2017-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/apple/\' title=\'iOS Updates: Apple Health, Today Widget, and GTBee\'>iOS Updates: Apple Health, Today Widget, and GTBee</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mayhem/\' title=\'Maniac Mayhem: Commit To a Month of Making Things Every Morning\'>Maniac Mayhem: Commit To a Month of Making Things Every Morning</a></li></ul>';
+                            collapsItems['collapsArch-2017-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/autofetch/\' title=\'Third-Party App Developers Rejoice: No More Polling For Autodata\'>Third-Party App Developers Rejoice: No More Polling For Autodata</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/write/\' title=\'Newbee Corner: Beemind Your Writing (By Word Count, Automatically)\'>Newbee Corner: Beemind Your Writing (By Word Count, Automatically)</a></li></ul>';
+                            collapsItems['collapsArch-2017-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/language/\' title=\'Learning a Language with Beeminder\'>Learning a Language with Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buglabels/\' title=\'Our Label Ontology For Issue Tracking\'>Our Label Ontology For Issue Tracking</a></li></ul>';
+                            collapsItems['collapsArch-2017-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/support/\' title=\'Newbee Corner: What Happens When I Email Support?\'>Newbee Corner: What Happens When I Email Support?</a></li></ul>';
+                            collapsItems['collapsArch-2017-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz10/\' title=\'Press Roundup to Trump All Press Roundups\'>Press Roundup to Trump All Press Roundups</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/todoist/\' title=\'Beeminder ♥ Todoist\'>Beeminder ♥ Todoist</a></li></ul>';
+                            collapsItems['collapsArch-2016-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/easythings/\' title=\'Beemind Easy Things\'>Beemind Easy Things</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/shirknturk/\' title=\'The Shirk & Turk Principle\'>The Shirk & Turk Principle</a></li></ul>';
+                            collapsItems['collapsArch-2016-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/five/\' title=\'Fifth Anniversary of Beeminder\'>Fifth Anniversary of Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/josh/\' title=\'Beehind the Scenes of the Beeminder Redesign\'>Beehind the Scenes of the Beeminder Redesign</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/urlminder/\' title=\'New Official URLminder Integration\'>New Official URLminder Integration</a></li></ul>';
+                            collapsItems['collapsArch-2016-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/redesign/\' title=\'Unveiling the Big Beeminder Redesign of 2016\'>Unveiling the Big Beeminder Redesign of 2016</a></li></ul>';
+                            collapsItems['collapsArch-2016-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/anomalily/\' title=\'Introducing Lillian Karabaic, Minister of the Exterior\'>Introducing Lillian Karabaic, Minister of the Exterior</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/derail/\' title=\'Newbee Corner: What Happens When I \'Derail\'?\'>Newbee Corner: What Happens When I \'Derail\'?</a></li></ul>';
+                            collapsItems['collapsArch-2016-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/olimay/\' title=\'Team Black vs Team Yellow: The Two Styles of Beeminding\'>Team Black vs Team Yellow: The Two Styles of Beeminding</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/infinibee/\' title=\'Announcing the Infinibee Plan and Other Premium Changes\'>Announcing the Infinibee Plan and Other Premium Changes</a></li></ul>';
+                            collapsItems['collapsArch-2016-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/cockroach/\' title=\'The Cockroach Principle\'>The Cockroach Principle</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/arbeetrary/\' title=\'Beemind Arbitrary Tasks Automatically with Complice\'>Beemind Arbitrary Tasks Automatically with Complice</a></li></ul>';
+                            collapsItems['collapsArch-2016-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beemplice/\' title=\'Beeminder and Complice Make It Official\'>Beeminder and Complice Make It Official</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/road/\' title=\'New Premium Feature: Rudimentary Road Editor\'>New Premium Feature: Rudimentary Road Editor</a></li></ul>';
+                            collapsItems['collapsArch-2016-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/weekends/\' title=\'New Premium Feature: Weekends Off\'>New Premium Feature: Weekends Off</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz9/\' title=\'Honeymoons, True Love, and Yet More Buzz\'>Honeymoons, True Love, and Yet More Buzz</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/creditcard/\' title=\'What It Means To Give Beeminder Your Credit Card\'>What It Means To Give Beeminder Your Credit Card</a></li></ul>';
+                            collapsItems['collapsArch-2016-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/obscure/\' title=\'16 Obscure Beeminder Features\'>16 Obscure Beeminder Features</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/custard/\' title=\'Walking On Custard\'>Walking On Custard</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/deathtofreebees/\' title=\'Death To Freebees; Or, Freebees Für Alles\'>Death To Freebees; Or, Freebees Für Alles</a></li></ul>';
+                            collapsItems['collapsArch-2016-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/willpower/\' title=\'What Is Willpower?\'>What Is Willpower?</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/ego/\' title=\'Ego Depletion Depletion\'>Ego Depletion Depletion</a></li></ul>';
+                            collapsItems['collapsArch-2016-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mongoid/\' title=\'MongoMapper to Mongoid; Or, Breaking All The Things\'>MongoMapper to Mongoid; Or, Breaking All The Things</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/revealed/\' title=\'Revealed Preference\'>Revealed Preference</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz8/\' title=\'Post New Year\'s Press Roundup\'>Post New Year\'s Press Roundup</a></li></ul>';
+                            collapsItems['collapsArch-2016-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/frictionless/\' title=\'Frictionless Tracking with Beeminder Autodata (QS 2015)\'>Frictionless Tracking with Beeminder Autodata (QS 2015)</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/habitica/\' title=\'Bee Your Best Self in 2016 with Habitica\'>Bee Your Best Self in 2016 with Habitica</a></li></ul>';
+                            collapsItems['collapsArch-2015-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz7/\' title=\'Buzzy Buzz Buzz: Discover Magazine Edition\'>Buzzy Buzz Buzz: Discover Magazine Edition</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/systems/\' title=\'Systems Not Goals\'>Systems Not Goals</a></li></ul>';
+                            collapsItems['collapsArch-2015-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/cybermonday/\' title=\'Cyber Monday: OK, Fine\'>Cyber Monday: OK, Fine</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/faire/\' title=\'Beeminder\'s Youngest User\'>Beeminder\'s Youngest User</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/complice/\' title=\'Hard Commitments & Soft Commitments: Beeminder ♥ Complice\'>Hard Commitments & Soft Commitments: Beeminder ♥ Complice</a></li></ul>';
+                            collapsItems['collapsArch-2015-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/four/\' title=\'Fourth Anniversary of Beeminder\'>Fourth Anniversary of Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/hardsoon/\' title=\'Hard-Committing To Do Something \"Soon\"\'>Hard-Committing To Do Something \"Soon\"</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/waterfalls/\' title=\'Chasing Waterfalls\'>Chasing Waterfalls</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/reminders/\' title=\'Revamped Reminders\'>Revamped Reminders</a></li></ul>';
+                            collapsItems['collapsArch-2015-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzzyear/\' title=\'Press Roundup: A Year of Buzz\'>Press Roundup: A Year of Buzz</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/qs2015/\' title=\'Bee on Extreme Productivity (QS 2015)\'>Bee on Extreme Productivity (QS 2015)</a></li></ul>';
+                            collapsItems['collapsArch-2015-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/should/\' title=\'I Resolve Not To Resolve; Or, The Anti-Resolution Resolution\'>I Resolve Not To Resolve; Or, The Anti-Resolution Resolution</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/trust/\' title=\'Trusting Your Divided Self\'>Trusting Your Divided Self</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mirabai/\' title=\'Nine Greens\'>Nine Greens</a></li></ul>';
+                            collapsItems['collapsArch-2015-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/chelsea/\' title=\'Weasel Heart-To-Heart\'>Weasel Heart-To-Heart</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/nudge/\' title=\'Cranial Silicosis and Paths of Least Resistance\'>Cranial Silicosis and Paths of Least Resistance</a></li></ul>';
+                            collapsItems['collapsArch-2015-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/seinfeld/\' title=\'The Seinfeld Hack; or, Don\'t Break The Chain\'>The Seinfeld Hack; or, Don\'t Break The Chain</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/qs15/\' title=\'Quantified Self 2015 and Bay Area Beeminder Meetup\'>Quantified Self 2015 and Bay Area Beeminder Meetup</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/skritter/\' title=\'Beeminder &#x2665; Skritter\'>Beeminder &#x2665; Skritter</a></li></ul>';
+                            collapsItems['collapsArch-2015-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/misfit/\' title=\'Misfit and Bee-fit: Beeminder ♥ Misfit\'>Misfit and Bee-fit: Beeminder ♥ Misfit</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/smoking/\' title=\'Smoking Sticks and Carrots\'>Smoking Sticks and Carrots</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/ifttt/\' title=\'If This MIND That: Beeminder ♥ IFTTT\'>If This MIND That: Beeminder ♥ IFTTT</a></li></ul>';
+                            collapsItems['collapsArch-2015-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gmailzeroer/\' title=\'GmailZero: Not Just For Your Inbox Anymore\'>GmailZero: Not Just For Your Inbox Anymore</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/crisis/\' title=\'Dealing with Beemergencies in an Emergency\'>Dealing with Beemergencies in an Emergency</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/fearofbees/\' title=\'Monkeys Are Afraid of Bees\'>Monkeys Are Afraid of Bees</a></li></ul>';
+                            collapsItems['collapsArch-2015-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beeyond/\' title=\'Case Study: Beemind Going Beyond Your Usual Routine\'>Case Study: Beemind Going Beyond Your Usual Routine</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/movingav/\' title=\'Should You Beemind The Moving Average?\'>Should You Beemind The Moving Average?</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/garmin/\' title=\'Beeminder ♥ Garmin\'>Beeminder ♥ Garmin</a></li></ul>';
+                            collapsItems['collapsArch-2015-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/triangle/\' title=\'Triangular Beeminding; Or, Drink Less, Using the Power of Triangles\'>Triangular Beeminding; Or, Drink Less, Using the Power of Triangles</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/epson/\' title=\'Beeminder ♥ Epson\'>Beeminder ♥ Epson</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/bucket/\' title=\'Bucketminding\'>Bucketminding</a></li></ul>';
+                            collapsItems['collapsArch-2015-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/pomopoker/\' title=\'Pomodoro Poker\'>Pomodoro Poker</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tocks/\' title=\'Tocks\'>Tocks</a></li></ul>';
+                            collapsItems['collapsArch-2014-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/sleep/\' title=\'Beeminder ♥ Sleep as Android\'>Beeminder ♥ Sleep as Android</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/rosary/\' title=\'Code and Catholicism: Beeminding Praying and Integrating Beeminder on iOS\'>Code and Catholicism: Beeminding Praying and Integrating Beeminder on iOS</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/rituals/\' title=\'Beeminding Rituals\'>Beeminding Rituals</a></li></ul>';
+                            collapsItems['collapsArch-2014-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/veggieminding/\' title=\'1000 Days of Fruits and Vegetables\'>1000 Days of Fruits and Vegetables</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/zapier/\' title=\'Beeminder &#x2665; Zapier: Hundreds of New Integrations in One\'>Beeminder &#x2665; Zapier: Hundreds of New Integrations in One</a></li></ul>';
+                            collapsItems['collapsArch-2014-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/three/\' title=\'Beeminder Turns Three!\'>Beeminder Turns Three!</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/deadlines/\' title=\'New Feature and Veritable Paradigm Shift: Arbitrary Deadlines\'>New Feature and Veritable Paradigm Shift: Arbitrary Deadlines</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/habitrpg/\' title=\'Beeminder &#x2665; HabitRPG\'>Beeminder &#x2665; HabitRPG</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/discourse/\' title=\'New Discourse Forum!\'>New Discourse Forum!</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/freebees/\' title=\'Freebees: Not Actually Free\'>Freebees: Not Actually Free</a></li></ul>';
+                            collapsItems['collapsArch-2014-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/pledgecaps/\' title=\'New Feature: Pledge Caps\'>New Feature: Pledge Caps</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/whattomind/\' title=\'What To Mind: Picking a Metric\'>What To Mind: Picking a Metric</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz5/\' title=\'Press Roundup 5\'>Press Roundup 5</a></li></ul>';
+                            collapsItems['collapsArch-2014-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/smarmbot/\' title=\'Don\'t Be a Smarmbot\'>Don\'t Be a Smarmbot</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/twitter/\' title=\'Birds and The Bees: Beeminder Has Twitter Integration\'>Birds and The Bees: Beeminder Has Twitter Integration</a></li></ul>';
+                            collapsItems['collapsArch-2014-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/typebee/\' title=\'The Type Bee Personality\'>The Type Bee Personality</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/philip/\' title=\'How I Use Beeminder\'>How I Use Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/fatcyclist/\' title=\'Ringcycles Wins Fat Cyclist Weight Loss Contest!\'>Ringcycles Wins Fat Cyclist Weight Loss Contest!</a></li></ul>';
+                            collapsItems['collapsArch-2014-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/exproad/\' title=\'Clearing Up Confusion About Exponential Roads\'>Clearing Up Confusion About Exponential Roads</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/maniac/\' title=\'Bethany\'s Maniac Week\'>Bethany\'s Maniac Week</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/burnout/\' title=\'Beating Beeminder Burnout\'>Beating Beeminder Burnout</a></li></ul>';
+                            collapsItems['collapsArch-2014-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/hieroglyphs/\' title=\'Learning Ancient Egyptian in an Hour Per Week with Beeminder\'>Learning Ancient Egyptian in an Hour Per Week with Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/comfortzone/\' title=\'Beeminding Your Way Out of Your Comfort Zone\'>Beeminding Your Way Out of Your Comfort Zone</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/supporters/\' title=\'New Feature: Supporters\'>New Feature: Supporters</a></li></ul>';
+                            collapsItems['collapsArch-2014-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/bothsides/\' title=\'(Never)Minding Both Sides\'>(Never)Minding Both Sides</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/heartbleed/\' title=\'Heartbleed and Other Epic Crashes of Ineptitude\'>Heartbleed and Other Epic Crashes of Ineptitude</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gtbee/\' title=\'Get Things Done (Or Else!) With Beeminder and GTBee\'>Get Things Done (Or Else!) With Beeminder and GTBee</a></li></ul>';
+                            collapsItems['collapsArch-2014-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/weight/\' title=\'Bee\'s Guide To Beeminding Weight Loss\'>Bee\'s Guide To Beeminding Weight Loss</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/vegetables/\' title=\'Eat Your Vegetables\'>Eat Your Vegetables</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/fatty/\' title=\'Fat Cyclist Weight Loss Competition with Beeminder\'>Fat Cyclist Weight Loss Competition with Beeminder</a></li></ul>';
+                            collapsItems['collapsArch-2014-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/newbees/\' title=\'Beeminder: A User\'s Guide for New Bees\'>Beeminder: A User\'s Guide for New Bees</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/codeschool/\' title=\'Beeminder &#x2665; Code School\'>Beeminder &#x2665; Code School</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/runnersworld/\' title=\'Another Press Roundup Part Deux, Revisited: Return of the Beeminder Buzz Returns Again!\'>Another Press Roundup Part Deux, Revisited: Return of the Beeminder Buzz Returns Again!</a></li></ul>';
+                            collapsItems['collapsArch-2014-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/qs2013/\' title=\'Minding Bee: Time Tracking, Behavior Change, and the Birth of Beeminder\'>Minding Bee: Time Tracking, Behavior Change, and the Birth of Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beenice/\' title=\'Be Nice To Yourself\'>Be Nice To Yourself</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beekeeper/\' title=\'The Beekeeper Program: Beeminder-Based Lifecoaching\'>The Beekeeper Program: Beeminder-Based Lifecoaching</a></li></ul>';
+                            collapsItems['collapsArch-2013-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/dip/\' title=\'Resolutions for Real\'>Resolutions for Real</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/bikes/\' title=\'How Beeminder Paid for 14 Bikes\'>How Beeminder Paid for 14 Bikes</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beedroid/\' title=\'Android and Beeminder and Tasker\'>Android and Beeminder and Tasker</a></li></ul>';
+                            collapsItems['collapsArch-2013-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/uvi/\' title=\'1000 Days of User-Visible Improvements\'>1000 Days of User-Visible Improvements</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/oauth/\' title=\'Beeminder &#x2665; ... You! How To Build Your Own Beeminder Integrations\'>Beeminder &#x2665; ... You! How To Build Your Own Beeminder Integrations</a></li></ul>';
+                            collapsItems['collapsArch-2013-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/draft/\' title=\'Year-Round NaNoWriMo with Beeminder and Draft\'>Year-Round NaNoWriMo with Beeminder and Draft</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/jawbone/\' title=\'Beeminder ♥ Jawbone\'>Beeminder ♥ Jawbone</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/two/\' title=\'Beeminder Turns Two!\'>Beeminder Turns Two!</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/moreless/\' title=\'More Schwag, Less Beeminding\'>More Schwag, Less Beeminding</a></li></ul>';
+                            collapsItems['collapsArch-2013-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/less/\' title=\'Do-Less Goals with Pessimistic Presumptive Reports\'>Do-Less Goals with Pessimistic Presumptive Reports</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/breaks/\' title=\'Scheduled Breaks!\'>Scheduled Breaks!</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/runkeeper/\' title=\'Beeminder ♥ RunKeeper\'>Beeminder ♥ RunKeeper</a></li></ul>';
+                            collapsItems['collapsArch-2013-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/cheating/\' title=\'Combatting Cheating\'>Combatting Cheating</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/nwo/\' title=\'New World Order: Goals No Longer Freeze\'>New World Order: Goals No Longer Freeze</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/curtain/\' title=\'Beehind the Curtain: Secrets of our Support Success\'>Beehind the Curtain: Secrets of our Support Success</a></li></ul>';
+                            collapsItems['collapsArch-2013-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/nick/\' title=\'Spiraling Into Control\'>Spiraling Into Control</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/glossary/\' title=\'Beeminder Glossary\'>Beeminder Glossary</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/sin/\' title=\'Beeminding Sin\'>Beeminding Sin</a></li></ul>';
+                            collapsItems['collapsArch-2013-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/zeno/\' title=\'Zeno Polling\'>Zeno Polling</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/catchup/\' title=\'Catch-up Unmustered; or, Easier is Harder\'>Catch-up Unmustered; or, Easier is Harder</a></li></ul>';
+                            collapsItems['collapsArch-2013-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/duolingo/\' title=\'Todas as línguas! Beeminder ama Duolingo\'>Todas as línguas! Beeminder ama Duolingo</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/routine/\' title=\'To Break From Routine Is Human\'>To Break From Routine Is Human</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/fair/\' title=\'Exquisitely Fair Pre-Pay Discounts\'>Exquisitely Fair Pre-Pay Discounts</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/autocancel/\' title=\'Auto-Canceling Subscriptions\'>Auto-Canceling Subscriptions</a></li></ul>';
+                            collapsItems['collapsArch-2013-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/wsj/\' title=\'Beeminder Buzz: Front Page of the Wall Street Journal\'>Beeminder Buzz: Front Page of the Wall Street Journal</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/premium/\' title=\'Announcing Beeminder Premium Plans: Bee Lite, Plan Bee, Beemium, and Beekeeper\'>Announcing Beeminder Premium Plans: Bee Lite, Plan Bee, Beemium, and Beekeeper</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/legit/\' title=\'Weasel-Proofing and the Definition of Legitimacy\'>Weasel-Proofing and the Definition of Legitimacy</a></li></ul>';
+                            collapsItems['collapsArch-2013-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/exponential/\' title=\'Intrafamily Bets and the Genius of the Exponential Pledge Schedule\'>Intrafamily Bets and the Genius of the Exponential Pledge Schedule</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/box/\' title=\'Beeminding Outside the Box\'>Beeminding Outside the Box</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/anticharity/\' title=\'Socially Efficient Commitment Devices\'>Socially Efficient Commitment Devices</a></li></ul>';
+                            collapsItems['collapsArch-2013-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gitminder/\' title=\'Gitminder: Commit To Keep Coding\'>Gitminder: Commit To Keep Coding</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/recommit/\' title=\'Precommit to Recommit: The Third Great Beeminder Epiphany\'>Precommit to Recommit: The Third Great Beeminder Epiphany</a></li></ul>';
+                            collapsItems['collapsArch-2013-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gratitude/\' title=\'Everything is Amazing, Even Gratitude Journaling\'>Everything is Amazing, Even Gratitude Journaling</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/ineptitude/\' title=\'Beeminder Error in Your Favor, and Other Crashes of Ineptitude\'>Beeminder Error in Your Favor, and Other Crashes of Ineptitude</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/southwest/\' title=\'Beeminder Buzz at 30,000 Feet, and other New Year\'s Coverage\'>Beeminder Buzz at 30,000 Feet, and other New Year\'s Coverage</a></li></ul>';
+                            collapsItems['collapsArch-2012-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/resolutions/\' title=\'Get the Jump on Your Resolutions\'>Get the Jump on Your Resolutions</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/shortcircuit/\' title=\'Pledge Short-Circuiting\'>Pledge Short-Circuiting</a></li></ul>';
+                            collapsItems['collapsArch-2012-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/rescuetime/\' title=\'Beeminder ♥ RescueTime\'>Beeminder ♥ RescueTime</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/fitbit/\' title=\'Beeminder ♥ Fitbit\'>Beeminder ♥ Fitbit</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/nanowrimo/\' title=\'Beemind Your NaNoWriMo Progress\'>Beemind Your NaNoWriMo Progress</a></li></ul>';
+                            collapsItems['collapsArch-2012-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/trello/\' title=\'Beeminder ♥ Trello\'>Beeminder ♥ Trello</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/apps/\' title=\'Announcing the Beeminder Android and iPhone Apps\'>Announcing the Beeminder Android and iPhone Apps</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tv/\' title=\'Emergency TV Day\'>Emergency TV Day</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/one/\' title=\'Launch Anniversary! How Crazy Are We Now?\'>Launch Anniversary! How Crazy Are We Now?</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mustdo/\' title=\'The One Must-Do Task Each Day\'>The One Must-Do Task Each Day</a></li></ul>';
+                            collapsItems['collapsArch-2012-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/mongo/\' title=\'Destroy All!\'>Destroy All!</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gmailzero/\' title=\'Gmail Zero: Beeminding Your Inbox\'>Gmail Zero: Beeminding Your Inbox</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/habits/\' title=\'Failing your Goals with Beeminder\'>Failing your Goals with Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/api/\' title=\'Beeminder API\'>Beeminder API</a></li></ul>';
+                            collapsItems['collapsArch-2012-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/smart/\' title=\'Beeminder is S.M.A.R.T., Overcomes Bias\'>Beeminder is S.M.A.R.T., Overcomes Bias</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/perverse/\' title=\'Perverse Incentives and the Paradox of Beeminder\'s Sting\'>Perverse Incentives and the Paradox of Beeminder\'s Sting</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/weusethat/\' title=\'Beeminder: We Use That; or, WeUseThat: Beeminder\'>Beeminder: We Use That; or, WeUseThat: Beeminder</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gympact/\' title=\'GymPact vs Beeminder\'>GymPact vs Beeminder</a></li></ul>';
+                            collapsItems['collapsArch-2012-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/synonyms/\' title=\'Synonyms for Self-Binding\'>Synonyms for Self-Binding</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tri/\' title=\'Case Study: Triathlon Training\'>Case Study: Triathlon Training</a></li></ul>';
+                            collapsItems['collapsArch-2012-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/buzz/\' title=\'Press Roundup: What\'s the Buzz?\'>Press Roundup: What\'s the Buzz?</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/lift/\' title=\'Hammers and Chisels\'>Hammers and Chisels</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/psfdd/\' title=\'Portland Seed Fund Demo Day\'>Portland Seed Fund Demo Day</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/chirpify/\' title=\'Birds and the Bees: Chirpify and Beeminder Shack Up\'>Birds and the Bees: Chirpify and Beeminder Shack Up</a></li></ul>';
+                            collapsItems['collapsArch-2012-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/weasels/\' title=\'Getting Back On The Wagon\'>Getting Back On The Wagon</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tuit/\' title=\'Beeminder: Round Tuit Dispenser\'>Beeminder: Round Tuit Dispenser</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/innocentive/\' title=\'Innocentive $10k Challenge: Increasing People\'s Ability to Start and Stay on Task\'>Innocentive $10k Challenge: Increasing People\'s Ability to Start and Stay on Task</a></li></ul>';
+                            collapsItems['collapsArch-2012-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/monkey/\' title=\'Monkey Brains and Multiple Selves\'>Monkey Brains and Multiple Selves</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/pdxqs/\' title=\'Quantified Self Talk: Beeminding Beeminder\'>Quantified Self Talk: Beeminding Beeminder</a></li></ul>';
+                            collapsItems['collapsArch-2012-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/flexbind/\' title=\'Flexible Self-Control\'>Flexible Self-Control</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/weighly/\' title=\'Why Weigh (Daily)?\'>Why Weigh (Daily)?</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beehive/\' title=\'Beeminder Hits the Oregon Trail\'>Beeminder Hits the Oregon Trail</a></li></ul>';
+                            collapsItems['collapsArch-2012-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gandalf/\' title=\'Study Wizardry\'>Study Wizardry</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/layaways/\' title=\'Layaways and Lamentations\'>Layaways and Lamentations</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/ged/\' title=\'Get Everything Done\'>Get Everything Done</a></li></ul>';
+                            collapsItems['collapsArch-2012-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/j2j/\' title=\'Jamming with Jake Jenkins\'>Jamming with Jake Jenkins</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/competitors/\' title=\'Aiding and Abetting\'>Aiding and Abetting</a></li></ul>';
+                            collapsItems['collapsArch-2011-12:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/trackhack/\' title=\'Trackers vs Lifehackers\'>Trackers vs Lifehackers</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/qs/\' title=\'Quantified Self\'>Quantified Self</a></li></ul>';
+                            collapsItems['collapsArch-2011-11:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/widget/\' title=\'Beeminder Dashboard Widget\'>Beeminder Dashboard Widget</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/tg/\' title=\'PSA: T Minus One Week to Thanksgiving\'>PSA: T Minus One Week to Thanksgiving</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/blogdog/\' title=\'Dog Food Renewed\'>Dog Food Renewed</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/chunky/\' title=\'It\'s Chunky Time!\'>It\'s Chunky Time!</a></li></ul>';
+                            collapsItems['collapsArch-2011-10:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/wantcanwill/\' title=\'The Want-Can-Will Test for Akrasia\'>The Want-Can-Will Test for Akrasia</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/launch/\' title=\'Beeminder Open to the Public\'>Beeminder Open to the Public</a></li></ul>';
+                            collapsItems['collapsArch-2011-9:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/textbot/\' title=\'Buzzing BeeBot\'>Buzzing BeeBot</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/beenamer/\' title=\'The Name \"Beeminder\"\'>The Name \"Beeminder\"</a></li></ul>';
+                            collapsItems['collapsArch-2011-8:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/dial/\' title=\'The Road Dial and the Akrasia Horizon\'>The Road Dial and the Akrasia Horizon</a></li></ul>';
+                            collapsItems['collapsArch-2011-7:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/backfiring/\' title=\'Backfiring Workouts\'>Backfiring Workouts</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/roadwidth/\' title=\'The Magical Widening Yellow Brick Road\'>The Magical Widening Yellow Brick Road</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/sos/\' title=\'Force Majeure, Or Beeminder\'s SOS Clause\'>Force Majeure, Or Beeminder\'s SOS Clause</a></li></ul>';
+                            collapsItems['collapsArch-2011-6:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/solstice/\' title=\'Summer Solstice PSA\'>Summer Solstice PSA</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/stickk/\' title=\'BMNDR vs StickK\'>BMNDR vs StickK</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/timecarrot/\' title=\'TimeCarrot = StickK + RescueTime\'>TimeCarrot = StickK + RescueTime</a></li></ul>';
+                            collapsItems['collapsArch-2011-5:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/akratics/\' title=\'Akratics Anonymous\'>Akratics Anonymous</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/unintended/\' title=\'Unintended Consequences\'>Unintended Consequences</a></li></ul>';
+                            collapsItems['collapsArch-2011-4:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/rails/\' title=\'Beeminder on Rails\'>Beeminder on Rails</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/blind/\' title=\'What Happens When You Don\'t Report Your Weight; or, Driving Blind\'>What Happens When You Don\'t Report Your Weight; or, Driving Blind</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/martin/\' title=\'Case Study: Martin\'s Renovating\'>Case Study: Martin\'s Renovating</a></li></ul>';
+                            collapsItems['collapsArch-2011-3:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/sediment/\' title=\'Productivity Hack: The Sedimentary Filing System\'>Productivity Hack: The Sedimentary Filing System</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/gym/\' title=\'To Buy or Not To Buy a Gym Membership\'>To Buy or Not To Buy a Gym Membership</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/lildeb/\' title=\'Little Debbie Does Dog Food\'>Little Debbie Does Dog Food</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/foodhabits/\' title=\'Food Habits\'>Food Habits</a></li></ul>';
+                            collapsItems['collapsArch-2011-2:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/preeat/\' title=\'No Preemptive Eating\'>No Preemptive Eating</a></li>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/easyhard/\' title=\'Weight Loss: Really Easy, Really Hard\'>Weight Loss: Really Easy, Really Hard</a></li></ul>';
+                            collapsItems['collapsArch-2011-1:5'] = '<ul>          <li class=\'collapsing archives item\'><a href=\'https://blog.beeminder.com/akrasia/\' title=\'How To Do What You Want: Akrasia and Self-Binding\'>How To Do What You Want: Akrasia and Self-Binding</a></li></ul>';
+                            /*  Collapse Functions, version 2.0
+                             *
+                             *--------------------------------------------------------------------------*/
+                            String.prototype.trim = function() {
+                                return this.replace(/^\s+|\s+$/g, "");
+                            }
+
+                            function createCookie(name, value, days) {
+                                if (days) {
+                                    var date = new Date();
+                                    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                    var expires = "; expires=" + date.toGMTString();
+                                } else {
+                                    var expires = "";
+                                }
+                                document.cookie = name + "=" + value + expires + "; path=/";
+                            }
+
+                            function readCookie(name) {
+                                var nameEQ = name + "=";
+                                var ca = document.cookie.split(';');
+                                for (var i = 0; i < ca.length; i++) {
+                                    var c = ca[i];
+                                    while (c.charAt(0) == ' ') {
+                                        c = c.substring(1, c.length);
+                                    }
+                                    if (c.indexOf(nameEQ) == 0) {
+                                        return c.substring(nameEQ.length, c.length);
+                                    }
+                                }
+                                return null;
+                            }
+
+                            function eraseCookie(name) {
+                                createCookie(name, "", -1);
+                            }
+
+                            function addExpandCollapse(id, expandSym, collapseSym, accordion) {
+                                jQuery('#' + id + ' span.expand').on('click.collapsingArchives', function() {
+                                    if (accordion == 1) {
+                                        var theDiv = jQuery(this).parent().parent().find('span.collapse').parent().children('div');
+                                        jQuery(theDiv).hide('normal');
+                                        jQuery(this).parent().parent().find('span.collapse').removeClass('collapse').addClass('expand');
+                                        createCookie(theDiv.attr('id'), 0, 7);
+                                        jQuery(this).parent().parent().find('span.sym').html(expandSym);
+                                        //jQuery('#' + id + ' .expand .sym').html(expandSym);
+                                    }
+                                    expandArch(this, expandSym, collapseSym);
+                                    return false;
+                                });
+                                jQuery('#' + id + ' span.collapse').on('click.collapsingArchives', function() {
+                                    collapseArch(this, expandSym, collapseSym);
+                                    return false;
+                                });
+                            }
+
+                            function expandArch(symbol, expandSym, collapseSym) {
+                                var theDiv = jQuery(symbol).parent().children('div');
+                                try {
+                                    if (collapsItems[jQuery(theDiv).attr('id')] != '') {
+                                        jQuery(theDiv).html(collapsItems[jQuery(theDiv).attr('id')]).show('normal');
+                                    } else {
+                                        jQuery(theDiv).show('normal');
+                                    }
+                                } catch (err) {
+                                    jQuery(theDiv).show('normal');
+                                }
+                                jQuery(symbol).removeClass('expand').addClass('collapse');
+                                jQuery(symbol).children('.sym').html(collapseSym);
+                                jQuery(symbol).off('click.collapsingArchives').on('click.collapsingArchives', function() {
+                                    collapseArch(symbol, expandSym, collapseSym);
+                                    return false;
+                                });
+                                createCookie(theDiv.attr('id'), 1, 7);
+                            }
+
+                            function collapseArch(symbol, expandSym, collapseSym) {
+                                var theDiv = jQuery(symbol).parent().children('div');
+                                jQuery(theDiv).hide('normal');
+                                jQuery(symbol).removeClass('collapse').addClass('expand');
+                                jQuery(symbol).children('.sym').html(expandSym);
+                                jQuery(symbol).off('click.collapsingArchives').on('click.collapsingArchives', function() {
+                                    expandArch(symbol, expandSym, collapseSym);
+                                    return false;
+                                });
+                                createCookie(theDiv.attr('id'), 0, 7);
+                            }
+                            addExpandCollapse('widget-collapsarch-5-top', '&#x25BA;', '&#x25BC;', 0) // ]]>
+
+                        </script>
+                    </li>
+                </ul>
+            </div>
+            <div class="side-widget">
+                <div class="textwidget">
+                    <h2>Eating our own <a href="http://en.wikipedia.org/wiki/Eating_your_own_dog_food">Dog Food</a></h2>
+                    <a href="http://beeminder.com/meta/blog">
+                        <img alt="dogfood graph" src="https://www.beeminder.com/meta/goals/blog/graph?style=thumb" width="160" />
+                    </a>
+                </div>
+            </div>
+            <div class="side-widget">
+                <h2>Start Here</h2>
+                <div class="textwidget">Does Beeminder sound super crazypants? Just confusing? One of the first things you may want to check out is our <a href="http://blog.beeminder.com/newbees" title="Also includes a link to our adorable Explain Like I'm 5 video">User's Guide for New Bees</a>. Check out other posts we're most proud of by clicking the "best-of" tag below. If you're a glutton for honey, the "bee-all" tag has everything we still think is worth reading. Other good ones are the "rationality" and "science" tags, if you're into that.</div>
+            </div>
+            <div class="side-widget">
+                <h2>Tags</h2>
+                <div class="tagcloud"><a href="https://blog.beeminder.com/tag/akrasia/" class="tag-cloud-link tag-link-9 tag-link-position-1" style="font-size: 19.7894736842pt;" aria-label="akrasia (136 items)">akrasia</a>
+                    <a href="https://blog.beeminder.com/tag/akrasia-horizon/" class="tag-cloud-link tag-link-43 tag-link-position-2" style="font-size: 11.1111111111pt;" aria-label="akrasia horizon (11 items)">akrasia horizon</a>
+                    <a href="https://blog.beeminder.com/tag/api/" class="tag-cloud-link tag-link-115 tag-link-position-3" style="font-size: 11.9298245614pt;" aria-label="api (14 items)">api</a>
+                    <a href="https://blog.beeminder.com/tag/bee-all/" class="tag-cloud-link tag-link-150 tag-link-position-4" style="font-size: 22pt;" aria-label="bee-all (259 items)">bee-all</a>
+                    <a href="https://blog.beeminder.com/tag/best-of/" class="tag-cloud-link tag-link-183 tag-link-position-5" style="font-size: 17.6608187135pt;" aria-label="best-of (75 items)">best-of</a>
+                    <a href="https://blog.beeminder.com/tag/bugs/" class="tag-cloud-link tag-link-139 tag-link-position-6" style="font-size: 9.63742690058pt;" aria-label="bugs (7 items)">bugs</a>
+                    <a href="https://blog.beeminder.com/tag/buzz/" class="tag-cloud-link tag-link-137 tag-link-position-7" style="font-size: 12.9122807018pt;" aria-label="buzz (19 items)">buzz</a>
+                    <a href="https://blog.beeminder.com/tag/case-studies/" class="tag-cloud-link tag-link-24 tag-link-position-8" style="font-size: 18.2339181287pt;" aria-label="case studies (88 items)">case studies</a>
+                    <a href="https://blog.beeminder.com/tag/commitment-contracts/" class="tag-cloud-link tag-link-37 tag-link-position-9" style="font-size: 12.0935672515pt;" aria-label="commitment contracts (15 items)">commitment contracts</a>
+                    <a href="https://blog.beeminder.com/tag/commitment-devices/" class="tag-cloud-link tag-link-36 tag-link-position-10" style="font-size: 12.9122807018pt;" aria-label="commitment devices (19 items)">commitment devices</a>
+                    <a href="https://blog.beeminder.com/tag/competition/" class="tag-cloud-link tag-link-29 tag-link-position-11" style="font-size: 11.6842105263pt;" aria-label="competition (13 items)">competition</a>
+                    <a href="https://blog.beeminder.com/tag/dog-food/" class="tag-cloud-link tag-link-17 tag-link-position-12" style="font-size: 15.7777777778pt;" aria-label="dog food (44 items)">dog food</a>
+                    <a href="https://blog.beeminder.com/tag/economics/" class="tag-cloud-link tag-link-27 tag-link-position-13" style="font-size: 12.3391812865pt;" aria-label="economics (16 items)">economics</a>
+                    <a href="https://blog.beeminder.com/tag/faq/" class="tag-cloud-link tag-link-55 tag-link-position-14" style="font-size: 16.9239766082pt;" aria-label="FAQ (60 items)">FAQ</a>
+                    <a href="https://blog.beeminder.com/tag/fitness/" class="tag-cloud-link tag-link-20 tag-link-position-15" style="font-size: 12.3391812865pt;" aria-label="fitness (16 items)">fitness</a>
+                    <a href="https://blog.beeminder.com/tag/food/" class="tag-cloud-link tag-link-14 tag-link-position-16" style="font-size: 10.0467836257pt;" aria-label="food (8 items)">food</a>
+                    <a href="https://blog.beeminder.com/tag/force-majeure/" class="tag-cloud-link tag-link-35 tag-link-position-17" style="font-size: 8.65497076023pt;" aria-label="force majeure (5 items)">force majeure</a>
+                    <a href="https://blog.beeminder.com/tag/get-everything-done/" class="tag-cloud-link tag-link-73 tag-link-position-18" style="font-size: 10.783625731pt;" aria-label="get everything done (10 items)">get everything done</a>
+                    <a href="https://blog.beeminder.com/tag/guest-posts/" class="tag-cloud-link tag-link-19 tag-link-position-19" style="font-size: 16.269005848pt;" aria-label="guest posts (50 items)">guest posts</a>
+                    <a href="https://blog.beeminder.com/tag/integrations/" class="tag-cloud-link tag-link-130 tag-link-position-20" style="font-size: 15.7777777778pt;" aria-label="integrations (44 items)">integrations</a>
+                    <a href="https://blog.beeminder.com/tag/lifehacks/" class="tag-cloud-link tag-link-22 tag-link-position-21" style="font-size: 13.567251462pt;" aria-label="lifehacks (23 items)">lifehacks</a>
+                    <a href="https://blog.beeminder.com/tag/mark-forster/" class="tag-cloud-link tag-link-75 tag-link-position-22" style="font-size: 9.22807017544pt;" aria-label="mark forster (6 items)">mark forster</a>
+                    <a href="https://blog.beeminder.com/tag/meta/" class="tag-cloud-link tag-link-16 tag-link-position-23" style="font-size: 16.7602339181pt;" aria-label="meta (58 items)">meta</a>
+                    <a href="https://blog.beeminder.com/tag/money/" class="tag-cloud-link tag-link-95 tag-link-position-24" style="font-size: 13.0760233918pt;" aria-label="money (20 items)">money</a>
+                    <a href="https://blog.beeminder.com/tag/navel-gazing/" class="tag-cloud-link tag-link-44 tag-link-position-25" style="font-size: 18.0701754386pt;" aria-label="navel-gazing (85 items)">navel-gazing</a>
+                    <a href="https://blog.beeminder.com/tag/nerdery/" class="tag-cloud-link tag-link-120 tag-link-position-26" style="font-size: 15.7777777778pt;" aria-label="nerdery (44 items)">nerdery</a>
+                    <a href="https://blog.beeminder.com/tag/new-features/" class="tag-cloud-link tag-link-50 tag-link-position-27" style="font-size: 17.4152046784pt;" aria-label="new features (69 items)">new features</a>
+                    <a href="https://blog.beeminder.com/tag/press/" class="tag-cloud-link tag-link-104 tag-link-position-28" style="font-size: 10.783625731pt;" aria-label="press (10 items)">press</a>
+                    <a href="https://blog.beeminder.com/tag/productivity-porn/" class="tag-cloud-link tag-link-21 tag-link-position-29" style="font-size: 16.269005848pt;" aria-label="productivity porn (50 items)">productivity porn</a>
+                    <a href="https://blog.beeminder.com/tag/psa/" class="tag-cloud-link tag-link-32 tag-link-position-30" style="font-size: 13.0760233918pt;" aria-label="PSA (20 items)">PSA</a>
+                    <a href="https://blog.beeminder.com/tag/psychology/" class="tag-cloud-link tag-link-11 tag-link-position-31" style="font-size: 14.3859649123pt;" aria-label="psychology (29 items)">psychology</a>
+                    <a href="https://blog.beeminder.com/tag/quantified-self/" class="tag-cloud-link tag-link-64 tag-link-position-32" style="font-size: 15.4502923977pt;" aria-label="quantified self (40 items)">quantified self</a>
+                    <a href="https://blog.beeminder.com/tag/rationality/" class="tag-cloud-link tag-link-131 tag-link-position-33" style="font-size: 19.4619883041pt;" aria-label="rationality (126 items)">rationality</a>
+                    <a href="https://blog.beeminder.com/tag/resolutions/" class="tag-cloud-link tag-link-136 tag-link-position-34" style="font-size: 9.63742690058pt;" aria-label="resolutions (7 items)">resolutions</a>
+                    <a href="https://blog.beeminder.com/tag/road-dial/" class="tag-cloud-link tag-link-42 tag-link-position-35" style="font-size: 10.783625731pt;" aria-label="road dial (10 items)">road dial</a>
+                    <a href="https://blog.beeminder.com/tag/science/" class="tag-cloud-link tag-link-151 tag-link-position-36" style="font-size: 16.350877193pt;" aria-label="science (51 items)">science</a>
+                    <a href="https://blog.beeminder.com/tag/self-binding/" class="tag-cloud-link tag-link-10 tag-link-position-37" style="font-size: 15.2046783626pt;" aria-label="self-binding (37 items)">self-binding</a>
+                    <a href="https://blog.beeminder.com/tag/soup-nazi/" class="tag-cloud-link tag-link-28 tag-link-position-38" style="font-size: 8pt;" aria-label="soup nazi (4 items)">soup nazi</a>
+                    <a href="https://blog.beeminder.com/tag/startups/" class="tag-cloud-link tag-link-58 tag-link-position-39" style="font-size: 15.6959064327pt;" aria-label="startups (43 items)">startups</a>
+                    <a href="https://blog.beeminder.com/tag/stickk/" class="tag-cloud-link tag-link-31 tag-link-position-40" style="font-size: 10.783625731pt;" aria-label="stickk (10 items)">stickk</a>
+                    <a href="https://blog.beeminder.com/tag/tagtime/" class="tag-cloud-link tag-link-30 tag-link-position-41" style="font-size: 9.63742690058pt;" aria-label="tagtime (7 items)">tagtime</a>
+                    <a href="https://blog.beeminder.com/tag/tips/" class="tag-cloud-link tag-link-13 tag-link-position-42" style="font-size: 17.4152046784pt;" aria-label="tips (69 items)">tips</a>
+                    <a href="https://blog.beeminder.com/tag/trello/" class="tag-cloud-link tag-link-147 tag-link-position-43" style="font-size: 8.65497076023pt;" aria-label="trello (5 items)">trello</a>
+                    <a href="https://blog.beeminder.com/tag/weight-loss/" class="tag-cloud-link tag-link-12 tag-link-position-44" style="font-size: 13.567251462pt;" aria-label="weight loss (23 items)">weight loss</a>
+                    <a href="https://blog.beeminder.com/tag/yellow-brick-road/" class="tag-cloud-link tag-link-38 tag-link-position-45" style="font-size: 15.7777777778pt;" aria-label="yellow brick road (44 items)">yellow brick road</a></div>
+            </div>
+            <div class="side-widget">
+                <h2>Beeminder Community</h2>
+                <div class="textwidget">Most of the action is in the <a href="http://forum.beeminder.com" title="It's a Discourse.org forum; it's super slick">Beeminder forum</a>. Or if you want to be slightly social without risking getting distracted arguing on the internet, you can do pomodoros online in sync with other Beeminder users and productivity nerds in <a href="https://complice.co/room/beeminder" title="Not to brag but we're close personal friends with the founder of Complice">the Beeminder coworking room on Complice</a>.</div>
+            </div>
+            <div class="side-widget">
+                <h2>Akrasia</h2>
+                <div class="textwidget">Akrasia (ancient Greek ἀκρασία, "lacking command over oneself"; adjective: "akratic") is the state of acting against one's better judgment, not doing what one genuinely wants to do. It encompasses procrastination, lack of self-control, lack of follow-through, and any kind of addictive behavior.
+                    <br />
+                    <a href="http://en.wikipedia.org/wiki/Akrasia">wikipedia.org/wiki/Akrasia</a></div>
+            </div>
+        </div>
+        <!-- end sidebar -->
+    </div>
+    <!-- begin footer -->
+    <div id="footer">
+        Powered by <a href="http://wpengine.com/?a_aid=4faee64c398e4">WP Engine</a>. Theme based on <a href="http://bavotasan.com/">c.bavota</a>'s Magazine Basic. And we owe a ton to <a href="http://robfelty.com">Rob Felty</a>.</div>
+    <!-- ngg_resource_manager_marker -->
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var countVars = {
+            "disqusShortname": "beemblog"
+        };
+        /* ]]> */
+
+    </script>
+    <script type='text/javascript' src='https://blog.beeminder.com/wp-content/plugins/disqus-comment-system/public/js/comment_count.js?ver=3.0.17'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2CSafe.js&#038;ver=5.4.2'></script>
+    <script type='text/javascript' src='https://blog.beeminder.com/wp-includes/js/wp-embed.min.js?ver=5.4.2'></script>
+    <!-- Magazine Basic theme designed by c.bavota - http://tinkerpriestmedia.com -->
+    <script>
+        //        const tags = document.getElementsByClassName('tag-cloud-link')
+        //        for (let i = 0; i < tags.length; i++) {
+        //            let size = tags[i].style.fontSize
+        //            tags[i].style.fontSize = ` calc(${size.slice(0, -2)/6}rem)`
+        //            console.log(size.slice(0, -2) / 12)
+        //        }
+        //        console.log(size.slice(0, -2) / 12)
+
+    </script>
+</body>
+
+</html>
