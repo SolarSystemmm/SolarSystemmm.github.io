@@ -161,8 +161,8 @@
             methods: {
                 initThree() {
                     this.scene = new THREE.Scene();
-                    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
+                    this.camera = new THREE.PerspectiveCamera(75, 2, 0.1, 1000);
+                    console.log(window.innerWidth / window.innerHeight)
                     this.renderer = new THREE.WebGLRenderer({
                         canvas: document.getElementById("background"),
                         alpha: true,
@@ -171,8 +171,8 @@
 
                     const canvas_wrapper = document.querySelector('.canvas-wrapper')
 
-                    this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2)
-
+                    this.renderer.setSize(640, 305)
+                    console.log(window.innerWidth / 2, window.innerHeight / 2)
                     const geometry = new THREE.PlaneBufferGeometry(10, 10);
                     let material = new THREE.MeshLambertMaterial({
                         color: 0xc6d9ec,
