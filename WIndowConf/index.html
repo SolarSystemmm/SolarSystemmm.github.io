@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js" integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug==" crossorigin="anonymous"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #000;
+            padding-top: 30px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .main-window {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+
+            margin: 0 auto;
+        }
+
+        .canvas-wrapper {
+            width: 60%;
+            display: flex;
+            align-items: center;
+        }
+
+        .forms-wrapper {
+            margin-top: 30px;
+            width: 40%;
+        }
+
+        .custom-select-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .custom-select-wrapper .text {
+            flex-basis: 20%;
+            flex-shrink: 0;
+        }
+
+        .custom-select-wrapper select {
+            width: 50%;
+            padding: 5px;
+            border: 2px solid #3842bb;
+        }
+
+        .custom-select-wrapper select:focus {
+            border-color: none;
+            outline: none;
+        }
+
+        .custom-select-wrapper .get-answer-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #3842bb;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            margin-left: 15px;
+        }
+
+    </style>
+    <div class="main-window" id="vue">
+        <div class="canvas-wrapper">
+            <canvas id="background"></canvas>
+        </div>
+        <div class="forms-wrapper">
+            <h1 class="title">
+                Toppsving komfort
+            </h1>
+            <p class="text">
+                U-verdi: 1.2
+            </p>
+            <p class="price">
+                Pris 4821 ,-
+            </p>
+            <div class="select-values">
+                <div class="custom-select-wrapper">
+                    <p class="text">Høyde</p>
+                    <select class="custom-select" v-model="formWidth">
+                        <option disabled value="">100</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
+                        <option>250</option>
+                        <option>300</option>
+                    </select>
+                    <a href="#" class="get-answer-btn">?</a>
+                </div>
+                <div class="custom-select-wrapper">
+                    <p class="text">Bredde</p>
+                    <select class="custom-select" v-model="formHeight">
+                        <option disabled value="">100</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
+                        <option>250</option>
+                        <option>300</option>
+                    </select>
+                    <a href="#" class="get-answer-btn">?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#vue',
+            data: {
+                window_values: {
+                    width: 150,
+                    height: 150,
+                    degree_isolation: '',
+                    handle_size: '',
+                    grids: '',
+                    notspor: '',
+                    material: '',
+                    glass: '',
+                    frame_color: '',
+                },
+                form_data: {
+                    width: 150,
+                    height: 150,
+                    glass: {
+
+                    },
+                },
+                threejs: {
+                    scene: '',
+                }
+            },
+            methods: {
+                initThree() {
+                    this.scene = new THREE.Scene();
+                    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+                    this.renderer = new THREE.WebGLRenderer({
+                        canvas: document.getElementById("background"),
+                        alpha: true,
+                        antialias: true
+                    });
+
+                    const canvas_wrapper = document.querySelector('.canvas-wrapper')
+
+                    this.renderer.setSize(window.innerWidth / 2, window.innerHeight / 2)
+
+                    const geometry = new THREE.PlaneBufferGeometry(10, 10);
+                    let material = new THREE.MeshLambertMaterial({
+                        color: 0xc6d9ec,
+                    })
+
+                    const light = new THREE.AmbientLight(0xFFFFFF, 1)
+                    this.scene.add(light)
+
+                    this.cube = new THREE.Mesh(geometry, material)
+                    this.cube.position.z = 0.1
+                    this.scene.add(this.cube)
+
+                    this.scene.children[1].scale.x = this.formWidth / 200;
+                    this.scene.children[1].scale.y = this.formHeight / 200;
+
+                    const geometry1 = new THREE.PlaneBufferGeometry(10.45, 10.45, 0, 0);
+                    let material1 = new THREE.MeshLambertMaterial({
+                        color: 0x000000,
+                    })
+
+                    this.cube1 = new THREE.Mesh(geometry1, material1)
+                    this.cube1.position.z = 0
+                    // this.scene.add(this.cube1)
+                    const color = 0xFFFFFF;
+                    const intensity = 1;
+                    const light1 = new THREE.PointLight(color, intensity);
+                    light1.position.set(-30, 20, 5);
+                    this.scene.add(light1);
+
+                    this.camera.position.z = 10;
+                    this.animate()
+                },
+
+                animate() {
+                    this.renderer.render(this.scene, this.camera);
+                    requestAnimationFrame(this.animate);
+                }
+            },
+            mounted() {
+                this.initThree();
+            },
+            computed: {
+                formWidth: {
+                    get: function() {
+                        return this.window_values.width
+                    },
+                    set: function(text) {
+                        this.scene.children[1].scale.x = text / 200
+                        this.window_values.width = text
+                    }
+                },
+                formHeight: {
+                    get: function() {
+                        return this.window_values.height
+                    },
+                    set: function(text) {
+                        this.scene.children[1].scale.y = text / 200
+                        this.window_values.height = text
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
