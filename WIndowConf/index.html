@@ -179,9 +179,9 @@
                     const textureW = new THREE.TextureLoader().load(
                         'http://solarsystemmm.github.io/WIndowConf/img/t3.jpg');
 
-                    let material = new THREE.MeshPhongMaterial({
+                    let material = new THREE.MeshLambertMaterial({
                         map: textureW,
-                        // shininess: 0.5
+                       
                     })
 
                     const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
@@ -254,8 +254,8 @@
                     const color = 0xFFFFFF;
                     const intensity = 0.5;
                     const light1 = new THREE.PointLight(color, intensity);
-                    light1.position.set(-10, 10, 5);
-
+                    light1.position.set(-5, 5, 10);
+                
                     this.camera.position.z = 10;
                     this.animate()
 
