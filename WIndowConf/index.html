@@ -37,9 +37,11 @@
             text-decoration: none;
             cursor: pointer;
         }
-        canvas{
+
+        canvas {
             outline: none;
         }
+
         .main-window {
             display: flex;
             justify-content: space-between;
@@ -69,7 +71,7 @@
             flex-basis: 20%;
             flex-shrink: 0;
         }
-  
+
         .custom-select-wrapper select {
             width: 50%;
             padding: 5px;
@@ -177,19 +179,25 @@
                     this.renderer.setSize(640, 305)
                     console.log(window.innerWidth / 2, window.innerHeight / 2)
                     const geometry = new THREE.PlaneBufferGeometry(9.2, 9.2, 0, 0);
-                    let material = new THREE.MeshLambertMaterial({
-                        color: 0xc6d9ec,
+                    const textureW = new THREE.TextureLoader().load('http://solarsystemmm.github.io/WIndowConf/img/texture1.jpg');
 
+                    let material = new THREE.MeshBasicMaterial({
+                        map: textureW,
                     })
                     const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
                     controls.enableZoom = false;
-                    
-                   controls.rotateSpeed = 0.3                    
-                    controls.minPolarAngle = -1; 
-                    controls.maxPolarAngle = Math.PI;
 
-                    controls.minAzimuthAngle = -1; 
+                    controls.rotateSpeed = 0.3
+
+                    controls.minPolarAngle = 1.5
+                    controls.maxPolarAngle = 1.5
+
+                    controls.minAzimuthAngle = -1;
                     controls.maxAzimuthAngle = 1;
+
+
+
+
 
                     const light = new THREE.AmbientLight(0xFFFFFF, 1)
                     this.scene.add(light)
@@ -210,7 +218,6 @@
 
                     let material_border = new THREE.MeshBasicMaterial({
                         map: texture,
-                        transparent: true,
                     })
 
                     this.side_left = new THREE.Mesh(left_side_border, material_border)
@@ -244,7 +251,7 @@
                     light1.position.set(-10, -10, 5);
                     this.scene.add(light1);
 
-                    this.camera.position.z = 10;
+                    this.camera.position.z = 12;
                     this.animate()
                 },
 
