@@ -184,16 +184,16 @@
                        
                     })
 
-                    const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-                    controls.enableZoom = false;
+                    // const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                    // controls.enableZoom = false;
 
-                    controls.rotateSpeed = 0.2
+                    // controls.rotateSpeed = 0.2
 
-                    controls.minPolarAngle = 1.5
-                    controls.maxPolarAngle = 1.5
+                    // controls.minPolarAngle = 1.5
+                    // controls.maxPolarAngle = 1.5
 
-                    controls.minAzimuthAngle = -0.7;
-                    controls.maxAzimuthAngle = 0.7;
+                    // controls.minAzimuthAngle = -0.7;
+                    // controls.maxAzimuthAngle = 0.7;
 
 
                     const light = new THREE.AmbientLight(0xFFFFFF, 1)
@@ -227,7 +227,13 @@
                     this.group.add(this.side_right);
                     this.group.add(this.side_top);
                     this.group.add(this.side_bottom);
+                   
                     this.scene.add(this.group)
+
+                    this.cube.rotation.y = 0.55
+                    this.group.rotation.y = 0.55
+
+                    
 
                     this.side_bottom.rotation.x = THREE.Math.degToRad(90);
                     this.side_bottom.rotation.z = THREE.Math.degToRad(90);
