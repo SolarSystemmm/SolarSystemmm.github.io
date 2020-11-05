@@ -181,8 +181,9 @@
                     const geometry = new THREE.PlaneBufferGeometry(9.2, 9.2, 0, 0);
                     const textureW = new THREE.TextureLoader().load('http://solarsystemmm.github.io/WIndowConf/img/t3.jpg');
 
-                    let material = new THREE.MeshBasicMaterial({
+                    let material = new THREE.MeshPhongMaterial({
                         map: textureW,
+                        shininess: 0.5
                     })
                     const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
                     controls.enableZoom = false;
@@ -209,7 +210,7 @@
                     //                    this.scene.children[1].scale.x = this.formWidth / 200;
                     //                    this.scene.children[1].scale.y = this.formHeight / 200;
 
-                    const texture = new THREE.TextureLoader().load('http://solarsystemmm.github.io/WIndowConf/img/texture1.jpg');
+                    const texture = new THREE.TextureLoader().load('http://solarsystemmm.github.io/WIndowConf/img/texture.jpg');
 
                     const left_side_border = new THREE.BoxBufferGeometry(0.5, 8.5, 0.5);
                     const right_side_border = new THREE.BoxBufferGeometry(0.5, 8.5, 0.5);
@@ -247,9 +248,9 @@
 
                     const color = 0xFFFFFF;
                     const intensity = 0.5;
-                    const light1 = new THREE.DirectionalLight(color, intensity);
-                    light1.position.set(-10, -10, 5);
-                    this.scene.add(light1);
+                    const light1 = new THREE.PointLight(color, intensity);
+                    light1.position.set(-10, 10, 5);
+//                    this.scene.add(light1);
 
                     this.camera.position.z = 12;
                     this.animate()
