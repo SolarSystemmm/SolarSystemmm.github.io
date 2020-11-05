@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js" integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug==" crossorigin="anonymous"></script>
+    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+
+</head>
+
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+        *,
+        ::after,
+        ::before {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            color: #000;
+            padding-top: 30px;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        canvas{
+            outline: none;
+        }
+        .main-window {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1100px;
+
+            margin: 0 auto;
+        }
+
+        .canvas-wrapper {
+            width: 60%;
+            display: flex;
+            align-items: center;
+        }
+
+        .forms-wrapper {
+            margin-top: 30px;
+            width: 40%;
+        }
+
+        .custom-select-wrapper {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .custom-select-wrapper .text {
+            flex-basis: 20%;
+            flex-shrink: 0;
+        }
+  
+        .custom-select-wrapper select {
+            width: 50%;
+            padding: 5px;
+            border: 2px solid #3842bb;
+        }
+
+        .custom-select-wrapper select:focus {
+            border-color: none;
+            outline: none;
+        }
+
+        .custom-select-wrapper .get-answer-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #3842bb;
+            border-radius: 100%;
+            width: 30px;
+            height: 30px;
+            margin-left: 15px;
+        }
+
+    </style>
+    <div class="main-window" id="vue">
+        <div class="canvas-wrapper">
+            <canvas id="background"></canvas>
+        </div>
+        <div class="forms-wrapper">
+            <h1 class="title">
+                Toppsving komfort
+            </h1>
+            <p class="text">
+                U-verdi: 1.2
+            </p>
+            <p class="price">
+                Pris 4821 ,-
+            </p>
+            <div class="select-values">
+                <div class="custom-select-wrapper">
+                    <p class="text">Høyde</p>
+                    <select class="custom-select" v-model="formWidth">
+                        <option disabled value="">100</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
+                        <option>250</option>
+                        <option>300</option>
+                    </select>
+                    <a href="#" class="get-answer-btn">?</a>
+                </div>
+                <div class="custom-select-wrapper">
+                    <p class="text">Bredde</p>
+                    <select class="custom-select" v-model="formHeight">
+                        <option disabled value="">100</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
+                        <option>250</option>
+                        <option>300</option>
+                    </select>
+                    <a href="#" class="get-answer-btn">?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el: '#vue',
+            data: {
+                window_values: {
+                    width: 150,
+                    height: 150,
+                    degree_isolation: '',
+                    handle_size: '',
+                    grids: '',
+                    notspor: '',
+                    material: '',
+                    glass: '',
+                    frame_color: '',
+                },
+                form_data: {
+                    width: 150,
+                    height: 150,
+                    glass: {
+
+                    },
+                },
+                threejs: {
+                    scene: '',
+                }
+            },
+            methods: {
+                initThree() {
+                    this.scene = new THREE.Scene();
+                    this.camera = new THREE.PerspectiveCamera(75, 2, 0.1, 1000);
+                    console.log(window.innerWidth / window.innerHeight)
+                    this.renderer = new THREE.WebGLRenderer({
+                        canvas: document.getElementById("background"),
+                        alpha: true,
+                        antialias: true
+                    });
+
+                    const canvas_wrapper = document.querySelector('.canvas-wrapper')
+
+                    this.renderer.setSize(640, 305)
+                    console.log(window.innerWidth / 2, window.innerHeight / 2)
+                    const geometry = new THREE.PlaneBufferGeometry(9.2, 9.2, 0, 0);
+                    let material = new THREE.MeshLambertMaterial({
+                        color: 0xc6d9ec,
+
+                    })
+                    const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                    controls.enableZoom = false;
+                    
+                   controls.rotateSpeed = 0.3                    
+                    controls.minPolarAngle = -1; 
+                    controls.maxPolarAngle = Math.PI;
+
+                    controls.minAzimuthAngle = -1; 
+                    controls.maxAzimuthAngle = 1;
+
+                    const light = new THREE.AmbientLight(0xFFFFFF, 1)
+                    this.scene.add(light)
+
+                    this.cube = new THREE.Mesh(geometry, material)
+                    this.cube.position.z = 0
+                    this.scene.add(this.cube)
+                    //
+                    //                    this.scene.children[1].scale.x = this.formWidth / 200;
+                    //                    this.scene.children[1].scale.y = this.formHeight / 200;
+
+                    const texture = new THREE.TextureLoader().load('http://solarsystemmm.github.io/WIndowConf/img/texture1.jpg');
+
+                    const left_side_border = new THREE.BoxBufferGeometry(0.5, 8.5, 0.5);
+                    const right_side_border = new THREE.BoxBufferGeometry(0.5, 8.5, 0.5);
+                    const top_side_border = new THREE.BoxBufferGeometry(0.5, 9.5, 0.5);
+                    const bottom_side_border = new THREE.BoxBufferGeometry(0.5, 9.5, 0.5);
+
+                    let material_border = new THREE.MeshBasicMaterial({
+                        map: texture,
+                        transparent: true,
+                    })
+
+                    this.side_left = new THREE.Mesh(left_side_border, material_border)
+                    this.side_right = new THREE.Mesh(right_side_border, material_border)
+                    this.side_top = new THREE.Mesh(top_side_border, material_border)
+                    this.side_bottom = new THREE.Mesh(bottom_side_border, material_border)
+
+                    this.group = new THREE.Group();
+                    this.group.add(this.side_left);
+                    this.group.add(this.side_right);
+                    this.group.add(this.side_top);
+                    this.group.add(this.side_bottom);
+                    this.scene.add(this.group)
+
+                    this.side_left.position.x = -4.5
+                    this.side_right.position.x = 4.5
+                    this.side_top.position.y = 4.5
+                    this.side_bottom.position.y = -4.5
+
+                    this.side_bottom.rotation.x = THREE.Math.degToRad(90);
+                    this.side_bottom.rotation.z = THREE.Math.degToRad(90);
+
+                    this.side_top.rotation.x = THREE.Math.degToRad(90);
+                    this.side_top.rotation.z = THREE.Math.degToRad(90);
+
+                    this.group.position.z = 0.5
+
+                    const color = 0xFFFFFF;
+                    const intensity = 0.5;
+                    const light1 = new THREE.DirectionalLight(color, intensity);
+                    light1.position.set(-10, -10, 5);
+                    this.scene.add(light1);
+
+                    this.camera.position.z = 10;
+                    this.animate()
+                },
+
+                animate() {
+                    this.renderer.render(this.scene, this.camera);
+                    requestAnimationFrame(this.animate);
+                }
+            },
+            mounted() {
+                this.initThree();
+            },
+            computed: {
+                formWidth: {
+                    get: function() {
+                        return this.window_values.width
+                    },
+                    set: function(text) {
+                        this.scene.children[1].scale.x = text / 200
+                        this.window_values.width = text
+                    }
+                },
+                formHeight: {
+                    get: function() {
+                        return this.window_values.height
+                    },
+                    set: function(text) {
+                        this.scene.children[1].scale.y = text / 200
+                        this.window_values.height = text
+                    }
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>
