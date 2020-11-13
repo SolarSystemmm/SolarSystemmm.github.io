@@ -9,10 +9,9 @@
         integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
         crossorigin="anonymous"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
-</head>
-
-<body>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
@@ -28,6 +27,7 @@
             font-family: 'Roboto', sans-serif;
             color: #000;
             padding-top: 30px;
+            /* background-color: darkgrey; */
         }
 
         p {
@@ -42,12 +42,14 @@
 
         canvas {
             outline: none;
+            transform: translateX(-25%);
+            pointer-events: none;
         }
 
         .main-window {
             display: flex;
             justify-content: space-between;
-            max-width: 1100px;
+            max-width: 1200px;
 
             margin: 0 auto;
         }
@@ -70,7 +72,7 @@
         }
 
         .custom-select-wrapper .text {
-            flex-basis: 20%;
+            flex-basis: 30%;
             flex-shrink: 0;
         }
 
@@ -96,6 +98,11 @@
             margin-left: 15px;
         }
     </style>
+
+</head>
+
+<body>
+
     <div class="main-window" id="vue">
         <div class="canvas-wrapper">
             <canvas id="background"></canvas>
@@ -112,208 +119,315 @@
             </p>
             <div class="select-values">
                 <div class="custom-select-wrapper">
-                    <p class="text">Høyde</p>
-                    <select class="custom-select" v-model="formWidth">
-                        <option disabled value="">100</option>
-                        <option>100</option>
-                        <option>150</option>
-                        <option>200</option>
+                    <p class="text">Inside frame color</p>
+                    <select class="custom-select" v-model="changeInsideFrameColor">
+                        <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
                     </select>
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
                 <div class="custom-select-wrapper">
-                    <p class="text">Bredde</p>
-                    <select class="custom-select" v-model="formHeight">
-                        <option disabled value="">100</option>
-                        <option>100</option>
-                        <option>150</option>
-                        <option>200</option>
+                    <p class="text">Outside frame color</p>
+                    <select class="custom-select" v-model="changeOutsideFrameColor">
+                        <option v-for="color in colors" v-bind:value="color"
+                            :selected="changeOutsideFrameColor === color.text">{{color.text}}</option>
+                    </select>
+                    <a href="#" class="get-answer-btn">?</a>
+                </div>
+                <div class="custom-select-wrapper">
+                    <p class="text">Both frame color</p>
+                    <select class="custom-select" v-model="changeBothFrameColor">
+                        <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
+                    </select>
+                    <a href="#" class="get-answer-btn">?</a>
+                </div>
+                <div class="custom-select-wrapper">
+                    <p class="text">Handle side</p>
+                    <select class="custom-select" v-model="changeHandleSide">
+                        <option>Left</option>
+                        <option>Right</option>
                     </select>
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
             </div>
         </div>
     </div>
+
     <script>
         new Vue({
             el: '#vue',
             data: {
+                active_colors: {
+                    inside: '',
+                    outside: '',
+                    both: ''
+                },
+                colors: [{
+                        text: 'white',
+                        hex: '0xa6a6a6'
+                    },
+                    {
+                        text: 'gray',
+                        hex: '0x666666'
+                    },
+                    {
+                        text: 'brown',
+                        hex: '0x33230b'
+                    },
+                    {
+                        text: 'black',
+                        hex: '0x1c1c1a'
+                    },
+                ],
                 window_values: {
                     width: 150,
-                    height: 150,
+                    height: 200,
                     degree_isolation: '',
-                    handle_size: '',
-                    grids: '',
+                    handle_side: 'Left',
+                    grids: null,
                     notspor: '',
                     material: '',
                     glass: '',
-                    frame_color: '',
+                    frame_color: {
+                        inside: null,
+                        outside: null
+                    }
                 },
-                form_data: {
-                    width: 150,
-                    height: 150,
-                    glass: {
+                three: {
 
-                    },
-                },
-                threejs: {
-                    scene: '',
                 }
             },
             methods: {
-                initThree() {
-                    this.scene = new THREE.Scene();
-                    this.camera = new THREE.PerspectiveCamera(85, 2, 0.001, 1000);
-                    console.log(window.innerWidth / window.innerHeight)
-                    this.renderer = new THREE.WebGLRenderer({
-                        canvas: document.getElementById("background"),
+                init() {
+                    this.three.renderer = new THREE.WebGLRenderer({
+                        antialias: true,
                         alpha: true,
-                        antialias: true
+                        canvas: document.getElementById("background"),
+                    });
+                    this.three.renderer.setSize(window.innerWidth, window.innerHeight)
+                    this.three.renderer.setPixelRatio(window.devicePixelRatio);
+                    this.three.renderer.shadowMap.enabled = true;
+
+                    this.three.scene = new THREE.Scene();
+
+                    this.three.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight,
+                        1, 10000);
+                    this.three.camera.position.set(-7, 0, 10);
+                    this.three.camera.rotation.y = -0.5;
+                    this.three.scene.add(this.three.camera);
+
+
+                    this.three.ambientLight = new THREE.AmbientLight(0xffffff);
+                    this.three.scene.add(this.three.ambientLight);
+
+                    this.three.directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+                    this.three.directionalLight.position.x = -3;
+                    this.three.directionalLight.position.y = 4;
+                    this.three.directionalLight.position.z = 5;
+                    this.three.scene.add(this.three.directionalLight);
+
+                    // this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer
+                    // .domElement);
+
+
+                    this.createModel()
+                    this.animate()
+                },
+                createModel() {
+
+                    let f_rect = function roundedRect(ctx, x, y, width, height, radius) {
+                        ctx.moveTo(x, y);
+                        ctx.lineTo(x + width, y);
+                        ctx.lineTo(x + width, y + height);
+                        ctx.lineTo(x, y + height);
+                    }
+
+                    let f_rect_reverse = function roundedRect(ctx, x, y, width, height, radius) {
+                        ctx.moveTo(x, y + radius);
+                        ctx.lineTo(x, y + radius);
+                        ctx.quadraticCurveTo(x, y, x + radius, y);
+                        ctx.lineTo(x + width - radius, y);
+                        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+                        ctx.lineTo(x + width, y + height - radius);
+                        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                        ctx.lineTo(x + radius, y + height);
+                        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+                    }
+
+                    var inside = new THREE.Shape();
+                    var outside = new THREE.Shape();
+                    var hole = new THREE.Path();
+
+                    f_rect(inside, -25, -35, 50, 80, 20);
+                    f_rect_reverse(hole, -20, -30, 40, 70, 1);
+
+                    f_rect(outside, -25.5, -35.5, 51.5, 79.5, 20);
+
+                    inside.holes.push(hole);
+                    outside.holes.push(hole);
+
+
+
+                    var material_inside = new THREE.MeshPhongMaterial({
+                        color: Number(this.colors[0].hex),
+                        specular: 0xffffff,
+                        shininess: 150,
+                        needsUpdate: true
+                    });
+                    var material_outside = new THREE.MeshPhongMaterial({
+                        color: Number(this.colors[0].hex),
+                        specular: 0xffffff,
+                        shininess: 150,
+                        needsUpdate: true
                     });
 
-                    const canvas_wrapper = document.querySelector('.canvas-wrapper')
+                    var extrudeSettings = {
+                        depth: 1.85,
+                        bevelEnabled: true,
+                        steps: 1,
+                        bevelSegments: 2,
+                        bevelSize: 1,
+                        bevelThickness: 1.5
+                    };
 
-                    this.renderer.setSize(640, 305)
-                    console.log(window.innerWidth / 2, window.innerHeight / 2)
-                    const geometry = new THREE.PlaneBufferGeometry(9.65, 9.65, 0, 0);
-                    const textureW = new THREE.TextureLoader().load(
-                        'http://solarsystemmm.github.io/WIndowConf/img/t3.jpg');
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(inside, extrudeSettings);
 
-                    let material = new THREE.MeshLambertMaterial({
-                        map: textureW,
-                       
+                    let geometry_outside = new THREE.ExtrudeBufferGeometry(outside, extrudeSettings);
+
+                    this.three.frame_inside = new THREE.Mesh(geometry_inside, material_inside);
+                    this.three.frame_outside = new THREE.Mesh(geometry_outside, material_outside);
+
+                    this.three.frame_inside.scale.set(0.1, 0.1, 0.1);
+                    this.three.frame_outside.scale.set(0.11, 0.11, 0.11);
+                    this.three.frame_outside.position.z = -0.2
+
+
+                    this.three.scene.add(this.three.frame_inside);
+                    this.three.scene.add(this.three.frame_outside);
+                    console.log(this.three.frame_inside)
+                    console.log(this.three.frame_outside)
+                    const glass_geometry = new THREE.PlaneBufferGeometry(3.9, 7, 0, 0);
+                    const glass_texture = new THREE.TextureLoader().load(
+                        './img/glass.jpg');
+
+                    const glass_material = new THREE.MeshBasicMaterial({
+                        map: glass_texture,
                     })
 
-                    // const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-                    // controls.enableZoom = false;
+                    this.three.glass = new THREE.Mesh(glass_geometry, glass_material)
+                    this.three.glass.position.z = 0.2
+                    this.three.glass.position.y = 0.52
+                    this.three.scene.add(this.three.glass)
 
-                    // controls.rotateSpeed = 0.2
+                    var loader = new THREE.GLTFLoader()
+                    let that = this
+                    let model
+                    loader.load('img/hand_model.glb', function (gltf) {
+                        gltf.scene.traverse(function (child) {});
 
-                    // controls.minPolarAngle = 1.5
-                    // controls.maxPolarAngle = 1.5
+                        model = gltf.scene
 
-                    // controls.minAzimuthAngle = -0.7;
-                    // controls.maxAzimuthAngle = 0.7;
+                        model.scale.x = 0.013
+                        model.scale.y = 0.013
+                        model.scale.z = 0.013
 
+                        model.position.y = 0.65
+                        model.position.z = 0.4
 
-                    const light = new THREE.AmbientLight(0xFFFFFF, 1)
-                    this.scene.add(light)
+                        that.three.scene.add(model);
+                        that.three.handle_model = model
 
-                    this.cube = new THREE.Mesh(geometry, material)
-                    this.cube.position.z = 0
-                    this.scene.add(this.cube)
+                        model.rotation.x = THREE.Math.degToRad(90)
+                        model.rotation.y = THREE.Math.degToRad(270)
 
-
-                    const texture = new THREE.TextureLoader().load(
-                        'http://solarsystemmm.github.io/WIndowConf/img/texture.jpg');
-
-                    this.left_side_border = new THREE.BoxBufferGeometry(0.5, 7.6, 0.5);
-                    this.right_side_border = new THREE.BoxBufferGeometry(0.5, 7.6, 0.5);
-                    this.top_side_border = new THREE.BoxBufferGeometry(0.5, 6.6, 0.5);
-                    this.bottom_side_border = new THREE.BoxBufferGeometry(0.5, 6.6, 0.5);
-
-                    let material_border = new THREE.MeshBasicMaterial({
-                        map: texture,
+                        that.handleSide()
                     })
-                    this.side_left = new THREE.Mesh(this.left_side_border, material_border)
-                    this.side_right = new THREE.Mesh(this.right_side_border, material_border)
-                    this.side_top = new THREE.Mesh(this.top_side_border, material_border)
-                    this.side_bottom = new THREE.Mesh(this.bottom_side_border, material_border)
-
-                    this.side_left.depthWrite = false
-
-                    this.group = new THREE.Group();
-                    this.group.add(this.side_left);
-                    this.group.add(this.side_right);
-                    this.group.add(this.side_top);
-                    this.group.add(this.side_bottom);
-                   
-                    this.scene.add(this.group)
-
-                    this.cube.rotation.y = 0.6
-                    this.group.rotation.y = 0.6
-
-                    
-
-                    this.side_bottom.rotation.x = THREE.Math.degToRad(90);
-                    this.side_bottom.rotation.z = THREE.Math.degToRad(90);
-
-                    this.side_top.rotation.x = THREE.Math.degToRad(90);
-                    this.side_top.rotation.z = THREE.Math.degToRad(90);
-
-                    this.group.position.z = 0.5
-
-
-                    this.side_top.scale.y = this.formWidth / 147
-                    this.side_bottom.scale.y = this.formWidth / 147
-                    
-                    this.formHeight
-
-                    this.side_left.position.x = this.formWidth / -42.2;
-                    this.side_right.position.x = this.formWidth / 42.2;
-                    this.side_top.position.y = this.formHeight / 42.2;
-                    this.side_bottom.position.y = this.formHeight / -42.2;
-
-                    this.scene.children[1].scale.x = this.formWidth / 200
-                    this.scene.children[1].scale.y = this.formHeight / 200
-
-                    const color = 0xFFFFFF;
-                    const intensity = 0.5;
-                    const light1 = new THREE.PointLight(color, intensity);
-                    light1.position.set(-5, 5, 10);
-                
-                    this.camera.position.z = 10;
-                    this.animate()
 
                 },
-
+                handleSide(side = this.window_values.handle_side) {
+                    if (side === 'Left') {
+                        this.three.handle_model.position.x = -2.3
+                    } else if (side === 'Right') {
+                        this.three.handle_model.position.x = 2.17
+                    }
+                },
+                resizeModel() {
+                    this.three.renderer.setSize(window.innerWidth, window.innerHeight);
+                    this.three.camera.aspect = window.innerWidth / window.innerHeight;
+                    this.three.camera.updateProjectionMatrix();
+                },
                 animate() {
-                    this.renderer.render(this.scene, this.camera);
                     requestAnimationFrame(this.animate);
+                    this.render();
+                },
+                render() {
+                    this.three.renderer.render(this.three.scene, this.three.camera);
+                },
+                isEqColors(data) {
+                    if (this.active_colors.inside.text === this.active_colors.outside.text) {
+                        this.active_colors.both = this.active_colors.inside
+                    }
                 }
 
             },
             mounted() {
-                this.initThree();
+
+                this.active_colors.inside = this.colors[0]
+                this.active_colors.outside = this.colors[0]
+                this.active_colors.both = this.colors[0]
+                this.init();
+                console.log(this.active_colors.inside)
+                window.addEventListener('resize', function () {
+                    this.resizeModel()
+                }, false)
+                console.log(this.changeBothFrameColor)
             },
             computed: {
-                formWidth: {
+                changeHandleSide: {
                     get: function () {
-                        return this.window_values.width
+                        return this.window_values.handle_side
                     },
-                    set: function (text) {
-                        this.side_top.scale.y = text / 147
-                        this.side_bottom.scale.y = text / 147
-                        this.side_left.position.x = text / -42.2;
-                        this.side_right.position.x = text / 42.2;
-                        this.scene.children[1].scale.x = text / 200
-                        this.window_values.width = text
+                    set: function (side) {
+
+                        this.window_values.handle_side = side
+                        this.handleSide()
                     }
                 },
-                formHeight: {
+                changeInsideFrameColor: {
                     get: function () {
-                        return this.window_values.height
+                        return this.active_colors.inside
                     },
                     set: function (text) {
-                        if (text === '100') {
-                            this.side_left.scale.y = 0.69
-                            this.side_right.scale.y = 0.69
-                        } else if (text === '150') {
-                            this.side_left.scale.y = 1
-                            this.side_right.scale.y = 1
-                        } else if (text === '200') {
-                            this.side_left.scale.y = 1.315
-                            this.side_right.scale.y = 1.315
-                        }
-                        this.side_top.position.y = text / -42.2;
-                        this.side_bottom.position.y = text / 42.2;
-                        this.scene.children[1].scale.y = text / 200
-                        this.window_values.height = text
+                        this.active_colors.inside = text
+                        this.isEqColors()
+                        this.three.frame_inside.material.color.set(Number(text.hex))
                     }
-                }
+                },
+                changeOutsideFrameColor: {
+                    get: function () {
+                        return this.active_colors.outside
+                    },
+                    set: function (text) {
+                        this.active_colors.outside = text
+                        this.isEqColors()
+                        this.three.frame_outside.material.color.set(Number(text.hex))
+                    }
+                },
+                changeBothFrameColor: {
+                    get: function () {
+                        return this.active_colors.both
+                    },
+                    set: function (text) {
+                        this.active_colors.inside = text
+                        this.active_colors.outside = text
+                        this.active_colors.both = text
+                        this.three.frame_inside.material.color.set(Number(text.hex))
+                        this.three.frame_outside.material.color.set(Number(text.hex))
+                    }
+                },
             }
         })
     </script>
+
 </body>
 
 </html>
