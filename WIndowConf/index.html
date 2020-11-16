@@ -27,7 +27,6 @@
             font-family: 'Roboto', sans-serif;
             color: #000;
             padding-top: 30px;
-            /* background-color: darkgrey; */
         }
 
         p {
@@ -43,7 +42,7 @@
         canvas {
             outline: none;
             transform: translateX(-25%);
-            pointer-events: none;
+            /* pointer-events: none; */
         }
 
         .main-window {
@@ -69,6 +68,24 @@
             display: flex;
             align-items: center;
             margin-top: 20px;
+        }
+
+        .custom-select-wrapper.input {
+            flex-direction: column;
+            align-items: initial;
+        }
+
+        .custom-select-wrapper .wrapper {
+            display: flex;
+            flex-direction: row;
+            ;
+        }
+
+        .custom-select-wrapper .wrapper .text-alert {
+            display: block;
+            flex-basis: 100%;
+            text-align: center;
+            ;
         }
 
         .custom-select-wrapper .text {
@@ -118,6 +135,29 @@
                 Pris 4821 ,-
             </p>
             <div class="select-values">
+                <div class="custom-select-wrapper input">
+                    <div class="wrapper">
+                        <p class="text">Width</p>
+                        <input class="custom-select" v-model="changeWidth">
+                        <a href="#" class="get-answer-btn">?</a>
+                    </div>
+                    <p class="text-alert" v-if="changeWidth < size_values.width.min">Min {{size_values.width.min}} cm
+                    </p>
+                    <p class="text-alert" v-if="changeWidth > size_values.width.max">Max {{size_values.width.max}} cm
+                    </p>
+                </div>
+                <div class="custom-select-wrapper input">
+                    <div class="wrapper">
+                        <p class="text">Height</p>
+                        <input class="custom-select" v-model="changeHeight">
+                        <a href="#" class="get-answer-btn">?</a>
+                    </div>
+
+                    <p class="text-alert" v-if="changeHeight < size_values.height.min">Min {{size_values.height.min}} cm
+                    </p>
+                    <p class="text-alert" v-if="changeHeight > size_values.height.max">Max {{size_values.height.max}} cm
+                    </p>
+                </div>
                 <div class="custom-select-wrapper">
                     <p class="text">Inside frame color</p>
                     <select class="custom-select" v-model="changeInsideFrameColor">
@@ -128,8 +168,7 @@
                 <div class="custom-select-wrapper">
                     <p class="text">Outside frame color</p>
                     <select class="custom-select" v-model="changeOutsideFrameColor">
-                        <option v-for="color in colors" v-bind:value="color"
-                            :selected="changeOutsideFrameColor === color.text">{{color.text}}</option>
+                        <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
                     </select>
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
@@ -153,7 +192,7 @@
     </div>
 
     <script>
-        new Vue({
+        const vue = new Vue({
             el: '#vue',
             data: {
                 active_colors: {
@@ -178,9 +217,19 @@
                         hex: '0x1c1c1a'
                     },
                 ],
+                size_values: {
+                    width: {
+                        min: 60,
+                        max: 200,
+                    },
+                    height: {
+                        min: 60,
+                        max: 200,
+                    },
+                },
                 window_values: {
-                    width: 150,
-                    height: 200,
+                    width: 80,
+                    height: 95,
                     degree_isolation: '',
                     handle_side: 'Left',
                     grids: null,
@@ -211,9 +260,10 @@
 
                     this.three.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight,
                         1, 10000);
-                    this.three.camera.position.set(-7, 0, 10);
+                    this.three.camera.position.set(-8, 0, 12.5);
                     this.three.camera.rotation.y = -0.5;
                     this.three.scene.add(this.three.camera);
+
 
 
                     this.three.ambientLight = new THREE.AmbientLight(0xffffff);
@@ -226,61 +276,33 @@
                     this.three.scene.add(this.three.directionalLight);
 
                     // this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer
-                    // .domElement);
-
+                    //     .domElement);
 
                     this.createModel()
                     this.animate()
                 },
                 createModel() {
+                    const that = this
 
-                    let f_rect = function roundedRect(ctx, x, y, width, height, radius) {
-                        ctx.moveTo(x, y);
-                        ctx.lineTo(x + width, y);
-                        ctx.lineTo(x + width, y + height);
-                        ctx.lineTo(x, y + height);
-                    }
+                    this.three.inside = new THREE.Shape();
+                    this.three.outside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
 
-                    let f_rect_reverse = function roundedRect(ctx, x, y, width, height, radius) {
-                        ctx.moveTo(x, y + radius);
-                        ctx.lineTo(x, y + radius);
-                        ctx.quadraticCurveTo(x, y, x + radius, y);
-                        ctx.lineTo(x + width - radius, y);
-                        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-                        ctx.lineTo(x + width, y + height - radius);
-                        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-                        ctx.lineTo(x + radius, y + height);
-                        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-                    }
-
-                    var inside = new THREE.Shape();
-                    var outside = new THREE.Shape();
-                    var hole = new THREE.Path();
-
-                    f_rect(inside, -25, -35, 50, 80, 20);
-                    f_rect_reverse(hole, -20, -30, 40, 70, 1);
-
-                    f_rect(outside, -25.5, -35.5, 51.5, 79.5, 20);
-
-                    inside.holes.push(hole);
-                    outside.holes.push(hole);
-
-
-
-                    var material_inside = new THREE.MeshPhongMaterial({
-                        color: Number(this.colors[0].hex),
+                    this.three.material_outside = new THREE.MeshPhongMaterial({
+                        color: Number(this.active_colors.outside.hex),
                         specular: 0xffffff,
                         shininess: 150,
-                        needsUpdate: true
                     });
-                    var material_outside = new THREE.MeshPhongMaterial({
-                        color: Number(this.colors[0].hex),
+                    this.three.material_inside = new THREE.MeshPhongMaterial({
+                        color: Number(this.active_colors.inside.hex),
                         specular: 0xffffff,
                         shininess: 150,
-                        needsUpdate: true
                     });
-
-                    var extrudeSettings = {
+                    this.three.material_glass = new THREE.MeshPhongMaterial({
+                        color: 0xaeb9c2,
+                        shininess: 150,
+                    });
+                    this.three.extrudeSettings = {
                         depth: 1.85,
                         bevelEnabled: true,
                         steps: 1,
@@ -289,48 +311,18 @@
                         bevelThickness: 1.5
                     };
 
-                    let geometry_inside = new THREE.ExtrudeBufferGeometry(inside, extrudeSettings);
-
-                    let geometry_outside = new THREE.ExtrudeBufferGeometry(outside, extrudeSettings);
-
-                    this.three.frame_inside = new THREE.Mesh(geometry_inside, material_inside);
-                    this.three.frame_outside = new THREE.Mesh(geometry_outside, material_outside);
-
-                    this.three.frame_inside.scale.set(0.1, 0.1, 0.1);
-                    this.three.frame_outside.scale.set(0.11, 0.11, 0.11);
-                    this.three.frame_outside.position.z = -0.2
-
-
-                    this.three.scene.add(this.three.frame_inside);
-                    this.three.scene.add(this.three.frame_outside);
-                    console.log(this.three.frame_inside)
-                    console.log(this.three.frame_outside)
-                    const glass_geometry = new THREE.PlaneBufferGeometry(3.9, 7, 0, 0);
-                    const glass_texture = new THREE.TextureLoader().load(
-                        './img/glass.jpg');
-
-                    const glass_material = new THREE.MeshBasicMaterial({
-                        map: glass_texture,
-                    })
-
-                    this.three.glass = new THREE.Mesh(glass_geometry, glass_material)
-                    this.three.glass.position.z = 0.2
-                    this.three.glass.position.y = 0.52
-                    this.three.scene.add(this.three.glass)
-
                     var loader = new THREE.GLTFLoader()
-                    let that = this
-                    let model
+
                     loader.load('img/hand_model.glb', function (gltf) {
                         gltf.scene.traverse(function (child) {});
 
-                        model = gltf.scene
+                        const model = gltf.scene
 
                         model.scale.x = 0.013
                         model.scale.y = 0.013
                         model.scale.z = 0.013
 
-                        model.position.y = 0.65
+                        model.position.y = 0
                         model.position.z = 0.4
 
                         that.three.scene.add(model);
@@ -339,16 +331,114 @@
                         model.rotation.x = THREE.Math.degToRad(90)
                         model.rotation.y = THREE.Math.degToRad(270)
 
-                        that.handleSide()
+                        that.changeModelSize()
                     })
+                   
 
                 },
-                handleSide(side = this.window_values.handle_side) {
-                    if (side === 'Left') {
-                        this.three.handle_model.position.x = -2.3
-                    } else if (side === 'Right') {
-                        this.three.handle_model.position.x = 2.17
+                f_rect(ctx, x, y, width, height, radius) {
+                    ctx.moveTo(x, y);
+                    ctx.lineTo(x + width, y);
+                    ctx.lineTo(x + width, y + height);
+                    ctx.lineTo(x, y + height);
+                },
+                f_rect_reverse(ctx, x, y, width, height, radius) {
+                    ctx.moveTo(x, y + radius);
+                    ctx.lineTo(x, y + radius);
+                    ctx.quadraticCurveTo(x, y, x + radius, y);
+                    ctx.lineTo(x + width - radius, y);
+                    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+                    ctx.lineTo(x + width, y + height - radius);
+                    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                    ctx.lineTo(x + radius, y + height);
+                    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+                },
+                getMesh(name, size) {
+                    if (name === 'inside') {
+                        this.three.inside = new THREE.Shape();
+                        this.three.hole = new THREE.Path();
+                        this.f_rect(this.three.inside, -26.5, -18, size.width, size.height, 1);
+                        this.f_rect_reverse(this.three.hole, -21.5, -13, size.width - 10, size.height - 10, 1);
+                        this.three.inside.holes.push(this.three.hole);
+                        let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, this.three
+                            .extrudeSettings);
+                        let mesh = new THREE.Mesh(geometry_inside, this.three.material_inside);
+                        mesh.name = 'inside_frame'
+                        return mesh
+                    } else if (name === 'outside') {
+                        this.three.outside = new THREE.Shape();
+                        this.three.hole = new THREE.Path();
+                        this.f_rect(this.three.outside, -30, -23, size.width + 10, size.height + 10, 1);
+                        this.f_rect_reverse(this.three.hole, -20, -23, size.width - 10, size.height - 10, 1);
+                        // this.three.outside.holes.push(this.three.hole);
+                        let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+                            .extrudeSettings);
+                        let mesh = new THREE.Mesh(geometry_outside, this.three.material_outside);
+                        mesh.name = 'outside_frame'
+                        return mesh
+                    } else {
+                        this.three.outside = new THREE.Shape();
+                        this.f_rect(this.three.outside, -20, -13, size.width - 10, size.height - 10, 1);
+                        // this.three.outside.shapes.push( this.three.handle_model);
+                        console.log(this.three.outside)
+                        let geometry_glass = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+                            .extrudeSettings);
+
+                        let mesh = new THREE.Mesh(geometry_glass, this.three.material_glass);
+                        mesh.name = 'glass'
+                        return mesh
                     }
+                },
+                handleSide(side = this.window_values.handle_side, model = this.three.handle_model) {
+                    if (side === 'Left') {
+                        model.position.x = -2.45
+                        model.position.y = (this.changeHeight - this.size_values.height.min) * 0.02
+                    } else if (side === 'Right') {
+                        model.position.x = (this.changeWidth - this.size_values.width.min) * 0.05
+                        model.position.y = (this.changeHeight - this.size_values.height.min) * 0.02
+                    }
+                },
+                 changeModelSize() {
+                    const that = this
+                    const old_inside = this.three.scene.getObjectByName('inside_frame');
+                    const old_outside = this.three.scene.getObjectByName('outside_frame');
+                    const old_glass = this.three.scene.getObjectByName('glass');
+
+                    this.three.scene.remove(old_inside);
+                    this.three.scene.remove(old_outside);
+                    this.three.scene.remove(old_glass);
+                    this.three.frame_inside = null
+                    this.three.frame_outside = null
+                    this.three.glass = null
+
+                    this.three.frame_inside = this.getMesh('inside', {
+                        width: Number((this.changeWidth / 2)),
+                        height: Number((this.changeHeight / 2)),
+                    })
+                    this.three.frame_outside = this.getMesh('outside', {
+                        width: Number((this.changeWidth / 2)),
+                        height: Number((this.changeHeight / 2)),
+                    })
+                    this.three.glass = this.getMesh('glass', {
+                        width: Number((this.changeWidth / 2)),
+                        height: Number((this.changeHeight / 2)),
+                    })
+
+                    setTimeout(() => {
+                        that.handleSide(that.window_values.handle_side, that.three.handle_model)
+                    }, [])
+                    
+                    this.three.frame_outside.scale.set(0.1, 0.1, 0.1);
+                    this.three.frame_outside.position.z = -0.2
+
+                    this.three.glass.scale.set(0.1, 0.1, 0.1);
+                    this.three.glass.position.z = -0.15
+
+                    this.three.frame_inside.scale.set(0.1, 0.1, 0.1);
+
+                    this.three.scene.add(this.three.frame_inside);
+                    this.three.scene.add(this.three.frame_outside);
+                    this.three.scene.add(this.three.glass);
                 },
                 resizeModel() {
                     this.three.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -374,20 +464,43 @@
                 this.active_colors.inside = this.colors[0]
                 this.active_colors.outside = this.colors[0]
                 this.active_colors.both = this.colors[0]
+
                 this.init();
-                console.log(this.active_colors.inside)
                 window.addEventListener('resize', function () {
                     this.resizeModel()
                 }, false)
-                console.log(this.changeBothFrameColor)
             },
             computed: {
+                changeWidth: {
+                    get: function () {
+                        return this.window_values.width
+                    },
+                    set: function (value) {
+                        this.window_values.width = value
+                        if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values
+                            .width.max) {
+                            this.changeModelSize()
+                        }
+                    }
+                },
+                changeHeight: {
+                    get: function () {
+                        return this.window_values.height
+                    },
+                    set: function (value) {
+                        this.window_values.height = value
+
+                        if (Number(value) >= this.size_values.height.min && Number(value) <= this
+                            .size_values.height.max) {
+                            this.changeModelSize()
+                        }
+                    }
+                },
                 changeHandleSide: {
                     get: function () {
                         return this.window_values.handle_side
                     },
                     set: function (side) {
-
                         this.window_values.handle_side = side
                         this.handleSide()
                     }
