@@ -42,7 +42,7 @@
     canvas {
       outline: none;
       transform: translateX(-25%);
-      /* pointer-events: none; */
+      pointer-events: none;
     }
 
     .main-window {
@@ -276,10 +276,10 @@
           this.three.scene.add(this.three.directionalLight);
 
           this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer.domElement);
-          this.three.controls.minAzimuthAngle = -8
-          // this.three.controls.maxAzimuthAngle = 0
+          this.three.controls.minAzimuthAngle = -0.8
+          this.three.controls.maxAzimuthAngle = 2
           this.three.controls.minPolarAngle = 1.5
-          // this.three.controls.maxPolarAngle = 
+          // this.three.controls.maxPolarAngle =  1.5
           this.three.controls.enabeZoom = false
 
 
