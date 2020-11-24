@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
+    integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
+    crossorigin="anonymous"></script>
+  <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      color: #000;
+      padding-top: 30px;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    canvas {
+      outline: none;
+      transform: translateX(-25%);
+      /* pointer-events: none; */
+    }
+
+    .main-window {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+
+      margin: 0 auto;
+    }
+
+    .canvas-wrapper {
+      width: 60%;
+      display: flex;
+      align-items: center;
+    }
+
+    .forms-wrapper {
+      margin-top: 30px;
+      width: 40%;
+    }
+
+    .custom-select-wrapper {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .custom-select-wrapper.input {
+      flex-direction: column;
+      align-items: initial;
+    }
+
+    .custom-select-wrapper .wrapper {
+      display: flex;
+      flex-direction: row;
+      ;
+    }
+
+    .custom-select-wrapper .wrapper .text-alert {
+      display: block;
+      flex-basis: 100%;
+      text-align: center;
+      ;
+    }
+
+    .custom-select-wrapper .text {
+      flex-basis: 30%;
+      flex-shrink: 0;
+    }
+
+    .custom-select-wrapper select {
+      width: 50%;
+      padding: 5px;
+      border: 2px solid #3842bb;
+    }
+
+    .custom-select-wrapper select:focus {
+      border-color: none;
+      outline: none;
+    }
+
+    .custom-select-wrapper .get-answer-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #3842bb;
+      border-radius: 100%;
+      width: 30px;
+      height: 30px;
+      margin-left: 15px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="main-window" id="vue">
+    <div class="canvas-wrapper">
+      <canvas id="background"></canvas>
+    </div>
+    <div class="forms-wrapper">
+      <h1 class="title">
+        Toppsving komfort
+      </h1>
+      <p class="text">
+        U-verdi: 1.2
+      </p>
+      <p class="price">
+        Pris 4821 ,-
+      </p>
+      <div class="select-values">
+        <div class="custom-select-wrapper input">
+          <div class="wrapper">
+            <p class="text">Width</p>
+            <input class="custom-select" v-model="changeWidth">
+            <a href="#" class="get-answer-btn">?</a>
+          </div>
+          <p class="text-alert" v-if="changeWidth < size_values.width.min">Min {{size_values.width.min}} cm
+          </p>
+          <p class="text-alert" v-if="changeWidth > size_values.width.max">Max {{size_values.width.max}} cm
+          </p>
+        </div>
+        <div class="custom-select-wrapper input">
+          <div class="wrapper">
+            <p class="text">Height</p>
+            <input class="custom-select" v-model="changeHeight">
+            <a href="#" class="get-answer-btn">?</a>
+          </div>
+
+          <p class="text-alert" v-if="changeHeight < size_values.height.min">Min {{size_values.height.min}} cm
+          </p>
+          <p class="text-alert" v-if="changeHeight > size_values.height.max">Max {{size_values.height.max}} cm
+          </p>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Inside frame color</p>
+          <select class="custom-select" v-model="changeInsideFrameColor">
+            <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Outside frame color</p>
+          <select class="custom-select" v-model="changeOutsideFrameColor">
+            <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Both frame color</p>
+          <select class="custom-select" v-model="changeBothFrameColor">
+            <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Handle side</p>
+          <select class="custom-select" v-model="changeHandleSide">
+            <option>Left</option>
+            <option>Right</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const vue = new Vue({
+      el: '#vue',
+      data: {
+        active_colors: {
+          inside: '',
+          outside: '',
+          both: ''
+        },
+        colors: [{
+            text: 'white',
+            hex: '0xa6a6a6'
+          },
+          {
+            text: 'gray',
+            hex: '0x666666'
+          },
+          {
+            text: 'brown',
+            hex: '0x33230b'
+          },
+          {
+            text: 'black',
+            hex: '0x1c1c1a'
+          },
+        ],
+        size_values: {
+          width: {
+            min: 30,
+            max: 300,
+          },
+          height: {
+            min: 30,
+            max: 300,
+          },
+        },
+        window_values: {
+          width: 40,
+          height: 40,
+          degree_isolation: '',
+          handle_side: 'Left',
+          grids: null,
+          notspor: '',
+          material: '',
+          glass: '',
+          frame_color: {
+            inside: null,
+            outside: null
+          }
+        },
+        three: {
+
+        }
+      },
+      methods: {
+        init() {
+
+          this.three.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+            canvas: document.getElementById("background"),
+          });
+          this.three.renderer.setSize(window.innerWidth, window.innerHeight)
+          this.three.renderer.setPixelRatio(window.devicePixelRatio);
+          this.three.renderer.shadowMap.enabled = true;
+
+          this.three.scene = new THREE.Scene();
+
+          this.three.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight,
+            1, 10000);
+          this.three.camera.position.set(-7, 4, 10);
+          this.three.scene.add(this.three.camera);
+
+
+
+          this.three.ambientLight = new THREE.AmbientLight(0xffffff);
+          this.three.scene.add(this.three.ambientLight);
+
+          this.three.directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+          this.three.directionalLight.position.x = -3;
+          this.three.directionalLight.position.y = 4;
+          this.three.directionalLight.position.z = 5;
+          this.three.scene.add(this.three.directionalLight);
+
+          this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer.domElement);
+          this.three.controls.minAzimuthAngle = -0.5
+          this.three.controls.maxAzimuthAngle = 1
+          this.three.controls.minPolarAngle = 1.5
+          // this.three.controls.maxPolarAngle = 
+          this.three.controls.enabeZoom = true
+
+
+          this.createModel()
+          this.animate()
+        },
+        createModel() {
+          const that = this
+
+          this.three.inside = new THREE.Shape();
+          this.three.outside = new THREE.Shape();
+          this.three.hole = new THREE.Path();
+
+          this.three.material_outside = new THREE.MeshPhongMaterial({
+            color: Number(this.active_colors.outside.hex),
+            specular: 0xffffff,
+            shininess: 150,
+          });
+          this.three.material_inside = new THREE.MeshPhongMaterial({
+            color: Number(this.active_colors.inside.hex),
+            specular: 0xffffff,
+            shininess: 150,
+          });
+          this.three.material_glass = new THREE.MeshPhongMaterial({
+            color: 0xaeb9c2,
+            shininess: 150,
+          });
+          this.three.extrudeSettings = {
+            depth: 1.5,
+            bevelEnabled: true,
+            steps: 1,
+            bevelSegments: 2,
+            bevelSize: 1,
+            bevelThickness: 1.5
+          };
+
+          var loader = new THREE.GLTFLoader()
+
+          loader.load('img/hand_model.glb', function (gltf) {
+            gltf.scene.traverse(function (child) {});
+
+            const model = gltf.scene
+
+            model.scale.x = 0.013
+            model.scale.y = 0.013
+            model.scale.z = 0.013
+
+            model.position.y = 0
+            model.position.z = 0.3
+
+            // that.three.scene.add(model);
+            that.three.handle_model = model
+
+            model.rotation.x = THREE.Math.degToRad(90)
+            model.rotation.y = THREE.Math.degToRad(270)
+
+            that.changeModelSize()
+          })
+          const size = 10;
+          const divisions = 10;
+
+          const gridHelper = new THREE.GridHelper(size, divisions);
+          // this.three.scene.add(gridHelper);
+        },
+        f_rect(ctx, x, y, width, height, radius) {
+          ctx.moveTo(x, y);
+          ctx.lineTo(x + width, y);
+          ctx.lineTo(x + width, y + height);
+          ctx.lineTo(x, y + height);
+        },
+        f_rect_reverse(ctx, x, y, width, height, radius) {
+          ctx.moveTo(x, y + radius);
+          ctx.lineTo(x, y + radius);
+          ctx.quadraticCurveTo(x, y, x + radius, y);
+          ctx.lineTo(x + width - radius, y);
+          ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+          ctx.lineTo(x + width, y + height - radius);
+          ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+          ctx.lineTo(x + radius, y + height);
+          ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        },
+        getMesh(name, size) {
+          if (name === 'inside') {
+            this.three.inside = new THREE.Shape();
+            this.three.hole = new THREE.Path();
+            this.f_rect(this.three.inside, 0, 0, size.width, size.height, 1);
+            this.f_rect_reverse(this.three.hole, 5, 5, size.width - 10, size.height - 10, 1);
+            this.three.inside.holes.push(this.three.hole);
+            let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, this.three
+              .extrudeSettings);
+            let mesh = new THREE.Mesh(geometry_inside, this.three.material_inside);
+            mesh.name = 'inside_frame'
+            return mesh
+          } else if (name === 'outside') {
+            this.three.outside = new THREE.Shape();
+            this.three.hole = new THREE.Path();
+            this.f_rect(this.three.outside, -4.25, -2.5, size.width + 6, size.height + 5, 1);
+            this.f_rect_reverse(this.three.hole, -0, -2.5, size.width - 5, size.height - 5, 1);
+
+            let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+              .extrudeSettings);
+            let mesh = new THREE.Mesh(geometry_outside, this.three.material_outside);
+            mesh.name = 'outside_frame'
+            return mesh
+          } else {
+            this.three.outside = new THREE.Shape();
+            this.f_rect(this.three.outside, 2, 4, size.width - 10, size.height - 10, 1);
+            // this.three.outside.shapes.push( this.three.handle_model);
+            let geometry_glass = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+              .extrudeSettings);
+
+            let mesh = new THREE.Mesh(geometry_glass, this.three.material_glass);
+            mesh.name = 'glass'
+            return mesh
+          }
+        },
+        handleSide(side = this.window_values.handle_side, model = this.three.handle_model) {
+          s = 0.5
+          r = 0.3
+          if (side === 'Left') {
+
+            h = ((this.changeHeight - 40) * 0.03) + r * 3
+
+            model.position.x = 0
+            model.position.y = h
+          } else if (side === 'Right') {
+
+            c = ((this.changeWidth - 40) * 0.05) + s * 3
+            h = ((this.changeHeight - 40) * 0.03) + r * 3
+
+            model.position.x = c
+            model.position.y = h
+          }
+        },
+        changeModelSize() {
+          const that = this
+          const old_inside = this.three.scene.getObjectByName('inside_frame');
+          const old_outside = this.three.scene.getObjectByName('outside_frame');
+          const old_glass = this.three.scene.getObjectByName('glass');
+
+          this.three.scene.remove(old_inside);
+          this.three.scene.remove(old_outside);
+          this.three.scene.remove(old_glass);
+          this.three.frame_inside = null
+          this.three.frame_outside = null
+          this.three.glass = null
+
+          const range = {
+            min: 80,
+            max: 150,
+          }
+
+          let width = this.changeWidth / 2
+          // if(width < 25){
+          //   width = 50 / 2 
+          // }
+          let height = this.changeHeight / 2
+          // if(height < 25){
+          //   height = 50 / 2 
+          // }
+          this.three.frame_inside = this.getMesh('inside', {
+            width: Number(width),
+            height: Number(height),
+          })
+          this.three.frame_outside = this.getMesh('outside', {
+            width: Number(width),
+            height: Number(height),
+          })
+          this.three.glass = this.getMesh('glass', {
+            width: Number(width),
+            height: Number(height),
+          })
+
+          const max_zoom = (this.changeHeight / range.max) * 2 + 9
+
+          const min_zoom = this.changeHeight / 20 + 1.5
+
+          if (this.changeHeight >= range.min && this.changeHeight <= range.max) {
+            this.three.camera.position.z = 8
+            // this.three.camera.position.y = 0.7
+            // this.three.frame_inside.position.y = -3
+            this.three.frame_inside.position.y = -3
+            this.three.frame_outside.position.y = -3
+            this.three.glass.position.y = -3
+          } else if (this.changeHeight > range.max) {
+            this.three.camera.position.z = max_zoom
+            this.three.frame_inside.position.y = (this.changeHeight / -41)
+            this.three.frame_outside.position.y = (this.changeHeight / -41)
+            this.three.glass.position.y = (this.changeHeight / -41)
+          } else if (this.changeWidth < range.min) {
+            this.three.camera.position.z = min_zoom
+            this.three.frame_inside.position.y = -1
+            this.three.frame_outside.position.y = -1
+            this.three.glass.position.y = -1
+          }
+
+
+        
+
+          setTimeout(() => {
+            that.handleSide(that.window_values.handle_side, that.three.handle_model)
+          }, [])
+
+          this.three.frame_outside.scale.set(0.1, 0.1, 0.1);
+          this.three.frame_outside.position.z = -0.2
+
+          this.three.glass.scale.set(0.1, 0.1, 0.1);
+          this.three.glass.position.z = -0.15
+
+          this.three.frame_inside.scale.set(0.1, 0.1, 0.1);
+          this.three.frame_inside.position.x = -0.2
+
+          // this.three.frame_inside.rotation.z = 1
+          // this.three.frame_outside.rotation.z = 1
+          // this.three.glass.rotation.z = 1
+
+          this.three.scene.add(this.three.frame_inside);
+          this.three.scene.add(this.three.frame_outside);
+          this.three.scene.add(this.three.glass);
+
+          // this.three.group.add(this.three.frame_inside)
+          // this.three.group.add(this.three.frame_outside)
+          // this.three.group.add(this.three.glass)
+
+          // this.three.scene.add(this.three.group);
+        },
+        resizeModel() {
+          this.three.renderer.setSize(window.innerWidth, window.innerHeight);
+          this.three.camera.aspect = window.innerWidth / window.innerHeight;
+          this.three.camera.updateProjectionMatrix();
+        },
+        animate() {
+          requestAnimationFrame(this.animate);
+          this.render();
+          this.three.controls.update()
+        },
+        render() {
+          this.three.renderer.render(this.three.scene, this.three.camera);
+        },
+        isEqColors() {
+          if (this.active_colors.inside.text === this.active_colors.outside.text) {
+            this.active_colors.both = this.active_colors.inside
+          }
+        }
+
+      },
+      mounted() {
+
+        this.active_colors.inside = this.colors[0]
+        this.active_colors.outside = this.colors[0]
+        this.active_colors.both = this.colors[0]
+
+        this.init();
+        window.addEventListener('resize', function () {
+          this.resizeModel()
+        }, false)
+      },
+      computed: {
+        changeWidth: {
+          get: function () {
+            return this.window_values.width
+          },
+          set: function (value) {
+            this.window_values.width = value
+            if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values
+              .width.max) {
+              this.changeModelSize()
+            }
+          }
+        },
+        changeHeight: {
+          get: function () {
+            return this.window_values.height
+          },
+          set: function (value) {
+            this.window_values.height = value
+
+            if (Number(value) >= this.size_values.height.min && Number(value) <= this
+              .size_values.height.max) {
+              this.changeModelSize()
+            }
+          }
+        },
+        changeHandleSide: {
+          get: function () {
+            return this.window_values.handle_side
+          },
+          set: function (side) {
+            this.window_values.handle_side = side
+            this.handleSide()
+          }
+        },
+        changeInsideFrameColor: {
+          get: function () {
+            return this.active_colors.inside
+          },
+          set: function (text) {
+            this.active_colors.inside = text
+            this.active_colors.both = text
+            this.isEqColors()
+            this.three.frame_inside.material.color.set(Number(text.hex))
+            this.three.frame_outside.material.color.set(Number(text.hex))
+          }
+        },
+        changeOutsideFrameColor: {
+          get: function () {
+            return this.active_colors.outside
+          },
+          set: function (text) {
+            this.active_colors.outside = text
+            this.isEqColors()
+            // this.three.frame_outside.material.color.set(Number(text.hex))
+          }
+        },
+        changeBothFrameColor: {
+          get: function () {
+            return this.active_colors.both
+          },
+          set: function (text) {
+            this.active_colors.inside = text
+            this.active_colors.outside = text
+            this.active_colors.both = text
+            this.three.frame_inside.material.color.set(Number(text.hex))
+            this.three.frame_outside.material.color.set(Number(text.hex))
+          }
+        },
+      }
+    })
+  </script>
+
+</body>
+
+</html>
