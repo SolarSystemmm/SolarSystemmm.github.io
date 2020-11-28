@@ -9,9 +9,10 @@
         integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
         crossorigin="anonymous"></script>
     <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 
+</head>
+
+<body>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
@@ -41,14 +42,12 @@
 
         canvas {
             outline: none;
-            transform: translateX(-25%);
-            pointer-events: none;
         }
 
         .main-window {
             display: flex;
             justify-content: space-between;
-            max-width: 1200px;
+            max-width: 1100px;
 
             margin: 0 auto;
         }
@@ -70,26 +69,8 @@
             margin-top: 20px;
         }
 
-        .custom-select-wrapper.input {
-            flex-direction: column;
-            align-items: initial;
-        }
-
-        .custom-select-wrapper .wrapper {
-            display: flex;
-            flex-direction: row;
-            ;
-        }
-
-        .custom-select-wrapper .wrapper .text-alert {
-            display: block;
-            flex-basis: 100%;
-            text-align: center;
-            ;
-        }
-
         .custom-select-wrapper .text {
-            flex-basis: 30%;
+            flex-basis: 20%;
             flex-shrink: 0;
         }
 
@@ -115,11 +96,6 @@
             margin-left: 15px;
         }
     </style>
-
-</head>
-
-<body>
-
     <div class="main-window" id="vue">
         <div class="canvas-wrapper">
             <canvas id="background"></canvas>
@@ -135,412 +111,209 @@
                 Pris 4821 ,-
             </p>
             <div class="select-values">
-                <div class="custom-select-wrapper input">
-                    <div class="wrapper">
-                        <p class="text">Width</p>
-                        <input class="custom-select" v-model="changeWidth">
-                        <a href="#" class="get-answer-btn">?</a>
-                    </div>
-                    <p class="text-alert" v-if="changeWidth < size_values.width.min">Min {{size_values.width.min}} cm
-                    </p>
-                    <p class="text-alert" v-if="changeWidth > size_values.width.max">Max {{size_values.width.max}} cm
-                    </p>
-                </div>
-                <div class="custom-select-wrapper input">
-                    <div class="wrapper">
-                        <p class="text">Height</p>
-                        <input class="custom-select" v-model="changeHeight">
-                        <a href="#" class="get-answer-btn">?</a>
-                    </div>
-
-                    <p class="text-alert" v-if="changeHeight < size_values.height.min">Min {{size_values.height.min}} cm
-                    </p>
-                    <p class="text-alert" v-if="changeHeight > size_values.height.max">Max {{size_values.height.max}} cm
-                    </p>
-                </div>
                 <div class="custom-select-wrapper">
-                    <p class="text">Inside frame color</p>
-                    <select class="custom-select" v-model="changeInsideFrameColor">
-                        <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
+                    <p class="text">Høyde</p>
+                    <select class="custom-select" v-model="formWidth">
+                        <option disabled value="">100</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
                     </select>
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
                 <div class="custom-select-wrapper">
-                    <p class="text">Outside frame color</p>
-                    <select class="custom-select" v-model="changeOutsideFrameColor">
-                        <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
-                    </select>
-                    <a href="#" class="get-answer-btn">?</a>
-                </div>
-                <div class="custom-select-wrapper">
-                    <p class="text">Both frame color</p>
-                    <select class="custom-select" v-model="changeBothFrameColor">
-                        <option v-for="color in colors" v-bind:value="color">{{color.text}}</option>
-                    </select>
-                    <a href="#" class="get-answer-btn">?</a>
-                </div>
-                <div class="custom-select-wrapper">
-                    <p class="text">Handle side</p>
-                    <select class="custom-select" v-model="changeHandleSide">
-                        <option>Left</option>
-                        <option>Right</option>
+                    <p class="text">Bredde</p>
+                    <select class="custom-select" v-model="formHeight">
+                        <option disabled value="">100</option>
+                        <option>100</option>
+                        <option>150</option>
+                        <option>200</option>
                     </select>
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
             </div>
         </div>
     </div>
-
     <script>
-        const vue = new Vue({
+        new Vue({
             el: '#vue',
             data: {
-                active_colors: {
-                    inside: '',
-                    outside: '',
-                    both: ''
-                },
-                colors: [{
-                        text: 'white',
-                        hex: '0xa6a6a6'
-                    },
-                    {
-                        text: 'gray',
-                        hex: '0x666666'
-                    },
-                    {
-                        text: 'brown',
-                        hex: '0x33230b'
-                    },
-                    {
-                        text: 'black',
-                        hex: '0x1c1c1a'
-                    },
-                ],
-                size_values: {
-                    width: {
-                        min: 60,
-                        max: 200,
-                    },
-                    height: {
-                        min: 60,
-                        max: 200,
-                    },
-                },
                 window_values: {
-                    width: 80,
-                    height: 95,
+                    width: 150,
+                    height: 150,
                     degree_isolation: '',
-                    handle_side: 'Left',
-                    grids: null,
+                    handle_size: '',
+                    grids: '',
                     notspor: '',
                     material: '',
                     glass: '',
-                    frame_color: {
-                        inside: null,
-                        outside: null
-                    }
+                    frame_color: '',
                 },
-                three: {
+                form_data: {
+                    width: 150,
+                    height: 150,
+                    glass: {
 
+                    },
+                },
+                threejs: {
+                    scene: '',
                 }
             },
             methods: {
-                init() {
-                    this.three.renderer = new THREE.WebGLRenderer({
-                        antialias: true,
-                        alpha: true,
+                initThree() {
+                    this.scene = new THREE.Scene();
+                    this.camera = new THREE.PerspectiveCamera(85, 2, 0.001, 1000);
+                    console.log(window.innerWidth / window.innerHeight)
+                    this.renderer = new THREE.WebGLRenderer({
                         canvas: document.getElementById("background"),
+                        alpha: true,
+                        antialias: true
                     });
-                    this.three.renderer.setSize(window.innerWidth, window.innerHeight)
-                    this.three.renderer.setPixelRatio(window.devicePixelRatio);
-                    this.three.renderer.shadowMap.enabled = true;
 
-                    this.three.scene = new THREE.Scene();
+                    const canvas_wrapper = document.querySelector('.canvas-wrapper')
 
-                    this.three.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight,
-                        1, 10000);
-                    this.three.camera.position.set(-8, 0, 12.5);
-                    this.three.camera.rotation.y = -0.5;
-                    this.three.scene.add(this.three.camera);
+                    this.renderer.setSize(640, 305)
+                    console.log(window.innerWidth / 2, window.innerHeight / 2)
+                    const geometry = new THREE.PlaneBufferGeometry(9.65, 9.65, 0, 0);
+                    const textureW = new THREE.TextureLoader().load(
+                        'http://solarsystemmm.github.io/WIndowConf/img/t3.jpg');
 
-
-
-                    this.three.ambientLight = new THREE.AmbientLight(0xffffff);
-                    this.three.scene.add(this.three.ambientLight);
-
-                    this.three.directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-                    this.three.directionalLight.position.x = -3;
-                    this.three.directionalLight.position.y = 4;
-                    this.three.directionalLight.position.z = 5;
-                    this.three.scene.add(this.three.directionalLight);
-
-                    // this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer
-                    //     .domElement);
-
-                    this.createModel()
-                    this.animate()
-                },
-                createModel() {
-                    const that = this
-
-                    this.three.inside = new THREE.Shape();
-                    this.three.outside = new THREE.Shape();
-                    this.three.hole = new THREE.Path();
-
-                    this.three.material_outside = new THREE.MeshPhongMaterial({
-                        color: Number(this.active_colors.outside.hex),
-                        specular: 0xffffff,
-                        shininess: 150,
-                    });
-                    this.three.material_inside = new THREE.MeshPhongMaterial({
-                        color: Number(this.active_colors.inside.hex),
-                        specular: 0xffffff,
-                        shininess: 150,
-                    });
-                    this.three.material_glass = new THREE.MeshPhongMaterial({
-                        color: 0xaeb9c2,
-                        shininess: 150,
-                    });
-                    this.three.extrudeSettings = {
-                        depth: 1.85,
-                        bevelEnabled: true,
-                        steps: 1,
-                        bevelSegments: 2,
-                        bevelSize: 1,
-                        bevelThickness: 1.5
-                    };
-
-                    var loader = new THREE.GLTFLoader()
-
-                    loader.load('img/hand_model.glb', function (gltf) {
-                        gltf.scene.traverse(function (child) {});
-
-                        const model = gltf.scene
-
-                        model.scale.x = 0.013
-                        model.scale.y = 0.013
-                        model.scale.z = 0.013
-
-                        model.position.y = 0
-                        model.position.z = 0.4
-
-                        that.three.scene.add(model);
-                        that.three.handle_model = model
-
-                        model.rotation.x = THREE.Math.degToRad(90)
-                        model.rotation.y = THREE.Math.degToRad(270)
-
-                        that.changeModelSize()
+                    let material = new THREE.MeshLambertMaterial({
+                        map: textureW,
+                       
                     })
+
+                    // const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
+                    // controls.enableZoom = false;
+
+                    // controls.rotateSpeed = 0.2
+
+                    // controls.minPolarAngle = 1.5
+                    // controls.maxPolarAngle = 1.5
+
+                    // controls.minAzimuthAngle = -0.7;
+                    // controls.maxAzimuthAngle = 0.7;
+
+
+                    const light = new THREE.AmbientLight(0xFFFFFF, 1)
+                    this.scene.add(light)
+
+                    this.cube = new THREE.Mesh(geometry, material)
+                    this.cube.position.z = 0
+                    this.scene.add(this.cube)
+
+
+                    const texture = new THREE.TextureLoader().load(
+                        './img/texture.jpg');
+
+                    this.left_side_border = new THREE.BoxBufferGeometry(0.5, 7.6, 0.5);
+                    this.right_side_border = new THREE.BoxBufferGeometry(0.5, 7.6, 0.5);
+                    this.top_side_border = new THREE.BoxBufferGeometry(0.5, 6.6, 0.5);
+                    this.bottom_side_border = new THREE.BoxBufferGeometry(0.5, 6.6, 0.5);
+
+                    let material_border = new THREE.MeshBasicMaterial({
+                        map: texture,
+                    })
+                    this.side_left = new THREE.Mesh(this.left_side_border, material_border)
+                    this.side_right = new THREE.Mesh(this.right_side_border, material_border)
+                    this.side_top = new THREE.Mesh(this.top_side_border, material_border)
+                    this.side_bottom = new THREE.Mesh(this.bottom_side_border, material_border)
+
+                    this.side_left.depthWrite = false
+
+                    this.group = new THREE.Group();
+                    this.group.add(this.side_left);
+                    this.group.add(this.side_right);
+                    this.group.add(this.side_top);
+                    this.group.add(this.side_bottom);
                    
+                    this.scene.add(this.group)
 
-                },
-                f_rect(ctx, x, y, width, height, radius) {
-                    ctx.moveTo(x, y);
-                    ctx.lineTo(x + width, y);
-                    ctx.lineTo(x + width, y + height);
-                    ctx.lineTo(x, y + height);
-                },
-                f_rect_reverse(ctx, x, y, width, height, radius) {
-                    ctx.moveTo(x, y + radius);
-                    ctx.lineTo(x, y + radius);
-                    ctx.quadraticCurveTo(x, y, x + radius, y);
-                    ctx.lineTo(x + width - radius, y);
-                    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
-                    ctx.lineTo(x + width, y + height - radius);
-                    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
-                    ctx.lineTo(x + radius, y + height);
-                    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
-                },
-                getMesh(name, size) {
-                    if (name === 'inside') {
-                        this.three.inside = new THREE.Shape();
-                        this.three.hole = new THREE.Path();
-                        this.f_rect(this.three.inside, -26.5, -18, size.width, size.height, 1);
-                        this.f_rect_reverse(this.three.hole, -21.5, -13, size.width - 10, size.height - 10, 1);
-                        this.three.inside.holes.push(this.three.hole);
-                        let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, this.three
-                            .extrudeSettings);
-                        let mesh = new THREE.Mesh(geometry_inside, this.three.material_inside);
-                        mesh.name = 'inside_frame'
-                        return mesh
-                    } else if (name === 'outside') {
-                        this.three.outside = new THREE.Shape();
-                        this.three.hole = new THREE.Path();
-                        this.f_rect(this.three.outside, -30, -23, size.width + 10, size.height + 10, 1);
-                        this.f_rect_reverse(this.three.hole, -20, -23, size.width - 10, size.height - 10, 1);
-                        // this.three.outside.holes.push(this.three.hole);
-                        let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
-                            .extrudeSettings);
-                        let mesh = new THREE.Mesh(geometry_outside, this.three.material_outside);
-                        mesh.name = 'outside_frame'
-                        return mesh
-                    } else {
-                        this.three.outside = new THREE.Shape();
-                        this.f_rect(this.three.outside, -20, -13, size.width - 10, size.height - 10, 1);
-                        // this.three.outside.shapes.push( this.three.handle_model);
-                        console.log(this.three.outside)
-                        let geometry_glass = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
-                            .extrudeSettings);
+                    this.cube.rotation.y = 0.6
+                    this.group.rotation.y = 0.6
 
-                        let mesh = new THREE.Mesh(geometry_glass, this.three.material_glass);
-                        mesh.name = 'glass'
-                        return mesh
-                    }
-                },
-                handleSide(side = this.window_values.handle_side, model = this.three.handle_model) {
-                    if (side === 'Left') {
-                        model.position.x = -2.45
-                        model.position.y = (this.changeHeight - this.size_values.height.min) * 0.02
-                    } else if (side === 'Right') {
-                        model.position.x = (this.changeWidth - this.size_values.width.min) * 0.05
-                        model.position.y = (this.changeHeight - this.size_values.height.min) * 0.02
-                    }
-                },
-                 changeModelSize() {
-                    const that = this
-                    const old_inside = this.three.scene.getObjectByName('inside_frame');
-                    const old_outside = this.three.scene.getObjectByName('outside_frame');
-                    const old_glass = this.three.scene.getObjectByName('glass');
-
-                    this.three.scene.remove(old_inside);
-                    this.three.scene.remove(old_outside);
-                    this.three.scene.remove(old_glass);
-                    this.three.frame_inside = null
-                    this.three.frame_outside = null
-                    this.three.glass = null
-
-                    this.three.frame_inside = this.getMesh('inside', {
-                        width: Number((this.changeWidth / 2)),
-                        height: Number((this.changeHeight / 2)),
-                    })
-                    this.three.frame_outside = this.getMesh('outside', {
-                        width: Number((this.changeWidth / 2)),
-                        height: Number((this.changeHeight / 2)),
-                    })
-                    this.three.glass = this.getMesh('glass', {
-                        width: Number((this.changeWidth / 2)),
-                        height: Number((this.changeHeight / 2)),
-                    })
-
-                    setTimeout(() => {
-                        that.handleSide(that.window_values.handle_side, that.three.handle_model)
-                    }, [])
                     
-                    this.three.frame_outside.scale.set(0.1, 0.1, 0.1);
-                    this.three.frame_outside.position.z = -0.2
 
-                    this.three.glass.scale.set(0.1, 0.1, 0.1);
-                    this.three.glass.position.z = -0.15
+                    this.side_bottom.rotation.x = THREE.Math.degToRad(90);
+                    this.side_bottom.rotation.z = THREE.Math.degToRad(90);
 
-                    this.three.frame_inside.scale.set(0.1, 0.1, 0.1);
+                    this.side_top.rotation.x = THREE.Math.degToRad(90);
+                    this.side_top.rotation.z = THREE.Math.degToRad(90);
 
-                    this.three.scene.add(this.three.frame_inside);
-                    this.three.scene.add(this.three.frame_outside);
-                    this.three.scene.add(this.three.glass);
+                    this.group.position.z = 0.5
+
+
+                    this.side_top.scale.y = this.formWidth / 147
+                    this.side_bottom.scale.y = this.formWidth / 147
+                    
+                    this.formHeight
+
+                    this.side_left.position.x = this.formWidth / -42.2;
+                    this.side_right.position.x = this.formWidth / 42.2;
+                    this.side_top.position.y = this.formHeight / 42.2;
+                    this.side_bottom.position.y = this.formHeight / -42.2;
+
+                    this.scene.children[1].scale.x = this.formWidth / 200
+                    this.scene.children[1].scale.y = this.formHeight / 200
+
+                    const color = 0xFFFFFF;
+                    const intensity = 0.5;
+                    const light1 = new THREE.PointLight(color, intensity);
+                    light1.position.set(-5, 5, 10);
+                
+                    this.camera.position.z = 10;
+                    this.animate()
+
                 },
-                resizeModel() {
-                    this.three.renderer.setSize(window.innerWidth, window.innerHeight);
-                    this.three.camera.aspect = window.innerWidth / window.innerHeight;
-                    this.three.camera.updateProjectionMatrix();
-                },
+
                 animate() {
+                    this.renderer.render(this.scene, this.camera);
                     requestAnimationFrame(this.animate);
-                    this.render();
-                },
-                render() {
-                    this.three.renderer.render(this.three.scene, this.three.camera);
-                },
-                isEqColors(data) {
-                    if (this.active_colors.inside.text === this.active_colors.outside.text) {
-                        this.active_colors.both = this.active_colors.inside
-                    }
                 }
 
             },
             mounted() {
-
-                this.active_colors.inside = this.colors[0]
-                this.active_colors.outside = this.colors[0]
-                this.active_colors.both = this.colors[0]
-
-                this.init();
-                window.addEventListener('resize', function () {
-                    this.resizeModel()
-                }, false)
+                this.initThree();
             },
             computed: {
-                changeWidth: {
+                formWidth: {
                     get: function () {
                         return this.window_values.width
                     },
-                    set: function (value) {
-                        this.window_values.width = value
-                        if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values
-                            .width.max) {
-                            this.changeModelSize()
-                        }
+                    set: function (text) {
+                        this.side_top.scale.y = text / 147
+                        this.side_bottom.scale.y = text / 147
+                        this.side_left.position.x = text / -42.2;
+                        this.side_right.position.x = text / 42.2;
+                        this.scene.children[1].scale.x = text / 200
+                        this.window_values.width = text
                     }
                 },
-                changeHeight: {
+                formHeight: {
                     get: function () {
                         return this.window_values.height
                     },
-                    set: function (value) {
-                        this.window_values.height = value
-
-                        if (Number(value) >= this.size_values.height.min && Number(value) <= this
-                            .size_values.height.max) {
-                            this.changeModelSize()
+                    set: function (text) {
+                        if (text === '100') {
+                            this.side_left.scale.y = 0.69
+                            this.side_right.scale.y = 0.69
+                        } else if (text === '150') {
+                            this.side_left.scale.y = 1
+                            this.side_right.scale.y = 1
+                        } else if (text === '200') {
+                            this.side_left.scale.y = 1.315
+                            this.side_right.scale.y = 1.315
                         }
+                        this.side_top.position.y = text / -42.2;
+                        this.side_bottom.position.y = text / 42.2;
+                        this.scene.children[1].scale.y = text / 200
+                        this.window_values.height = text
                     }
-                },
-                changeHandleSide: {
-                    get: function () {
-                        return this.window_values.handle_side
-                    },
-                    set: function (side) {
-                        this.window_values.handle_side = side
-                        this.handleSide()
-                    }
-                },
-                changeInsideFrameColor: {
-                    get: function () {
-                        return this.active_colors.inside
-                    },
-                    set: function (text) {
-                        this.active_colors.inside = text
-                        this.isEqColors()
-                        this.three.frame_inside.material.color.set(Number(text.hex))
-                    }
-                },
-                changeOutsideFrameColor: {
-                    get: function () {
-                        return this.active_colors.outside
-                    },
-                    set: function (text) {
-                        this.active_colors.outside = text
-                        this.isEqColors()
-                        this.three.frame_outside.material.color.set(Number(text.hex))
-                    }
-                },
-                changeBothFrameColor: {
-                    get: function () {
-                        return this.active_colors.both
-                    },
-                    set: function (text) {
-                        this.active_colors.inside = text
-                        this.active_colors.outside = text
-                        this.active_colors.both = text
-                        this.three.frame_inside.material.color.set(Number(text.hex))
-                        this.three.frame_outside.material.color.set(Number(text.hex))
-                    }
-                },
+                }
             }
         })
     </script>
-
 </body>
 
 </html>
