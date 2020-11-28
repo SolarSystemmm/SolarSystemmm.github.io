@@ -3,14 +3,18 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Window Configurator</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
     integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
     crossorigin="anonymous"></script>
-  <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/controls/OrbitControls.js"></script>
   <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"
+    integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
+    crossorigin="anonymous"></script>
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
@@ -26,7 +30,6 @@
       padding: 0;
       font-family: 'Roboto', sans-serif;
       color: #000;
-      padding-top: 30px;
     }
 
     p {
@@ -48,6 +51,7 @@
     .main-window {
       display: flex;
       justify-content: space-between;
+      align-items: flex-start;
       max-width: 1200px;
 
       margin: 0 auto;
@@ -57,6 +61,9 @@
       width: 60%;
       display: flex;
       align-items: center;
+
+      position: sticky;
+    top: 0;
     }
 
     .forms-wrapper {
@@ -73,12 +80,13 @@
     .custom-select-wrapper.input {
       flex-direction: column;
       align-items: initial;
+      
     }
 
     .custom-select-wrapper .wrapper {
       display: flex;
       flex-direction: row;
-      ;
+      
     }
 
     .custom-select-wrapper .wrapper .text-alert {
@@ -182,8 +190,28 @@
         <div class="custom-select-wrapper">
           <p class="text">Handle side</p>
           <select class="custom-select" v-model="changeHandleSide">
-            <option>Left</option>
-            <option>Right</option>
+            <option v-for="side in handle_side" v-bind:value="side">{{side.text}}</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Handle color</p>
+          <select class="custom-select" v-model="changeHandleColor">
+            <option v-for="color in handle_colors" v-bind:value="color">{{color.text}}</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Notspor</p>
+          <select class="custom-select" v-model="changeNotspor">
+            <option v-for="item in notspor" v-bind:value="item">{{item.text}}</option>
+          </select>
+          <a href="#" class="get-answer-btn">?</a>
+        </div>
+        <div class="custom-select-wrapper">
+          <p class="text">Childsafe</p>
+          <select class="custom-select" v-model="changeChildsafe">
+            <option v-for="item in childsafe" v-bind:value="item">{{item.text}}</option>
           </select>
           <a href="#" class="get-answer-btn">?</a>
         </div>
@@ -195,14 +223,11 @@
     const vue = new Vue({
       el: '#vue',
       data: {
-        active_colors: {
-          inside: '',
-          outside: '',
-          both: ''
-        },
+
         colors: [{
             text: 'white',
-            hex: '0xa6a6a6'
+            hex: '0xa6a6a6',
+            price: 0,
           },
           {
             text: 'gray',
@@ -217,31 +242,85 @@
             hex: '0x1c1c1a'
           },
         ],
+        handle_colors: [{
+            text: 'white',
+            hex: '0xffffff',
+            price: 0,
+          },
+          {
+            text: 'gray',
+            hex: '0xc9c9c9',
+            price: 0,
+          },
+          {
+            text: 'silver',
+            hex: '0xc9c9c9',
+            price: 0,
+          },
+          {
+            text: 'black',
+            hex: '0x3d3d3d',
+            price: 5,
+          },
+        ],
         size_values: {
           width: {
-            min: 30,
-            max: 300,
+            min: 39.5,
+            max: 170,
           },
           height: {
-            min: 30,
-            max: 300,
+            min: 41.5,
+            max: 170,
           },
         },
+        notspor: [{
+            text: '0mm',
+            price: 0
+          },
+          {
+            text: '10mm',
+            price: 90
+          },
+          {
+            text: '13mm',
+            price: 90
+          },
+        ],
+        childsafe: [
+        {
+            text: 'No',
+            price: 0
+          },
+          {
+            text: 'Yes',
+            price: 60
+          },
+        ],
+        handle_side: [
+        {
+            text: 'Left',
+            price: 0
+          },
+          {
+            text: 'Right',
+            price: 0
+          },
+        ],
         window_values: {
-          width: 40,
-          height: 40,
-          degree_isolation: '',
-          handle_side: 'Left',
-          grids: null,
-          notspor: '',
-          material: '',
-          glass: '',
-          frame_color: {
-            inside: null,
-            outside: null
-          }
+          width: 60,
+          height: 45,
+          active_handle_colors: null,
+          notspor: null,
+          childsafe: null,
+          handle_side: null,
+          active_colors: {
+            inside: '',
+            outside: '',
+            both: ''
+          },
         },
         three: {
+          //  width: ,
 
         }
       },
@@ -278,8 +357,7 @@
           this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer.domElement);
           this.three.controls.minAzimuthAngle = -0.8
           this.three.controls.maxAzimuthAngle = 2
-          this.three.controls.minPolarAngle = 1.5
-          // this.three.controls.maxPolarAngle =  1.5
+          this.three.controls.minPolarAngle = 1.55
           this.three.controls.enabeZoom = false
 
 
@@ -287,19 +365,19 @@
           this.animate()
         },
         createModel() {
-          const that = this
+          that = this
 
           this.three.inside = new THREE.Shape();
           this.three.outside = new THREE.Shape();
           this.three.hole = new THREE.Path();
 
           this.three.material_outside = new THREE.MeshPhongMaterial({
-            color: Number(this.active_colors.outside.hex),
+            color: Number(this.window_values.active_colors.outside.hex),
             specular: 0xffffff,
             shininess: 150,
           });
           this.three.material_inside = new THREE.MeshPhongMaterial({
-            color: Number(this.active_colors.inside.hex),
+            color: Number(this.window_values.active_colors.inside.hex),
             specular: 0xffffff,
             shininess: 150,
           });
@@ -319,7 +397,13 @@
           var loader = new THREE.GLTFLoader()
 
           loader.load('img/hand_model.glb', function (gltf) {
-            gltf.scene.traverse(function (child) {});
+            that.three.handle = null
+            gltf.scene.traverse(function (child) {
+              if (child.material) {
+                that.three.handle = child.material
+                child.material.metallic = 1
+              }
+            });
 
             const model = gltf.scene
 
@@ -330,11 +414,12 @@
             model.position.y = 0
             model.position.z = 0.3
 
-            // that.three.scene.add(model);
+            that.three.scene.add(model);
             that.three.handle_model = model
 
             model.rotation.x = THREE.Math.degToRad(90)
             model.rotation.y = THREE.Math.degToRad(270)
+
 
             that.changeModelSize()
           })
@@ -342,7 +427,7 @@
           const divisions = 10;
 
           const gridHelper = new THREE.GridHelper(size, divisions);
-          // this.three.scene.add(gridHelper);
+          // this.three.scene.add(gridHlper);
         },
         f_rect(ctx, x, y, width, height, radius) {
           ctx.moveTo(x, y);
@@ -362,7 +447,7 @@
           ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
         },
         getMesh(name, size) {
-          if (name === 'inside') {
+          if (name === 'frame_inside') {
             this.three.inside = new THREE.Shape();
             this.three.hole = new THREE.Path();
             this.f_rect(this.three.inside, 0, 0, size.width, size.height, 1);
@@ -371,9 +456,9 @@
             let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, this.three
               .extrudeSettings);
             let mesh = new THREE.Mesh(geometry_inside, this.three.material_inside);
-            mesh.name = 'inside_frame'
+            mesh.name = name
             return mesh
-          } else if (name === 'outside') {
+          } else if (name === 'frame_outside') {
             this.three.outside = new THREE.Shape();
             this.three.hole = new THREE.Path();
             this.f_rect(this.three.outside, -4.25, -2.5, size.width + 6, size.height + 5, 1);
@@ -382,7 +467,7 @@
             let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
               .extrudeSettings);
             let mesh = new THREE.Mesh(geometry_outside, this.three.material_outside);
-            mesh.name = 'outside_frame'
+            mesh.name = name
             return mesh
           } else {
             this.three.outside = new THREE.Shape();
@@ -392,119 +477,121 @@
               .extrudeSettings);
 
             let mesh = new THREE.Mesh(geometry_glass, this.three.material_glass);
-            mesh.name = 'glass'
+            mesh.name = name
             return mesh
           }
         },
-        handleSide(side = this.window_values.handle_side, model = this.three.handle_model) {
-          s = 0.5
-          r = 0.3
+        handleSide() {
+          s = 1.05
+          side = this.window_values.handle_side.text
+          model = this.three.handle_model
+
           if (side === 'Left') {
 
-            h = ((this.changeHeight - 40) * 0.03) + r * 3
-
             model.position.x = 0
-            model.position.y = h
+            model.position.y = 0
+            if(this.changeHeight <= 50){
+              model.position.y = 0.25
+            }
+
           } else if (side === 'Right') {
 
-            c = ((this.changeWidth - 40) * 0.05) + s * 3
-            h = ((this.changeHeight - 40) * 0.03) + r * 3
+            c = ((this.changeWidth -  39.5) * 0.05) + s * 3
 
             model.position.x = c
-            model.position.y = h
+            model.position.y =  changeHeight / 20
           }
         },
         changeModelSize() {
-          const that = this
-          const old_inside = this.three.scene.getObjectByName('inside_frame');
-          const old_outside = this.three.scene.getObjectByName('outside_frame');
-          const old_glass = this.three.scene.getObjectByName('glass');
 
-          this.three.scene.remove(old_inside);
-          this.three.scene.remove(old_outside);
-          this.three.scene.remove(old_glass);
-          this.three.frame_inside = null
-          this.three.frame_outside = null
-          this.three.glass = null
+          const models = [{
+              name: 'frame_inside',
+              z: -0
+            },
+            {
+              name: 'frame_outside',
+              z: -0.2
+            },
+            {
+              name: 'glass',
+              z: -0.15
+            },
+          ]
+          const that = this
 
           const range = {
             min: 80,
-            max: 150,
+            max: 170,
           }
-
-          let width = this.changeWidth / 2
-          // if(width < 25){
-          //   width = 50 / 2 
-          // }
-          let height = this.changeHeight / 2
-          // if(height < 25){
-          //   height = 50 / 2 
-          // }
-          this.three.frame_inside = this.getMesh('inside', {
-            width: Number(width),
-            height: Number(height),
-          })
-          this.three.frame_outside = this.getMesh('outside', {
-            width: Number(width),
-            height: Number(height),
-          })
-          this.three.glass = this.getMesh('glass', {
-            width: Number(width),
-            height: Number(height),
-          })
 
           const max_zoom = (this.changeHeight / range.max) * 2 + 9
 
-          const min_zoom = this.changeHeight / 20 + 1.5
+          const min_zoom = this.changeHeight / 20 + 3.5
 
-          if (this.changeHeight >= range.min && this.changeHeight <= range.max) {
-            this.three.camera.position.z = 8
-            // this.three.camera.position.y = 0.7
-            // this.three.frame_inside.position.y = -3
-            this.three.frame_inside.position.y = -3
-            this.three.frame_outside.position.y = -3
-            this.three.glass.position.y = -3
-          } else if (this.changeHeight > range.max) {
-            this.three.camera.position.z = max_zoom
-            this.three.frame_inside.position.y = (this.changeHeight / -41)
-            this.three.frame_outside.position.y = (this.changeHeight / -41)
-            this.three.glass.position.y = (this.changeHeight / -41)
-          } else if (this.changeWidth < range.min) {
-            this.three.camera.position.z = min_zoom
-            this.three.frame_inside.position.y = -1
-            this.three.frame_outside.position.y = -1
-            this.three.glass.position.y = -1
+          let width = this.changeWidth / 2
+          let height = this.changeHeight / 2
+
+          for (let i = 0; i < models.length; i++) {
+            let k = models[i].name
+
+            this.three.scene.remove(this.three.scene.getObjectByName(k));
+
+            this.three[k] = null
+
+            this.three[k] = this.getMesh(k, {
+              width: Number(width + 18),
+              height: Number(height + 18),
+            })
+            this.three[k].scale.set(0.10, 0.10, 0.10)
+
+            if (k === models[0].name) {
+              this.three[k].position.x = -0.2
+            }
+
+            this.three[k].position.z = models[i].z
+
+            this.three.scene.add(this.three[k])
+
+
           }
 
+          if (this.changeHeight >= range.min && this.changeHeight <= range.max) {
+            k =  this.changeHeight / -30
 
-        
+            this.three.handle_model.scale.set(0.013, 0.013, 0.013)
 
-          setTimeout(() => {
-            that.handleSide(that.window_values.handle_side, that.three.handle_model)
-          }, [])
+            this.three.camera.position.z = 8
 
-          this.three.frame_outside.scale.set(0.1, 0.1, 0.1);
-          this.three.frame_outside.position.z = -0.2
+            for (let model of models) {
+              this.three[model.name].position.y = k
+            }
+          } 
+          // else if (this.changeHeight > range.max) {
+          //   k = this.changeHeight / -38
 
-          this.three.glass.scale.set(0.1, 0.1, 0.1);
-          this.three.glass.position.z = -0.15
+          //   this.three.handle_model.scale.set(0.015, 0.015, 0.015)
 
-          this.three.frame_inside.scale.set(0.1, 0.1, 0.1);
-          this.three.frame_inside.position.x = -0.2
+          //   this.three.camera.position.z = max_zoom
 
-          // this.three.frame_inside.rotation.z = 1
-          // this.three.frame_outside.rotation.z = 1
-          // this.three.glass.rotation.z = 1
+          //   for (let model of models) {
+          //     this.three[model.name].position.y = k
+          //   }
+          // } 
+          else if (this.changeHeight < range.min) {
+            k = this.changeHeight / -24
 
-          this.three.scene.add(this.three.frame_inside);
-          this.three.scene.add(this.three.frame_outside);
-          this.three.scene.add(this.three.glass);
+            this.three.handle_model.scale.set(0.013, 0.013, 0.013)
 
-          // this.three.group.add(this.three.frame_inside)
-          // this.three.group.add(this.three.frame_outside)
-          // this.three.group.add(this.three.glass)
+            this.three.camera.position.z = 7
 
-          // this.three.scene.add(this.three.group);
+            for (let model of models) {
+              this.three[model.name].position.y = k
+            }
+          }
+
+          // handleFunc
+          that.handleSide()
+
         },
         resizeModel() {
           this.three.renderer.setSize(window.innerWidth, window.innerHeight);
@@ -520,22 +607,30 @@
           this.three.renderer.render(this.three.scene, this.three.camera);
         },
         isEqColors() {
-          if (this.active_colors.inside.text === this.active_colors.outside.text) {
-            this.active_colors.both = this.active_colors.inside
+          if (this.window_values.active_colors.inside.text === this.window_values.active_colors.outside.text) {
+            this.window_values.active_colors.both = this.window_values.active_colors.inside
           }
         }
 
       },
       mounted() {
+        that = this
+        this.window_values.active_colors.inside = this.colors[0]
+        this.window_values.active_colors.outside = this.colors[0]
+        this.window_values.active_colors.both = this.colors[0]
 
-        this.active_colors.inside = this.colors[0]
-        this.active_colors.outside = this.colors[0]
-        this.active_colors.both = this.colors[0]
+        this.window_values.active_handle_colors = this.handle_colors[0]
+
+        this.window_values.notspor = this.notspor[0]
+
+        this.window_values.childsafe = this.childsafe[0]
+
+        this.window_values.handle_side = this.handle_side[0]
+
+
 
         this.init();
-        window.addEventListener('resize', function () {
-          this.resizeModel()
-        }, false)
+
       },
       computed: {
         changeWidth: {
@@ -574,11 +669,11 @@
         },
         changeInsideFrameColor: {
           get: function () {
-            return this.active_colors.inside
+            return this.window_values.active_colors.inside
           },
           set: function (text) {
-            this.active_colors.inside = text
-            this.active_colors.both = text
+            this.window_values.active_colors.inside = text
+            this.window_values.active_colors.both = text
             this.isEqColors()
             this.three.frame_inside.material.color.set(Number(text.hex))
             this.three.frame_outside.material.color.set(Number(text.hex))
@@ -586,24 +681,48 @@
         },
         changeOutsideFrameColor: {
           get: function () {
-            return this.active_colors.outside
+            return this.window_values.active_colors.outside
           },
           set: function (text) {
-            this.active_colors.outside = text
+            this.window_values.active_colors.outside = text
             this.isEqColors()
-            // this.three.frame_outside.material.color.set(Number(text.hex))
           }
         },
         changeBothFrameColor: {
           get: function () {
-            return this.active_colors.both
+            return this.window_values.active_colors.both
           },
           set: function (text) {
-            this.active_colors.inside = text
-            this.active_colors.outside = text
-            this.active_colors.both = text
+            this.window_values.active_colors.inside = text
+            this.window_values.active_colors.outside = text
+            this.window_values.active_colors.both = text
             this.three.frame_inside.material.color.set(Number(text.hex))
             this.three.frame_outside.material.color.set(Number(text.hex))
+          }
+        },
+        changeHandleColor: {
+          get: function () {
+            return this.window_values.active_handle_colors
+          },
+          set: function (text) {
+            this.window_values.active_handle_colors = text
+            this.three.handle.color.set(Number(text.hex))
+          }
+        },
+        changeNotspor: {
+          get: function () {
+            return this.window_values.notspor
+          },
+          set: function (text) {
+            this.window_values.notspor = text
+          }
+        },
+        changeChildsafe: {
+          get: function () {
+            return this.window_values.childsafe
+          },
+          set: function (text) {
+            this.window_values.childsafe = text
           }
         },
       }
