@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Window Configurator</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
+    integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"
+    integrity="sha512-LF8ZB1iTwi4Qvkm4pekHG4a437Y9Af5ZuwbnW4GTbAWQeR2E4KW8WF+xH8b9psevV7wIlDMx1MH9YfPqgKhA/Q=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="EffectComposer.js"></script>
+  <script src="RenderPass.js"></script>
+  <script src="UnrealBloomPass.js"></script>
+  <script src="L.js"></script>
+  <script src="C.js"></script>
+  <script src="S.js"></script>
+  <script src="Stats.js"></script>
+  <script src="Fly.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"
+    integrity="sha512-lIKG1kC5TMb1Zx32vdz1n31YJMZRknVY20U9MJ28hD3y2c0OKN0Ce5NhJji78v8zX5UOSsm+MTBOcJt7yMBnSg=="
+    crossorigin="anonymous"></script>
+  <style>
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      color: #000;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .start-btn {
+      position: absolute;
+      top: 0px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      text-align: center;
+      z-index: 1;
+
+
+    }
+
+    .start-btn #trigger {
+      cursor: pointer;
+      display: inline-block;
+      color: #fff;
+      padding: 10px 20px;
+      border: 2px solid #fff;
+      border-radius: 20px;
+      text-transform: uppercase;
+    }
+
+    /* .main-container{
+      background: #fff;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+    .main-container.js-ready{
+      display: flex;
+    }
+    .main-container .soon-text{
+      font-size: 30px;
+    } */
+  </style>
+
+</head>
+
+<body>
+
+
+  <div id="container"></div>
+  <div class="start-btn">
+    <div id="trigger">Let's go!</div>
+  </div>
+
+  <script>
+    let camera;
+    let composer, renderer, mixer, clock, controls, flash, model_s, amb_light;
+    let garage = false
+
+    const scene = new THREE.Scene();
+
+    const params = {
+      exposure: 1,
+      bloomStrength: 1.5,
+      bloomRadius: 0
+    };
+
+    init();
+
+    function init() {
+
+      const container = document.getElementById('container');
+
+      renderer = new THREE.WebGLRenderer({
+        antialias: true
+      });
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth - 10, window.innerHeight - 10);
+      renderer.toneMapping = THREE.ReinhardToneMapping;
+      container.appendChild(renderer.domElement);
+
+      camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 100);
+      scene.add(camera);
+
+
+      camera.position.set(0, -35, 15)
+      camera.rotation.x = THREE.Math.degToRad(90)
+
+      amb_light = new THREE.AmbientLight(0x9c453b)
+
+      scene.add(amb_light);
+
+      // let controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+      const pointLight = new THREE.PointLight(0xffffff, 1);
+      camera.add(pointLight);
+
+      const renderScene = new THREE.RenderPass(scene, camera);
+
+      const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4,
+        0.85);
+      bloomPass.threshold = params.bloomThreshold;
+      bloomPass.strength = params.bloomStrength;
+      bloomPass.radius = params.bloomRadius;
+
+      composer = new THREE.EffectComposer(renderer);
+      composer.addPass(renderScene);
+      composer.addPass(bloomPass);
+
+      // let model_s;
+
+      new THREE.GLTFLoader().load('scene.gltf', function (gltf) {
+
+        const model = gltf.scene;
+
+        scene.add(model);
+
+        model.rotation.z = THREE.Math.degToRad(-180)
+        model.rotation.x = THREE.Math.degToRad(-90)
+        model_s = model
+        animate();
+
+      });
+
+      starGeo = new THREE.Geometry();
+      for (let i = 0; i < 6000; i++) {
+        star = new THREE.Vector3(
+          Math.random() * 600 - 300,
+          Math.random() * 600 - 300,
+          Math.random() * 600 - 300
+        );
+        star.velocity = 0;
+        star.acceleration = 0.02;
+        starGeo.vertices.push(star);
+      }
+
+      let sprite = new THREE.TextureLoader().load('img/star.png');
+      let starMaterial = new THREE.PointsMaterial({
+        color: 0xaaaaaa,
+        size: 0.7,
+        map: sprite
+      });
+
+      stars = new THREE.Points(starGeo, starMaterial);
+      scene.add(stars);
+
+
+
+      function detectMob() {
+          const toMatch = [
+            /Android/i,
+            /webOS/i,
+            /iPhone/i,
+            /iPad/i,
+            /iPod/i,
+            /BlackBerry/i,
+            /Windows Phone/i
+          ];
+
+          return toMatch.some((toMatchItem) => {
+            return navigator.userAgent.match(toMatchItem);
+          });
+        }
+      if (detectMob) {
+        document.addEventListener('mousemove', moveStarship, false);
+      } else {
+        document.addEventListener('touchemove', moveStarshipMobile, false);
+      }
+
+      function moveStarship(event) {
+        camera.position.x = -3 * (event.clientX - window.innerWidth / 2) / 100;
+      }
+      function moveStarshipMobile(event) {
+        camera.position.x = -3 * (event.touches[0].clientX - window.innerWidth / 2) / 100;
+      }
+      moveStarshipMobile
+
+      function modelShowing() {
+        garage = true
+        console.log(garage)
+        // document.addEventListener('mousemove', moveStarship, false);
+        // animate()
+        // let urls = [
+        //   'px.png',
+        //   'nx.png',
+        //   'py.png',
+        //   'ny.png',
+        //   'pz.png',
+        //   'nz.png'
+        // ];
+        // let loader = new THREE.CubeTextureLoader()
+        //    .setPath('cube_textures/')
+        // scene.background = loader.load(urls);
+
+        // let sphereMaterial = new THREE.MeshBasicMaterial();
+        // let sphereGeo = new THREE.SphereGeometry(400, 50, 50);
+        // let mirrorSphere = new THREE.Mesh(sphereGeo, sphereMaterial);
+        // // mirrorSphere.position.set(0, 100, 0);
+        // scene.add(mirrorSphere);
+
+
+        //     new THREE.CubeTextureLoader()
+
+        // .load(
+
+        //     // urls of images used in the cube texture
+        //     [
+        //         'px.png',
+        //         'nx.png',
+        //         'py.png',
+        //         'ny.png',
+        //         'pz.png',
+        //         'nz.png'
+        //     ],
+
+        //     // what to do when loading is over
+        //     function (cubeTexture) {
+
+        //         // Geometry
+        //         var geometry = new THREE.SphereGeometry(1, 20, 20);
+
+        //         // Material
+        //         var material = new THREE.MeshBasicMaterial({
+
+        //             // CUBE TEXTURE can be used with
+        //             // the environment map property of
+        //             // a material.
+        //             envMap: cubeTexture
+
+        //         });
+
+        //         // Mesh
+        //         var mesh = new THREE.Mesh(geometry, material);
+        //         scene.add(mesh);
+
+        //         // CUBE TEXTURE is also an option for a background
+        //         scene.background = cubeTexture;
+
+        //         renderer.render(scene, camera);
+
+        //     })
+      }
+
+
+      document.querySelector('.start-btn #trigger').addEventListener('click', function () {
+        document.removeEventListener('mousemove', moveStarship)
+        document.removeEventListener('mousemove', moveStarshipMobile)
+        const coords = {
+          x: camera.position.x,
+          y: camera.position.y,
+          z: camera.position.z,
+          r: bloomPass.radius,
+          exp: renderer.toneMappingExposure,
+          str: bloomPass.strength,
+          x_z: 1,
+          y_m: 12,
+        }
+        const z_pos = new TWEEN.Tween(coords)
+          .to({
+            z: 4,
+            x: 0
+          }, 1000)
+          .easing(TWEEN.Easing.Quadratic.Out)
+          .onUpdate(() => {
+            camera.position.z = coords.z;
+            camera.position.x = coords.x
+          })
+          .onComplete(() => {
+            y_movement.start()
+          })
+          .start()
+        const y_movement = new TWEEN.Tween(coords)
+          .to({
+            y: -25
+          }, 1000)
+          .easing(TWEEN.Easing.Quadratic.Out)
+          .onUpdate(() => {
+            camera.position.y = coords.y
+          })
+          .onComplete(() => {
+            const material = new THREE.MeshBasicMaterial({
+              color: 'white',
+            });
+            const radius = 7;
+            const segments = 24;
+            const geometry = new THREE.SphereBufferGeometry(2, 32, 32);
+            flash = new THREE.Mesh(geometry, material);
+            flash.position.z = 4
+            scene.add(flash);
+            y_movement_final.start()
+            bloom.delay(400)
+            bloom.start()
+          })
+
+        const y_movement_final = new TWEEN.Tween(coords)
+          .to({
+            y: -30,
+            r: 1,
+            exp: 2,
+            str: 3,
+          }, 1000)
+          .easing(TWEEN.Easing.Quadratic.Out)
+          .onUpdate(() => {
+            camera.position.y = coords.y
+            bloomPass.strength = coords.str
+            renderer.toneMappingExposure = coords.exp
+            bloomPass.radius = coords.r
+          })
+
+        const bloom = new TWEEN.Tween(coords)
+          .to({
+            x_z: 15,
+            y_m: 12,
+          }, 1000)
+          .easing(TWEEN.Easing.Quadratic.Out)
+          .onUpdate(() => {
+            flash.scale.set(coords.x_z, coords.y_m, coords.x_z)
+          })
+          .onComplete(() => {
+            // scene.children.forEach(item => {
+            //   scene.remove(item)
+            // });
+            scene.remove(stars)
+            scene.remove(flash)
+            // renderer.setClearColor(0xffffff, 1)
+            // renderer.alpha = true
+            // container.remove()
+            model_s.rotation.z = THREE.Math.degToRad(0)
+            model_s.rotation.x = THREE.Math.degToRad(90)
+
+            bloomPass.strength = params.bloomStrength
+            renderer.toneMappingExposure = params.exposure
+            bloomPass.radius = params.bloomRadius
+
+
+            modelShowing()
+          })
+      }, false)
+
+    }
+
+
+
+    function onWindowResize() {
+
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+      composer.setSize(width, height);
+
+    }
+
+    function animate() {
+      starGeo.vertices.forEach(p => {
+        p.velocity += p.acceleration
+        p.y -= p.velocity;
+
+        if (p.y < -200) {
+          p.y = 200;
+          p.velocity = 0;
+        }
+      });
+      starGeo.verticesNeedUpdate = true;
+      stars.rotation.y += 0.002;
+      if (garage == true) {
+        model_s.rotation.y += 0.02
+      }
+
+      composer.render();
+      TWEEN.update()
+      requestAnimationFrame(animate);
+    }
+  </script>
+
+</body>
+
+</html>
