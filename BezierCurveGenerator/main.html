@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Window Configurator</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
+
+
+
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sine-waves@0.3.0/sine-waves.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.6.5/dat.gui.min.js"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
+    *,
+    ::after,
+    ::before {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      color: #000;
+    }
+
+    * {
+      /* margin: 0; */
+      /* padding: 0; */
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    svg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: transparent;
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script src="Waves.js"></script>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-0" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-1" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-2" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-3" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-4" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-5" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-6" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-7" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-8" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-9" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-10" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-11" d="" stroke="#000" fill="none" /></svg>
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <path id="wave-12" d="" stroke="#000" fill="none" /></svg>
+
+
+  <script>
+    const waves = document.querySelectorAll("[id^='wave-']")
+    let data = {
+      amplitude: 30,
+      bones: 8,
+      speed: .25,
+      wave_height: 200,
+      color: '#ffffff'
+    }
+    let myWaves = []
+
+    function draw() {
+      for (let i = 0; i < waves.length; i++) {
+        let myWave = wavify(document.querySelector('#wave-' + i), {
+          height: data.wave_height,
+          bones: data.bones,
+          amplitude: data.amplitude,
+          color: 'none',
+          speed: data.speed,
+        })
+
+        myWaves.push(myWave)
+        waves[i].parentElement.style.marginTop = i * 3 + 'px'
+        waves[i].setAttribute('stroke', data.color)
+      }
+    }
+
+    draw()
+
+    function redraw() {
+      for (let i = 0; i < myWaves.length; i++) {
+
+        myWaves[i].reboot({
+          height: data.wave_height,
+          bones: data.bones,
+          amplitude: data.amplitude,
+          color: 'none',
+          speed: data.speed,
+        });
+      }
+      for (let i = 0; i < waves.length; i++) {
+        waves[i].setAttribute('stroke', data.color)
+        // console.log(waves[i])
+      }
+    }
+
+    let gui = new dat.GUI();
+    // let con = new ControlBar();
+
+    gui.add(data, 'amplitude', 1, 100).onChange(function (amp) {
+      data.amplitude = amp;
+      redraw();
+    });
+    gui.add(data, 'bones', 1, 20).onChange(function (amp) {
+      data.bones = amp;
+      redraw();
+    });
+    gui.addColor(data, 'color')
+      .onChange(function (color) {
+        data.color = color
+        redraw()
+      });
+  </script>
+
+</body>
+
+</html>
