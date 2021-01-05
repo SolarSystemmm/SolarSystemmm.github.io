@@ -274,6 +274,7 @@ header.header nav ul li a {
     height: 100vh;
     z-index: 1000;
     pointer-events: none;
+        mix-blend-mode: difference;
 }
 
 #dote {
