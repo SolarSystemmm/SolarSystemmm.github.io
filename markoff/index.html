@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="We create a business and create your name in the market">
+	<meta name="keywords" content="website, web design, ux, ui, business, create website">
+	<link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="css/libs.min.css">
+	<link rel="stylesheet" href="css/style.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
+		integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
+		crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/three@0.121.1/examples/js/controls/OrbitControls.js"></script>
+	<script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
+	<script src="js/TWEEN.js"></script>
+	<script src="js/EffectComposer.js"></script>
+	<script src="js/RenderPass.js"></script>
+	<script src="js/UnrealBloomPass.js"></script>
+	<script src="js/L.js"></script>
+	<script src="js/C.js"></script>
+	<script src="js/S.js"></script>
+	<script src="js/Stats.js"></script>
+	<script src="js/Fly.js"></script>
+	<title>Markoff Agency - Marketing and website development agency</title>
+</head>
+
+<body>
+	<header class="header">
+		<span class="logo">
+			<svg width="146" height="35" viewBox="0 0 146 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path fill-rule="evenodd" clip-rule="evenodd"
+					d="M37.9714 34H38.6665V27.5518C38.6665 25.1904 38.8633 23.5052 39.2568 22.4961C39.6504 21.487 40.271 20.6797 41.1187 20.0742C41.9764 19.4688 42.9199 19.166 43.9492 19.166C44.7969 19.166 45.5234 19.3678 46.1289 19.7715C46.7445 20.1751 47.1784 20.71 47.4307 21.376C47.6829 22.0319 47.8091 23.2428 47.8091 25.0088V34H49.9736V25.0088C49.9736 22.9502 49.7617 21.4062 49.3379 20.377C48.9141 19.3477 48.2632 18.5454 47.3853 17.9702C46.5174 17.395 45.5133 17.1074 44.373 17.1074C43.152 17.1074 42.0117 17.4455 40.9521 18.1216C39.8926 18.7876 39.0096 19.7664 38.3032 21.0581C37.9702 20.0894 37.5767 19.3477 37.1226 18.833C36.6685 18.3083 36.0832 17.8895 35.3667 17.5767C34.6502 17.2638 33.8934 17.1074 33.0962 17.1074C31.9155 17.1074 30.7904 17.4303 29.7207 18.0762C28.9437 18.5605 28.1868 19.3275 27.4502 20.377V17.5312H25.3462V21.7255L27.6547 23.9698C27.7529 23.3654 27.8866 22.854 28.0557 22.4355C28.4694 21.4365 29.1001 20.6444 29.9478 20.0591C30.8055 19.4637 31.7238 19.166 32.7026 19.166C33.5503 19.166 34.2819 19.383 34.8975 19.8169C35.513 20.2407 35.9419 20.8109 36.1841 21.5273C36.4364 22.2337 36.5625 23.5809 36.5625 25.5688V32.6302L37.9714 34ZM70.8623 34V17.5312H68.7734V20.5586C67.946 19.4082 66.9823 18.5454 65.8823 17.9702C64.7925 17.395 63.5715 17.1074 62.2192 17.1074C59.8781 17.1074 57.875 17.95 56.21 19.6353C54.5449 21.3205 53.7124 23.3488 53.7124 25.7202C53.7124 28.1421 54.5348 30.2007 56.1797 31.896C57.8346 33.5812 59.8276 34.4238 62.1587 34.4238C63.4705 34.4238 64.6764 34.1514 65.7764 33.6064C66.8864 33.0615 67.8854 32.2492 68.7734 31.1694V34H70.8623ZM59.1162 20.0288C60.1152 19.4435 61.2051 19.1509 62.3857 19.1509C64.2223 19.1509 65.7663 19.7917 67.0176 21.0732C68.279 22.3548 68.9097 23.9492 68.9097 25.8564C68.9097 27.1077 68.6271 28.2329 68.062 29.2319C67.507 30.231 66.7098 31.0231 65.6704 31.6084C64.631 32.1937 63.5311 32.4863 62.3706 32.4863C61.2202 32.4863 60.1405 32.1937 59.1313 31.6084C58.1323 31.013 57.3351 30.1855 56.7397 29.126C56.1444 28.0664 55.8467 26.9564 55.8467 25.7959C55.8467 24.6253 56.1393 23.5153 56.7246 22.4658C57.32 21.4163 58.1172 20.604 59.1162 20.0288ZM77.0078 17.5312H74.8433V34H77.0078V28.4297C77.0078 25.5739 77.139 23.6768 77.4014 22.7383C77.7445 21.5173 78.244 20.6191 78.8999 20.0439C79.5558 19.4587 80.237 19.166 80.9434 19.166C81.2461 19.166 81.6195 19.2619 82.0635 19.4536L83.1685 17.6675C82.5024 17.2941 81.8768 17.1074 81.2915 17.1074C80.5145 17.1074 79.7677 17.3446 79.0513 17.8188C78.3348 18.283 77.6536 18.9894 77.0078 19.938V17.5312ZM87.0889 11.1738H84.9546V34H87.0889V26.5981L95.3535 34H98.3506L88.7842 25.3872L97.8208 17.5312H94.7026L87.0889 24.1611V11.1738ZM104.178 31.2148C103.815 30.8516 103.376 30.6699 102.861 30.6699C102.347 30.6699 101.908 30.8516 101.544 31.2148C101.181 31.5781 101 32.0221 101 32.5469C101 33.0615 101.181 33.5055 101.544 33.8789C101.908 34.2422 102.347 34.4238 102.861 34.4238C103.376 34.4238 103.815 34.2422 104.178 33.8789C104.542 33.5055 104.723 33.0615 104.723 32.5469C104.723 32.0221 104.542 31.5781 104.178 31.2148ZM123.22 19.8623C121.555 18.0257 119.456 17.1074 116.923 17.1074C114.38 17.1074 112.276 18.0308 110.611 19.8774C109.098 21.5526 108.341 23.5304 108.341 25.811C108.341 28.1118 109.138 30.125 110.732 31.8506C112.337 33.5661 114.401 34.4238 116.923 34.4238C119.436 34.4238 121.49 33.5661 123.084 31.8506C124.688 30.125 125.491 28.1118 125.491 25.811C125.491 23.5203 124.734 21.5374 123.22 19.8623ZM112.397 21.1338C113.659 19.832 115.167 19.1812 116.923 19.1812C118.669 19.1812 120.173 19.832 121.434 21.1338C122.706 22.4355 123.341 24.0098 123.341 25.8564C123.341 27.0472 123.054 28.1572 122.479 29.1865C121.903 30.2158 121.126 31.013 120.147 31.5781C119.169 32.1331 118.094 32.4106 116.923 32.4106C115.753 32.4106 114.678 32.1331 113.699 31.5781C112.72 31.013 111.943 30.2158 111.368 29.1865C110.793 28.1572 110.505 27.0472 110.505 25.8564C110.505 24.0098 111.136 22.4355 112.397 21.1338ZM136.223 13.2476V11.1738C135.264 10.8913 134.442 10.75 133.755 10.75C133.019 10.75 132.388 10.9064 131.863 11.2192C131.349 11.522 130.98 11.9256 130.758 12.4302C130.546 12.9347 130.44 13.7773 130.44 14.958V17.5312H128.276V19.3477H130.44V34H132.56V19.3477H136.011V17.5312H132.575V15.3062C132.575 14.3677 132.61 13.7925 132.681 13.5806C132.751 13.3586 132.923 13.1668 133.195 13.0054C133.468 12.8338 133.811 12.748 134.225 12.748C134.78 12.748 135.446 12.9146 136.223 13.2476ZM145.971 13.2476V11.1738C145.012 10.8913 144.19 10.75 143.503 10.75C142.767 10.75 142.136 10.9064 141.611 11.2192C141.097 11.522 140.728 11.9256 140.506 12.4302C140.294 12.9347 140.188 13.7773 140.188 14.958V17.5312H138.024V19.3477H140.188V34H142.308V19.3477H145.759V17.5312H142.323V15.3062C142.323 14.3677 142.358 13.7925 142.429 13.5806C142.499 13.3586 142.671 13.1668 142.943 13.0054C143.216 12.8338 143.559 12.748 143.973 12.748C144.528 12.748 145.194 12.9146 145.971 13.2476Z"
+					fill="white" />
+				<path d="M36 35H0V33H31L0 3V0L36 35Z" fill="#7457E9" />
+			</svg>
+		</span>
+		<nav>
+			<ul>
+				<li><a href="#">Cases</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Blog</a></li>
+			</ul>
+			<a href="" class="btn btn-primary">Start project</a>
+		</nav>
+	</header>
+	<main class="main">
+		<div class="promo">
+			<div class="promo-link">
+				<a href="/portfolio.html" class="cases"><span>Cases</span></a>
+				<a href="/about.html" class="about"><span>About</span></a>
+				<div class="dark"></div>
+				<div class="light"></div>
+			</div>
+		</div>
+	</main>
+	<footer class="footer"></footer>
+	<div id="container"></div>
+
+	<svg viewBox="0 0 200 200" style="display: none;">
+		<path id="pentagon-path"
+			d="M100 166C136.451 166 166 136.451 166 100C166 63.5492 136.451 34 100 34C63.5492 34 34 63.5492 34 100C34 136.451 63.5492 166 100 166ZM100 168C137.555 168 168 137.555 168 100C168 62.4446 137.555 32 100 32C62.4446 32 32 62.4446 32 100C32 137.555 62.4446 168 100 168Z" />
+	</svg>
+	<div class="jelly-container">
+		<!-- Canvas to draw the jelly pentagon -->
+		<canvas class="jelly-canvas"></canvas>
+
+		<!-- Text in the centroid of the jelly pentagon -->
+		<div class="centroid-container">
+			<div class="centroid-text"></div>
+		</div>
+	</div>
+
+	<div id="dote"></div>
+	<script src="js/libs.min.js"></script>
+	<script src="js/main.min.js"></script>
+	<script type="module">
+		let camera;
+    let composer, renderer, mixer, clock, controls, flash, coin, model_s, amb_light;
+    let garage = false;
+    let coins = [false, false, false]
+	clock = new THREE.Clock();
+    const scene = new THREE.Scene();
+
+    const params = {
+      exposure: 1,
+      bloomStrength: 0.9,
+      bloomRadius: 1
+    };
+
+    init();
+
+    function init() {
+
+      const container = document.getElementById('container');
+
+      renderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	  });
+	  renderer.setClearColor( 0x000000, 0 )
+      renderer.setPixelRatio(window.devicePixelRatio);
+      renderer.setSize(window.innerWidth - 10, window.innerHeight - 10);
+      renderer.toneMapping = THREE.ReinhardToneMapping;
+      container.appendChild(renderer.domElement);
+
+      camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 2000);
+      scene.add(camera);
+
+
+      camera.position.set(0, 0, 5.5)
+    //   camera.rotation.x = THREE.Math.degToRad(90)
+
+      amb_light = new THREE.AmbientLight(0x9c453b)
+
+      scene.add(amb_light);
+
+      let controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+      const pointLight = new THREE.PointLight(0xffffff, 1);
+      camera.add(pointLight);
+
+      const renderScene = new THREE.RenderPass(scene, camera);
+
+      const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4,
+        0.85);
+      bloomPass.threshold = params.bloomThreshold;
+      bloomPass.strength = params.bloomStrength;
+      bloomPass.radius = params.bloomRadius;
+
+      composer = new THREE.EffectComposer(renderer);
+      composer.addPass(renderScene);
+      composer.addPass(bloomPass);
+
+      new THREE.GLTFLoader().load('static/scene.gltf', function (gltf) {
+        const model = gltf.scene;
+        scene.add(model);
+		model_s = model
+		mixer = new THREE.AnimationMixer( gltf.scene );
+        gltf.animations.forEach( ( clip ) => {
+            mixer.clipAction( clip ).play();
+        } );
+        animate();
+
+      });
+    }
+
+    function onWindowResize() {
+
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(width, height);
+      composer.setSize(width, height);
+
+    }
+
+    function animate() {
+	  composer.render();
+	  var delta = clock.getDelta();
+  
+	  if ( mixer ) mixer.update( delta );
+	  
+      TWEEN.update()
+      requestAnimationFrame(animate);
+    }
+
+	</script>
+</body>
+
+</html>
