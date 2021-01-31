@@ -3,17 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>Window Configurator</title>
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" integrity="sha512-jeYvJdyAYkpQCY/omvCYQo89qA5YxDW4JBT7COPsHT2sOAanwxkZRFeP9gc69b5reSDpZIoyCqZQZcWZkbB5Gw==" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r122/three.min.js"
-        integrity="sha512-bzjaf85dHTL4H0BvkAJ/Jbvxqf1rDj+jVpCNe3oxQj/RXSnkx1HnKhqIcmMWghxEAbXsYgddrc38saWpltlkug=="
-        crossorigin="anonymous"></script>
-    <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
-
-</head>
-
-<body>
-    <style>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>    <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
         *,
@@ -27,7 +25,6 @@
             padding: 0;
             font-family: 'Roboto', sans-serif;
             color: #000;
-            padding-top: 30px;
         }
 
         p {
@@ -42,25 +39,43 @@
 
         canvas {
             outline: none;
+            /* pointer-events: none; */
+            transform:  translateY(-15%);
         }
 
         .main-window {
             display: flex;
             justify-content: space-between;
-            max-width: 1100px;
-
+            flex-direction: row;
+            align-items: flex-start;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 30px 0 0;
         }
 
         .canvas-wrapper {
             width: 60%;
             display: flex;
             align-items: center;
+            position: sticky;
+            top: 0;
+
+            /* height: 120vh; */
         }
 
         .forms-wrapper {
             margin-top: 30px;
             width: 40%;
+        }
+
+        .button-wrapper .add-to-cart {
+            display: block;
+            margin: 20px 0;
+            width: 80%;
+            border: 2px solid #3842bb;
+            padding: 10px;
+            text-align: center;
+            border-radius: 10px;
         }
 
         .custom-select-wrapper {
@@ -69,8 +84,40 @@
             margin-top: 20px;
         }
 
+        .custom-select-wrapper.input {
+            flex-direction: column;
+            align-items: initial;
+
+        }
+
+        .custom-select-wrapper.double {
+            flex-wrap: wrap;
+        }
+
+        .custom-select-wrapper.double select {
+            margin-top: 20px;
+            width: 80%;
+        }
+
+        .custom-select-wrapper.double .get-answer-btn {
+            margin-top: 20px ;
+        }
+
+        .custom-select-wrapper .wrapper {
+            display: flex;
+            flex-direction: row;
+
+        }
+
+        .custom-select-wrapper .wrapper .text-alert {
+            display: block;
+            flex-basis: 100%;
+            text-align: center;
+
+        }
+
         .custom-select-wrapper .text {
-            flex-basis: 20%;
+            flex-basis: 30%;
             flex-shrink: 0;
         }
 
@@ -87,6 +134,7 @@
 
         .custom-select-wrapper .get-answer-btn {
             display: flex;
+            flex-shrink: 0;
             justify-content: center;
             align-items: center;
             border: 2px solid #3842bb;
@@ -95,225 +143,1625 @@
             height: 30px;
             margin-left: 15px;
         }
+
+        .custom-select {
+            flex-grow: 1;
+        }
+
+        .text-alert {
+            color: darkred;
+            font-weight: bold;
+        }
+
+        .slider{
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 20%;
+            /* background: red; */
+
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+
+        }
+        .slider .slider-item{
+            cursor: pointer;
+            width: 25%;
+            padding: 10px 0;
+            border: 2px solid #3842bb;
+            border-radius: 10px;
+            background: #fff;
+            text-align: center;
+
+            user-select: none;
+        }
+        .slider .slider-item img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .slider .controls-block{
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            flex-basis: 100%;
+        }
+
+        .disabled {
+                color: rgb(84, 84, 84);
+                cursor: default;
+                background-color:rgba(239, 239, 239, 0.3) !important;
+                border-color: rgba(118, 118, 118, 0.3) !important;
+                pointer-events: none;
+            }
+
+        @media (max-width: 768px){
+            .main-window{
+                flex-direction: column;
+                padding: 0 20px;
+            }
+            .canvas-wrapper{
+                /* display: none; */
+                position: relative;
+                width: 100%;
+                /* min-height: 120vh; */
+            }
+            canvas{
+                position: absolute;
+                transform: translate(-30%, -15%)
+            }
+            .title{
+                font-size: 8vw;
+            }
+            .price{
+                font-size: 4vw;
+            }
+            .forms-wrapper{
+                width: 100%;
+                /* margin-top: -20vh; */
+            }
+            .custom-select-wrapper .text {
+                font-size: 5vw;
+                padding-right: 10px;
+            }
+            .custom-select {
+                font-size: 4vw;
+                padding: 5px;
+            }
+            .custom-select-wrapper .get-answer-btn {
+                width: 7vw;
+                height: 7vw;
+                font-size: 4vw;
+            }
+            .slider{
+                justify-content: space-between;
+            }
+            .button-wrapper .add-to-cart{
+                width: 100%;
+                font-size: 4vw;
+            }
+           
+        }
     </style>
-    <div class="main-window" id="vue">
-        <div class="canvas-wrapper">
-            <canvas id="background"></canvas>
+
+</head>
+
+<body>
+
+<div class="main-window" id="vue">
+    <div class="canvas-wrapper" ref="canvasWrapper">
+        <canvas id="window"></canvas>
+        <div class="slider">
+                <div class="slider-item front-side" v-on:click="changeWindowSide('front_side')">
+                   Front side
+                    {{-- <img src="./img/front-window.png" alt=""> --}}
+                </div>
+                <div class="slider-item back-side" v-on:click="changeWindowSide('back_side')">
+                   Back side
+                    {{-- <img src="./img/back-window.png" alt=""> --}}
+                </div>
+               <div class="controls-block">
+                    <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']" v-on:click="openWindow('horizontal')">
+                        [[windowOpenedH]]
+                    </div>
+                    <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']"v-on:click="openWindow('vertical')">
+                        [[windowOpenedV]]
+                    </div>
+               </div>
         </div>
-        <div class="forms-wrapper">
-            <h1 class="title">
-                Toppsving komfort
-            </h1>
-            <p class="text">
-                U-verdi: 1.2
-            </p>
-            <p class="price">
-                Pris 4821 ,-
-            </p>
-            <div class="select-values">
-                <div class="custom-select-wrapper">
-                    <p class="text">Høyde</p>
-                    <select class="custom-select" v-model="formWidth">
-                        <option disabled value="">100</option>
-                        <option>100</option>
-                        <option>150</option>
-                        <option>200</option>
-                    </select>
+    </div>
+    <div class="forms-wrapper" ref="formsWrapper">
+        <h1 class="title">
+            Toppsving komfort
+        </h1>
+        <p class="price">
+            Pris [[totalPrice]] NOK
+        </p>
+        <div class="select-values">
+            <div class="custom-select-wrapper input">
+                <div class="wrapper">
+                    <p class="text">Width, cm</p>
+                    <input class="custom-select" v-model="changeWidth" v-bind:disabled="is_select_disabled">
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
-                <div class="custom-select-wrapper">
-                    <p class="text">Bredde</p>
-                    <select class="custom-select" v-model="formHeight">
-                        <option disabled value="">100</option>
-                        <option>100</option>
-                        <option>150</option>
-                        <option>200</option>
-                    </select>
+                <p class="text-alert" v-if="changeWidth < size_values.width.min">Min [[size_values.width.min]] cm
+                </p>
+                <p class="text-alert" v-if="changeWidth > size_values.width.max">Max [[size_values.width.max]] cm
+                </p>
+            </div>
+            <div class="custom-select-wrapper input">
+                <div class="wrapper">
+                    <p class="text">Height, cm</p>
+                    <input class="custom-select" v-model="changeHeight"  v-bind:disabled="is_select_disabled">
                     <a href="#" class="get-answer-btn">?</a>
                 </div>
+
+                <p class="text-alert" v-if="changeHeight < size_values.height.min">Min [[size_values.height.min]] cm
+                </p>
+                <p class="text-alert" v-if="changeHeight > size_values.height.max">Max [[size_values.height.max]] cm
+                </p>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Degree of isolation</p>
+                <select class="custom-select" v-model="changeIsolation">
+                    <option v-for="item in degree_isolation.values" v-bind:value="item">[[item.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Type of glass</p>
+                <div style="flex-grow: 1; display: flex; flex-direction: column;">
+                    <select class="custom-select" style="width: 100%;" v-model="changeFTypeGlass">
+                        <option v-for="item in type_of_glass.first_type" v-bind:value="item">[[item.text]]</option>
+                    </select>
+                    <select class="custom-select" style="width: 100%; margin-top: 5px;" v-model="changeSTypeGlass">
+                        <option v-for="item in type_of_glass.second_type" v-bind:value="item">[[item.text]]</option>
+                    </select>
+                </div>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Horizontal Lines</p>
+                <select class="custom-select" v-model="changeHorizontalGrid">
+                    <option v-for="item in grids.horizontal.values" v-bind:value="item">[[item]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Vertical Lines</p>
+                <select class="custom-select" v-model="changeVerticalGrid">
+                    <option v-for="item in grids.vertical.values" v-bind:value="item">[[item]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Inside color</p>
+                <select class="custom-select" v-model="changeInsideFrameColor">
+                    <option v-for="color in colors" v-bind:value="color">[[color.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Outside color</p>
+                <select class="custom-select" v-model="changeOutsideFrameColor">
+                    <option v-for="color in colors" v-bind:value="color">[[color.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Handle side</p>
+                <select class="custom-select" v-model="changeHandleSide"  v-bind:disabled="is_select_disabled">
+                    <option v-for="side in handle_side" v-bind:value="side">[[side.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Handle color</p>
+                <select class="custom-select" v-model="changeHandleColor">
+                    <option v-for="color in handle_colors" v-bind:value="color">[[color.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Notspor</p>
+                <select class="custom-select" v-model="changeNotspor">
+                    <option v-for="item in notspor" v-bind:value="item">[[item.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="custom-select-wrapper">
+                <p class="text">Childsafe</p>
+                <select class="custom-select" v-model="changeChildsafe">
+                    <option v-for="item in childsafe" v-bind:value="item">[[item.text]]</option>
+                </select>
+                <a href="#" class="get-answer-btn">?</a>
+            </div>
+            <div class="button-wrapper">
+                <a href="#" class="add-to-cart" v-on:click="addToCart">Add to cart</a>
             </div>
         </div>
     </div>
-    <script>
-        new Vue({
-            el: '#vue',
-            data: {
-                window_values: {
-                    width: 150,
-                    height: 150,
-                    degree_isolation: '',
-                    handle_size: '',
-                    grids: '',
-                    notspor: '',
-                    material: '',
-                    glass: '',
-                    frame_color: '',
-                },
-                form_data: {
-                    width: 150,
-                    height: 150,
-                    glass: {
+</div>
 
-                    },
+<script>
+   const vue = new Vue({
+        el: '#vue',
+        delimiters: ["[[","]]"],
+        data: {
+            grids_array: [],
+            colors: [{
+                text: 'white',
+                hex: '0xa6a6a6',
+            },
+                {
+                    text: 'gray',
+                    hex: '0x666666'
                 },
-                threejs: {
-                    scene: '',
+                {
+                    text: 'brown',
+                    hex: '0x33230b'
+                },
+                {
+                    text: 'black',
+                    hex: '0x1c1c1a'
+                },
+            ],
+            grid_colors: [{
+                text: 'white',
+                hex: '0xa6a6a6',
+            },
+                {
+                    text: 'gray',
+                    hex: '0x666666'
+                },
+                {
+                    text: 'brown',
+                    hex: '0x33230b'
+                },
+                {
+                    text: 'black',
+                    hex: '0x1c1c1a'
+                },
+            ],
+            color_price: {
+                outside: {
+                    white: 0,
+                    gray: 35,
+                    brown: 12,
+                    black: 26,
+                },
+                inside: {
+                    white: 0,
+                    gray: 2,
+                    brown: 2,
+                    black: 2,
+                },
+                bothsides: {
+                    white: 0,
+                    gray: 17,
+                    brown: 28,
+                    black: 37,
+                },
+            },
+            handle_colors: [{
+                text: 'white',
+                hex: '0xffffff',
+                price: 0,
+            },
+                {
+                    text: 'gray',
+                    hex: '0xc9c9c9',
+                    price: 0,
+                },
+                {
+                    text: 'silver',
+                    hex: '0xc9c9c9',
+                    price: 0,
+                },
+                {
+                    text: 'black',
+                    hex: '0x3d3d3d',
+                    price: 5,
+                },
+            ],
+            size_values: {
+                width: {
+                    min: 39.5,
+                    max: 170,
+                },
+                height: {
+                    min: 41.5,
+                    max: 150,
+                },
+            },
+            type_of_glass: {
+                first_type: [{
+                    text: 'Safetyglass inside',
+                    price: 130,
+                },
+                    {
+                        text: 'Safetyglass outside ',
+                        price: 75,
+                    },
+                    {
+                        text: 'Safetyglass both sides',
+                        price: 205,
+                    },
+                ],
+                second_type: [{
+                    text: 'Plain glass',
+                    price: 0,
+                },
+                    {
+                        text: 'Frosted glass',
+                        price: 140,
+                    },
+                    {
+                        text: 'Sunprotect glass',
+                        price: 120,
+                    },
+                    {
+                        text: 'Toned glass',
+                        price: 120,
+                    },
+
+
+                ],
+            },
+            notspor: [{
+                text: '0mm',
+                price: 0
+            },
+                {
+                    text: '10mm',
+                    price: 90
+                },
+                {
+                    text: '13mm',
+                    price: 90
+                },
+            ],
+            childsafe: [{
+                text: 'No',
+                price: 0
+            },
+                {
+                    text: 'Yes',
+                    price: 60
+                },
+            ],
+            handle_side: [{
+                text: 'Left',
+                price: 0
+            },
+                {
+                    text: 'Right',
+                    price: 0
+                },
+            ],
+            grids: {
+                price_add: {
+                    default: 14,
+                    not_default: 17
+                },
+                horizontal: {
+                    type: 'horizontal',
+                    values: [0, 1, 2, 3],
+                    table: {
+                        0: [0, 2, 3, 4],
+                        1: [2, 4, 6, 8],
+                        2: [3, 6, 9, 12],
+                        3: [4, 8, 12, 16],
+                    },
+                    active_value: null,
+                },
+                vertical: {
+                    type: 'vertical',
+                    values: [0, 1, 2, 3],
+                    active_value: null,
                 }
             },
-            methods: {
-                initThree() {
-                    this.scene = new THREE.Scene();
-                    this.camera = new THREE.PerspectiveCamera(85, 2, 0.001, 1000);
-                    console.log(window.innerWidth / window.innerHeight)
-                    this.renderer = new THREE.WebGLRenderer({
-                        canvas: document.getElementById("background"),
-                        alpha: true,
-                        antialias: true
+            core_table: {
+                40: [185, 185, 198, 210, 223, 242, 261, 273, 286, 299, 310, 322],
+                50: [185, 185, 198, 210, 223, 242, 261, 273, 286, 299, 310, 322],
+                60: [198, 198, 212, 224, 237, 257, 277, 290, 304, 319, 332, 345],
+                70: [210, 210, 224, 239, 252, 272, 293, 308, 321, 334, 349, 364],
+                80: [223, 223, 237, 252, 267, 287, 308, 325, 339, 354, 371, 387],
+                90: [236, 236, 251, 267, 282, 303, 325, 340, 356, 373, 388, 403],
+                100: [268, 268, 284, 301, 322, 344, 367, 383, 400, 417, 433, 450],
+                110: [281, 281, 298, 314, 337, 359, 383, 400, 416, 431, 448, 465],
+                120: [294, 294, 311, 329, 351, 375, 399, 416, 434, 452, 469, 486],
+                130: [305, 305, 324, 342, 366, 387, 415, 434, 451, 468, 487, 505],
+                140: [320, 320, 337, 357, 381, 405, 431, 451, 469, 488, 508, 528],
+                150: [331, 331, 352, 370, 396, 420, 447, 466, 486, 507, 525, 544],
+                160: [344, 344, 365, 384, 411, 437, 464, 483, 505, 526, 545, 565],
+                170: [371, 371, 393, 414, 449, 475, 498, 519, 541, 563, 584, 605],
+            },
+            degree_isolation: {
+                values: [
+                {
+                    text: '2-layers'
+                },
+                {
+                    text: '3-layers',
+                    add_c: 57
+                }
+                ]
+            },
+            window_values: {
+                width: 70,
+                height: 100,
+                active_handle_colors: null,
+                notspor: null,
+                childsafe: null,
+                handle_side: null,
+                active_colors: {
+                    inside: '',
+                    outside: '',
+                    grid_inside: '',
+                    grid_outside: '',
+                },
+                active_type_of_glass: {
+                    first: null,
+                    second: null,
+                },
+                vertical_grid: null,
+                horizontal_grid: null,
+                grid_color: null,
+                active_isolation: null,
+                total_price: 'loading',
+            },
+            three: {
+
+            },
+            exchange_rate: 2.29,
+            window_opened: {
+                h: false,
+                v: false
+            },
+            static_models: [
+                {
+                    name: 'frame_inside',
+                    z: 0.17
+                },
+                {
+                    name: 'frame_inside_front',
+                    z: 0.02
+                },
+                {
+                    name: 'frame_outside_colored',
+                    z: -0.12
+                },
+                {
+                    name: 'frame_inside_colored',
+                    z: 0
+                },
+                {
+                    name: 'glass',
+                    z: 0.16
+                }
+            ],
+            is_select_disabled: false,
+            is_slider_disabled: false,
+        },
+        methods: {
+            init() {
+
+                this.three.renderer = new THREE.WebGLRenderer({
+                    antialias: true,
+                    alpha: true,
+                    canvas: document.getElementById("window"),
+                });
+                this.three.renderer.setSize(this.$refs.canvasWrapper.offsetWidth, this.$refs.formsWrapper.offsetHeight)
+                this.three.renderer.setPixelRatio(window.devicePixelRatio);
+                this.three.renderer.shadowMap.enabled = true;
+
+                this.three.scene = new THREE.Scene();
+
+                this.three.camera = new THREE.PerspectiveCamera(75, this.$refs.canvasWrapper.offsetWidth / this.$refs.canvasWrapper.offsetHeight);
+                this.three.camera.position.set(0, 0, 14);
+                this.three.scene.add(this.three.camera);
+
+
+
+                this.three.ambientLight = new THREE.AmbientLight(0xffffff);
+                this.three.scene.add(this.three.ambientLight);
+
+                this.three.directionalLight = new THREE.PointLight(0xffffff, 0.5);
+                this.three.directionalLight.position.x = 3.75;
+                this.three.directionalLight.position.y = 4;
+                this.three.directionalLight.position.z = 5;
+                this.three.scene.add(this.three.directionalLight);
+
+     
+                // this.three.scene.add(this.three.directionalLight1);
+
+                // this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer.domElement);
+                // this.three.controls.minAzimuthAngle = -1
+                // this.three.controls.maxAzimuthAngle = Math.PI
+                // this.three.controls.minPolarAngle = 1.55
+                // this.three.controls.enabeZoom = false
+
+                this.createModel()
+                this.animate()
+            },
+            createModel() {
+                that = this
+
+                this.three.inside = new THREE.Shape();
+                this.three.outside = new THREE.Shape();
+                this.three.hole = new THREE.Path();
+
+                this.three.material_outside = new THREE.MeshPhongMaterial({
+                    color: Number(this.window_values.active_colors.outside.hex),
+                    specular: 0xffffff,
+                    shininess: 150,
+                    depthWrite: true
+                });
+                this.three.material_outside_colored = new THREE.MeshPhongMaterial({
+                    color: Number(this.window_values.active_colors.outside.hex),
+                    specular: 0xffffff,
+                    shininess: 150,
+                });
+                this.three.material_inside = new THREE.MeshPhongMaterial({
+                    color: Number(this.window_values.active_colors.inside.hex),
+                    specular: 0xffffff,
+                    shininess: 150,
+                });
+                this.three.material_inside_colored = new THREE.MeshPhongMaterial({
+                    color: Number(this.window_values.active_colors.inside.hex),
+                    specular: 0xffffff,
+                    shininess: 150,
+                });
+                this.three.material_grid = new THREE.MeshPhongMaterial({
+                    color: Number(this.window_values.active_colors.inside.hex),
+                    shininess: 150,
+                });
+                this.three.material_grid_colored = new THREE.MeshPhongMaterial({
+                    color: Number(0xffffff),
+                    shininess: 150,
+                });
+
+                this.three.material_glass = new THREE.MeshPhongMaterial({
+                    color: Number(0x7fb3aa),
+                    shininess: 150,
+                    transparent : true,
+					opacity : 0.2,
+					needsUpdate : true,
+                });
+
+                this.three.default_settings = {
+                    depth: 1,
+                    bevelEnabled: false,
+                    steps: 1,
+                    bevelSegments: 2,
+                    bevelSize: 1,
+                    bevelThickness: 1
+                };
+
+                this.three.inside_settings = {
+                    depth: 0.6,
+                    bevelEnabled: true,
+                    bevelSegments: 2,
+                    bevelSize: 1,
+                    bevelThickness: 1
+                };
+
+                this.three.outside_settings = {
+                    depth: 1,
+                    bevelEnabled: true,
+                    bevelSegments: 2,
+                    bevelSize: 1,
+                    bevelThickness: 1
+                };
+
+                this.three.extrudeSettingsCustom = {
+                    depth: 0.01,
+                    bevelEnabled: false,
+                    bevelSegments: 1,
+                    bevelSize: 1,
+                    bevelThickness: 1
+                };
+
+
+                const loader = new THREE.GLTFLoader()
+                let handle = [];
+                loader.load('img/hand_model_2.glb', function (gltf) {
+                    that.three.handle = null
+                    gltf.scene.traverse(function (child) {
+                        if (child.material) {
+                            handle.push(child)
+                            child.material.metalness = 0.35
+                            child.material.roughness = 0
+                            child.material.color.setHex(0xffffff)
+                        }
                     });
 
-                    const canvas_wrapper = document.querySelector('.canvas-wrapper')
+                    const model = gltf.scene
+                    that.three.handle = handle
+                    model.scale.x = 0.013
+                    model.scale.y = 0.013
+                    model.scale.z = 0.013
 
-                    this.renderer.setSize(640, 305)
-                    console.log(window.innerWidth / 2, window.innerHeight / 2)
-                    const geometry = new THREE.PlaneBufferGeometry(9.65, 9.65, 0, 0);
-                    const textureW = new THREE.TextureLoader().load(
-                        'http://solarsystemmm.github.io/WIndowConf/img/t3.jpg');
+                    model.position.y = 0
+                    model.position.z = 0.35
 
-                    let material = new THREE.MeshLambertMaterial({
-                        map: textureW,
-                       
-                    })
+                    that.three.scene.add(model);
+                    that.three.handle_model = model
 
-                    // const controls = new THREE.OrbitControls(this.camera, this.renderer.domElement);
-                    // controls.enableZoom = false;
+                    model.rotation.x = THREE.Math.degToRad(90)
+                    model.rotation.y = THREE.Math.degToRad(270)
+                    that.changeModelSize()
+                })
 
-                    // controls.rotateSpeed = 0.2
+            },
+            f_rect(ctx, x, y, width, height, radius) {
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + width, y);
+                ctx.lineTo(x + width, y + height);
+                ctx.lineTo(x, y + height);
+            },
+            f_rect_reverse(ctx, x, y, width, height, radius) {
+                ctx.moveTo(x, y + radius);
+                ctx.lineTo(x, y + radius);
+                ctx.quadraticCurveTo(x, y, x + radius, y);
+                ctx.lineTo(x + width - radius, y);
+                ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+                ctx.lineTo(x + width, y + height - radius);
+                ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+                ctx.lineTo(x + radius, y + height);
+                ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            },
+          
+            getMesh(name, size, grids_config) {
+                const grid_depth = Math.PI / 3
 
-                    // controls.minPolarAngle = 1.5
-                    // controls.maxPolarAngle = 1.5
+                if (name === 'frame_inside') {
+                    this.three.inside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.inside, 0, 0, size.width, size.height, 1);
+                    this.f_rect_reverse(this.three.hole, 5, 5, size.width - 10, size.height - 10, 1);
+                    this.three.inside.holes.push(this.three.hole);
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, this.three
+                        .inside_settings);
+                    let mesh = new THREE.Mesh(geometry_inside, this.three.material_inside);
+                    mesh.name = name
+                    return mesh
+                } else if (name === 'frame_inside_front') {
+                    this.three.inside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.inside, 0, 0, size.width, size.height, 1);
+                    this.f_rect_reverse(this.three.hole, 5, 5, size.width - 10, size.height - 10, 1);
+                    this.three.inside.holes.push(this.three.hole);
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, this.three
+                        .inside_settings);
+                    let mesh = new THREE.Mesh(geometry_inside, this.three.material_outside_colored);
+                    mesh.name = name
+                    return mesh
+                } else if (name === 'frame_outside') {
+                    this.three.outside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.outside, -4.25, -2.5, size.width + 5, size.height + 5, 1);
+                    this.f_rect_reverse(this.three.hole, Math.PI / 2, Math.PI, size.width - Math.PI * 2, size.height - Math.PI * 2, 1);
+                    this.three.outside.holes.push(this.three.hole);
+                    let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+                        .default_settings);
+                    let mesh = new THREE.Mesh(geometry_outside, this.three.material_outside);
+                    mesh.name = name
+                    return mesh
+                } else if (name === 'frame_outside_colored') {
+                    this.three.outside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.outside, -4.25, -2.5, size.width + 5, size.height + 5, 1);
+                    this.f_rect_reverse(this.three.hole, Math.PI / 2, Math.PI, size.width - Math.PI * 2, size.height - Math.PI * 2, 1);
+                    this.three.outside.holes.push(this.three.hole);
+                    let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+                        .outside_settings);
+                    let mesh = new THREE.Mesh(geometry_outside, this.three.material_outside_colored);
+                    mesh.name = name
+                    return mesh
+                }
+                else if (name === 'frame_inside_colored') {
+                    this.three.outside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.outside, -4.25, -2.5, size.width + 5, size.height + 5, 1);
+                    this.f_rect_reverse(this.three.hole, Math.PI / 2, Math.PI, size.width - Math.PI * 2, size.height - Math.PI * 2, 1);
+                    this.three.outside.holes.push(this.three.hole);
+                    let geometry_outside = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+                        .outside_settings);
+                    let mesh = new THREE.Mesh(geometry_outside, this.three.material_inside);
+                    mesh.name = name
+                    return mesh
+                } else if (name === 'glass') {
+                    this.three.outside = new THREE.Shape();
+                    this.f_rect(this.three.outside, 2, 4, size.width - 5, size.height - 10, 1);
+                    let geometry_glass = new THREE.ExtrudeBufferGeometry(this.three.outside, this.three
+                        .extrudeSettingsCustom);
+                    let mesh = new THREE.Mesh(geometry_glass, this.three.material_glass);
+                    mesh.name = name
+                    return mesh
+                }
+           
+                if (name.includes('grid_vertical_outside')) {
+                    this.three.inside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.inside, grids_config, 0, 2, size.height, 1);
 
-                    // controls.minAzimuthAngle = -0.7;
-                    // controls.maxAzimuthAngle = 0.7;
+                    const extrudeSettings = {
+                        steps: 1,
+                        depth : grid_depth,
+                        bevelEnabled: false,
+                        bevelThickness: 1,
+                        bevelSize: 0,
+                        bevelOffset: 1,
+                        bevelSegments: 0
+                    };
 
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, extrudeSettings);
+                    let mesh = new THREE.Mesh(geometry_inside, this.three.material_grid_colored);
+                    mesh.material.color.setHex(Number(0x0ff000))
+                    mesh.name = name
+                    return mesh
+                } else if (name.includes('grid_horizontal_outside')) {
+                    this.three.inside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.inside, 0, grids_config, size.width - 5, 2, 1);
 
-                    const light = new THREE.AmbientLight(0xFFFFFF, 1)
-                    this.scene.add(light)
+                    const extrudeSettings = {
+                        steps: 1,
+                        depth:  grid_depth,
+                        bevelEnabled: false,
+                        bevelThickness: 1,
+                        bevelSize: 0,
+                        bevelOffset: 1,
+                        bevelSegments: 0
+                    };
 
-                    this.cube = new THREE.Mesh(geometry, material)
-                    this.cube.position.z = 0
-                    this.scene.add(this.cube)
-
-
-                    const texture = new THREE.TextureLoader().load(
-                        './img/texture.jpg');
-
-                    this.left_side_border = new THREE.BoxBufferGeometry(0.5, 7.6, 0.5);
-                    this.right_side_border = new THREE.BoxBufferGeometry(0.5, 7.6, 0.5);
-                    this.top_side_border = new THREE.BoxBufferGeometry(0.5, 6.6, 0.5);
-                    this.bottom_side_border = new THREE.BoxBufferGeometry(0.5, 6.6, 0.5);
-
-                    let material_border = new THREE.MeshBasicMaterial({
-                        map: texture,
-                    })
-                    this.side_left = new THREE.Mesh(this.left_side_border, material_border)
-                    this.side_right = new THREE.Mesh(this.right_side_border, material_border)
-                    this.side_top = new THREE.Mesh(this.top_side_border, material_border)
-                    this.side_bottom = new THREE.Mesh(this.bottom_side_border, material_border)
-
-                    this.side_left.depthWrite = false
-
-                    this.group = new THREE.Group();
-                    this.group.add(this.side_left);
-                    this.group.add(this.side_right);
-                    this.group.add(this.side_top);
-                    this.group.add(this.side_bottom);
-                   
-                    this.scene.add(this.group)
-
-                    this.cube.rotation.y = 0.6
-                    this.group.rotation.y = 0.6
-
-                    
-
-                    this.side_bottom.rotation.x = THREE.Math.degToRad(90);
-                    this.side_bottom.rotation.z = THREE.Math.degToRad(90);
-
-                    this.side_top.rotation.x = THREE.Math.degToRad(90);
-                    this.side_top.rotation.z = THREE.Math.degToRad(90);
-
-                    this.group.position.z = 0.5
-
-
-                    this.side_top.scale.y = this.formWidth / 147
-                    this.side_bottom.scale.y = this.formWidth / 147
-                    
-                    this.formHeight
-
-                    this.side_left.position.x = this.formWidth / -42.2;
-                    this.side_right.position.x = this.formWidth / 42.2;
-                    this.side_top.position.y = this.formHeight / 42.2;
-                    this.side_bottom.position.y = this.formHeight / -42.2;
-
-                    this.scene.children[1].scale.x = this.formWidth / 200
-                    this.scene.children[1].scale.y = this.formHeight / 200
-
-                    const color = 0xFFFFFF;
-                    const intensity = 0.5;
-                    const light1 = new THREE.PointLight(color, intensity);
-                    light1.position.set(-5, 5, 10);
-                
-                    this.camera.position.z = 10;
-                    this.animate()
-
-                },
-
-                animate() {
-                    this.renderer.render(this.scene, this.camera);
-                    requestAnimationFrame(this.animate);
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, extrudeSettings);
+                    let mesh = new THREE.Mesh(geometry_inside, this.three.material_grid_colored);
+                    mesh.name = name
+                    return mesh
                 }
 
+                if (name.includes('grid_vertical_inside')) {
+                    this.three.inside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.inside, grids_config, 0, 2, size.height, 1);
+
+                    const extrudeSettings = {
+                        steps: 1,
+                        depth: grid_depth,
+                        bevelEnabled: false,
+                        bevelThickness: 1,
+                        bevelSize: 0,
+                        bevelOffset: 1,
+                        bevelSegments: 0
+                    };
+
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, extrudeSettings);
+                    let mesh = new THREE.Mesh(geometry_inside, this.three.material_grid);
+                    mesh.name = name
+                    return mesh
+                } else if (name.includes('grid_horizontal_inside')) {
+                    this.three.inside = new THREE.Shape();
+                    this.three.hole = new THREE.Path();
+                    this.f_rect(this.three.inside, 0, grids_config, size.width - 5, 2, 1);
+
+                    const extrudeSettings = {
+                        steps: 1,
+                        depth: grid_depth,
+                        bevelEnabled: false,
+                        bevelThickness: 1,
+                        bevelSize: 0,
+                        bevelOffset: 1,
+                        bevelSegments: 0
+                    };
+
+                    let geometry_inside = new THREE.ExtrudeBufferGeometry(this.three.inside, extrudeSettings);
+                    let mesh = new THREE.Mesh(geometry_inside, this.three.material_grid);
+                    mesh.name = name
+                    return mesh
+                }
             },
-            mounted() {
-                this.initThree();
-            },
-            computed: {
-                formWidth: {
-                    get: function () {
-                        return this.window_values.width
-                    },
-                    set: function (text) {
-                        this.side_top.scale.y = text / 147
-                        this.side_bottom.scale.y = text / 147
-                        this.side_left.position.x = text / -42.2;
-                        this.side_right.position.x = text / 42.2;
-                        this.scene.children[1].scale.x = text / 200
-                        this.window_values.width = text
-                    }
-                },
-                formHeight: {
-                    get: function () {
-                        return this.window_values.height
-                    },
-                    set: function (text) {
-                        if (text === '100') {
-                            this.side_left.scale.y = 0.69
-                            this.side_right.scale.y = 0.69
-                        } else if (text === '150') {
-                            this.side_left.scale.y = 1
-                            this.side_right.scale.y = 1
-                        } else if (text === '200') {
-                            this.side_left.scale.y = 1.315
-                            this.side_right.scale.y = 1.315
+
+            changeModelSize(type) {
+                if (!this.isValues()) return;
+
+                const that = this;
+
+                const is_opened = this.window_opened.v || this.window_opened.h ? true : false
+
+                let models = this.static_models;
+
+                const range = {
+                    min: 80,
+                    max: 150,
+                }
+
+
+                if(this.window_opened.h || this.window_opened.v){
+
+                }
+                if(true && !is_opened){
+                    console.log(1)
+                    this.three.inside_group = new THREE.Group()
+                    this.three.outside_group = new THREE.Group()
+
+                    this.three.inside_group.name = 'inside_group'
+                    this.three.outside_group.name = 'outside_group'
+                    that.three.scene.remove(that.three.scene.getObjectByName('mesh_0'));
+                    that.three.scene.remove(that.three.scene.getObjectByName('mesh_1'));
+
+
+                    this.three.pivot_global = new THREE.Group()
+                    this.three.pivot_global.name = 'global_pivot'
+
+                    this.three.pivot_global.rotation.y =  THREE.Math.degToRad(40)
+
+                    this.three.pivot_global.position.set( 0, 0, 0 );
+
+                    that.three.scene.remove(that.three.scene.getObjectByName('global_pivot'));
+                    that.three.scene.remove(that.three.scene.getObjectByName('inside_group'));
+                    that.three.scene.remove(that.three.scene.getObjectByName('outside_group'));
+
+                }
+
+                let width = Math.min(Math.max(this.changeWidth, this.size_values.width.min), this.size_values.width.max) / 2
+                let height = Math.min(Math.max(this.changeHeight, this.size_values.height.min), this.size_values.height.max) / 2
+                let s = 1.05
+                let z = ((this.changeWidth - this.size_values.width.min) * 0.05) + s * 3
+
+                let hr = this.window_values.horizontal_grid
+                let vr = this.window_values.vertical_grid
+
+                let cof;
+                if(is_opened || true){
+                console.log(3)
+                for (let f = 0; f < this.grids_array.length; f++) {
+
+                    let k = this.grids_array[f].name
+
+                    this.three.inside_group.remove(this.three.scene.getObjectByName(k));
+                }
+
+                if (hr != 0 || vr != 0) {
+
+                    this.grids_array = []
+
+                    let a = (width + 18) - 12
+                    let b = (height + 18) - 7.5
+
+                    for (let j = 1; j <= hr; j++) {
+                        const vr_g_1 = {
+                            name: 'grid_horizontal_inside' + j,
+                            z: 0.16,
+                            x: j,
+                            b: 2.5,
+                            cof: b / (hr + 1)
                         }
-                        this.side_top.position.y = text / -42.2;
-                        this.side_bottom.position.y = text / 42.2;
-                        this.scene.children[1].scale.y = text / 200
-                        this.window_values.height = text
+                        const vr_g_2 = {
+                            name: 'grid_horizontal_outside' + j,
+                            z: 0.04,
+                            x: j,
+                            b: 2.5,
+                            cof: b / (hr + 1)
+                        }
+
+                        this.grids_array.push(vr_g_1)
+                        this.grids_array.push(vr_g_2)
+                    }
+
+                    for (let g = 1; g <= vr; g++) {
+                        let hr_g_1 = {
+                            name: 'grid_vertical_inside' + g,
+                            z: 0.16,
+                            x: g,
+                            b: 2.5,
+                            cof: a / (vr + 1)
+                        }
+                        const hr_g_2 = {
+                            name: 'grid_vertical_outside' + g,
+                            z: 0.04,
+                            x: g,
+                            b: 2.5,
+                            cof: a / (vr + 1)
+                        }
+                        this.grids_array.push(hr_g_1)
+                        this.grids_array.push(hr_g_2)
+                    }
+
+                    for (let rn = 0; rn < this.grids_array.length; rn++) {
+                        let k = this.grids_array[rn].name
+                        this.three[k] = this.getMesh(k, {
+                                width: Number(width + 18),
+                                height: Number(height + 18),
+                            },
+                            this.grids_array[rn].cof * this.grids_array[rn].x + this.grids_array[rn].b
+                        )
+
+                        this.three[k].scale.set(0.10, 0.10, 0.10)
+                        this.three[k].position.z = this.grids_array[rn].z
+                        this.three.inside_group.add(this.three[k])
+
+                             if(k.includes('grid_horizontal_inside') || k.includes('grid_vertical_inside')){
+                                this.three[k].material.color.setHex(Number(this.window_values.active_colors.inside.hex))
+                             }
+                             if(k.includes('grid_horizontal_outside') || k.includes('grid_vertical_outside')){
+                                this.three[k].material.color.setHex(Number(this.window_values.active_colors.outside.hex))
+                             }
                     }
                 }
+                }
+
+                if(!is_opened){
+                for (let i = 0; i < models.length; i++) {
+
+                    let k = models[i].name
+
+                    this.three.scene.remove(this.three.scene.getObjectByName(k));
+
+                    this.three[k] = this.getMesh(k, {
+                        width: Number(width + 18),
+                        height: Number(height + 18),
+                    }, )
+
+                    this.three[k].scale.set(0.10, 0.10, 0.10)
+
+
+                    this.three[k].position.z = models[i].z
+
+                    if(k == 'frame_inside') {
+                         this.three.inside_group.add(this.three[k])
+                         this.three[k].position.x = -0.15
+                    }
+                    else if (k == 'frame_inside_front') {
+                         this.three.inside_group.add(this.three[k])
+                         this.three[k].position.x = -0.15
+                    }
+                    else if (k == 'frame_outside_colored') this.three.outside_group.add(this.three[k])
+                    else if (k == 'frame_inside_colored') this.three.outside_group.add(this.three[k])
+                    else if (k == 'glass') this.three.outside_group.add(this.three[k])
+                }
+            
             }
-        })
-    </script>
+                if (this.changeHeight >= range.min && this.changeHeight <= range.max) {
+                    k = this.changeHeight / -30
+
+                    this.three.handle_model.scale.set(0.013, 0.013, 0.013)
+
+                    for (let model of models) {
+                        this.three[model.name].position.y = k
+                    }
+                    for (let model of this.grids_array) {
+                        this.three[model.name].position.y = k
+                    }
+                }
+                    // else if (this.changeHeight > range.max) {
+                    //   k = this.changeHeight / -38
+
+                    //   this.three.handle_model.scale.set(0.015, 0.015, 0.015)
+
+                    //   this.three.camera.position.z = max_zoom
+
+                    //   for (let model of models) {
+                    //     this.three[model.name].position.y = k
+                    //   }
+                // }
+                else if (this.changeHeight < range.min) {
+                    k = this.changeHeight / -24
+
+                    this.three.handle_model.scale.set(0.013, 0.013, 0.013)
+
+                    for (let model of models) {
+                        this.three[model.name].position.y = k
+                    }
+                    for (let model of this.grids_array) {
+                        this.three[model.name].position.y = k
+                    }
+                }
+
+                this.three.pivot_global.add( this.three.inside_group);
+                this.three.pivot_global.add( this.three.outside_group);
+                this.three.scene.add(  this.three.pivot_global)
+
+                for(let item of  this.three.inside_group.children){
+                    if(item.name.includes('grid_horizontal_inside') || item.name.includes('grid_horizontal_outside') || item.name.includes('grid_vertical_inside') || item.name.includes('grid_vertical_outside')){
+                            item.position.x = -this.changeWidth / 33 * 2
+                    }
+                }
+                that.handleSide()
+
+            },
+            handleSide() {
+                s = 1.1
+                side = this.window_values.handle_side.text
+                model = this.three.handle_model
+                if (side === 'Left') {
+                    model.position.x = 0.2
+                    model.position.y = 0
+                    if (this.changeHeight <= 50) {
+                        model.position.y = 0.2
+                    }
+
+                    this.three.outside_group.position.x = -this.changeWidth / 33
+                    this.three.inside_group.position.x = this.changeWidth / 33 
+
+                    this.three.i_g = new THREE.Group()
+                    this.three.i_g.add(this.three.handle_model)
+                    this.three.i_g.position.x = -this.changeWidth / 33 * 2 - 0.15
+
+                    this.three.inside_group.add(this.three.i_g)
+                    this.three.inside_group.add(this.three.glass)
+
+                    this.three.frame_inside.position.x = -this.changeWidth / 33 * 2 - 0.15
+                    this.three.frame_inside_front.position.x = -this.changeWidth / 33 * 2 - 0.15
+                    this.three.glass.position.x = -this.changeWidth / 33 * 2 - 0.15
+
+                    
+                for(let item of  this.three.inside_group.children){
+                    if(item.name.includes('grid_horizontal_inside') || item.name.includes('grid_horizontal_outside') || item.name.includes('grid_vertical_inside') || item.name.includes('grid_vertical_outside')){
+                            item.position.x = -this.changeWidth / 33 * 2
+                    }
+                }
+                }
+
+                 else if (side === 'Right') {
+                    c = ((this.changeWidth - this.size_values.width.min) * 0.05) + s * 3
+                    model.position.x = c
+
+                    this.three.outside_group.position.x = -this.changeWidth / 33
+                    this.three.inside_group.position.x = -this.changeWidth / 33 
+
+                    this.three.i_g = new THREE.Group()
+                    this.three.i_g.add(this.three.handle_model)
+                    this.three.i_g.position.x = 0
+
+                    this.three.inside_group.add(this.three.i_g)
+                    this.three.inside_group.add(this.three.glass)
+
+                    this.three.frame_inside.position.x = -0.15 
+                    this.three.frame_inside_front.position.x = -0.15 
+                    this.three.glass.position.x = -0.15 
+
+                    
+                for(let item of  this.three.inside_group.children){
+                    if(item.name.includes('grid_horizontal_inside') || item.name.includes('grid_horizontal_outside') || item.name.includes('grid_vertical_inside') || item.name.includes('grid_vertical_outside')){
+                            item.position.x = 0
+                    }
+                }
+                }
+            },
+
+            changeWindowSide(key) {
+               if(key == 'front_side'){
+
+               const tween = new TWEEN.Tween(  this.three.pivot_global.rotation)
+                        .to({y: THREE.Math.degToRad(0 + 40)}, 1500)
+                        .easing(TWEEN.Easing.Quadratic.Out)
+                        .start()
+               } else if (key == 'back_side'){
+                const tween = new TWEEN.Tween(this.three.pivot_global.rotation)
+                        .to({y: THREE.Math.degToRad(180 + 40)}, 2000)
+                        .easing(TWEEN.Easing.Quadratic.Out)
+                        .start()
+               }
+            },
+            openWindow(key) {
+                const that = this
+                const w_z = ''+this.changeWidth
+                const h_z = ''+this.changeHeight
+                const camera_z = Number(w_z.slice(0, -1)) + Number(h_z.slice(0, -1))
+                let status = true
+                const isDelay = function () {
+
+                    key == 'horizontal' ? k = 'h' : k = 'v' 
+
+                    return {
+                        handle: that.window_opened.v || that.window_opened.h ? 800 : 0,
+                        frame_inside: !that.window_opened[k]  ? 800 : 0,
+                        camera_factor: !that.window_opened[k]  ? camera_z / 1.2 : 14,
+                        camera_delay: !that.window_opened[k]  ? 0 : 800,
+                    }
+                }
+
+                const doubleOpen = function (key) {
+                    status = !status
+                    if(key == 'vertical'){
+                        const tween_z = new TWEEN.Tween(that.three.inside_group.position)
+                            .to({z: 0 }, 1000)
+                            .easing(TWEEN.Easing.Linear.None)
+                            .start()
+
+                        const tween_rr = new TWEEN.Tween(that.three.inside_group.rotation)
+                                .to({y: THREE.Math.degToRad(0), x: THREE.Math.degToRad(0)}, 1000)
+                                .easing(TWEEN.Easing.Linear.None)
+                                .start()
+
+                        for(let h of that.three.handle){
+                            if(h.name == "HandleMain" || h.name == "HandleMain_1"){
+                                const tween = new TWEEN.Tween(h.rotation)
+                                .to({y: THREE.Math.degToRad(that.window_values.text == "Left" ? 180 : 180 * -1)}, 700)
+                                .delay(isDelay().handle)
+                                .easing(TWEEN.Easing.Linear.None)
+                                .onComplete(() => {
+                                    tween_1.start()
+                                    tween_zz.start()
+                                })
+                                .start()
+                        }
+                    }
+
+                    const tween_1 = new TWEEN.Tween(that.three.inside_group.rotation)
+                            .to({ x: THREE.Math.degToRad(10)}, 1000)
+                            .easing(TWEEN.Easing.Linear.None)
+
+                    const tween_zz = new TWEEN.Tween(that.three.inside_group.position)
+                            .to({z: that.changeHeight / that.size_values.height.max }, 1000)
+                            .easing(TWEEN.Easing.Linear.None)
+                            .onComplete(() => {
+                                that.is_slider_disabled = false
+                                that.is_select_disabled = true
+                            })
+                    } else if (key == 'horizontal'){
+                            console.log('h')
+                        const tween_z1 = new TWEEN.Tween(that.three.inside_group.position)
+                            .to({z: 0 }, 1000)
+                            .easing(TWEEN.Easing.Linear.None)
+                            .start()
+
+                        const tween_rr1 = new TWEEN.Tween(that.three.inside_group.rotation)
+                                .to({y: THREE.Math.degToRad(0), x: THREE.Math.degToRad(0)}, 1000)
+                                .easing(TWEEN.Easing.Linear.None)
+                                .start()
+
+                        for(let h of that.three.handle){
+                            if(h.name == "HandleMain" || h.name == "HandleMain_1"){
+                                const tween = new TWEEN.Tween(h.rotation)
+                                .to({y: THREE.Math.degToRad(90)}, 700)
+                                .delay(isDelay().handle)
+                                .easing(TWEEN.Easing.Linear.None)
+                                .onComplete(() => {
+                                    tween_11.start()
+                                    tween_zz1.start()
+                                })
+                                .start()
+                        }
+                    }
+
+                    const tween_11 = new TWEEN.Tween(that.three.inside_group.rotation)
+                            .to({ y: THREE.Math.degToRad(40)}, 1000)
+                            .easing(TWEEN.Easing.Linear.None)
+
+                    const tween_zz1 = new TWEEN.Tween(that.three.inside_group.position)
+                            .to({z: that.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.5) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7) }, 1000)
+                            .easing(TWEEN.Easing.Linear.None)
+                            .onComplete(() => {
+                                that.is_slider_disabled = false
+                                that.is_select_disabled = true
+                            })
+                    }
+                }
+
+                const sizes = {
+                    frame_inside: new THREE.Box3().setFromObject(  this.three.frame_inside ).getSize(),
+                }
+
+                const camera = new TWEEN.Tween(this.three.camera.position)
+                        .to({z: isDelay().camera_factor <= 14 ? 14 : isDelay().camera_factor }, 200)
+                        .delay(isDelay().camera_delay)
+                        .easing(TWEEN.Easing.Linear.None)
+                        .start()
+
+                this.is_slider_disabled = true
+
+                if(key == 'vertical' && this.window_opened.h){
+                    this.window_opened.h = false
+                    this.window_opened.v = true
+                    doubleOpen('vertical')
+                    return;
+                } else if(key == 'horizontal' && this.window_opened.v){
+                    this.window_opened.h = true
+                    this.window_opened.v = false
+                    doubleOpen('horizontal')
+                    return;
+                }
+
+                if(status){
+                    console.log(1)
+                    if(key == 'vertical' && !this.window_opened.v){
+                        this.is_select_disabled = true
+                        sizes.degree_model = 10
+                        sizes.degree_handle = 180
+                        sizes.z = this.changeHeight / this.size_values.height.max 
+                    } else if(key == 'vertical' && this.window_opened.v){
+                        sizes.degree_model = 0
+                        sizes.degree_handle = 0
+                        sizes.z = 0
+                        this.is_select_disabled = false
+                    }
+
+                    if(key == 'horizontal' && this.window_opened.h){
+                        sizes.degree_model = 0
+                        sizes.degree_handle = 0
+                        sizes.z = 0
+                        this.is_select_disabled = false
+                    } else if(key == 'horizontal' && !this.window_opened.h){
+                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? 40 : -40
+                        sizes.degree_handle = 90
+                        sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.5) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
+                        this.is_select_disabled = true
+                    }
+
+                    for(let h of this.three.handle){
+                        if(h.name == "HandleMain" || h.name == "HandleMain_1"){
+                            const tween = new TWEEN.Tween(h.rotation)
+                            .to({y: THREE.Math.degToRad(this.window_values.handle_side.text == "Left" ? sizes.degree_handle : sizes.degree_handle * -1)}, 700)
+                            .delay(isDelay().handle)
+                            .easing(TWEEN.Easing.Linear.None)
+                            .start()
+                        }
+                    }
+
+                    const tween_z = new TWEEN.Tween(this.three.inside_group.position)
+                            .to({z: sizes.z }, 1000)
+                            .delay(isDelay().frame_inside)
+                            .easing(TWEEN.Easing.Linear.None)
+                            .onComplete(() => {
+                                this.is_slider_disabled = false
+                            })
+
+                    const tween_rr = new TWEEN.Tween(this.three.inside_group.rotation)
+                            .to({y: THREE.Math.degToRad(sizes.degree_model)}, 1000)
+                            .delay(isDelay().frame_inside)
+                            .easing(TWEEN.Easing.Linear.None)
+
+                    const tween_r = new TWEEN.Tween(this.three.inside_group.rotation)
+                            .to({x: THREE.Math.degToRad(sizes.degree_model)}, 1000)
+                            .delay(isDelay().frame_inside)
+                            .easing(TWEEN.Easing.Linear.None)
+
+
+                    key == 'horizontal' ? tween_rr.start() : tween_r.start() 
+                    tween_z.start()
+                }
+                if(key == 'horizontal'){
+                    this.window_opened.h = !this.window_opened.h
+                } else if(key == 'vertical'){
+                    this.window_opened.v = !this.window_opened.v
+                }
+
+
+            },
+            resizeModel() {
+                this.three.renderer.setSize(window.innerWidth, window.innerHeight);
+                this.three.camera.aspect = window.innerWidth / window.innerHeight;
+                this.three.camera.updateProjectionMatrix();
+            },
+            animate() {
+                requestAnimationFrame(this.animate);
+                this.render();
+                TWEEN.update()
+            },
+            render() {
+                this.three.renderer.render(this.three.scene, this.three.camera);
+            },
+            isEqColors() {
+                if (this.window_values.active_colors.inside.text === this.window_values.active_colors.outside.text) {
+                    return true
+                }
+            },
+            isValues() {
+                if (this.changeHeight >= this.size_values.height.min && this.changeHeight <= this.size_values.height
+                    .max) {
+                    if (this.changeWidth >= this.size_values.width.min && this.changeWidth <= this.size_values.width.max) {
+                        return true
+                    } else  return false
+                } else  return false
+            },
+            getCorePrice() {
+                let c = this.window_values.width
+                let w = Math.ceil(c / 10)
+                let h = (Math.ceil(this.window_values.height / 10) * 10) + ''
+                w = w * 10
+                h = h.slice(0, -1);
+                let price = this.core_table[w][Number(h - 4)]
+                return Number(price)
+            },
+            getWHPrice() {
+                let sqm = (this.window_values.width / 100) * (this.window_values.height / 100)
+                return Number(sqm)
+
+            },
+
+            getHandlePrice() {
+                let res = this.window_values.active_handle_colors.price
+                return Number(res)
+            },
+            getChildSafe() {
+                let res = this.window_values.childsafe.price
+                return Number(res)
+            },
+            getNotspor() {
+                let res = this.window_values.notspor.price
+                return Number(res)
+            },
+            getTypeOfGlass() {
+                let res_1 = this.window_values.active_type_of_glass.first.price
+                let res_2 = this.window_values.active_type_of_glass.second.price
+
+                Number(res_1)
+                Number(res_2)
+
+                return this.getWHPrice() * res_1 + (this.getWHPrice() * Number(res_2))
+            },
+            getGridsPrice() {
+                let table = this.grids.horizontal.table
+
+                let h = this.window_values.horizontal_grid
+                let v = this.window_values.vertical_grid
+
+                let res = table[h][v]
+
+                if (this.window_values.grid_color.text == this.colors[0].text) {
+                    return res * this.grids.price_add.default
+                } else {
+                    return res * this.grids.price_add.not_default
+                }
+            },
+            getDegOfIsolation() {
+                let res = this.window_values.active_isolation
+
+                let price = this.getCorePrice()
+
+                if (res.add_c) {
+                    price += (res.add_c * this.getWHPrice())
+                }
+
+                return Number(price)
+            },
+            getFrameColorPrice() {
+
+                let outside_price = this.color_price.outside
+                let inside_price = this.color_price.inside
+                let bothsides_price = this.color_price.bothsides
+
+                let price = this.getCorePrice()
+
+                let total;
+
+                if (this.isEqColors()) {
+                    total = price * (bothsides_price[this.window_values.active_colors.inside.text] / 100)
+                } else if (!this.isEqColors()) {
+                    total = price * inside_price[this.window_values.active_colors.inside.text] / 100
+                    total += price * outside_price[this.window_values.active_colors.outside.text] / 100
+                }
+
+                return Number(total)
+            },
+
+            addToCart(e){
+                e.preventDefault();
+            
+            }
+        },
+        created() {
+            that = this
+            this.window_values.active_colors.inside = this.colors[0]
+            this.window_values.active_colors.outside = this.colors[0]
+            this.window_values.active_colors.grid_inside = this.colors[0]
+
+            this.window_values.active_handle_colors = this.handle_colors[0]
+
+            this.window_values.notspor = this.notspor[0]
+
+            this.window_values.childsafe = this.childsafe[0]
+
+            this.window_values.handle_side = this.handle_side[0]
+
+            // this.grids.vertical.active_value = 0
+            // this.grids.horizontal.active_value = 0
+
+            this.window_values.horizontal_grid = 0
+            this.window_values.vertical_grid = 0
+
+            this.window_values.active_type_of_glass.first = this.type_of_glass.first_type[0]
+            this.window_values.active_type_of_glass.second = this.type_of_glass.second_type[0]
+
+            this.window_values.active_isolation = this.degree_isolation.values[0]
+
+            this.window_values.grid_color = this.grid_colors[0]
+
+            this.three.pivot_global = new THREE.Group()
+            this.three.pivot_local = new THREE.Group()
+
+
+        },
+        mounted() {
+            this.init();
+        },
+        computed: {
+            totalPrice: function () {
+
+                if (this.isValues()) {
+
+                    this.window_values.total_price =
+                        this.getDegOfIsolation() +
+                        this.getTypeOfGlass() +
+                        this.getHandlePrice() +
+                        this.getGridsPrice() +
+                        this.getChildSafe() +
+                        this.getNotspor() +
+                        this.getFrameColorPrice()
+
+                    return Math.round(this.window_values.total_price * this.exchange_rate * 100) / 100
+                } else return Math.round(this.window_values.total_price * this.exchange_rate * 100) / 100
+            },
+
+            windowOpenedH: function() {
+                return this.window_opened.h ? 'Close window' : 'Open window horizontal'
+            },
+            windowOpenedV: function() {
+                return this.window_opened.v ? 'Close window' : 'Open window vertical'
+            },
+            changeWidth: {
+                get: function () {
+                    return this.window_values.width
+                },
+                set: function (value) {
+                    this.window_values.width = value
+                    if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values
+                        .width.max) {
+                        this.changeModelSize()
+                    }
+                }
+            },
+            changeHeight: {
+                get: function () {
+                    return this.window_values.height
+                },
+                set: function (value) {
+                    this.window_values.height = value
+                    if (Number(value) >= this.size_values.height.min && Number(value) <= this.size_values
+                        .height.max) {
+                        this.changeModelSize()
+                    }
+                }
+            },
+            changeVerticalGrid: {
+                get: function () {
+                    return this.window_values.vertical_grid
+                },
+                set: function (data) {
+                    this.window_values.vertical_grid = data
+                    this.changeModelSize()
+                }
+            },
+            changeGridColor: {
+                get: function () {
+                    return this.window_values.grid_color
+                },
+                set: function (data) {
+                    this.window_values.grid_color = data
+                    console.log( data )
+
+                    for (let rn = 0; rn < this.grids_array.length; rn++) {
+                        let k = this.grids_array[rn].name
+                        this.three[k].material.color.setHex(Number(this.window_values.active_colors.grid_inside.hex))
+                    }
+                }
+            },
+            changeFTypeGlass: {
+                get: function () {
+                    return this.window_values.active_type_of_glass.first
+                },
+                set: function (data) {
+                    this.window_values.active_type_of_glass.first = data
+                }
+            },
+            changeSTypeGlass: {
+                get: function () {
+                    return this.window_values.active_type_of_glass.second
+                },
+                set: function (data) {
+                    this.window_values.active_type_of_glass.second = data
+                }
+            },
+            changeIsolation: {
+                get: function () {
+                    return this.window_values.active_isolation
+                },
+                set: function (data) {
+                    this.window_values.active_isolation = data
+                }
+            },
+            changeHorizontalGrid: {
+                get: function () {
+                    return this.window_values.horizontal_grid
+                },
+                set: function (data) {
+                    this.window_values.horizontal_grid = data
+                    this.changeModelSize()
+                }
+            },
+
+            changeHandleSide: {
+                get: function () {
+                    return this.window_values.handle_side
+                },
+                set: function (side) {
+                    this.window_values.handle_side = side
+                    this.handleSide()
+                }
+            },
+            changeInsideFrameColor: {
+                get: function () {
+                    return this.window_values.active_colors.inside
+                },
+                set: function (text) {
+                    this.window_values.active_colors.inside = text
+                    this.window_values.active_colors.grid_inside = text
+                    this.three.frame_inside.material.color.set(Number(text.hex))
+                    for (let rn = 0; rn < this.grids_array.length; rn++) {
+                        let k = this.grids_array[rn].name
+                        if(k.includes('grid_horizontal_inside') || k.includes('grid_vertical_inside')){
+                            this.three[k].material.color.setHex(Number(text.hex))
+                        }
+                    }
+                }
+            },
+            changeOutsideFrameColor: {
+                get: function () {
+                    return this.window_values.active_colors.outside
+                },
+                set: function (text) {
+                    console.log(text)
+                    this.window_values.active_colors.outside = text
+                    this.window_values.active_colors.grid_outside = text
+                    this.three.frame_outside_colored.material.color.setHex(Number(this.window_values.active_colors.outside.hex))
+                    for (let rn = 0; rn < this.grids_array.length; rn++) {
+                        let k = this.grids_array[rn].name
+                        if(k.includes('grid_horizontal_outside') || k.includes('grid_vertical_outside')){
+                            this.three[k].material.color.setHex(Number(text.hex))
+                        }
+                    }
+                }
+            },
+            changeHandleColor: {
+                get: function () {
+                    return this.window_values.active_handle_colors
+                },
+                set: function (text) {
+                    for(let c = 0; c < this.three.handle.length; c++){
+                        this.three.handle[c].material.color.set(Number(text.hex))
+                    }
+                    this.window_values.active_handle_colors = text
+                }
+            },
+            changeNotspor: {
+                get: function () {
+                    return this.window_values.notspor
+                },
+                set: function (text) {
+                    this.window_values.notspor = text
+                }
+            },
+            changeChildsafe: {
+                get: function () {
+                    return this.window_values.childsafe
+                },
+                set: function (text) {
+                    this.window_values.childsafe = text
+                }
+            },
+
+        }
+    })
+</script>
+
+
 </body>
 
 </html>
