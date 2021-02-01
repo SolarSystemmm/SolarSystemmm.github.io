@@ -257,17 +257,15 @@
         <div class="slider">
                 <div class="slider-item front-side" v-on:click="changeWindowSide('front_side')">
                    Front side
-                    {{-- <img src="./img/front-window.png" alt=""> --}}
                 </div>
                 <div class="slider-item back-side" v-on:click="changeWindowSide('back_side')">
                    Back side
-                    {{-- <img src="./img/back-window.png" alt=""> --}}
                 </div>
                <div class="controls-block">
-                    <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']" v-on:click="openWindow('horizontal')">
+                    <div v-bind:class="!is_slider_disabled ? 'slider-item' : ['slider-item', 'disabled']" v-on:click="openWindow('horizontal')">
                         [[windowOpenedH]]
                     </div>
-                    <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']"v-on:click="openWindow('vertical')">
+                    <div v-bind:class="!is_slider_disabled ? 'slider-item' : ['slider-item', 'disabled']"v-on:click="openWindow('vertical')">
                         [[windowOpenedV]]
                     </div>
                </div>
