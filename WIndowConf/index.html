@@ -257,9 +257,11 @@
         <div class="slider">
                 <div class="slider-item front-side" v-on:click="changeWindowSide('front_side')">
                    Front side
+                    {{-- <img src="./img/front-window.png" alt=""> --}}
                 </div>
                 <div class="slider-item back-side" v-on:click="changeWindowSide('back_side')">
                    Back side
+                    {{-- <img src="./img/back-window.png" alt=""> --}}
                 </div>
                <div class="controls-block">
                     <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']" v-on:click="openWindow('horizontal')">
@@ -979,12 +981,7 @@
                     max: 150,
                 }
 
-
-                if(this.window_opened.h || this.window_opened.v){
-
-                }
                 if(true && !is_opened){
-                    console.log(1)
                     this.three.inside_group = new THREE.Group()
                     this.three.outside_group = new THREE.Group()
 
@@ -1017,7 +1014,6 @@
 
                 let cof;
                 if(is_opened || true){
-                console.log(3)
                 for (let f = 0; f < this.grids_array.length; f++) {
 
                     let k = this.grids_array[f].name
@@ -1224,7 +1220,7 @@
                     this.three.frame_inside_front.position.x = -0.15 
                     this.three.glass.position.x = -0.15 
 
-                    
+
                 for(let item of  this.three.inside_group.children){
                     if(item.name.includes('grid_horizontal_inside') || item.name.includes('grid_horizontal_outside') || item.name.includes('grid_vertical_inside') || item.name.includes('grid_vertical_outside')){
                             item.position.x = 0
@@ -1281,7 +1277,7 @@
                         for(let h of that.three.handle){
                             if(h.name == "HandleMain" || h.name == "HandleMain_1"){
                                 const tween = new TWEEN.Tween(h.rotation)
-                                .to({y: THREE.Math.degToRad(that.window_values.text == "Left" ? 180 : 180 * -1)}, 700)
+                                .to({y: THREE.Math.degToRad(that.window_values.handle_side.text == "Left" ? 180 : 180 * -1)}, 700)
                                 .delay(isDelay().handle)
                                 .easing(TWEEN.Easing.Linear.None)
                                 .onComplete(() => {
@@ -1367,7 +1363,6 @@
                 }
 
                 if(status){
-                    console.log(1)
                     if(key == 'vertical' && !this.window_opened.v){
                         this.is_select_disabled = true
                         sizes.degree_model = 10
@@ -1390,7 +1385,6 @@
                         sizes.degree_handle = 90
                         sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.25) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
                         this.is_select_disabled = true
-                        console.log((Number(this.size_values.width.max) + Number(this.changeWidth)) / 4)
                     }
 
                     for(let h of this.three.handle){
@@ -1643,7 +1637,6 @@
                 },
                 set: function (data) {
                     this.window_values.grid_color = data
-                    console.log( data )
 
                     for (let rn = 0; rn < this.grids_array.length; rn++) {
                         let k = this.grids_array[rn].name
@@ -1715,7 +1708,6 @@
                     return this.window_values.active_colors.outside
                 },
                 set: function (text) {
-                    console.log(text)
                     this.window_values.active_colors.outside = text
                     this.window_values.active_colors.grid_outside = text
                     this.three.frame_outside_colored.material.color.setHex(Number(this.window_values.active_colors.outside.hex))
