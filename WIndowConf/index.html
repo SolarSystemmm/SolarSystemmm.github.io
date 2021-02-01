@@ -257,9 +257,11 @@
         <div class="slider">
                 <div class="slider-item front-side" v-on:click="changeWindowSide('front_side')">
                    Front side
+                    {{-- <img src="./img/front-window.png" alt=""> --}}
                 </div>
                 <div class="slider-item back-side" v-on:click="changeWindowSide('back_side')">
                    Back side
+                    {{-- <img src="./img/back-window.png" alt=""> --}}
                 </div>
                <div class="controls-block">
                     <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']" v-on:click="openWindow('horizontal')">
@@ -1304,7 +1306,6 @@
                                 that.is_select_disabled = true
                             })
                     } else if (key == 'horizontal'){
-                            console.log('h')
                         const tween_z1 = new TWEEN.Tween(that.three.inside_group.position)
                             .to({z: 0 }, 1000)
                             .easing(TWEEN.Easing.Linear.None)
@@ -1318,7 +1319,7 @@
                         for(let h of that.three.handle){
                             if(h.name == "HandleMain" || h.name == "HandleMain_1"){
                                 const tween = new TWEEN.Tween(h.rotation)
-                                .to({y: THREE.Math.degToRad(90)}, 700)
+                                .to({y: THREE.Math.degToRad(that.window_values.handle_side.text == 'Left' ? 90 : -90)}, 700)
                                 .delay(isDelay().handle)
                                 .easing(TWEEN.Easing.Linear.None)
                                 .onComplete(() => {
@@ -1330,7 +1331,7 @@
                     }
 
                     const tween_11 = new TWEEN.Tween(that.three.inside_group.rotation)
-                            .to({ y: THREE.Math.degToRad(40)}, 1000)
+                            .to({ y: THREE.Math.degToRad(that.window_values.handle_side.text == 'Left' ? 40 : -40)}, 1000)
                             .easing(TWEEN.Easing.Linear.None)
 
                     const tween_zz1 = new TWEEN.Tween(that.three.inside_group.position)
@@ -1387,10 +1388,11 @@
                         sizes.z = 0
                         this.is_select_disabled = false
                     } else if(key == 'horizontal' && !this.window_opened.h){
-                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? 40 : -40
+                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5 : -40
                         sizes.degree_handle = 90
-                        sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.5) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
+                        sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.25) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
                         this.is_select_disabled = true
+                        console.log((Number(this.size_values.width.max) + Number(this.changeWidth)) / 4)
                     }
 
                     for(let h of this.three.handle){
