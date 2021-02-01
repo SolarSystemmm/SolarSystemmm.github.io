@@ -262,10 +262,10 @@
                    Back side
                 </div>
                <div class="controls-block">
-                    <div v-bind:class="!is_slider_disabled ? 'slider-item' : ['slider-item', 'disabled']" v-on:click="openWindow('horizontal')">
+                    <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']" v-on:click="openWindow('horizontal')">
                         [[windowOpenedH]]
                     </div>
-                    <div v-bind:class="!is_slider_disabled ? 'slider-item' : ['slider-item', 'disabled']"v-on:click="openWindow('vertical')">
+                    <div v-bind:class="!is_slider_disabled ? ['slider-item', 'open-window'] : ['slider-item', 'open-window', 'disabled']"v-on:click="openWindow('vertical')">
                         [[windowOpenedV]]
                     </div>
                </div>
@@ -1323,7 +1323,7 @@
                     }
 
                     const tween_11 = new TWEEN.Tween(that.three.inside_group.rotation)
-                            .to({ y: THREE.Math.degToRad(that.window_values.handle_side.text == 'Left' ? 40 : -40)}, 1000)
+                            .to({ y: THREE.Math.degToRad(that.window_values.handle_side.text == 'Left' ?  (Number(that.size_values.width.max) + Number(that.changeWidth)) / 4.5 : -((Number(that.size_values.width.max) + Number(that.changeWidth)) / 4.5)) }, 1000)
                             .easing(TWEEN.Easing.Linear.None)
 
                     const tween_zz1 = new TWEEN.Tween(that.three.inside_group.position)
@@ -1379,7 +1379,7 @@
                         sizes.z = 0
                         this.is_select_disabled = false
                     } else if(key == 'horizontal' && !this.window_opened.h){
-                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5 : -40
+                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5 :  -((Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5)
                         sizes.degree_handle = 90
                         sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.25) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
                         this.is_select_disabled = true
