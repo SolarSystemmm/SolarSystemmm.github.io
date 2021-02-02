@@ -1272,10 +1272,11 @@
                 const w_z = ''+Math.trunc(this.changeWidth)
                 const h_z = ''+Math.trunc(this.changeHeight)
                 const camera_z = Number(w_z.slice(0, -1)) + Number(h_z.slice(0, -1))
+                let dnm_deg = 4.5
                 let status = true
                 if(window.innerWidth <= 768 && that.changeWidth >= 130){
-
-                }
+                    dnm_deg = 10
+                } 
                 const isDelay = function () {
                     let camera_factor_z = 0
                     key == 'horizontal' ? k = 'h' : k = 'v'
@@ -1358,7 +1359,7 @@
                     }
 
                     const tween_11 = new TWEEN.Tween(that.three.inside_group.rotation)
-                            .to({ y: THREE.Math.degToRad(that.window_values.handle_side.text == 'Left' ?  (Number(that.size_values.width.max) + Number(that.changeWidth)) / 4.5 : -((Number(that.size_values.width.max) + Number(that.changeWidth)) / 4.5)) }, 1000)
+                            .to({ y: THREE.Math.degToRad(that.window_values.handle_side.text == 'Left' ?  (Number(that.size_values.width.max) + Number(that.changeWidth)) / dnm_deg : -((Number(that.size_values.width.max) + Number(that.changeWidth)) / dnm_deg)) }, 1000)
                             .easing(TWEEN.Easing.Linear.None)
 
                     const tween_zz1 = new TWEEN.Tween(that.three.inside_group.position)
@@ -1377,11 +1378,13 @@
                 const final_z = function(){
                     if(window.innerWidth <= 768 && that.changeWidth >= 130){
                         return isDelay().camera_factor 
-                    } else {
+                    } else if(isDelay().camera_factor <= that.three.camera_z_value){
                         return that.three.camera_z_value
-                    }
-                    
+                    } 
+                    return isDelay().camera_factor
+
                 }
+
                 const camera = new TWEEN.Tween(this.three.camera.position)
                         .to({z: Number(final_z())}, 200)
                         .delay(isDelay().camera_delay)
@@ -1421,7 +1424,7 @@
                         sizes.z = 0
                         this.is_select_disabled = false
                     } else if(key == 'horizontal' && !this.window_opened.h){
-                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / 10 :  -((Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5)
+                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / dnm_deg:  -((Number(this.size_values.width.max) + Number(this.changeWidth)) / dnm_deg)
                         sizes.degree_handle = 90
                         sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.25) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
                         this.is_select_disabled = true
