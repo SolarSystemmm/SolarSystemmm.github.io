@@ -1009,7 +1009,8 @@
                 }
 
                 if(window.innerWidth <= 768 && this.changeWidth >= 130){
-                            this.three.camera_z_value = 16
+                            this.three.camera_z_value = 20
+                            this.three.camera.position.z =  this.three.camera_z_value
                 }
 
                 if(true && !is_opened){
@@ -1276,7 +1277,7 @@
                     return {
                         handle: that.window_opened.v || that.window_opened.h ? 800 : 0,
                         frame_inside: !that.window_opened[k]  ? 800 : 0,
-                        camera_factor: !that.window_opened[k]  ? camera_z / 1.2 :  this.three.camera_z_value,
+                        camera_factor: !that.window_opened[k]  ? camera_z / 1.2 :  that.three.camera_z_value,
                         camera_delay: !that.window_opened[k]  ? 0 : 800,
                     }
                 }
@@ -1623,7 +1624,7 @@
                     this.window_values.width = value
                     if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values.width.max) {
                         if(window.innerWidth <= 768 && this.changeWidth >= 130){
-                            this.three.camera_z_value = 16
+                            this.three.camera_z_value = 20
                 }
                         this.changeModelSize()
                     }
