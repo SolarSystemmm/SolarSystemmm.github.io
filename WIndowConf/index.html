@@ -696,7 +696,7 @@
                 this.three.scene.add(this.three.directionalLight);
 
                 window.addEventListener('resize', function(){
-                    width = window.innerWidth;
+                    const width = window.innerWidth;
                     if(width <= 768){
                         that.three.scene.remove(that.three.camera)
                         that.three.renderer.setSize(660, 828)
@@ -1011,6 +1011,9 @@
                 if(window.innerWidth <= 768 && this.changeWidth >= 130){
                             this.three.camera_z_value = 20
                             this.three.camera.position.z =  this.three.camera_z_value
+                } else {
+                    this.three.camera_z_value = 14
+                    this.three.camera.position.z =  this.three.camera_z_value
                 }
 
                 if(true && !is_opened){
@@ -1266,18 +1269,26 @@
             },
             openWindow(key) {
                 const that = this
-                const w_z = ''+this.changeWidth
-                const h_z = ''+this.changeHeight
+                const w_z = ''+Math.trunc(this.changeWidth)
+                const h_z = ''+Math.trunc(this.changeHeight)
                 const camera_z = Number(w_z.slice(0, -1)) + Number(h_z.slice(0, -1))
                 let status = true
-                const isDelay = function () {
+                if(window.innerWidth <= 768 && that.changeWidth >= 130){
 
-                    key == 'horizontal' ? k = 'h' : k = 'v' 
+                }
+                const isDelay = function () {
+                    let camera_factor_z = 0
+                    key == 'horizontal' ? k = 'h' : k = 'v'
+                    if(window.innerWidth <= 768 && that.changeWidth >= 130){
+                        camera_factor_z = 2.5
+                    } else {
+                        camera_factor_z = 0
+                    }
 
                     return {
                         handle: that.window_opened.v || that.window_opened.h ? 800 : 0,
                         frame_inside: !that.window_opened[k]  ? 800 : 0,
-                        camera_factor: !that.window_opened[k]  ? camera_z / 1.2 :  that.three.camera_z_value,
+                        camera_factor: !that.window_opened[k]  ? (camera_z / 1.2) + camera_factor_z :  that.three.camera_z_value,
                         camera_delay: !that.window_opened[k]  ? 0 : 800,
                     }
                 }
@@ -1321,6 +1332,7 @@
                                 that.is_select_disabled = true
                             })
                     } else if (key == 'horizontal'){
+
                         const tween_z1 = new TWEEN.Tween(that.three.inside_group.position)
                             .to({z: 0 }, 1000)
                             .easing(TWEEN.Easing.Linear.None)
@@ -1362,9 +1374,16 @@
                 const sizes = {
                     frame_inside: new THREE.Box3().setFromObject(  this.three.frame_inside ).getSize(),
                 }
-
+                const final_z = function(){
+                    if(window.innerWidth <= 768 && that.changeWidth >= 130){
+                        return isDelay().camera_factor 
+                    } else {
+                        return that.three.camera_z_value
+                    }
+                    
+                }
                 const camera = new TWEEN.Tween(this.three.camera.position)
-                        .to({z: isDelay().camera_factor <=  this.three.camera_z_value ?  this.three.camera_z_value : isDelay().camera_factor }, 200)
+                        .to({z: Number(final_z())}, 200)
                         .delay(isDelay().camera_delay)
                         .easing(TWEEN.Easing.Linear.None)
                         .start()
@@ -1402,7 +1421,7 @@
                         sizes.z = 0
                         this.is_select_disabled = false
                     } else if(key == 'horizontal' && !this.window_opened.h){
-                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5 :  -((Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5)
+                        sizes.degree_model = this.window_values.handle_side.text == 'Left' ? (Number(this.size_values.width.max) + Number(this.changeWidth)) / 10 :  -((Number(this.size_values.width.max) + Number(this.changeWidth)) / 4.5)
                         sizes.degree_handle = 90
                         sizes.z = this.window_values.handle_side.text == 'Left' ? (10.5 - sizes.frame_inside.x) / (Math.PI * 2.25) : (10.5 - sizes.frame_inside.x) / (Math.PI * 7)
                         this.is_select_disabled = true
@@ -1623,9 +1642,10 @@
                 set: function (value) {
                     this.window_values.width = value
                     if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values.width.max) {
-                        if(window.innerWidth <= 768 && this.changeWidth >= 130){
-                            this.three.camera_z_value = 20
-                }
+                        // if(window.innerWidth <= 768 && this.changeWidth >= 130){
+                        //     this.three.camera_z_value = 20
+                        //     this.three.op_w_f = 4
+                        // }
                         this.changeModelSize()
                     }
                 }
