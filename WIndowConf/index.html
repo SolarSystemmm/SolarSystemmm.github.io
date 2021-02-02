@@ -253,6 +253,9 @@
                 width: 100%;
                 font-size: 4vw;
             }
+            .text-alert{
+                font-size: 4vw;
+            }
         }
     </style>
 
@@ -656,6 +659,10 @@
         },
         methods: {
             init() {
+                // root 
+                this.three.camera_z_value = 14
+
+
                 const that = this
                 const width = window.innerWidth;
                 this.three.renderer = new THREE.WebGLRenderer({
@@ -673,12 +680,11 @@
                     } else if(width > 768){
                         that.three.renderer.setSize(that.$refs.canvasWrapper.offsetWidth, that.$refs.formsWrapper.offsetHeight)
                         that.three.camera = new THREE.PerspectiveCamera(75, that.$refs.canvasWrapper.offsetWidth / that.$refs.canvasWrapper.offsetHeight);
-                        that.three.camera.position.set(0, 0, 14);
                         that.three.scene.add(that.three.camera);
                     }
                 this.three.renderer.setPixelRatio(window.devicePixelRatio);
                 this.three.renderer.shadowMap.enabled = true;
-                this.three.camera.position.set(0, 0, 14);
+                this.three.camera.position.set(0, 0,  this.three.camera_z_value);
 
                 this.three.ambientLight = new THREE.AmbientLight(0xffffff);
                 this.three.scene.add(this.three.ambientLight);
@@ -695,13 +701,13 @@
                         that.three.scene.remove(that.three.camera)
                         that.three.renderer.setSize(660, 828)
                         that.three.camera = new THREE.PerspectiveCamera(75, 660 / 828);
-                        that.three.camera.position.set(0, 0, 14);
+                        that.three.camera.position.set(0, 0,  that.three.camera_z_value);
                         that.three.scene.add(that.three.camera);
                     } else if(width > 768){
                         that.three.scene.remove(that.three.camera)
                         that.three.renderer.setSize(that.$refs.canvasWrapper.offsetWidth, that.$refs.formsWrapper.offsetHeight)
                         that.three.camera = new THREE.PerspectiveCamera(75, that.$refs.canvasWrapper.offsetWidth / that.$refs.canvasWrapper.offsetHeight);
-                        that.three.camera.position.set(0, 0, 14);
+                        that.three.camera.position.set(0, 0,  that.three.camera_z_value);
                         that.three.scene.add(that.three.camera);
                     }
                 } );
@@ -1002,6 +1008,10 @@
                     max: 150,
                 }
 
+                if(window.innerWidth <= 768){
+                            this.three.camera_z_value = 16
+                }
+
                 if(true && !is_opened){
                     this.three.inside_group = new THREE.Group()
                     this.three.outside_group = new THREE.Group()
@@ -1153,7 +1163,8 @@
                     for (let model of this.grids_array) {
                         this.three[model.name].position.y = k
                     }
-		}
+                }
+                  
                 else if (this.changeHeight < range.min) {
                     k = this.changeHeight / -24
 
@@ -1265,7 +1276,7 @@
                     return {
                         handle: that.window_opened.v || that.window_opened.h ? 800 : 0,
                         frame_inside: !that.window_opened[k]  ? 800 : 0,
-                        camera_factor: !that.window_opened[k]  ? camera_z / 1.2 : 14,
+                        camera_factor: !that.window_opened[k]  ? camera_z / 1.2 :  this.three.camera_z_value,
                         camera_delay: !that.window_opened[k]  ? 0 : 800,
                     }
                 }
@@ -1352,7 +1363,7 @@
                 }
 
                 const camera = new TWEEN.Tween(this.three.camera.position)
-                        .to({z: isDelay().camera_factor <= 14 ? 14 : isDelay().camera_factor }, 200)
+                        .to({z: isDelay().camera_factor <=  this.three.camera_z_value ?  this.three.camera_z_value : isDelay().camera_factor }, 200)
                         .delay(isDelay().camera_delay)
                         .easing(TWEEN.Easing.Linear.None)
                         .start()
@@ -1562,9 +1573,6 @@
 
             this.window_values.handle_side = this.handle_side[0]
 
-            // this.grids.vertical.active_value = 0
-            // this.grids.horizontal.active_value = 0
-
             this.window_values.horizontal_grid = 0
             this.window_values.vertical_grid = 0
 
@@ -1613,8 +1621,10 @@
                 },
                 set: function (value) {
                     this.window_values.width = value
-                    if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values
-                        .width.max) {
+                    if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values.width.max) {
+                        if(window.innerWidth <= 768){
+                            this.three.camera_z_value = 16
+                        }
                         this.changeModelSize()
                     }
                 }
@@ -1640,19 +1650,19 @@
                     this.changeModelSize()
                 }
             },
-            changeGridColor: {
-                get: function () {
-                    return this.window_values.grid_color
-                },
-                set: function (data) {
-                    this.window_values.grid_color = data
+            // changeGridColor: {
+            //     get: function () {
+            //         return this.window_values.grid_color
+            //     },
+            //     set: function (data) {
+            //         this.window_values.grid_color = data
 
-                    for (let rn = 0; rn < this.grids_array.length; rn++) {
-                        let k = this.grids_array[rn].name
-                        this.three[k].material.color.setHex(Number(this.window_values.active_colors.grid_inside.hex))
-                    }
-                }
-            },
+            //         for (let rn = 0; rn < this.grids_array.length; rn++) {
+            //             let k = this.grids_array[rn].name
+            //             this.three[k].material.color.setHex(Number(this.window_values.active_colors.grid_inside.hex))
+            //         }
+            //     }
+            // },
             changeFTypeGlass: {
                 get: function () {
                     return this.window_values.active_type_of_glass.first
