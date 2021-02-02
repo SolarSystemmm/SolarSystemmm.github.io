@@ -8,7 +8,6 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r124/three.min.js" integrity="sha512-jeYvJdyAYkpQCY/omvCYQo89qA5YxDW4JBT7COPsHT2sOAanwxkZRFeP9gc69b5reSDpZIoyCqZQZcWZkbB5Gw==" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.124.0/examples/js/controls/OrbitControls.js"></script>
     <script src="https://threejs.org/examples/js/loaders/GLTFLoader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/18.6.4/tween.umd.js"></script>    <style>
@@ -207,11 +206,13 @@
                 /* display: none; */
                 position: relative;
                 width: 100%;
-                /* min-height: 120vh; */
+                min-height: 828px;
+                overflow: hidden;
             }
             canvas{
                 position: absolute;
-                transform: translate(-30%, -15%)
+                left: 50%;
+                transform: translate(-50%, -15%)
             }
             .title{
                 font-size: 8vw;
@@ -221,7 +222,7 @@
             }
             .forms-wrapper{
                 width: 100%;
-                /* margin-top: -20vh; */
+                margin-top: -100px;
             }
             .custom-select-wrapper .text {
                 font-size: 5vw;
@@ -239,11 +240,19 @@
             .slider{
                 justify-content: space-between;
             }
+            .slider-item{
+                width: 47% !important;
+            }
+            .controls-block{
+                justify-content: space-between  !important;
+            }
+            .controls-block .slider-item{
+                padding: 10px 20px;
+            }
             .button-wrapper .add-to-cart{
                 width: 100%;
                 font-size: 4vw;
             }
-           
         }
     </style>
 
@@ -647,23 +656,29 @@
         },
         methods: {
             init() {
-
+                const that = this
+                const width = window.innerWidth;
                 this.three.renderer = new THREE.WebGLRenderer({
                     antialias: true,
                     alpha: true,
                     canvas: document.getElementById("window"),
                 });
-                this.three.renderer.setSize(this.$refs.canvasWrapper.offsetWidth, this.$refs.formsWrapper.offsetHeight)
-                this.three.renderer.setPixelRatio(window.devicePixelRatio);
-                this.three.renderer.shadowMap.enabled = true;
-
+             
                 this.three.scene = new THREE.Scene();
 
-                this.three.camera = new THREE.PerspectiveCamera(75, this.$refs.canvasWrapper.offsetWidth / this.$refs.canvasWrapper.offsetHeight);
+                if(width <= 768){
+                        that.three.renderer.setSize(660, 828)
+                        that.three.camera = new THREE.PerspectiveCamera(75, 660 / 828);
+                        that.three.scene.add(that.three.camera);
+                    } else if(width > 768){
+                        that.three.renderer.setSize(that.$refs.canvasWrapper.offsetWidth, that.$refs.formsWrapper.offsetHeight)
+                        that.three.camera = new THREE.PerspectiveCamera(75, that.$refs.canvasWrapper.offsetWidth / that.$refs.canvasWrapper.offsetHeight);
+                        that.three.camera.position.set(0, 0, 14);
+                        that.three.scene.add(that.three.camera);
+                    }
+                this.three.renderer.setPixelRatio(window.devicePixelRatio);
+                this.three.renderer.shadowMap.enabled = true;
                 this.three.camera.position.set(0, 0, 14);
-                this.three.scene.add(this.three.camera);
-
-
 
                 this.three.ambientLight = new THREE.AmbientLight(0xffffff);
                 this.three.scene.add(this.three.ambientLight);
@@ -674,14 +689,22 @@
                 this.three.directionalLight.position.z = 5;
                 this.three.scene.add(this.three.directionalLight);
 
-     
-                // this.three.scene.add(this.three.directionalLight1);
-
-                // this.three.controls = new THREE.OrbitControls(this.three.camera, this.three.renderer.domElement);
-                // this.three.controls.minAzimuthAngle = -1
-                // this.three.controls.maxAzimuthAngle = Math.PI
-                // this.three.controls.minPolarAngle = 1.55
-                // this.three.controls.enabeZoom = false
+                window.addEventListener('resize', function(){
+                    width = window.innerWidth;
+                    if(width <= 768){
+                        that.three.scene.remove(that.three.camera)
+                        that.three.renderer.setSize(660, 828)
+                        that.three.camera = new THREE.PerspectiveCamera(75, 660 / 828);
+                        that.three.camera.position.set(0, 0, 14);
+                        that.three.scene.add(that.three.camera);
+                    } else if(width > 768){
+                        that.three.scene.remove(that.three.camera)
+                        that.three.renderer.setSize(that.$refs.canvasWrapper.offsetWidth, that.$refs.formsWrapper.offsetHeight)
+                        that.three.camera = new THREE.PerspectiveCamera(75, that.$refs.canvasWrapper.offsetWidth / that.$refs.canvasWrapper.offsetHeight);
+                        that.three.camera.position.set(0, 0, 14);
+                        that.three.scene.add(that.three.camera);
+                    }
+                } );
 
                 this.createModel()
                 this.animate()
@@ -1130,18 +1153,7 @@
                     for (let model of this.grids_array) {
                         this.three[model.name].position.y = k
                     }
-                }
-                    // else if (this.changeHeight > range.max) {
-                    //   k = this.changeHeight / -38
 
-                    //   this.three.handle_model.scale.set(0.015, 0.015, 0.015)
-
-                    //   this.three.camera.position.z = max_zoom
-
-                    //   for (let model of models) {
-                    //     this.three[model.name].position.y = k
-                    //   }
-                // }
                 else if (this.changeHeight < range.min) {
                     k = this.changeHeight / -24
 
@@ -1192,7 +1204,6 @@
                     this.three.frame_inside_front.position.x = -this.changeWidth / 33 * 2 - 0.15
                     this.three.glass.position.x = -this.changeWidth / 33 * 2 - 0.15
 
-                    
                 for(let item of  this.three.inside_group.children){
                     if(item.name.includes('grid_horizontal_inside') || item.name.includes('grid_horizontal_outside') || item.name.includes('grid_vertical_inside') || item.name.includes('grid_vertical_outside')){
                             item.position.x = -this.changeWidth / 33 * 2
@@ -1365,7 +1376,7 @@
                         this.is_select_disabled = true
                         sizes.degree_model = 10
                         sizes.degree_handle = 180
-                        sizes.z = this.changeHeight / this.size_values.height.max 
+                        sizes.z = this.changeHeight / this.size_values.height.max
                     } else if(key == 'vertical' && this.window_opened.v){
                         sizes.degree_model = 0
                         sizes.degree_handle = 0
