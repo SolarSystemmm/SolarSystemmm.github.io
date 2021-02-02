@@ -1008,7 +1008,7 @@
                     max: 150,
                 }
 
-                if(window.innerWidth <= 768){
+                if(window.innerWidth <= 768 && this.changeWidth >= 130){
                             this.three.camera_z_value = 16
                 }
 
@@ -1622,9 +1622,9 @@
                 set: function (value) {
                     this.window_values.width = value
                     if (Number(value) >= this.size_values.width.min && Number(value) <= this.size_values.width.max) {
-                        if(window.innerWidth <= 768){
+                        if(window.innerWidth <= 768 && this.changeWidth >= 130){
                             this.three.camera_z_value = 16
-                        }
+                }
                         this.changeModelSize()
                     }
                 }
