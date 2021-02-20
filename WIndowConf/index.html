@@ -257,6 +257,11 @@
                 font-size: 4vw;
             }
         }
+        @media (max-width: 400px) {
+            canvas {
+                transform: translate(-50%, -15%) scale(0.65); 
+            }
+        }
     </style>
 
 </head>
@@ -1000,7 +1005,8 @@
                 const that = this;
 
                 const is_opened = this.window_opened.v || this.window_opened.h ? true : false
-
+                if(window.innerWidth <= 768){
+                }
                 let models = this.static_models;
 
                 const range = {
@@ -1274,6 +1280,9 @@
                 const camera_z = Number(w_z.slice(0, -1)) + Number(h_z.slice(0, -1))
                 let dnm_deg = 4.5
                 let status = true
+                if(window.innerWidth <= 768){
+                    this.camera_z_value = 16
+                }
                 if(window.innerWidth <= 768 && that.changeWidth >= 130){
                     dnm_deg = 10
                 } 
