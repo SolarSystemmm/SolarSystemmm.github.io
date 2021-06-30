@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html><head></head><body class="body"><!DOCTYPE html>
 <html lang="ua">
 
 
@@ -14,11 +14,17 @@
 		  href="img/favicon.png"
 		  type="image/x-icon">
 	<link rel="stylesheet"
+		  href="css/libs.min.css">
+	<link rel="stylesheet"
 		  href="css/style.min.css">
 	<title></title>
+	<link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 </head>
 
-<body class="body">
+
 	<div class="info-line">
 	<p class="line-text">Повний цикл будівництва</p>
 </div>
@@ -41,18 +47,33 @@
 				<li data-lang="EN"><a href="#">EN</a></li>
 			</ul>
 		</div>
+		<div class="menu-wrapper">
+			<div class="hamburger-menu"></div>	  
+		  </div>
+		  
+		  
 	</div>
 	<nav class="nav">
-		<ul class="nav-items">
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Послуги</a></li>
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Реалізовані проєкти</a></li>
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Про компанію</a></li>
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Контакти</a></li>
-		</ul>
+		<div class="scroll">
+			<ul class="nav-items">
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Послуги</a></li>
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Реалізовані проєкти</a></li>
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Про компанію</a></li>
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Контакти</a></li>
+			</ul>
+			<div class="get-call">
+				<a href="#" class="get-call-btn">Замовити дзвінок</a>
+				<ul class="languages">
+					<li class="active" data-lang="UA"><a href="#">Ua</a></li>
+					<li data-lang="RU"><a href="#">RU</a></li>
+					<li data-lang="EN"><a href="#">EN</a></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 </header>
 
@@ -72,10 +93,10 @@
 		<section class="about-us-section">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="logo col-3">
+					<div class="logo col-12 col-md-3">
 						<img src="img/logo.png" alt="БудІКом">
 					</div>
-					<div class="col-8 offset-1">
+					<div class="col-12 col-md-8 offset-md-1">
 						<p class="text">БудІКом - це комплексна робота над кожним об'єктом - від концепції до запуску та виконання всього циклу будівництва. 
 							Наша команда експертів втілює в життя архітектурні рішення будь-якої складності.
 							Використання надійних технологій та відкритість до інновацій дозволяє нам створювати стійкі та сучасні будівлі.
@@ -135,32 +156,40 @@
 		<section class="our-projects-section">
 			<div class="container">
 				<div class="project-items row">
-					<div class="col-md-12 col-lg-4 project-item">
-						<a href="#">
-							<h3 class="title crop">Готельний комплекс комплекс</h3>
-							<div class="img">
-								<span class="note">В процессе</span>
-								<img src="img/item-img.png" alt="Готельний комплекс">
-							</div>
-						</a>
-					</div>
-					<div class="col-md-12 col-lg-4 project-item">
-						<a href="#">
-							<h3 class="title crop">Готельний комплекс</h3>
-							<div class="img">
-								<span class="note">В процессе</span>
-								<img src="img/item-img.png" alt="Готельний комплекс">
-							</div>
-						</a>
-					</div>
-					<div class="col-md-12 col-lg-4 project-item">
-						<a href="#">
-							<h3 class="title crop">Готельний комплекс</h3>
-							<div class="img">
-								<span class="note">В процессе</span>
-								<img src="img/item-img.png" alt="Готельний комплекс">
-							</div>
-						</a>
+					<div class="col-12 projects-swiper unique-swiper">
+						<div class="swiper swiper-container">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide col-md-12 col-lg-4 project-item">
+									<a href="#">
+										<h3 class="title crop">Готельний комплекс комплекс</h3>
+										<div class="img">
+											<span class="note">В процессе</span>
+											<img src="img/item-img.png" alt="Готельний комплекс">
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide col-md-12 col-lg-4 project-item">
+									<a href="#">
+										<h3 class="title crop">Готельний комплекс комплекс</h3>
+										<div class="img">
+											<span class="note">В процессе</span>
+											<img src="img/item-img.png" alt="Готельний комплекс">
+										</div>
+									</a>
+								</div>
+								<div class="swiper-slide col-md-12 col-lg-4 project-item">
+									<a href="#">
+										<h3 class="title crop">Готельний комплекс комплекс</h3>
+										<div class="img">
+											<span class="note">В процессе</span>
+											<img src="img/item-img.png" alt="Готельний комплекс">
+										</div>
+									</a>
+								</div>
+							  </div>
+						</div>
+						<div class="swiper-button-next"></div>
+						<div class="swiper-button-prev"></div>
 					</div>
 				</div>
 				<a class="learn-more-btn" href="#">Дивитися більше</a>
@@ -317,6 +346,8 @@
     </div>
 </footer>
 
+	<!-- <script src="js/libs.min.js"></script> -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script src="js/main.min.js"></script>
 <script

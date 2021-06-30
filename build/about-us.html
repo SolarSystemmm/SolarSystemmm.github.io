@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<html><head></head><body class="body"><!DOCTYPE html>
 <html lang="ua">
 
 
@@ -14,11 +14,17 @@
 		  href="img/favicon.png"
 		  type="image/x-icon">
 	<link rel="stylesheet"
+		  href="css/libs.min.css">
+	<link rel="stylesheet"
 		  href="css/style.min.css">
 	<title></title>
+	<link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 </head>
 
-<body class="body">
+
 	<div class="info-line">
 	<p class="line-text">Повний цикл будівництва</p>
 </div>
@@ -41,18 +47,33 @@
 				<li data-lang="EN"><a href="#">EN</a></li>
 			</ul>
 		</div>
+		<div class="menu-wrapper">
+			<div class="hamburger-menu"></div>	  
+		  </div>
+		  
+		  
 	</div>
 	<nav class="nav">
-		<ul class="nav-items">
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Послуги</a></li>
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Реалізовані проєкти</a></li>
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Про компанію</a></li>
-			<li class="nav-item">
-				<a class="nav-item-link" href="#">Контакти</a></li>
-		</ul>
+		<div class="scroll">
+			<ul class="nav-items">
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Послуги</a></li>
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Реалізовані проєкти</a></li>
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Про компанію</a></li>
+				<li class="nav-item">
+					<a class="nav-item-link" href="#">Контакти</a></li>
+			</ul>
+			<div class="get-call">
+				<a href="#" class="get-call-btn">Замовити дзвінок</a>
+				<ul class="languages">
+					<li class="active" data-lang="UA"><a href="#">Ua</a></li>
+					<li data-lang="RU"><a href="#">RU</a></li>
+					<li data-lang="EN"><a href="#">EN</a></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 </header>
 
@@ -61,10 +82,15 @@
             <div class="container">
                 <h1 class="title">Про нас</h1>
                 <div class="about-info row">
-                    <div class="text-info col-6">
+                    <div class="text-info col-12 col-md-6">
                         <p class="text">
                             <b>БудІКом</b>  — это виконання повного циклу будівництва об’єктів нерухомості будь-якої складності та надання окремих послуг - проектування, дизайну, ремонту та інші.
                         </p>
+
+                        <div class="mobile-img img col-md-6 col-lg-5 col-xl-4 offset-lg-1">
+                            <img src="img/hotel.png" alt="Про нас">
+                        </div>
+
                         <p class="text">
 	                        Ми використовуємо лише надійні технології та завжди відкриті до інновацій. Ми беремо на себе відповідальність за  кожен етап будівництва. Найкращі  архітектурні та дизайнерські рішення саме для вашої ситуації.
                         </p>
@@ -122,10 +148,10 @@
            <div class="container">
                <h2 class="title">Наша команда</h2>
                <div class="about-team row">
-                   <div class="img col-md-6 col-lg-5">
+                   <div class="img col-12 col-md-6 col-lg-5">
                        <img src="img/our-team.png" alt="Наша команда">
                    </div>
-                   <div class="about-text col-5">
+                   <div class="about-text col-12 col-md-5">
                        <p class="text">В команді БудІКом — лише практикуючі експерти, які мають багаторічний досвід, постійно навчаються та шалено люблять свою справу.  В БудІКом ми вибираємо лише те, що принесе нашим клієнтам максимальну користь.</p>
                        <a href="#" class="our-team-btn">Хто працює  в БудІКом?</a>
                    </div>
@@ -156,7 +182,7 @@
                </div>
            </div>
        </section>
-		<section class="license-section">
+		<section class="license-section about-us-page">
 			<div class="container">
 				<div class="row no-gutters">
 					<div class="col-md-8 col-lg-4 title-wrapper">
@@ -165,7 +191,9 @@
 					<div class="col-md-12 col-lg-7 offset-lg-1 info-text">
 						<h3 class="title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</h3>
 						<p class="text">lit eget gravida cum sociis. Ut consequat semper viverra nam libero. Quis risus sed vulputate odio ut enim blandit. Vestibulum sed arcu non odio euismod lacinia at quis risus. Interdum velit laoreet id donec ultrices tincidunt arcu non. Quis enim lobortis scelerisque fermentum. Id aliquet risus feugiat in ante metus dictum. Malesuada bibendum arcu vitae elementum curabitur vitae nunc. Ipsum dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Rutrum tellus pellentesque eu tincidunt tortor aliquam. Pharetra convallis posuere morbi leo. Nibh ipsum consequat nisl vel pretium lectus quam id leo. Vitae nunc sed velit dignissim sodales ut eu sem integer. Felis imperdiet proin</p>
-					</div>
+                        <a href="#" class="read-more-btn">Смотреть больше</a>
+
+                    </div>
 				</div>
 			</div>
 		</section>
@@ -298,7 +326,9 @@
         </div>
     </div>
 </footer>
-</body>
+
+	<!-- <script src="js/libs.min.js"></script> -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 <script src="js/main.min.js"></script>
 <script
