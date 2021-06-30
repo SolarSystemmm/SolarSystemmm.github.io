@@ -1,0 +1,57 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby</title>
+    <style>
+        ul{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        li{
+            flex-basis: 30%;
+            flex-grow: 0;
+            margin: 0 20px;
+
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        a {
+            border: 1px solid #000;
+            color:#000;
+            padding: 10px 15px;
+            text-transform: uppercase;
+            text-align: center;
+            display: block;
+            font-size: 16px;
+            text-decoration: none;
+            transition: 400ms ease-in all;
+        }
+        a:hover{
+            color:#fff;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="index.html">Main (Done)</a></li>
+        <li><a href="contact-us.html">Contact us (Done)</a></li>
+        <li><a href="projects.html">Projects (Done)</a></li>
+        <li><a href="services.html">Services (Done)</a></li>
+        <li><a href="case.html">Case (Done)</a></li>
+        <li><a href="about-us.html">About us (Done)</a></li>
+        <li><a href="design.html">Our design (Done)</a></li>
+        <li><a href="building.html">Building proccess (Done)</a></li>
+    </ul>
+    <script>
+        const links = document.querySelectorAll('a')
+        links.forEach(link => {
+            if(link.getAttribute('href').includes('#')) {
+                link.style.cursor = 'not-allowed'
+            }
+        });
+    </script>
+
+</body></html>
