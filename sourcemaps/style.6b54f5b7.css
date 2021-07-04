@@ -1,0 +1,23 @@
+canvas {
+  display: none;
+}
+
+.canvas {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 1600px;
+}
+
+.img-container {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+.img-container:last-child {
+  margin-right: 0;
+}
+.img-container .img {
+  width: 150px;
+  height: 150px;
+}
+
+/*# sourceMappingURL=/style.6b54f5b7.css.map */
